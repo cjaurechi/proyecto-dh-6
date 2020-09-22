@@ -2,7 +2,7 @@
 
 ![](https://i.imgur.com/QjHWvzh.png)
 
-Reegalo pone a disposición diferentes experiencias para regalar a las personas que más queremos. Contamos con diferentes categorías:
+**Reegalo** pone a disposición diferentes experiencias para regalar a las personas que más queremos. Contamos con diferentes categorías:
 
 - Gastronomía
 - Aire libre
@@ -23,3 +23,18 @@ Mi nombre es Norberto. Actualmente soy Gerente Regional de Desarrollo en Sistema
 
 ### Paula Skubic
 Mi nombre es Paula Skubic. Actualmente estoy trabajando en Seguridad Informática y tengo un mini emprendimiento de tortas. Me encanta estar haciendo activamente diferentes cosas cómo deporte, instrumentos, cocina, etc. No se nada de programación Web pero soy dedicada y por lo que llevamos de curso, me gusta.
+
+## Referencias
+
+- [Bigbox](https://bigbox.com.ar)
+- [Fanbag](https://fanbag.com.ar)
+- [Flipaste](https://www.flipaste.com.ar)
+- [Tinggly](https://www.tinggly.com)
+- [Buyagift](https://www.buyagift.co.uk)
+- [Canva](https://www.canva.com/)
+- [Pinterest](https://ar.pinterest.com/)
+- [Figma](https://www.figma.com/)
+
+**Bigbox** y **Fanbag** son los dos exponentes más conocidos a nivel local en cuanto a venta de experiencias y creemos que sus webs son modelos a seguir para el rubro. **Flipaste** no es tan conocida pero a pesar de estar en el mismo rubro tiene una UI distinta a la de Bigbox y Fanbag, lo cual nos permite contar con algunas alternativas. **Tinggly** y **Buyagift** son páginas extranjeras que encaran la venta de experiencias de una manera similar pero con elementos y categorías diferentes. Esto nos permite tener más variedad y recursos de UI que podemos analizar a la hora de elegir el nuestro.
+
+También elegimos las páginas de **Canva**, **Pinterest** y **Figma** porque si bien no tienen relación con la temática de nuestro sitio, vemos que cuentan con una estructura amigable, moderna e intuitiva que nos gustaría tomar cómo referencia.
