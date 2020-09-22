@@ -1,6 +1,6 @@
 ## [Reegalo](https://github.com/cjaurechi/proyecto-dh-6)
 
-![](https://i.imgur.com/QjHWvzh.png)
+![](https://i.imgur.com/GDQNYKZ.png)
 
 **Reegalo** pone a disposición diferentes experiencias para regalar a las personas que más queremos. Contamos con diferentes categorías:
 
