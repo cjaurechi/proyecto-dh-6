@@ -38,3 +38,7 @@ Mi nombre es Paula Skubic. Actualmente estoy trabajando en Seguridad Informátic
 **Bigbox** y **Fanbag** son los dos exponentes más conocidos a nivel local en cuanto a venta de experiencias y creemos que sus webs son modelos a seguir para el rubro. **Flipaste** no es tan conocida pero a pesar de estar en el mismo rubro tiene una UI distinta a la de Bigbox y Fanbag, lo cual nos permite contar con algunas alternativas. **Tinggly** y **Buyagift** son páginas extranjeras que encaran la venta de experiencias de una manera similar pero con elementos y categorías diferentes. Esto nos permite tener más variedad y recursos de UI que podemos analizar a la hora de elegir el nuestro.
 
 También elegimos las páginas de **Canva**, **Pinterest** y **Figma** porque si bien no tienen relación con la temática de nuestro sitio, vemos que cuentan con una estructura amigable, moderna e intuitiva que nos gustaría tomar cómo referencia.
+
+## Wireframe
+
+Utilizamos Figma para la creación del Wireframe. Pueden acceder al archivo desde el siguiente [enlace](https://www.figma.com/file/RTTJAlU851LmsXwILgfU0G/Reegalo?node-id=32%3A1963).
