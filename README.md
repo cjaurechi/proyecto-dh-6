@@ -42,3 +42,7 @@ También elegimos las páginas de **Canva**, **Pinterest** y **Figma** porque si
 ## Wireframe
 
 Utilizamos Figma para la creación del Wireframe. Pueden acceder al archivo desde el siguiente [enlace](https://www.figma.com/file/RTTJAlU851LmsXwILgfU0G/Reegalo?node-id=32%3A1963).
+
+
+## Tablero de trabajo
+Utilizaremos el tablero de Trello para organizar el trabajo de los sprints. Se puede acceder al archivo desde el siguiente [enlace](https://trello.com/b/TfWIapkO/proyecto-dh-6)
