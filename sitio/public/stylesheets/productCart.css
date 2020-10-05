@@ -7,6 +7,7 @@
 
 :root {
     --gris: #F9F8F8;
+    --azulreegalo: #18A0FB;
 }
 
 @font-face {
@@ -23,25 +24,91 @@
 header.navigation {
     background-color: white;
     font-size: 13px;
+    margin: 1.5vh auto;
     font-family: Montserrat-Regular;
     display: flex;
-    margin: 1.5vh auto;
+    flex-direction: row;
 }
 
-div.logo {
-    width: 150px;
-    margin-left: 2vh;
-    margin-right: 4vh;
+.logo {
+    max-width: 200px;
+    padding-left: 2vh;
+    padding-right: 4vh;
+    flex-grow: 1;
 }
 
-img.logo-navigation {
-    width: 100%;
+.logo-navigation {
+    max-width: 100%;
 }
 
-nav.top-navigation {
-    /* background-color: red; */
+.top-navigation {
     padding-top: 0.5vh;
+    flex-grow: 0.4;
+    display: flex;
+    justify-content: space-around;
 }
+
+header nav a {
+    color:black;
+    text-decoration: none;
+}
+
+.fa-chevron-down {
+    font-size: 1vh;
+}
+
+.buscador {
+    text-align: right;
+    flex-grow: 1;
+    padding-top: 1vh;
+    padding-right: 1vh;
+}
+
+.fa-search {
+    color: black;
+    font-size: 17px;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-grow: 0.4;
+}
+
+.sign-in {
+    background-color: white;
+    color: var(--azulreegalo);
+    text-align: center;
+    width: 43%;
+    padding: 0.7vh;
+    border: 1px solid var(--azulreegalo);
+    border-radius: 5px;
+}
+
+.sign-up {
+    background-color: var(--azulreegalo);
+    color: white;
+    text-align: center;
+    width: 43%;
+    padding: 0.7vh;
+    border-radius: 5px;
+}
+
+.carrito {
+    text-align: center;
+    flex-grow: 0.05;
+    padding-right: 1vh;
+}
+
+.fa-shopping-cart {
+    color: black;
+    padding-top: 0.5vh;
+    font-size: 23px;
+}
+
+
+
 
 
 
