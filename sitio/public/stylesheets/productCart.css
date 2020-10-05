@@ -2,9 +2,69 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: ;
 }
 
-div.indicador {
-    background-color: yellow;
-    height: 100px;
+:root {
+    --gris: #F9F8F8;
+}
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('../fonts/Montserrat-SemiBold.ttf')
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('../fonts/Montserrat-Regular.ttf');
+}
+
+/* Header */
+header.navigation {
+    background-color: white;
+    font-size: 13px;
+    font-family: Montserrat-Regular;
+    display: flex;
+    margin: 1.5vh auto;
+}
+
+div.logo {
+    width: 150px;
+    margin-left: 2vh;
+    margin-right: 4vh;
+}
+
+img.logo-navigation {
+    width: 100%;
+}
+
+nav.top-navigation {
+    /* background-color: red; */
+    padding-top: 0.5vh;
+}
+
+
+
+section.indicador {
+    background-color: var(--gris);
+}
+
+p.indicador {
+    font-size: 30px;
+    font-family: Montserrat-SemiBold;
+    padding-left: 2vh;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+}
+
+div.detalle-carrito {
+    background-color: ghostwhite;
+}
+
+section.recomendados {
+    background-color: white;
+}
+
+footer.navigation {
+    background-color: ghostwhite;
 }
