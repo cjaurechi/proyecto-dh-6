@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const app = express()
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -22,9 +23,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// Listen
 
-app.listen(3000, () => { console.log('Server corriendo'); });
+
+// Index
+
+app.get('/', function (req, res) {
+  let file = path.resolve('pages/index.html');
+  res.sendFile(file);
+});
 
 // Carrito de compras
 
@@ -49,5 +55,9 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Listen
+
+app.listen(3000, () => { console.log('Server corriendo'); });
 
 module.exports = app;
