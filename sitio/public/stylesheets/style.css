@@ -6,17 +6,23 @@
 }
 
 /* Estilo */
-.padding-2por {padding:2%;}
-.padding-1por {padding:1%;}
-.padding-5por {padding:5%;}
+
 .center-text {text-align: center;}
 .w-25 {width: 25%;}
+.w-1 {width: 1%;}
 
 /* Estructura */
 
 .d-flex {display: flex;}
 .flex-direct-row {flex-direction: row;}
+.flex-grow1 {flex-grow: 1;}
 .justify-around {justify-content: space-around;}
+.justify-beet {justify-content: space-between;}
+.padding-2por {padding:2%;}
+.padding-1por {padding:1%;}
+.padding-5por {padding:5%;}
+.padding-left-20por {padding-left:20%;}
+.align-center {align-items: center;}
 
 :root {
   --gris: #F9F8F8;
@@ -161,4 +167,12 @@ footer.navigation {
 .banner{
   width: 100%;
   
+}
+
+.social-media{
+  width: 2%;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
 }
