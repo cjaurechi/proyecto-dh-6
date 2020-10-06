@@ -2,8 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: ;
+  font-family: 'Montserrat-SemiBold'; ;
 }
+
+/* Estilo */
+.padding-2por {padding:2%;}
+.padding-1por {padding:1%;}
+.padding-5por {padding:5%;}
+.center-text {text-align: center;}
+.w-25 {width: 25%;}
+
+/* Estructura */
+
+.d-flex {display: flex;}
+.flex-direct-row {flex-direction: row;}
+.justify-around {justify-content: space-around;}
 
 :root {
   --gris: #F9F8F8;
@@ -135,4 +148,17 @@ section.recomendados {
 
 footer.navigation {
   background-color: ghostwhite;
+}
+
+.banner-letters{
+  position: absolute;
+  top: 35%;
+  font-size: 3em;
+  color: white;
+  padding-left: 5%;
+}
+
+.banner{
+  width: 100%;
+  
 }
