@@ -1,8 +1,138 @@
-
-body {
-  padding: 50px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: ;
 }
 
-a {
-  color: #00B7FF;
+:root {
+  --gris: #F9F8F8;
+  --azulreegalo: #18A0FB;
+}
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url('../fonts/Montserrat-SemiBold.ttf')
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('../fonts/Montserrat-Regular.ttf');
+}
+
+/* Header */
+header.navigation {
+  background-color: white;
+  font-size: 10px;
+  margin: 1.5vh auto;
+  font-family: Montserrat-Regular;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  max-width: 190px;
+  padding-left: 2vh;
+  padding-right: 4vh;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.logo-navigation {
+  max-width: 100%;
+}
+
+.top-navigation {
+  padding: 1%;
+  flex-grow: 0.4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header nav a {
+  color:black;
+  text-decoration: none;
+}
+
+.fa-chevron-down {
+  font-size: 1vh;
+}
+
+.buscador {
+  text-align: right;
+  flex-grow: 1;
+  padding: 1%;
+}
+
+.fa-search {
+  color: black;
+  font-size: 17px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-grow: 0.4;
+  padding:1% 0%;
+  
+}
+
+.sign-in {
+  background-color: white;
+  color: var(--azulreegalo);
+  text-align: center;
+  width: 43%;
+  padding: 0.7vh;
+  border: 1px solid var(--azulreegalo);
+  border-radius: 5px;
+}
+
+.sign-up {
+  background-color: var(--azulreegalo);
+  color: white;
+  text-align: center;
+  width: 43%;
+  padding: 0.7vh;
+  border-radius: 5px;
+}
+
+.carrito {
+  text-align: center;
+  flex-grow: 0.05;
+  padding: 1%;
+}
+
+.fa-shopping-cart {
+  color: black;
+  padding-top: 0.5vh;
+  font-size: 15px;
+}
+
+
+
+
+section.indicador {
+  background-color: var(--gris);
+}
+
+p.indicador {
+  font-size: 30px;
+  font-family: Montserrat-SemiBold;
+  padding-left: 2vh;
+  padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
+}
+
+div.detalle-carrito {
+  background-color: ghostwhite;
+}
+
+section.recomendados {
+  background-color: white;
+}
+
+footer.navigation {
+  background-color: ghostwhite;
 }
