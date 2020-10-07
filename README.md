@@ -6,6 +6,7 @@
 
 - Gastronomía
 - Aire libre
+- Manzana
 - Espectaculo
 - Conocimiento
 - Experiencias unicas
