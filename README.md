@@ -5,7 +5,6 @@
 **Reegalo** pone a disposición diferentes experiencias para regalar a las personas que más queremos. Contamos con diferentes categorías:
 
 - Gastronomía
-- Banana
 - Aire libre
 - Espectaculo
 - Conocimiento
