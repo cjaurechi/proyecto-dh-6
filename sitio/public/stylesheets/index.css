@@ -46,13 +46,11 @@ img {
 .padding-5por {padding:5%;}
 
 
-
-
 /* Header */
 
 header.navigation {
   background-color: white;
-  font-size: 10px;
+  font-size: 13px;
   margin: 1.5vh auto;
   font-family: Montserrat-Regular;
   display: flex;
@@ -60,11 +58,10 @@ header.navigation {
 }
 
 .logo {
-  max-width: 190px;
+  max-width: 210px;
   padding-left: 2vh;
   padding-right: 4vh;
   flex-grow: 1;
-  align-items: center;
 }
 
 .logo-navigation {
@@ -72,11 +69,10 @@ header.navigation {
 }
 
 .top-navigation {
-  padding: 1%;
+  padding-top: 0.7vh;
   flex-grow: 0.4;
   display: flex;
   justify-content: space-around;
-  align-items: center;
 }
 
 header nav a {
@@ -91,7 +87,8 @@ header nav a {
 .buscador {
   text-align: right;
   flex-grow: 1;
-  padding: 1%;
+  padding-top: 1vh;
+  padding-right: 1vh;
 }
 
 .fa-search {
@@ -103,16 +100,14 @@ header nav a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-grow: 0.4;
-  padding:1% 0%;
-  
+  flex-grow: 0.3;
 }
 
 .sign-in {
   background-color: white;
   color: var(--azulreegalo);
   text-align: center;
-  width: 43%;
+  width: 45%;
   padding: 0.7vh;
   border: 1px solid var(--azulreegalo);
   border-radius: 5px;
@@ -122,7 +117,7 @@ header nav a {
   background-color: var(--azulreegalo);
   color: white;
   text-align: center;
-  width: 43%;
+  width: 45%;
   padding: 0.7vh;
   border-radius: 5px;
 }
@@ -130,39 +125,14 @@ header nav a {
 .carrito {
   text-align: center;
   flex-grow: 0.05;
-  padding: 1%;
+  padding-right: 1vh;
 }
 
 .fa-shopping-cart {
   color: black;
   padding-top: 0.5vh;
-  font-size: 15px;
+  font-size: 23px;
 }
-
-
-
-
-section.indicador {
-  background-color: var(--gris);
-}
-
-p.indicador {
-  font-size: 30px;
-  font-family: Montserrat-SemiBold;
-  padding-left: 2vh;
-  padding-top: 1.5vh;
-  padding-bottom: 1.5vh;
-}
-
-div.detalle-carrito {
-  background-color: ghostwhite;
-}
-
-section.recomendados {
-  background-color: white;
-}
-
-
 
 
 
@@ -180,6 +150,32 @@ section.recomendados {
   padding-left: 5%;
   font-family: 'Montserrat-SemiBold';
 }
+
+
+/* Categorias */
+
+.categorias{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 2%;
+}
+
+.categoria-regalo{
+  flex-grow: 1;
+  text-align: center;
+  margin: 0 1%;
+}
+
+section .categorias .categoria-regalo img {
+  width: 500px;
+  height: 200;
+}
+
+.categoria-titulo {
+  position: relative;
+  
+}
+
 
 /* Detalle regalo */
 
@@ -217,6 +213,7 @@ section.recomendados {
   font-size: 1em;
   color: gray;
   padding: 2vh 0;
+  margin-bottom: 20%;
   text-align: left;
 }
 
@@ -252,21 +249,21 @@ section.recomendados {
 .pasos{
   display: flex;
   justify-content: space-around;
-  
-    
+  margin: 2%;    
 }
 
 .detalle-paso{
   display: flex;
   flex-direction: column;
-  flex-grow: 0,33;
   text-align: center;
+  flex-basis: 100%;
+
 }
 
-.imagen-paso
-{
+.imagen-paso{
   flex-grow: 0.5;
   font-size: 5em;
+  margin-bottom: 4%;
 }
 
 .descripcion-paso{
