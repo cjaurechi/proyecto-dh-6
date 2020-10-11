@@ -42,21 +42,19 @@ app.get('/carrito', function (req, res) {
 // Imagenes
 
 app.get('*', function (req, res) {
-  if (req.url.endsWith('.css')){
-      let file =path.resolve('public/stylesheets/style'+ req.url);
-      return res.sendFile(file);
+  if (req.url.endsWith('.css')) {
+    let file = path.resolve('public/stylesheets/style' + req.url);
+    return res.sendFile(file);
   }
-  
-  let images = ['jpg','jpeg','gif','png','svg'];
-  let ext =req.url.split('.')[1];
-    if (images.includes(ext)){
-      let file = path.resolve('public/images' + req.url);
-      return res.sendFile(file);
-    }
+
+  let images = ['jpg', 'jpeg', 'gif', 'png', 'svg'];
+  let ext = req.url.split('.')[1];
+  if (images.includes(ext)) {
+    let file = path.resolve('public/images' + req.url);
+    return res.sendFile(file);
+  }
 
 })
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
