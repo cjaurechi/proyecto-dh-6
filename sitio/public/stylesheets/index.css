@@ -157,22 +157,28 @@ header nav a {
 .categorias{
   display: flex;
   justify-content: space-around;
-  padding: 0 2%;
+  padding: 0 2%; 
 }
 
 .categoria-regalo{
   flex-grow: 1;
   text-align: center;
   margin: 0 1%;
+  align-items: center;
 }
 
 section .categorias .categoria-regalo img {
   width: 500px;
   height: 200;
+  opacity: 50%;
+  border-radius: 10%;
+  object-fit: contain;
 }
 
 .categoria-titulo {
   position: relative;
+  bottom: 50%;
+  color:black;
   
 }
 
@@ -190,16 +196,23 @@ section .categorias .categoria-regalo img {
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  flex-grow: 0.20;
   padding:1%;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .caract-regalo{
-  flex-grow: 0.5;
+  flex-grow: 1;
+}
+
+.contenedor-imagen{
+  height: 268px;
 }
 
 .imagen-regalo{
-  flex-grow: 0.5;
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
 }
 
 .titulo-regalo{
