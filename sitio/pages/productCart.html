@@ -13,25 +13,31 @@
 
 <body>
     <header class="navigation">
-        <div class="logo">
-            <img src="/images/logo-reegalo-blue.png" alt="Reegalo" class="logo-navigation">
+        <div class="container-header">
+            <a href="/" class="logo">
+                <picture>
+                    <source srcset="/images/logo-reegalo-mini-blue.png" media="(max-width: 1586px)"
+                        class="logo-navigation">
+                    <img src="/images/logo-reegalo-blue.png" alt="Reegalo" class="logo-navigation">
+                </picture>
+            </a>
+            <nav class="top-navigation">
+                <a href="#">Regalos <i class="fas fa-chevron-down"></i></a>
+                <a href="#">Nosotros <i class="fas fa-chevron-down"></i></a>
+                <a href="#">Contacto <i class="fas fa-chevron-down"></i></a>
+                <a href="#">¿Cómo regalar? <i class="fas fa-chevron-down"></i></a>
+            </nav>
+            <div class="buscador">
+                <input type="text" class="input-buscador">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="acciones-header">
+                <div class="sign-in">Ingresa</div>
+                <div class="sign-up">Registrate</div>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cantidad-carrito">2</span>
+            </div>
         </div>
-        <nav class="top-navigation">
-            <a href="#">Regalos <i class="fas fa-chevron-down"></i></a>
-            <a href="#">Nosotros <i class="fas fa-chevron-down"></i></a>
-            <a href="#">Contacto <i class="fas fa-chevron-down"></i></a>
-            <a href="#">¿Cómo regalar? <i class="fas fa-chevron-down"></i></a>
-        </nav>
-        <section class="buscador">
-            <i class="fas fa-search"></i>
-            <input type="text" class="input-buscador">
-        </section>
-        <div class="sign-in">Ingresa</div>
-        <div class="sign-up">Registrate</div>
-        <section class="carrito">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cantidad-carrito">2</span>
-        </section>
     </header>
     <section class="indicador">
         <div class="indicador">

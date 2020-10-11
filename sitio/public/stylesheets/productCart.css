@@ -31,44 +31,48 @@
     src: url('../fonts/Montserrat-Light.ttf')
 }
 
-/* Header */
+/****************** Header ************************/
 
 header {
     position: sticky;
     top: 0;
     width: 100%;
-    height: 50px;
-    box-shadow: 0 1px 2px gainsboro;
+    min-height: 50px;
+    box-shadow: 0 0.5px 1px gainsboro;
 }
 
 .navigation {
     background-color: white;
     font-family: Montserrat-Regular;
+    width: 100%;
+    /* font-size: 1rem; */ /* Considerar cambiar el tamaño del header para que la letra sea un poquito mas chica */
+}
+
+.container-header {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    height: 68px;
+    padding: 0 15px;
 }
 
 .logo {
-    max-width: 12%;
-    margin-left: 2%;
-    margin-right: 2%;
-    cursor: pointer;
+    max-width: 160px;
+    margin-right: 20px;
+    margin-left: 10px;
 }
 
 .logo-navigation {
     max-width: 100%;
+    max-height: 33.61px;
 }
 
-.top-navigation {
-    width: 32%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.top-navigation{
+    justify-content: left;
 }
 
 .top-navigation a {
-    padding-right: 1%;
+    padding: 0 10px;
 }
 
 header nav a {
@@ -81,17 +85,19 @@ header nav a {
 }
 
 .buscador {
-    flex: 1;
-    display: flex;
-    flex-direction: row-reverse;
+    width: 20%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .input-buscador {
-    border: 1px solid gainsboro;
+    border: 0.5px solid gainsboro;
     border-radius: 5px;
-    flex: 0.8;
     padding: 1%;
+    margin-right: 2%;
+    width: 90%;
 }
 
 .fa-search {
@@ -101,14 +107,21 @@ header nav a {
     cursor: pointer;
 }
 
+.acciones-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
 .sign-in {
     background-color: white;
     color: var(--azulreegalo);
     text-align: center;
-    padding: 0.3%;
-    margin-left: 1%;
-    margin-right: 0.5%;
-    width: 8%;
+    padding: 2%;
+    margin-right: 2%;
+    margin-left: 5%;
+    width: 150px;
     border: 1px solid var(--azulreegalo);
     border-radius: 5px;
     cursor: pointer;
@@ -116,17 +129,17 @@ header nav a {
 
 .sign-in:hover {
     color: var(--azulregalostrong);
-    border: 1px solid var(--azulregalostrong;)
+    border: 1px solid var(--azulregalostrong);
 }
 
 .sign-up {
     background-color: var(--azulreegalo);
     color: white;
     text-align: center;
-    padding: 0.3%;
-    margin-left: 0.5%;
-    margin-right: 1%;
-    width: 8%;
+    padding: 2%;
+    margin-left: 2%;
+    margin-right: 5%;
+    width: 150px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -136,10 +149,8 @@ header nav a {
 }
 
 .carrito {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     font-size: 1.2em;
+    cursor: pointer;
 }
 
 .fa-shopping-cart {
@@ -148,11 +159,9 @@ header nav a {
     font-size: 1.3em;
 }
 
-.cantidad-carrito {
-    margin-right: 1vh;
-}
 
-/* Indicador */
+/****************** Indicador ************************/
+
 
 section.indicador {
     background-color: var(--gris);
@@ -175,9 +184,9 @@ span.indicador {
     margin-left: 1%;
 }
 
-/* Detalle de carrito */
+/****************** Detalle del Carrito ************************/
 
-/* Producto */
+/****************** Producto ************************/
 
 .detalle-carrito {
     display: flex;
@@ -191,8 +200,9 @@ span.indicador {
 
 .producto-carrito {
     display: flex;
-    border: 1px solid gainsboro;
-    box-shadow: 1px 1px 2px gainsboro;
+    border: 0.5px solid rgba(0,0,0,.1);
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
+    border-radius: 8px;
     margin-bottom: 2%;
     padding: 2vh;
     max-height: 45%;
@@ -260,7 +270,7 @@ span.indicador {
     font-size: 1.5em;
 }
 
-/* Resumen Compra */
+/****************** Resumen de Compra ************************/
 
 .container-resumen-compra {
     margin: 1%;
@@ -269,8 +279,9 @@ span.indicador {
 
 .resumen-compra {
     background-color: white;
-    border: 1px solid gainsboro;
-    box-shadow: 1px 1px 2px gainsboro;
+    border: 0.5px solid rgba(0,0,0,.1);
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
+    border-radius: 8px;
     padding: 4%;
 }
 
@@ -348,7 +359,7 @@ span.indicador {
     color: var(--azulregalostrong);
 }
 
-/* Recomendados */
+/****************** Recomendados ************************/
 
 .recomendados-titulo {
     font-family: Montserrat-SemiBold;
@@ -447,6 +458,8 @@ span.indicador {
     width: 150px;
     border: 1px solid var(--azulreegalo);
     border-radius: 5px;
+    margin-left: 5%;
+    margin-right: 2%;
     cursor: pointer;
 }
 
@@ -462,6 +475,8 @@ span.indicador {
     padding: 1.5% 0;
     width: 150px;
     border-radius: 5px;
+    margin-left: 2%;
+    margin-right: 5%;
     cursor: pointer;
 }
 
@@ -469,7 +484,7 @@ span.indicador {
     background-color: var(--azulregalostrong);
 }
 
-/* Footer */
+/****************** Footer ************************/
 
 footer {
     border-top: 1px solid gainsboro;
@@ -573,4 +588,12 @@ footer div nav a {
     object-fit: scale-down;
     margin-left: 6%;
     opacity: 0.4;
+}
+
+/****************** Media Queries ************************/
+
+@media (max-width: 1150px) {
+    
+    
+
 }
