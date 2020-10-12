@@ -46,11 +46,17 @@ app.get('/login', function (req, res) {
   res.sendFile(file);
 });
 
-<<<<<<< HEAD
+
 // Registro
 
 app.get('/register', function (req, res) {
   let file = path.resolve('pages/register.html');
+  res.sendFile(file);
+});
+
+<<<<<<< HEAD
+
+  
 =======
 // Login 2 >>> BORRAR!
 
