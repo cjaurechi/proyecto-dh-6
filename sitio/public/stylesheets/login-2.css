@@ -186,46 +186,18 @@ header nav a {
     display: none;
 }
 
-/****************** Formulario Login ************************/
+/**** Formulario ***/
 
-section.login {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(220, 220, 220, 0.3);
-    display: flex;
-    justify-content: center;
-}
-
-div.container-login {
-    width: 800px;
-    background-color: #FFFFFF;
-    margin: 3% auto;
-    padding: 2% 6%;
-    border: 0.5px solid rgba(0,0,0,.1);
-    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-p.titulo-login {
-    font-size: 1.5em;
-    font-family: Montserrat-SemiBold;
+.formulario{
+    margin: 3% 35%;
+    border: 2px solid gray;
+    border-radius: 12px;
+    padding: 1%;
     text-align: center;
 }
 
-.container-logo-login {
-    width: 100%;
-    height: 4em;
-    margin-top: 2%;
-    text-align: center;
-}
 
-.logo-login {
-    max-width: 45%;
-    max-height: 100%;
-}
+
 
 .form-login {
     height: 140px;
@@ -250,12 +222,21 @@ p.titulo-login {
 }
 
 .container-fa-envelop,
-.container-fa-lock {
+.container-fa-lock, .container-img-google {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     margin: auto 2%;
     opacity: 0.1;
+}
+
+.boton-google{
+    border: transparent;
+    background-color: white;
+}
+
+.container-google{
+    display: flex;
 }
 
 input[type=email], input[type=password], select, textarea {
@@ -269,113 +250,86 @@ input[type=email], input[type=password], select, textarea {
     opacity: 0.4;
 }
 
-.opciones-password {
-    width: 100%;
-    height: 30px;
-    margin-top: 2%;
+
+
+
+
+
+
+
+
+
+
+.formulario p{
+    font-size: 1em;
+    text-align: center;
+}
+
+.recordar-contra{
+    font-size: 1em;
     display: flex;
-    flex-flow: row;
-    vertical-align: bottom;
+    justify-content: space-between  ;
 }
 
-.recordar {
-    height: 18px;
-    width: 50%;
-    text-align: left;
+
+.titulo-formulario{
+    text-align: center;
 }
 
-input[type=checkbox] {
-    vertical-align: middle; 
-    position: relative;
-    bottom: .08em;
+.logo-formulario{
+    max-height: 100%;
+    width: 150px;
+    text-align: center;
+}
+.contnedor-logo-form{
+    text-align: center;
 }
 
-.recuperar {
-    height: 18px;
-    width: 50%;
-    text-align: right;
-}
-
-.recuperar a {
-    text-decoration: none;
-    color: var(--azulreegalo)
-}
-
-.boton-login {
-    width: 70%;
-    height: 50px;
-    margin-top: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button {
+.boton-ingresar{
     background-color: var(--azulreegalo);
-    border: none;
-    width: 100%;
-    height: 100%;
-    font-size: 1.3em;
-    border-radius: 8px;
     color: white;
-}
-
-button:hover {
-    background-color: var(--azulregalostrong);
-}
-
-.divisor {
-    height: 20px;
-    width: 100%;
-    margin-top: 2%;
+    border: transparent;
     text-align: center;
-}
-
-.boton-google {
-    background-color: white;
-    height: 50px;
-    border-radius: 6px;
-    border: 1px solid gainsboro;
-    padding: 1.2%;
-    width: 70%;
-    font-size: 1.4em;
-    display: flex;
-    align-items: center;
-    margin-top: 2%;
-    cursor: pointer;
-}
-
-.logo-google,
-.logo-facebook {
-    max-height: 30px;
-    margin: auto 4%;
-}
-
-.boton-facebook {
-    background-color: rgb(24, 119, 242);
     height: 50px;
     border-radius: 6px;
     padding: 1.2%;
-    width: 70%;
-    font-size: 1.4em;
-    display: flex;
-    align-items: center;
-    margin-top: 2%;
-    color: white;
-    cursor: pointer;
-}
-
-.registrar {
     width: 100%;
-    height: 30px;
-    margin-top: 4%;
-    text-align: center;
+    font-size: 1em;
+    
 }
 
-.registrar a {
-    text-decoration: none;
-    color: var(--azulreegalo);
+.container-google{
+    background-color:white;
+    color: grey;
+    border: 1px solid grey;
+    text-align: center;
+    margin: auto;
+    height: 50px;
+    border-radius: 6px;
+    padding: 1.2%;
+    width: 100%;
+    font-size: 1em;
+    
 }
+
+.boton-facebook{
+    background-color: #3b5998;
+    color: white;
+    border: transparent;
+    text-align: center;
+    margin: auto;
+    height: 50px;
+    border-radius: 6px;
+    padding: 1.2%;
+    width: 100%;
+    font-size: 1em;
+}
+
+.container-facebook, .container-google, .container-ingresar{
+    margin: 3% 0;
+}
+
+
 
 /****************** Footer ************************/
 
@@ -395,6 +349,8 @@ footer {
     margin-bottom: 1%;
 }
 
+
+
 .texto-contacto {
     font-family: Montserrat-SemiBold;
     margin-bottom: 1%;
@@ -409,7 +365,7 @@ footer {
     font-weight: bold;
 }
 
-.email-footer {
+.email {
     font-weight: bold;
     color: var(--azulreegalo);
     text-decoration: underline;
@@ -581,10 +537,28 @@ footer div nav a {
 /****************** Tablet ************************/
 
 @media (max-width: 992px) {
-
-    div.container-login {
-        width: 768px;
+    div.indicador {
+        font-size: 1.5em;
+        margin-left: 2%;
     }
+
+    /*Form*/
+
+    .formulario{
+        margin: 5% 30%;
+        border: 1px solid gray;
+        border-radius: 12px;
+        padding: 1%;
+    }
+    .input {
+        display: block;
+        margin: 1% auto;
+        width: 226px;
+        height: 30px;
+        border-radius: 10px;
+    }
+
+/*footer*/
 
     footer.footer {
         font-size: 0.7em;
@@ -613,6 +587,38 @@ footer div nav a {
     .logo-mini {
         display: flex;
     }
+
+    div.indicador {
+        display:none;
+    }
+
+/*Form*/
+
+    .formulario{
+        margin: 5% 10%;
+        border: 1px solid gray;
+        border-radius: 12px;
+        padding: 1%;
+    }
+    
+    .formulario div{
+        text-align: center;
+        padding: 1%;
+        margin: 2% 0;
+    }
+    
+    .formulario form input{
+        border: 1px solid grey;
+    }
+    
+    .input{
+        display: block;
+        margin: 1% auto;
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    
 
     .bottom-navigation,
     .social-media,
@@ -648,6 +654,10 @@ footer div nav a {
 /****************** Mobile S ************************/
 
 @media (max-width: 320px) {
+    div.indicador {
+        display:none;
+    }
+
     .logo {
         display: none;
     }
@@ -655,7 +665,39 @@ footer div nav a {
     .logo-mini {
         display: flex;
     }
+
+   
+
+    /*Form*/
+
+    .formulario{
+        margin: 5% 2%;
+        border: 1px solid gray;
+        border-radius: 12px;
+        padding: 1%;
+    }
     
+    .formulario div{
+        text-align: center;
+        padding: 1%;
+        margin: 2% 0;
+    }
+    
+    .formulario form input{
+        border: 1px solid grey;
+    }
+    
+         
+    .input{
+        display: block;
+        margin: 1% auto;
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+    }
+
+    /*footer*/
+
     .bottom-navigation,
     .social-media,
     .container-mercadopago-footer,
