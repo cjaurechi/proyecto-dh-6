@@ -39,6 +39,13 @@ app.get('/carrito', function (req, res) {
   res.sendFile(file);
 });
 
+// Login
+
+app.get('/login', function (req, res) {
+  let file = path.resolve('pages/login.html');
+  res.sendFile(file);
+});
+
 // Imagenes
 
 app.get('*', function (req, res) {
