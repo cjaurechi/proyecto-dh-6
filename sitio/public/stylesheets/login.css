@@ -476,36 +476,24 @@ footer div nav a {
         margin-left: 2%;
     }
 
-    .detalle-carrito {
-        flex-direction: column;
-        font-size: 0.85em;
-    }
-    
-    .articulos-carrito,
-    .container-resumen-compra {
-        width: auto;
-        margin: 1.5% 3%;
+   
+    /*Form*/
 
+    .formulario{
+        margin: 5% 30%;
+        border: 1px solid gray;
+        border-radius: 12px;
+        padding: 1%;
     }
-
-    .resumen-compra {
-        padding-top: 2%;
-        padding-bottom: 0;
-    }
-
-    .resumen-producto,
-    .total-producto {
-        margin: 2% auto;
+    .input {
+        display: block;
+        margin: 1% auto;
+        width: 226px;
+        height: 30px;
+        border-radius: 10px;
     }
 
-    .finalizar-compra,
-    .seguir-compra {
-        width: auto;
-    }
-
-    section.recomendados {
-        font-size: 0.7em;
-    }
+/*footer*/
 
     footer.footer {
         font-size: 0.7em;
@@ -539,41 +527,34 @@ footer div nav a {
         display:none;
     }
 
-    .container-detalle-producto {
-        flex: 2;
-    }
+      /*Form*/
 
-    .titulo-producto {
-        font-size: 1.2em;
-    }
-
-    .descripcion-producto {
-        font-size: 1em;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical; 
-    }
-
-    .precio-cantidad {
-        font-size: 1em;
-    }
-
-    .recomendados-titulo {
-        font-size: 1.5em;
-        margin-top: 5%;
+      .formulario{
+        margin: 5% 10%;
+        border: 1px solid gray;
+        border-radius: 12px;
+        padding: 1%;
     }
     
-    .productos-recomendados {
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
+    .formulario div{
+        text-align: center;
+        padding: 1%;
+        margin: 2% 0;
     }
+    
+    .formulario form input{
+        border: 1px solid grey;
+    }
+    
+         
+    .input{
+        display: block;
+        margin: 1% auto;
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
 
-    .ficha-producto {
-        max-width: 45%;
-    }
+    
 
     .bottom-navigation,
     .social-media,
@@ -621,45 +602,37 @@ footer div nav a {
         display: flex;
     }
 
-    .container-detalle-producto {
-        flex: 2;
-    }
+   
 
-    .titulo-producto {
-        font-size: 1.05em;
-    }
+    /*Form*/
 
-    .descripcion-producto {
-        font-size: 1em;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical; 
-    }
-
-    .container-resumen-compra {
-        font-size: 0.9em;
-    }
-
-    .precio-cantidad {
-        font-size: 0.8em;
-    }
-
-    .recomendados-titulo {
-        font-size: 1.5em;
-        margin-top: 5%;
+    .formulario{
+        margin: 5% 2%;
+        border: 1px solid gray;
+        border-radius: 12px;
+        padding: 1%;
     }
     
-    .productos-recomendados {
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
+    .formulario div{
+        text-align: center;
+        padding: 1%;
+        margin: 2% 0;
+    }
+    
+    .formulario form input{
+        border: 1px solid grey;
+    }
+    
+         
+    .input{
+        display: block;
+        margin: 1% auto;
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
     }
 
-    .ficha-producto {
-        max-width: 45%;
-    }
+    /*footer*/
 
     .bottom-navigation,
     .social-media,
