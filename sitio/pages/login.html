@@ -62,27 +62,34 @@
             </div>
         </div>
     </header>
-   
-    <section >
+    <section>
         <div class="formulario">
 
             <div class="titulo-formulario">Iniciar sesion en</div>
-            <div class="contnedor-logo-form"><img src="/images/logo-reegalo-blue.png" alt="Reegalo" class="logo-formulario"></div>
-        
-            <div>
-                <form action="index.html" method="get">
-                        <label for='email'></label>
-                        <input class="input" type="email" id="email" name="email" placeholder="Correo electronico">
+            <div class="contnedor-logo-form"><img src="/images/logo-reegalo-blue.png" alt="Reegalo"
+                    class="logo-formulario"></div>
 
-                        <label for='password'></label>
-                        <input class="input"type="password" id="password" name="password" placeholder="Contraseña">
+            <div>
+                <form action="index.html" method="get" class="form-login">
+                    <div class="container-email-login">
+                        <div class="container-fa-envelop">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <input type="email" name="email" id="email" placeholder="Coreo electrónico">
+                    </div>
+                    <div class="container-password-login">
+                        <div class="container-fa-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input type="password" name="passowrd" id="password" placeholder="Contraseña">
+                    </div>
                 </form>
             </div>
             <div>
-                <div class= "recordar-contra">
+                <div class="recordar-contra">
                     <input type="checkbox" name="recuerdame" value="recuerdame">Recuerdame
                     <a href="#">Olvidaste tu Contraseña?</a>
-                 </div>
+                </div>
             </div>
             <div>
                 <input class="boton-ingresar input" type="submit" value="Ingresar">
@@ -102,11 +109,11 @@
             <div>
                 <p>No tenes cuenta?<a href="/register">Registrate aca</a></p>
             </div>
-            
 
-         </div>
+
+        </div>
     </section>
-    
+
 
 
 

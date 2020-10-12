@@ -195,14 +195,65 @@ header nav a {
     padding: 1%;
 }
 
-.formulario div{
+/* .formulario div{
     text-align: center;
     padding: 1% 20%;
+} */
+
+/* .formulario form input{
+    border: 1px solid grey;
+} */
+
+.form-login {
+    height: 140px;
+    width: 100%;
+    margin-top: 2%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.formulario form input{
-    border: 1px solid grey;
+.container-email-login,
+.container-password-login {
+    background-color: rgb(211, 211, 211, 0.2);
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid gainsboro;
+    padding: 1.2%;
+    width: 100%;
+    font-size: 2em;
+    display: flex;
 }
+
+.container-fa-envelop,
+.container-fa-lock {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin: auto 2%;
+    opacity: 0.1;
+}
+
+input[type=email], input[type=password], select, textarea {
+    background-color: transparent;
+    width: 100%;
+    font-size: 0.7em;
+    font-family: Montserrat-Light;
+    margin: auto 2%;
+    border-style: hidden;
+    outline: none;
+    opacity: 0.4;
+}
+
+
+
+
+
+
+
+
+
 
 .formulario p{
     font-size: 10px;
@@ -476,7 +527,6 @@ footer div nav a {
         margin-left: 2%;
     }
 
-   
     /*Form*/
 
     .formulario{
@@ -527,9 +577,9 @@ footer div nav a {
         display:none;
     }
 
-      /*Form*/
+/*Form*/
 
-      .formulario{
+    .formulario{
         margin: 5% 10%;
         border: 1px solid gray;
         border-radius: 12px;
@@ -546,14 +596,13 @@ footer div nav a {
         border: 1px solid grey;
     }
     
-         
     .input{
         display: block;
         margin: 1% auto;
         width: 250px;
         height: 30px;
         border-radius: 10px;
-
+    }
     
 
     .bottom-navigation,
