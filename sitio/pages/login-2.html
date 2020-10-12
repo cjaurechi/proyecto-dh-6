@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reegalo - Login</title>
-    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="stylesheets/login-2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
@@ -62,56 +62,69 @@
             </div>
         </div>
     </header>
-    <section class="login">
-        <div class="container-login">
-            <p class="titulo-login">Iniciar sesión en</p>
-            <div class="container-logo-login">
-                <img src="/images/logo-reegalo-blue.png" alt="" class="logo-login">
-            </div>
-            <div class="form-login">
-                <div class="container-email-login">
-                    <div class="container-fa-envelop">
-                        <i class="far fa-envelope"></i>
+    <section>
+        <div class="formulario">
+
+            <div class="titulo-formulario">Iniciar sesion en</div>
+            <div class="contnedor-logo-form"><img src="/images/logo-reegalo-blue.png" alt="Reegalo"
+                    class="logo-formulario"></div>
+
+            <div>
+                <form action="index.html" method="get" class="form-login">
+                    <div class="container-email-login">
+                        <div class="container-fa-envelop">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <input type="email" name="email" id="email" placeholder="Coreo electrónico">
                     </div>
-                    <input type="email" name="email" id="email" placeholder="Coreo electrónico">
-                </div>
-                <div class="container-password-login">
-                    <div class="container-fa-lock">
-                        <i class="fas fa-lock" style="width: 32px;"></i>
+                    <div class="container-password-login">
+                        <div class="container-fa-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input type="password" name="passowrd" id="password" placeholder="Contraseña">
                     </div>
-                    <input type="password" name="password" id="password" placeholder="Contraseña">
+                </form>
+            </div>
+            <div>
+                <div class="recordar-contra">
+                    <div><input type="checkbox" name="recuerdame" value="recuerdame">Recuerdame</div>
+                    <a href="#">Olvidaste tu Contraseña?</a>
                 </div>
             </div>
-            <div class="opciones-password">
-                <div class="recordar">
-                    <input type="checkbox" id="recordar" name="recordar" value="recordar">
-                    <label for="recordar"> Recordar mi usuario y contraseña</label>
+
+            <div class="container-ingresar">
+                <input class="boton-ingresar input" type="submit" value="Ingresar">
+            </div>
+            <div>
+                <p>O</p>
+            </div>
+
+
+            <div>
+                <div class="container-google">
+                    <div class="container-img-google ">
+                        <i class="far fa-google"></i>
+                    </div>
+                    <input class="boton-google" type="submit" value="Iniciar sesion con Google">
                 </div>
-                <div class="recuperar">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <div>
+                <div class="container-facebook">
+                    <input class="boton-facebook input" type="submit" value="Iniciar sesion con Facebook">
                 </div>
             </div>
-            <div class="boton-login">
-                <button type=“submit”>Ingresar</button>
+
+            <div>
+                <p>No tenes cuenta?<a href="/register">Registrate aca</a></p>
             </div>
-            <div class="divisor">o</div>
-            <div class="boton-google">
-                <div class="logo-google">
-                    <img src="/images/logo-google.png" alt="Google" class="logo-google">
-                </div>
-                <p class="texto-google">Iniciar sesión con Google</p>
-            </div>
-            <div class="boton-facebook">
-                <div class="logo-facebook">
-                    <img src="/images/logo-facebook.png" alt="Facebook" class="logo-facebook">
-                </div>
-                <p class="texto-facebook">Iniciar sesión con Facebook</p>
-            </div>
-            <div class="registrar">
-                <span>¿No tenés cuenta? </span><a href="/register">Registrate acá.</a>
-            </div>
+
         </div>
     </section>
+
+
+
+
     <footer class="footer">
         <div class="top-footer">
             <div class="contacto">
@@ -125,7 +138,7 @@
                     <p class="texto-contacto-small">¡Contactate con nosotros!</p>
                 </div>
                 <p class="datos-contacto-small">Tel. <span class="numero-telefono">+54 911 1234-5678</span> / Email:
-                    <span class="email-footer">info@reegalo.com.ar</span></p>
+                    <span class="email">info@reegalo.com.ar</span></p>
             </div>
             <nav class="bottom-navigation">
                 <a href="#">Home</a>
