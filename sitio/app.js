@@ -39,6 +39,13 @@ app.get('/carrito', function (req, res) {
   res.sendFile(file);
 });
 
+// Detalle de producto
+
+app.get('/producto', function (req, res) {
+  let file = path.resolve('pages/productDetail.html');
+  res.sendFile(file);
+});
+
 // Imagenes
 
 app.get('*', function (req, res) {
