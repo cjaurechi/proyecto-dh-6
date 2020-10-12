@@ -189,20 +189,15 @@ header nav a {
 /**** Formulario ***/
 
 .formulario{
-    margin: 3% 20%;
+    margin: 3% 35%;
     border: 2px solid gray;
     border-radius: 12px;
     padding: 1%;
+    text-align: center;
 }
 
-/* .formulario div{
-    text-align: center;
-    padding: 1% 20%;
-} */
 
-/* .formulario form input{
-    border: 1px solid grey;
-} */
+
 
 .form-login {
     height: 140px;
@@ -227,12 +222,21 @@ header nav a {
 }
 
 .container-fa-envelop,
-.container-fa-lock {
+.container-fa-lock, .container-img-google {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     margin: auto 2%;
     opacity: 0.1;
+}
+
+.boton-google{
+    border: transparent;
+    background-color: white;
+}
+
+.container-google{
+    display: flex;
 }
 
 input[type=email], input[type=password], select, textarea {
@@ -255,24 +259,19 @@ input[type=email], input[type=password], select, textarea {
 
 
 
+
 .formulario p{
-    font-size: 10px;
+    font-size: 1em;
+    text-align: center;
 }
 
 .recordar-contra{
-    font-size: 10px;
+    font-size: 1em;
     display: flex;
     justify-content: space-between  ;
 }
 
 
-.input{
-    display: block;
-    margin: 1% auto;
-    width: 250px;
-    height: 30px;
-    border-radius: 10px;
-}
 .titulo-formulario{
     text-align: center;
 }
@@ -290,28 +289,44 @@ input[type=email], input[type=password], select, textarea {
     background-color: var(--azulreegalo);
     color: white;
     border: transparent;
-    padding: 0.5%;
     text-align: center;
-    margin: auto;
+    height: 50px;
+    border-radius: 6px;
+    padding: 1.2%;
+    width: 100%;
+    font-size: 1em;
+    
 }
 
-.boton-google{
+.container-google{
     background-color:white;
     color: grey;
     border: 1px solid grey;
-    padding: 0.5%;
     text-align: center;
     margin: auto;
+    height: 50px;
+    border-radius: 6px;
+    padding: 1.2%;
+    width: 100%;
+    font-size: 1em;
     
 }
 
 .boton-facebook{
-    background-color: blue;
+    background-color: #3b5998;
     color: white;
     border: transparent;
-    padding: 0.5%;
     text-align: center;
     margin: auto;
+    height: 50px;
+    border-radius: 6px;
+    padding: 1.2%;
+    width: 100%;
+    font-size: 1em;
+}
+
+.container-facebook, .container-google, .container-ingresar{
+    margin: 3% 0;
 }
 
 
