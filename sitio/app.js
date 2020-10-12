@@ -46,6 +46,13 @@ app.get('/login', function (req, res) {
   res.sendFile(file);
 });
 
+// Registro
+
+app.get('/register', function (req, res) {
+  let file = path.resolve('pages/register.html');
+  res.sendFile(file);
+});
+
 // Imagenes
 
 app.get('*', function (req, res) {
