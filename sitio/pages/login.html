@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <header class="navigation">
+        <div class="container-header">
+            <div class="container-header-izq">
+                <a href="/" class="logo">
+                    <div>
+                        <img src="/images/logo-reegalo-blue.png" alt="Reegalo" class="logo-navigation">
+                    </div>
+                </a>
+                <a href="/" class="logo-mini">
+                    <div>
+                        <img src="/images/logo-reegalo-mini-blue.png" alt="Reegalo" class="logo-navigation">
+                    </div>
+                </a>
+                <nav class="container-navegacion-header">
+                    <a href="#">Regalos <i class="fas fa-chevron-down"></i></a>
+                    <a href="#">Nosotros <i class="fas fa-chevron-down"></i></a>
+                    <a href="#">Contacto <i class="fas fa-chevron-down"></i></a>
+                    <a href="#">¿Cómo regalar? <i class="fas fa-chevron-down"></i></a>
+                </nav>
+            </div>
+            <div class="container-header-der">
+                <div class="container-buscador">
+                    <input type="text" class="input-buscador">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="container-acciones-header">
+                    <div class="sign-in">Ingresa</div>
+                    <div class="sign-up">Registrate</div>
+                </div>
+                <div class="container-carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p class="cantidad-carrito">2</p>
+                </div>
+                <div class="container-small">
+                    <div class="container-buscador-small">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="container-acciones-header-small">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="menu-hamburguesa">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="container-carrito-small">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+   
+    <section >
+        <div class="formulario">
+
+            <div class="titulo-formulario">Iniciar sesion en</div>
+            <div class="contnedor-logo-form"><img src="/images/logo-reegalo-blue.png" alt="Reegalo" class="logo-formulario"></div>
+        
+            <div>
+                <form action="index.html" method="get">
+                        <label for='email'></label>
+                        <input class="input" type="email" id="email" name="email" placeholder="Correo electronico">
+
+                        <label for='password'></label>
+                        <input class="input"type="password" id="password" name="password" placeholder="Contraseña">
+                </form>
+            </div>
+            <div>
+                <div class= "recordar-contra">
+                    <input type="checkbox" name="recuerdame" value="recuerdame">Recuerdame
+                    <p>Olvidaste tu Contraseña?</p>
+                 </div>
+            </div>
+            <div>
+                <input class="boton-ingresar input" type="submit" value="Ingresar">
+            </div>
+            <div>
+                <p>O</p>
+            </div>
+
+            <div>
+                <input class="boton-google input" type="submit" value="Iniciar sesion con Google">
+            </div>
+
+            <div>
+                <input class="boton-facebook input" type="submit" value="Iniciar sesion con Facebook">
+            </div>
+
+            <div>
+                <p>No tenes cuenta?<span>Registrate aca</span></p>
+            </div>
+            
+
+         </div>
+    </section>
+    
+
+
+
+    <footer class="footer">
+        <div class="top-footer">
+            <div class="contacto">
+                <p class="texto-contacto">¿Tenés alguna duda? ¡Contactate con nosotros!</p>
+                <p class="datos-contacto">Tel. <span class="numero-telefono">+54 911 1234-5678</span> / Email: <span
+                        class="email">info@reegalo.com.ar</span></p>
+            </div>
+            <div class="contacto-small">
+                <div>
+                    <p class="texto-contacto-small">¿Tenés alguna duda?</p>
+                    <p class="texto-contacto-small">¡Contactate con nosotros!</p>
+                </div>
+                <p class="datos-contacto-small">Tel. <span class="numero-telefono">+54 911 1234-5678</span> / Email:
+                    <span class="email">info@reegalo.com.ar</span></p>
+            </div>
+            <nav class="bottom-navigation">
+                <a href="#">Home</a>
+                <a href="#">Idioma</a>
+                <a href="#">Ayuda</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+        <div class="bottom-footer">
+            <div class="social-media">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+            <div class="container-logo-footer">
+                <img src="/images/logo-reegalo-footer.png" alt="Reegalo" class="logo-footer">
+            </div>
+            <div class="container-mercadopago-footer">
+                <img src="/images/pago-seguro.png" alt="Pago Seguro" class="pago-seguro">
+                <img src="/images/mercado-pago.png" alt="=Mercadopago" class="mercadopago">
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
