@@ -48,31 +48,55 @@ img {
 
 /* Header */
 
-header.navigation {
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  min-height: 50px;
+  box-shadow: 0 0.5px 1px gainsboro;
+}
+
+.navigation {
   background-color: white;
-  font-size: 13px;
-  margin: 1.5vh auto;
   font-family: Montserrat-Regular;
+  width: 100%;
+}
+
+.container-header {
   display: flex;
-  flex-direction: row;
+  height: 50px;
+  padding: 0 15px;
+  font-size: 1em;
+}
+
+.container-header-izq {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex: 2;
 }
 
 .logo {
-  max-width: 210px;
-  padding-left: 2vh;
-  padding-right: 4vh;
-  flex-grow: 1;
+  max-width: 160px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.logo-mini {
+  display: none;
 }
 
 .logo-navigation {
   max-width: 100%;
+  max-height: 33.61px;
 }
 
-.top-navigation {
-  padding-top: 0.7vh;
-  flex-grow: 0.4;
-  display: flex;
-  justify-content: space-around;
+.container-navegacion-header{
+  justify-content: left;
+}
+
+.container-navegacion-header a {
+  padding: 0 10px;
 }
 
 header nav a {
@@ -81,65 +105,110 @@ header nav a {
 }
 
 .fa-chevron-down {
-  font-size: 1vh;
+  font-size: 0.2em;
 }
 
-.buscador {
-  text-align: right;
-  flex-grow: 1;
-  padding-top: 1vh;
-  padding-right: 1vh;
+.container-header-der {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.container-buscador {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.3em;
+}
+
+.input-buscador {
+  border: 0.5px solid gainsboro;
+  border-radius: 5px;
+  padding: 1%;
+  margin-right: 2%;
+  width: 90%;
+  display: none;
 }
 
 .fa-search {
   color: black;
-  font-size: 17px;
+  margin-left: 2%;
+  cursor: pointer;
 }
 
-.botones {
+.container-acciones-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-grow: 0.3;
+  align-items: center;
 }
 
 .sign-in {
   background-color: white;
   color: var(--azulreegalo);
   text-align: center;
-  width: 45%;
-  padding: 0.7vh;
+  padding: 2%;
+  margin-right: 2%;
+  margin-left: 5%;
+  width: 150px;
   border: 1px solid var(--azulreegalo);
   border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sign-in:hover {
+  color: var(--azulregalostrong);
+  border: 1px solid var(--azulregalostrong);
 }
 
 .sign-up {
   background-color: var(--azulreegalo);
   color: white;
   text-align: center;
-  width: 45%;
-  padding: 0.7vh;
+  padding: 2%;
+  margin-left: 2%;
+  margin-right: 5%;
+  width: 150px;
   border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.carrito {
-  text-align: center;
-  flex-grow: 0.05;
-  padding-right: 1vh;
+.sign-up:hover {
+  background-color: var(--azulregalostrong);
+}
+
+.container-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.3em;
 }
 
 .fa-shopping-cart {
   color: black;
-  padding-top: 0.5vh;
-  font-size: 23px;
+  margin-right: 3%;
 }
 
+.cantidad-carrito {
+  margin-left: 3%;
+}
+
+.container-small {
+  display: none;
+}
 
 
 /* Banner */
 
 .banner{
   width: 100%;
+  height: 380px;
 }
 
 .banner-letters{
@@ -154,24 +223,39 @@ header nav a {
 
 /* Categorias */
 
+
 .categorias{
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
-  padding: 0 2%; 
+  margin: 1%;
+
 }
 
 .categoria-regalo{
   flex-grow: 1;
   text-align: center;
-  margin: 0 1%;
-  align-items: center;
+}
+
+.categorias div {
+  border-radius: 14%;
+  padding: 0 1%;
+  height: 50px;
+}
+
+.categorias div a{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding-top: 8%;
+    display: inline-flex;
 }
 
 section .categorias .categoria-regalo img {
   width: 500px;
   height: 200;
   opacity: 50%;
-  border-radius: 10%;
+  border-radius: 2px;
   object-fit: contain;
 }
 
@@ -246,6 +330,40 @@ section .categorias .categoria-regalo img {
   padding: 2vh 0;
 }
 
+.detail {
+  background-color: white;
+  color: var(--azulreegalo);
+  text-align: center;
+  padding: 2%;
+  margin-right: 2%;
+  margin-left: 5%;
+  width: 150px;
+  border: 1px solid var(--azulreegalo);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.detail:hover {
+  color: var(--azulregalostrong);
+  border: 1px solid var(--azulregalostrong);
+}
+
+.shop {
+  background-color: var(--azulreegalo);
+  color: white;
+  text-align: center;
+  padding: 2%;
+  margin-left: 2%;
+  margin-right: 5%;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shop:hover {
+  background-color: var(--azulregalostrong);
+}
+
 
 /* Pasos */
 
@@ -273,6 +391,11 @@ section .categorias .categoria-regalo img {
 
 }
 
+.descripcion-paso .pasos-titulos{
+  color: black;
+  font-size: 1em;
+}
+
 .imagen-paso{
   flex-grow: 0.5;
   font-size: 5em;
@@ -283,50 +406,668 @@ section .categorias .categoria-regalo img {
   flex-grow: 0.5;
   text-align: center;
   margin: 2%;
+  color: gray;
+  font-size: 1em;
 }
 
 
 /* Footer */
 
 footer {
-  border-top: 1px solid gray;
+  border-top: 1px solid gainsboro;
+  padding: 1.3% 2%;
 }
 
+.top-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contacto {
+  text-align: left;
+  margin-bottom: 1%;
+}
+
+.texto-contacto {
+  font-family: Montserrat-SemiBold;
+  margin-bottom: 1%;
+}
 
 .datos-contacto {
-  font-family: 'Montserrat-Light';
+  font-family: Montserrat-Light;
+  margin-bottom: 1%;
+}
+
+.numero-telefono {
+  font-weight: bold;
+}
+
+.email {
+  font-weight: bold;
+  color: var(--azulreegalo);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bottom-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1%;
+  width: 30%;
 }
 
 footer div nav a {
   color:black;
   text-decoration: none;
+  font-family: Montserrat-SemiBold;
+}
+
+.bottom-footer {
+  display: flex;
+  flex-direction: row;
 }
 
 .social-media {
-  width: 30%;
-  height: 20px;
-  display: flex;
-  justify-content: space-around;
+  width: 33%;
+  font-size: 1.5em;
+  color: gainsboro;
+  align-items: center;
+  margin-top: 0.5%;
+}
+
+.fa-facebook,
+.fa-instagram,
+.fa-twitter {   
+  margin-right: 6%;
+  cursor: pointer;
+}
+
+.container-logo-footer {
+  width: 33%;
+  text-align: center;
+  align-items: center;
+  margin-top: 0.8%;
 }
 
 .logo-footer {
-  width: 30%;
-  height: 20px;
-  display: flex;
-  justify-content: center;
+  width: 120px;
+  object-fit: scale-down;
+  opacity: 0.3;
 }
 
-.mercadopago-footer {
-  width: 30%;
-  height: 20px;
+.container-mercadopago-footer {
+  width: 33%;
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 }
 
-footer.navigation {
-  background-color: ghostwhite;
+.pago-seguro {
+  height: 14px;
+  object-fit: scale-down;
+}
+
+.mercadopago {
+  height: 20px;
+  object-fit: scale-down;
+  margin-left: 6%;
+  opacity: 0.4;
+}
+
+.contacto-small {
+  display: none;
 }
 
 
+/****************** Media Queries ************************/
+
+/****************** Ajuste Header ************************/
+
+@media (max-width: 1080px) {
+  .container-header {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .container-navegacion-header {
+      display: none;
+      
+  }
+
+  .container-buscador  {
+      display: none;
+  }
+
+  .container-acciones-header {
+      display: none;
+      
+  }
+
+  .container-carrito {
+      display: none;
+  }
+
+  .cantidad-carrito {
+      visibility: hidden;
+  }
+
+  .container-small {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 180px;
+      font-size: 1.3em;
+  }
+
+  .container-buscador-small {
+      cursor: pointer;
+      margin-right: 5%;
+  }
+
+  .container-acciones-header-small {
+      cursor: pointer;
+      margin-right: 5%;
+  }
+
+  .fa-user {
+      color: var(--azulreegalo);
+      cursor: pointer;
+  }
+
+  .fa-user:hover {
+      color: var(--azulregalostrong)
+  }
+
+  .container-carrito-small {
+      cursor: pointer;
+      margin-right: 5%;
+  }
+
+  .menu-hamburguesa {
+      cursor: pointer;
+      margin-right: 5%;
+  }
+
+  .fa-bars {
+      color: black;
+      cursor: pointer;
+  }
+
+  .ficha-regalo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1%;
+    flex-grow: 1;
+    flex-basis: 0;
+    width: 20%;
+  }
+ 
+.titulo-regalo{
+  height: 50px;
+}
+
+  footer.footer {
+      font-size: 0.8em;
+  }
+}
+
+/****************** Tablet ************************/
+
+@media (max-width: 992px) {
+  div.indicador {
+      font-size: 1.5em;
+      margin-left: 2%;
+  }
+
+  .detalle-carrito {
+      flex-direction: column;
+      font-size: 0.85em;
+  }
+  
+  .articulos-carrito,
+  .container-resumen-compra {
+      width: auto;
+      margin: 1.5% 3%;
+
+  }
+
+  .ficha-regalo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1%;
+    flex-grow: 1;
+    flex-basis: 0;
+    width: 20%;
+  }
+
+  .contenedor-imagen {
+    height: 150px;
+}
+
+  .regalo{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  section.recomendados {
+      font-size: 0.7em;
+  }
+
+  footer.footer {
+      font-size: 0.7em;
+  }
+
+  .logo-footer {
+      width: 100px;
+  }
+
+  .pago-seguro {
+      height: 10px;
+  }
+
+  .mercadopago {
+      height: 15px;
+  }
+}
+
+/****************** Mobile L ************************/
+
+@media (max-width: 425px) {
+  .logo {
+      display: none;
+  }
+
+  .logo-mini {
+      display: flex;
+  }
+
+  div.indicador {
+      display:none;
+  }
+
+  .container-detalle-producto {
+      flex: 2;
+  }
+
+  .titulo-producto {
+      font-size: 1.2em;
+  }
+
+  .descripcion-producto {
+      font-size: 1em;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; 
+  }
+
+  .banner-letters{
+    position: absolute;
+    top: 25%;
+    font-size: 1.5em;
+    color: white;
+    padding-left: 5%;
+    font-family: 'Montserrat-SemiBold';
+  }
 
 
+  .ficha-regalo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1%;
+    flex-grow: 1;
+    flex-basis: 0;
+    width: 45%;
+  }
+
+  .contenedor-imagen {
+    height: 180px;
+}
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2% 2%;
+    font-size: 0.8em;
+}
+
+.categorias div {
+  border-radius: 14%;
+  padding: 0 1%;
+}
+
+.categoria-regalo{
+  text-align: center;
+  margin: 1%;
+  width: 48%;
+}
+
+.categorias div a{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding-top: 8%;
+  display: inline-flex;
+}
+
+.regalo{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  /* Pasos */
+
+.comofunciona{
+  padding: 2%;
+}
+
+.titulo-pasos{
+  font-size: 1em;
+  margin: 2% 0;
+}
+
+.pasos{
+  margin: 2% 0;
+}
+
+.pasos-titulos{
+ color: black;
+ font-size: 12px;
+}
+
+.imagen-paso{
+  flex-grow: 0.5;
+  font-size: 2em;
+  margin-bottom: 4%;
+  padding: 4%;
+}
+
+.descripcion-paso{
+  flex-grow: 0.5;
+  text-align: center;
+  margin: 2%;
+  color: grey;
+  font-size: 10px;
+}
+
+.descripcion-paso span{
+  font-size: 12px;
+  color: black;
+}
+
+.descripcion-paso p{
+  font-size: 10;
+  color: gray;
+}
+
+
+.eleccion-titulo{
+  font-size: 1em;
+  margin-top: 5%
+}
+
+.eleccion-subtitulo{
+  font-size: 0.8em;
+}
+
+.titulo-regalo .detalle-regalo{
+  font-size: 0.8em;
+}
+
+.detalle-regalo{
+  margin-bottom: 2%;
+}
+
+  .bottom-navigation,
+  .social-media,
+  .container-mercadopago-footer,
+  .contacto {
+      display: none;
+  }
+
+  .contacto-small {
+      display: block;
+      font-size: 1.3em;
+      margin: 2%;
+  }
+
+  .texto-contacto-small {
+      font-family: Montserrat-Bold;
+  }
+
+  .datos-contacto-small {
+      margin-top: 2%;
+      font-size: 0.8em;
+  }
+
+  .bottom-footer {
+      justify-content: center;
+  }
+
+  .container-logo-footer {
+      margin-top: 2%;
+  }
+}
+
+/****************** Mobile S ************************/
+
+@media (max-width: 320px) {
+  div.indicador {
+      display:none;
+  }
+
+  .logo {
+      display: none;
+  }
+
+  .logo-mini {
+      display: flex;
+  }
+
+  .container-detalle-producto {
+      flex: 2;
+  }
+
+  .titulo-producto {
+      font-size: 1.05em;
+  }
+
+  .descripcion-producto {
+      font-size: 1em;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; 
+  }
+
+  
+.banner-letters{
+    position: absolute;
+    top: 25%;
+    font-size: 1.5em;
+    color: white;
+    padding-left: 5%;
+    font-family: 'Montserrat-SemiBold';
+  }
+
+
+
+.banner{
+  height: 170px;
+}
+
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2% 2%;
+    font-size: 0.8em;
+}
+
+.categorias div {
+  border-radius: 14%;
+  padding: 0 1%;
+}
+
+.categoria-regalo{
+  text-align: center;
+  margin: 1%;
+  width: 48%;
+}
+
+.categorias div a{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding-top: 8%;
+  display: inline-flex;
+}
+
+.regalo{
+    
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .titulo-regalo .detalle-regalo{
+    font-size: 0.3em;
+  }
+  
+  .detalle-regalo{
+    margin-bottom: 2%;
+    font-size: 0.5em;
+  }
+
+  .titulo-regalo{
+    font-size: 0.7em;
+  }
+
+
+  /* Pasos */
+
+.comofunciona{
+  padding: 5% 2%;
+}
+
+.titulo-pasos{
+  font-size: 1em;
+  margin: 2% 0;
+}
+
+.pasos{
+  margin: 2% 0;
+}
+
+.pasos-titulos{
+ color: black;
+ font-size: 12px;
+}
+
+.imagen-paso{
+  flex-grow: 0.5;
+  font-size: 2em;
+  margin-bottom: 4%;
+  padding: 4%;
+}
+
+.descripcion-paso{
+  flex-grow: 0.5;
+  text-align: center;
+  margin: 2%;
+  color: grey;
+  font-size: 10px;
+}
+
+.descripcion-paso span{
+  font-size: 12
+};
+
+.descripcion-paso p{
+  font-size: 10;
+  color: gray;
+}
+
+
+.eleccion-titulo{
+  font-size: 1em;
+  margin-top: 5%
+}
+
+.eleccion-subtitulo{
+  font-size: 0.8em;
+}
+
+.titulo-regalo {
+  font-size: 0.8em;
+  height: 40px;
+}
+
+.detalle-regalo{
+  margin-bottom: 2%;
+  font-size: 0.8em;
+}
+
+.puntuacion-regalo{
+  font-size: 0.8em;
+}
+
+
+.imagen-regalo{
+  flex-grow: 1;
+  height: 100%px;
+  width: 100%;
+}
+  
+.contenedor-imagen{
+  height: 150px;
+}
+
+.detail, .shop {
+  font-size: 0.8em;
+}
+
+  .bottom-navigation,
+  .social-media,
+  .container-mercadopago-footer,
+  .contacto {
+      display: none;
+  }
+
+  .contacto-small {
+      display: block;
+      font-size: 1.3em;
+      margin: 2%;
+  }
+
+  .texto-contacto-small {
+      font-family: Montserrat-Bold;
+  }
+
+  .datos-contacto-small {
+      margin-top: 2%;
+      font-size: 0.8em;
+  }
+
+  .bottom-footer {
+      justify-content: center;
+  }
+
+  .container-logo-footer {
+      margin-top: 2%;
+  }
+}

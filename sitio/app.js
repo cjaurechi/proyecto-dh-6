@@ -45,25 +45,29 @@ app.get('/producto', function (req, res) {
   let file = path.resolve('pages/productDetail.html');
   res.sendFile(file);
 });
+// Login
+
+app.get('/login', function (req, res) {
+  let file = path.resolve('pages/login.html');
+  res.sendFile(file);
+});
 
 // Imagenes
 
 app.get('*', function (req, res) {
-  if (req.url.endsWith('.css')){
-      let file =path.resolve('public/stylesheets/style'+ req.url);
-      return res.sendFile(file);
+  if (req.url.endsWith('.css')) {
+    let file = path.resolve('public/stylesheets/style' + req.url);
+    return res.sendFile(file);
   }
-  
-  let images = ['jpg','jpeg','gif','png','svg'];
-  let ext =req.url.split('.')[1];
-    if (images.includes(ext)){
-      let file = path.resolve('public/images' + req.url);
-      return res.sendFile(file);
-    }
+
+  let images = ['jpg', 'jpeg', 'gif', 'png', 'svg'];
+  let ext = req.url.split('.')[1];
+  if (images.includes(ext)) {
+    let file = path.resolve('public/images' + req.url);
+    return res.sendFile(file);
+  }
 
 })
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -79,6 +83,5 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-})
+});
 
-module.exports = app;
