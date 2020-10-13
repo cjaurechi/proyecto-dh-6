@@ -274,7 +274,7 @@ input[type=email], input[type=password], select, textarea {
     height: 30px;
     margin-top: 2%;
     display: flex;
-    flex-flow: row;
+    flex-flow: row wrap;
     vertical-align: bottom;
 }
 
@@ -363,6 +363,11 @@ button:hover {
     margin-top: 2%;
     color: white;
     cursor: pointer;
+}
+
+.texto-google-mobile,
+.texto-facebook-mobile {
+    display: none;
 }
 
 .registrar {
@@ -580,10 +585,30 @@ footer div nav a {
 
 /****************** Tablet ************************/
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
+
+    section.login {
+        font-size: 0.8em;
+    }
 
     div.container-login {
         width: 768px;
+    }
+
+    .container-email-login,
+    .container-password-login,
+    .opciones-password {
+        width: 80%;
+    }
+
+    .boton-login {
+        width: 50%;
+    }
+
+    .boton-google,
+    .boton-facebook {
+        font-size: 1.2em;
+        width: 50%
     }
 
     footer.footer {
@@ -612,6 +637,20 @@ footer div nav a {
 
     .logo-mini {
         display: flex;
+    }
+
+    .opciones-password {
+        margin-bottom: 2%
+    }
+
+    .texto-google,
+    .texto-facebook {
+        display: none;
+    }
+
+    .texto-google-mobile,
+    .texto-facebook-mobile {
+        display: inline;
     }
 
     .bottom-navigation,
