@@ -54,15 +54,11 @@ app.get('/register', function (req, res) {
   res.sendFile(file);
 });
 
-<<<<<<< HEAD
-
-  
-=======
+ 
 // Login 2 >>> BORRAR!
 
 app.get('/login2', function (req, res) {
   let file = path.resolve('pages/login-2.html');
->>>>>>> 3269ad0f70b2c0df575d177f3cf736d99a4307d5
   res.sendFile(file);
 });
 
