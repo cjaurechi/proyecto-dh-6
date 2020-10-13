@@ -52,6 +52,22 @@ app.get('/login', function (req, res) {
   res.sendFile(file);
 });
 
+
+// Registro
+
+app.get('/register', function (req, res) {
+  let file = path.resolve('pages/register.html');
+  res.sendFile(file);
+});
+
+ 
+// Login 2 >>> BORRAR!
+
+app.get('/login2', function (req, res) {
+  let file = path.resolve('pages/login-2.html');
+  res.sendFile(file);
+});
+
 // Imagenes
 
 app.get('*', function (req, res) {

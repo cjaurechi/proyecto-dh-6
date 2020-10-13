@@ -186,9 +186,9 @@ header nav a {
     display: none;
 }
 
-/****************** Formulario Login ************************/
+/****************** Formulario register ************************/
 
-section.login {
+section.register {
     width: 100%;
     height: 100%;
     background-color: rgb(220, 220, 220, 0.3);
@@ -196,7 +196,7 @@ section.login {
     justify-content: center;
 }
 
-div.container-login {
+div.container-register {
     width: 800px;
     background-color: #FFFFFF;
     margin: 3% auto;
@@ -209,26 +209,26 @@ div.container-login {
     align-items: center;
 }
 
-p.titulo-login {
+p.titulo-register {
     font-size: 1.5em;
     font-family: Montserrat-SemiBold;
     text-align: center;
 }
 
-.container-logo-login {
+.container-logo-register {
     width: 100%;
     height: 4em;
     margin-top: 2%;
     text-align: center;
 }
 
-.logo-login {
+.logo-register {
     max-width: 45%;
     max-height: 100%;
 }
 
-.form-login {
-    height: 140px;
+.form-register {
+    height: 260px;
     width: 100%;
     margin-top: 2%;
     display: flex;
@@ -237,8 +237,10 @@ p.titulo-login {
     align-items: center;
 }
 
-.container-email-login,
-.container-password-login {
+.container-email-register,
+.container-password-register,
+.container-password-repeat,
+.container-fecha-nacimiento {
     background-color: rgb(211, 211, 211, 0.2);
     height: 50px;
     border-radius: 6px;
@@ -249,8 +251,11 @@ p.titulo-login {
     display: flex;
 }
 
+
 .container-fa-envelop,
-.container-fa-lock {
+.container-fa-lock,
+.container-fa-lock2,
+.container-fa-birthday-cake{
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -258,7 +263,7 @@ p.titulo-login {
     opacity: 0.1;
 }
 
-input[type=email], input[type=password], select, textarea {
+input[type=email], input[type=password], input[type=date], select, textarea {
     background-color: transparent;
     width: 100%;
     font-size: 0.7em;
@@ -269,12 +274,24 @@ input[type=email], input[type=password], select, textarea {
     opacity: 0.4;
 }
 
+.confirm-pass{
+    background-color: transparent;
+    width: 100%;
+    font-size: 0.7em;
+    font-family: Montserrat-Light;
+    margin: auto 2%;
+    border-style: hidden;
+    outline: none;
+    opacity: 0.4;
+}
+
+
 .opciones-password {
     width: 100%;
     height: 30px;
     margin-top: 2%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     vertical-align: bottom;
 }
 
@@ -301,7 +318,7 @@ input[type=checkbox] {
     color: var(--azulreegalo)
 }
 
-.boton-login {
+.boton-register {
     width: 70%;
     height: 50px;
     margin-top: 2%;
@@ -365,19 +382,14 @@ button:hover {
     cursor: pointer;
 }
 
-.texto-google-mobile,
-.texto-facebook-mobile {
-    display: none;
-}
-
-.registrar {
+.ingresar {
     width: 100%;
     height: 30px;
     margin-top: 4%;
     text-align: center;
 }
 
-.registrar a {
+.ingresar a {
     text-decoration: none;
     color: var(--azulreegalo);
 }
@@ -585,30 +597,10 @@ footer div nav a {
 
 /****************** Tablet ************************/
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 
-    section.login {
-        font-size: 0.8em;
-    }
-
-    div.container-login {
+    div.container-register {
         width: 768px;
-    }
-
-    .container-email-login,
-    .container-password-login,
-    .opciones-password {
-        width: 80%;
-    }
-
-    .boton-login {
-        width: 50%;
-    }
-
-    .boton-google,
-    .boton-facebook {
-        font-size: 1.2em;
-        width: 50%
     }
 
     footer.footer {
@@ -639,18 +631,24 @@ footer div nav a {
         display: flex;
     }
 
-    .opciones-password {
-        margin-bottom: 2%
-    }
 
-    .texto-google,
-    .texto-facebook {
-        display: none;
+    div.container-register{
+        margin: 3% 2%;
     }
+    .boton-register {
+        width: 100%;
+        font-size: 1em;
+    }
+    
 
-    .texto-google-mobile,
-    .texto-facebook-mobile {
-        display: inline;
+    .boton-google {
+        width: 100%;
+        font-size: 1em;
+    }
+        
+    .boton-facebook {
+        width: 100%;
+        font-size: 1em;
     }
 
     .bottom-navigation,
@@ -695,6 +693,26 @@ footer div nav a {
         display: flex;
     }
     
+    p.titulo-register {
+        font-size: 1em;
+    }
+
+    .container-logo-register, .divisor, .ingresar {
+        height: 2em;
+    }
+
+    .container-email-register, .container-password-register, .container-password-repeat, .container-fecha-nacimiento {
+        font-size: 1.5em;
+    }
+
+    .boton-register, .boton-google, .boton-facebook {
+        width: 100%;
+        font-size: 0.7em;
+        height: 40px;
+    }
+    
+
+
     .bottom-navigation,
     .social-media,
     .container-mercadopago-footer,
