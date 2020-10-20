@@ -534,11 +534,11 @@ header nav a {
 }
 
 .compra_boton:hover {
-  background-image:url(/images/reegalo.png);
+/*   background-image:url(/images/reegalo.png);
   background-repeat:no-repeat;
-  border: 2px;
-  border-color: var(--azulresumen);
-  background-position:center;
+  background-position:center; */
+  color: var(--azulresumen);
+  border: 2px solid var(--azulresumen);
   background-color: var(--blanco);
 }
 
