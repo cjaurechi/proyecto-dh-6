@@ -5,9 +5,11 @@ var logger = require('morgan');
 const express = require('express')
 var configuracion = require('dotenv').config();
 
+
+//rutas
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var productoRouter = require('./routes/productDetail');
 
 const app = express();
@@ -31,10 +33,7 @@ app.listen(3000, () => { console.log('Server corriendo'); });
 
 // Index
 
-app.get('/', function (req, res) {
-  let file = path.resolve('pages/index.html');
-  res.sendFile(file);
-});
+app.use('/', indexRouter);
 
 // Carrito de compras
 
