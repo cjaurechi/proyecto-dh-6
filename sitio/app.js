@@ -59,13 +59,6 @@ app.get('/login', function (req, res) {
 
 app.use('/register', registerRouter);
 
- 
-// Login 2 >>> BORRAR!
-
-app.get('/login2', function (req, res) {
-  let file = path.resolve('pages/login-2.html');
-  res.sendFile(file);
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
