@@ -525,21 +525,17 @@ header nav a {
 
 .compra_boton {
   border-radius:5px;
-  border: 0px;
+  border: 1px solid var(--azulreegalo);
   height: 2em;
   width: 100%;
   color: var(--blanco);
   font-size: 1.5em;
-  background-color: var(--azulresumen);
+  background-color: var(--azulreegalo);
 }
 
 .compra_boton:hover {
-/*   background-image:url(/images/reegalo.png);
-  background-repeat:no-repeat;
-  background-position:center; */
-  color: var(--azulresumen);
-  border: 2px solid var(--azulresumen);
-  background-color: var(--blanco);
+  background-color: var(--azulregalostrong);
+  border: 1px solid var(--azulregalostrong);
 }
 
 .medios_pago {
