@@ -11,6 +11,7 @@ var configuracion = require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productoRouter = require('./routes/productDetail');
+var registerRouter = require('./routes/register');
 
 const app = express();
 
@@ -56,10 +57,7 @@ app.get('/login', function (req, res) {
 
 // Registro
 
-app.get('/register', function (req, res) {
-  let file = path.resolve('pages/register.html');
-  res.sendFile(file);
-});
+app.use('/register', registerRouter);
 
  
 // Login 2 >>> BORRAR!
