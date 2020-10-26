@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reegalo - Tu carrito</title>
+    <link rel="stylesheet" href="/stylesheets/productCart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <%- include("./partials/header.ejs") %>
+
+    <section class="indicador">
+        <div class="indicador">
+            <i class="fas fa-arrow-left"></i>
+            <span class="indicador">‏‏‎ ‎‏‏‎Tu carrito</span>
+        </div>
+    </section>
+    <div class="detalle-carrito">
+        <div class="articulos-carrito">
+            <article class="producto-carrito">
+                <div class="container-imagen-producto">
+                    <img src="/images/img-producto-1.png" alt="Producto 1" class="imagen-producto">
+                </div>
+                <div class="container-detalle-producto">
+                    <div class="detalle-producto">
+                        <p class="titulo-producto">Ensalada de Instagram</p>
+                        <p class="descripcion-producto">Una ensalada de Instagram. No tiene condimentos.</p>
+                    </div>
+                    <div class="precio-cantidad">
+                        <div class="precio">$1998.98</div>
+                        <div class="container-cantidad">
+                            <i class="fas fa-minus-square"></i>
+                            <span class="cantidad">x2</span>
+                            <i class="fas fa-plus-square"></i>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="producto-carrito">
+                <div class="container-imagen-producto">
+                    <img src="/images/img-producto-2.jpg" alt="Producto 2" class="imagen-producto">
+                </div>
+                <div class="container-detalle-producto">
+                    <div class="detalle-producto">
+                        <p class="titulo-producto">Cool Dog</p>
+                        <p class="descripcion-producto">Resultado de googlear "coolest dog ever". Dicen que tiene puesto
+                            lentes de sol desde el día que nació y es el único perro del planeta con la capacidad de
+                            salir bien en absolutamente todas las fotos que le tomen.</p>
+                    </div>
+                    <div class="precio-cantidad">
+                        <div class="precio">$999.99</div>
+                        <div class="container-cantidad">
+                            <i class="fas fa-minus-square"></i>
+                            <span class="cantidad">x1</span>
+                            <i class="fas fa-plus-square"></i>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="container-resumen-compra">
+            <div class="resumen-compra">
+                <p class="titulo-resumen-compra">Resumen de compra</p>
+                <div class="resumen-producto">
+                    <p class="nombre-producto">Ensalada de Instagram <span class="cantidad-producto">x2</span></p>
+                    <p class="precio-producto">$1998.89</p>
+                </div>
+                <hr class="divisor">
+                <div class="resumen-producto">
+                    <p class="nombre-producto">Cool Dog</span></p>
+                    <p class="precio-producto">$999.99</p>
+                </div>
+                <hr class="divisor">
+                <div class="total-producto">
+                    <p class="total-titulo">Total</p>
+                    <p class="total-precio">$2998.97</p>
+                </div>
+                <div class="botones-resumen">
+                    <div class="finalizar-compra">Finalizar compra</div>
+                    <div class="seguir-compra">Seguir comprando</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <section class="recomendados">
+        <p class="recomendados-titulo">A otras personas también les interesó...</p>
+        <div class="productos-recomendados">
+            <article class="ficha-producto">
+                <div class="container-imagen-ficha">
+                    <img src="/Bariloche-edit.jpg" alt="Escapada" class="imagen-ficha">
+                </div>
+                <div class="detalle-ficha">
+                    <div class="titulo-regalo">Escapada a Mendoza Titulo Largo Para Probar Si Rompe</div>
+                    <div class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza y experimentá con muchas
+                        cosas ricas.</div>
+                    <div class="puntuacion-ficha">
+                        <i class="fas fa-star"></i>
+                        <span class="puntuacion">4.5</span>
+                    </div>
+                </div>
+                <div class="acciones-ficha">
+                    <div class="boton-detalle">Detalle</div>
+                    <div class="boton-comprar">Comprar</div>
+                </div>
+            </article>
+            <article class="ficha-producto">
+                <div class="container-imagen-ficha">
+                    <img src="/Bariloche-edit.jpg" alt="Escapada" class="imagen-ficha">
+                </div>
+                <div class="detalle-ficha">
+                    <div class="titulo-regalo">Escapada a Mendoza Titulo Largo Para Probar Si Rompe</div>
+                    <div class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza y experimentá con muchas
+                        cosas ricas.</div>
+                    <div class="puntuacion-ficha">
+                        <i class="fas fa-star"></i>
+                        <span class="puntuacion">4.5</span>
+                    </div>
+                </div>
+                <div class="acciones-ficha">
+                    <div class="boton-detalle">Detalle</div>
+                    <div class="boton-comprar">Comprar</div>
+                </div>
+            </article>
+            <article class="ficha-producto">
+                <div class="container-imagen-ficha">
+                    <img src="/Bariloche-edit.jpg" alt="Escapada" class="imagen-ficha">
+                </div>
+                <div class="detalle-ficha">
+                    <div class="titulo-regalo">Escapada a Mendoza Titulo Largo Para Probar Si Rompe</div>
+                    <div class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza y experimentá con muchas
+                        cosas ricas.</div>
+                    <div class="puntuacion-ficha">
+                        <i class="fas fa-star"></i>
+                        <span class="puntuacion">4.5</span>
+                    </div>
+                </div>
+                <div class="acciones-ficha">
+                    <div class="boton-detalle">Detalle</div>
+                    <div class="boton-comprar">Comprar</div>
+                </div>
+            </article>
+            <article class="ficha-producto">
+                <div class="container-imagen-ficha">
+                    <img src="/Bariloche-edit.jpg" alt="Escapada" class="imagen-ficha">
+                </div>
+                <div class="detalle-ficha">
+                    <div class="titulo-regalo">Escapada a Mendoza Titulo Largo Para Probar Si Rompe</div>
+                    <div class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza y experimentá con muchas
+                        cosas ricas.</div>
+                    <div class="puntuacion-ficha">
+                        <i class="fas fa-star"></i>
+                        <span class="puntuacion">4.5</span>
+                    </div>
+                </div>
+                <div class="acciones-ficha">
+                    <div class="boton-detalle">Detalle</div>
+                    <div class="boton-comprar">Comprar</div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <%- include("./partials/footer.ejs") %>
+</body>
+
+</html>
