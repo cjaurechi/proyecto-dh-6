@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat-SemiBold'; 
-    font-size: 14px;
+    font-family: 'Montserrat-Regular'; 
+    
   }
   
 /* Color */
@@ -91,6 +91,7 @@ header {
 
 .container-navegacion-header a {
   padding: 0 10px;
+  font-size: 16px;
 }
 
 header nav a {
@@ -99,7 +100,7 @@ header nav a {
 }
 
 .fa-chevron-down {
-  font-size: 0.2em;
+  font-size: 0.4em;
 }
 
 .container-header-der {
@@ -150,6 +151,7 @@ header nav a {
   border: 1px solid var(--azulreegalo);
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .sign-in:hover {
@@ -167,6 +169,7 @@ header nav a {
   width: 150px;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .sign-up:hover {
@@ -748,6 +751,10 @@ footer div nav a {
   width: 30px;
   height: 30px;
   font-size: 30px;
+ 
+  text-decoration: none;
+  color: grey;
+  opacity: 0.3;
 }
 
 .container-logo-footer {

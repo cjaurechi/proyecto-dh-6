@@ -253,6 +253,9 @@ p.titulo-register {
     display: flex;
 }
 
+.date{
+    opacity: 0.3;
+}
 
 .container-fa-envelop,
 .container-fa-lock,
@@ -274,6 +277,10 @@ input[type=email], input[type=password], input[type=date], select, textarea {
     border-style: hidden;
     outline: none;
     opacity: 0.4;
+}
+
+input[type=date] {
+    opacity: 0.3;
 }
 
 .confirm-pass{
@@ -467,7 +474,10 @@ footer div nav a {
 .fa-instagram,
 .fa-twitter {   
     margin-right: 6%;
-    cursor: pointer;
+  cursor: pointer;
+  text-decoration: none;
+  color: grey;
+  opacity: 0.3;
 }
 
 .container-logo-footer {

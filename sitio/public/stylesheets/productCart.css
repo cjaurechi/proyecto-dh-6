@@ -141,6 +141,7 @@ header nav a {
     border: 1px solid var(--azulreegalo);
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .sign-in:hover {
@@ -158,6 +159,7 @@ header nav a {
     width: 150px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .sign-up:hover {
@@ -583,6 +585,9 @@ footer div nav a {
 .fa-twitter {   
     margin-right: 6%;
     cursor: pointer;
+    text-decoration: none;
+  color: grey;
+  opacity: 0.3;
 }
 
 .container-logo-footer {
