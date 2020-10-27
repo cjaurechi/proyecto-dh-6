@@ -5,7 +5,7 @@ let {check,validationResult, body} = require("express-validator")
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
-const registroUsersFilePath = path.join(__dirname, '../data/registroUsers.json');
+const registerUsersFilePath = path.join(__dirname, '../data/registerUsers.json');
 
 
 const controller = {
@@ -29,7 +29,7 @@ const controller = {
 
         // Leo si ya hay algo en el archivo deusersDataBase
 
-        let archivoUsuario = fs.readFileSync(registroUsersFilePath, {encoding: 'utf-8'})
+        let archivoUsuario = fs.readFileSync(registerUsersFilePath, {encoding: 'utf-8'})
 
         let usuarios;
         if (archivoUsuario == ""){
@@ -45,7 +45,7 @@ const controller = {
         usuariosJSON = JSON.stringify(usuarios);
 
         //Lo escribimos en el archivo
-        fs.appendFileSync(registroUsersFilePath, usuariosJSON)
+        fs.appendFileSync(registerUsersFilePath, usuariosJSON)
     
             
         res.redirect('/usuarios/registro');
