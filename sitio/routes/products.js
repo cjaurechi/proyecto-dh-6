@@ -29,7 +29,7 @@ router.get('/detalle/', productsController.productDetail);
 router.get('/crear', productsController.create); 
 router.post('/',upload.any(), productsController.store); 
 
-/*** MODIFUCAR UN PRODUCTO ***/ 
+/*** MODIFICAR UN PRODUCTO ***/ 
 router.get('/:id/editar', productsController.edit); 
 router.put('/:id/editar',upload.any(), productsController.update); 
 
