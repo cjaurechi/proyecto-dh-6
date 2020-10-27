@@ -16,10 +16,11 @@
 1. Cómo cambiar el Choose File para que quede bien esteticamente?
 2. El head se puede poner en el partial?
 3. El codigo se puede escribir en dos idiomas?
-4. El head tiene que estar en la carpeta parcials de vistas?
-5. Como hacer para que cuando redireccionas a las redes sociales se abra otra pesta;a?
+4. Como hacer para que cuando redireccionas a las redes sociales se abra otra pesta;a?
+5. Como es el tema de partials y el css? De donde lo toma?
 
 
 ### Que se va a hacer:
 1. Crear la vista para modificar los productos.
 2. Modficar el estilo de la pagina.
+3. Armar un archivo CSS para las paginas en comun.
