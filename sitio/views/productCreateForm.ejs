@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    
- <!-- header del Sitio -->
 
- <%- include("./partials/header.ejs") %>
+    <!-- header del Sitio -->
+
+    <%- include("./partials/header.ejs") %>
 
     <section class="creacion-producto">
         <div class="container-producto">
@@ -27,11 +27,11 @@
             <form action="/productos" method="POST" enctype="multipart/form-data" class="form-producto">
                 <div class="form-linea">
                     <label for="name" class="form-label">Nombre:</label>
-                    <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto" class="form-input"> 
+                    <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto" class="form-input">
                 </div>
                 <div class="form-linea">
                     <label for="price" class="form-label">Precio:</label>
-                    <input type="text" id="price" name="price" placeholder="Ej: 5678"  class="form-input">
+                    <input type="text" id="price" name="price" placeholder="Ej: 5678" class="form-input">
                 </div>
                 <div class="form-linea">
                     <label for="discount" class="form-label">Descuento:</label>
@@ -46,13 +46,14 @@
                     <select name="category" id="category" class="form-input">
                         <option value="">Elegí</option>
                         <% categories.find (function(item) { %>
-                            <option value="<%= item.id%>"><%= item.description%></option>
+                        <option value="<%= item.id%>"><%= item.description%></option>
                         <% }) %>
                     </select>
                 </div>
                 <div class="form-linea">
                     <label for="description" class="form-label">Descripción:</label>
-                    <textarea name="description" id="description" class="form-input" placeholder="Ej: Ingrese un texto detallado del producto" ></textarea>
+                    <textarea name="description" id="description" class="form-input"
+                        placeholder="Ej: Ingrese un texto detallado del producto"></textarea>
                 </div>
                 <div class="boton-producto">
                     <button type="submit">Guardar producto</button>
@@ -60,10 +61,10 @@
             </form>
         </div>
     </section>
- 
- <!-- Footer del Sitio -->
 
- <%- include("./partials/footer.ejs") %>
+    <!-- Footer del Sitio -->
+
+    <%- include("./partials/footer.ejs") %>
 
 </body>
 
