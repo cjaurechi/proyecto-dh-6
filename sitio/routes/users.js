@@ -2,6 +2,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path')
+let {check,validationResult, body} = require("express-validator")
 
 const router = express.Router();
 
@@ -21,7 +22,13 @@ const usersController = require('../controllers/usersController');
 
 /*** REGISTRO ***/
 router.get('/registro', usersController.registro);
-router.post('/registro', usersController.createRegistro);
+router.post('/registro', 
+
+//[ check("mail").isEmail().withMessage("Este campo debe ser mail"),
+//    check("password").isLength({min:8}).withMessage("El campo debe contener mas de 8 caracteres"),
+//  check("passwordrepeat").isLength({min:8}).withMessage("El campo debe contener mas de 8 caracteres"),
+//],
+usersController.createRegistro);
 
 /*** LOGIN ***/
 router.get('/login', usersController.login);

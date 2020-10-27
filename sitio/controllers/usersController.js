@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+let {check,validationResult, body} = require("express-validator")
 
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -17,7 +18,7 @@ const controller = {
 
     createRegistro: (req, res) => {
 
-        //Usuario que se registro
+       //Usuario que se registro
 
         let usuario = {
             email: req.body.email,
@@ -45,7 +46,7 @@ const controller = {
 
         //Lo escribimos en el archivo
         fs.appendFileSync(registroUsersFilePath, usuariosJSON)
-
+    
             
         res.redirect('/usuarios/registro');
     },
