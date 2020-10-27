@@ -11,17 +11,17 @@ const controller = {
 
     // Carrito de compra
     productCart: (req, res) => {
-        res.render('productCart');
+        res.render('products/productCart');
     },
 
     // Detalle de producto
     productDetail: (req, res) => {
-        res.render('productDetail');
+        res.render('products/productDetail');
     },
 
     // Formulario de creacion
 	create: (req, res) => {
-		res.render("productCreateForm",{categories : categories});
+		res.render("products/productCreateForm",{categories : categories});
 	},
 	
 	// Alta de producto
@@ -45,7 +45,7 @@ const controller = {
 			return (req.params.id == item.id);
 		})
 
-		res.render("productEditForm",{product : product});
+		res.render("products/productEditForm",{product : product});
 	},
 
 	// Modificacion de producto

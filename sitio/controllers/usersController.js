@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-let {check,validationResult, body} = require("express-validator")
+let { check, validationResult, body } = require("express-validator")
 
-const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+// const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+// const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const registerUsersFilePath = path.join(__dirname, '../data/registerUsers.json');
 
@@ -13,28 +13,28 @@ const controller = {
     // Registro
 
     registro: (req, res) => {
-        res.render('register');
+        res.render('users/register');
     },
 
     createRegistro: (req, res) => {
 
-       //Usuario que se registro
+        //Usuario que se registro
 
         let usuario = {
             email: req.body.email,
             password: req.body.password,
             passwordrepeat: req.body.passwordrepeat,
             fecnac: req.body.fecnac
-         }
+        }
 
         // Leo si ya hay algo en el archivo deusersDataBase
 
-        let archivoUsuario = fs.readFileSync(registerUsersFilePath, {encoding: 'utf-8'})
+        let archivoUsuario = fs.readFileSync(registerUsersFilePath, { encoding: 'utf-8' })
 
         let usuarios;
-        if (archivoUsuario == ""){
+        if (archivoUsuario == "") {
             usuarios = []
-        }else{
+        } else {
             usuarios = JSON.parse(archivoUsuario)
         }
 
@@ -46,8 +46,8 @@ const controller = {
 
         //Lo escribimos en el archivo
         fs.appendFileSync(registerUsersFilePath, usuariosJSON)
-    
-            
+
+
         res.redirect('/usuarios/registro');
     },
 
@@ -56,7 +56,7 @@ const controller = {
     // Login
 
     login: (req, res) => {
-        res.render('login');
+        res.render('users/login');
     },
 
 }
