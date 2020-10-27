@@ -5,8 +5,6 @@ const controlador = {
         res.render('register');
       }
    
-
-
 }
 
 module.exports = controlador;

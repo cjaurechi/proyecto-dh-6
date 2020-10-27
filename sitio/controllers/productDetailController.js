@@ -1,10 +1,26 @@
-/* var path = require('path'); */
 
 const controlador = {
-    producto: function (req, res) {
-/*         let file = path.resolve('views/productDetail.ejs');
-        res.sendFile(file); */
+
+    compra: function (req, res) {
         res.render('productDetail');
       },
-}
+
+    editar: function (req, res) {
+      res.render('productDetail');
+      },
+
+    alta: function (req, res) {
+      res.render('productDetail');
+      },
+
+    modificacion: function (req, res) {
+      res.render('productDetail');
+      },
+
+    baja: function (req, res) {
+      res.render('productDetail');
+      },
+
+    }
+
 module.exports = controlador;

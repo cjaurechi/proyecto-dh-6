@@ -25,7 +25,6 @@ app.set('views', path.join(__dirname, '/views'));
 // ********** Rutas y app.use **********
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var productoRouter = require('./routes/productDetail');
 const productsRouter = require('./routes/products');
 var registerRouter = require('./routes/register');
 
@@ -33,7 +32,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/productos', productsRouter);
-app.use('/producto', productoRouter);
 
 // Login
 

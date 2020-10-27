@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reegalo - Alta de Producto</title>
+    <link rel="stylesheet" href="/stylesheets/productCreateForm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    
+ <!-- header del Sitio -->
+
+ <%- include("./partials/header.ejs") %>
+
+    <section class="creacion-producto">
+        <div class="container-producto">
+            <p class="titulo-producto">Alta de producto</p>
+            <div class="container-logo-producto">
+                <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
+            </div>
+
+            <form action="/productos" method="POST" enctype="multipart/form-data" class="form-producto">
+                <div class="form-linea">
+                    <label for="name" class="form-label">Nombre:</label>
+                    <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto" class="form-input"> 
+                </div>
+                <div class="form-linea">
+                    <label for="price" class="form-label">Precio:</label>
+                    <input type="text" id="price" name="price" placeholder="Ej: 5678"  class="form-input">
+                </div>
+                <div class="form-linea">
+                    <label for="discount" class="form-label">Descuento:</label>
+                    <input type="text" id="discount" name="discount" placeholder="Ej: 15" class="form-input">
+                </div>
+                <div class="form-linea">
+                    <label for="Imagen" class="form-label">Imagen:</label>
+                    <input type="file" id="image" name="image" class="form-input-imagen">
+                </div>
+                <div class="form-linea">
+                    <label for="category" class="form-label">Categoría:</label>
+                    <select name="category" id="category" class="form-input">
+                        <option value="">Elegí</option>
+                        <% categories.find (function(item) { %>
+                            <option value="<%= item.id%>"><%= item.description%></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-linea">
+                    <label for="description" class="form-label">Descripción:</label>
+                    <textarea name="description" id="description" class="form-input" placeholder="Ej: Ingrese un texto detallado del producto" ></textarea>
+                </div>
+                <div class="boton-producto">
+                    <button type="submit">Guardar producto</button>
+                </div>
+            </form>
+        </div>
+    </section>
+ 
+ <!-- Footer del Sitio -->
+
+ <%- include("./partials/footer.ejs") %>
+
+</body>
+
+</html>
