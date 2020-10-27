@@ -1,1 +1,26 @@
-[{"id":1,"description":"Gastronomia"},{"id":2,"description":"Aire Libre"},{"id":3,"description":"Espectaculos"},{"id":4,"description":"Conocimientos"},{"id":5,"description":"Experiencias Unicas"},{"id":6,"description":"Lugares para Conocer"}]
+[
+    {
+        "id": 1,
+        "description": "Gastronomia"
+    },
+    {
+        "id": 2,
+        "description": "Aire Libre"
+    },
+    {
+        "id": 3,
+        "description": "Espectaculos"
+    },
+    {
+        "id": 4,
+        "description": "Conocimientos"
+    },
+    {
+        "id": 5,
+        "description": "Experiencias Unicas"
+    },
+    {
+        "id": 6,
+        "description": "Lugares para Conocer"
+    }
+]
