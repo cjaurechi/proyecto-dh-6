@@ -1,9 +1,28 @@
-var express = require('express');
-var router = express.Router();
+// ********** Requires **********
+const express = require('express');
+const multer = require('multer');
+const path = require('path')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const router = express.Router();
+
+var storage = multer.diskStorage({
+    destination : function (req,file,cb) {
+        cb(null,'public/images/products')
+    },
+    filename : function(req,file,cb) {
+        cb(null,file.fieldname+ '-' +Date.now() + path.extname(file.originalname))
+    }
+})
+
+var upload = multer({storage : storage})
+
+// ********** Require de Controladores **********
+const usersController = require('../controllers/usersController');
+
+/*** REGISTRO ***/
+router.get('/registro', usersController.registro);
+
+/*** LOGIN ***/
+router.get('/login', usersController.login);
 
 module.exports = router;
