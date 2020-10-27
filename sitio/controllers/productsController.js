@@ -16,38 +16,36 @@ const controller = {
 
     // Detalle de producto
     productDetail: (req, res) => {
-/*         res.render('productDetail'); */
         res.render('productDetail');
-      },
+    },
 
     // Formulario de creacion
 	create: (req, res) => {
-		res.render("productCreateForm",{categories : categories})
+		res.render("productCreateForm",{categories : categories});
 	},
 	
 	// Alta de producto
 	store: (req, res, next) => {
-
+		
 		products.push ({
 			id : products[products.length-1].id + 1,
 			image : req.files[0].filename,
 			...req.body
-		})
+		});
 
-		let archivo = JSON.stringify(products)
-		fs.writeFileSync (productsFilePath,archivo)
-
-	    res.redirect("/")
+		let archivo = JSON.stringify(products);
+		fs.writeFileSync (productsFilePath,archivo);
+		res.redirect("/");
 	},
 
 	// Formulario de modificacion
 	edit: (req, res) => {
 
 		product = products.find(function(item){
-			return (req.params.id == item.id)
+			return (req.params.id == item.id);
 		})
 
-		res.render("productEditForm",{product : product})
+		res.render("productEditForm",{product : product});
 	},
 
 	// Modificacion de producto
@@ -55,19 +53,19 @@ const controller = {
 
 		products.forEach (function(item) {
 			if (item.id == req.params.id) {
-				 item.name = req.body.name;
-				 item.price = req.body.price;
-				 item.discount = req.body.discount;
-				 item.category = req.body.category;
-				 item.description = req.body.description;
-				 item.image = req.files[0].filename;
+				item.name = req.body.name;
+				item.price = req.body.price;
+				item.discount = req.body.discount;
+				item.category = req.body.category;
+				item.description = req.body.description;
+				item.image = req.files[0].filename;
 			}
-		})    
-		 
-		let archivo = JSON.stringify(products)
-		fs.writeFileSync (productsFilePath,archivo)
+		});
 
-		res.redirect("/")
+		let archivo = JSON.stringify(products);
+		fs.writeFileSync (productsFilePath,archivo);
+
+		res.redirect("/");
 	},
 
 };

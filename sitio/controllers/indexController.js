@@ -1,10 +1,11 @@
+const controller = {
 
-const controlador = {
+  // Home Page
 
-    home: function(req, res, next) {
-        res.render('index');
-      }
+  home: (req, res) => {
+    res.render('index');
+  }
 
-    }
+}
 
-module.exports = controlador;
+module.exports = controller;
