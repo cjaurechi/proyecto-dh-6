@@ -2,23 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>Home Reegalo</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../partials/head.ejs", {title: "Reegalo - Home"}) %>
     <link rel="stylesheet" href="/stylesheets/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-        crossorigin="anonymous" />
-
 </head>
-
 
 <body>
 
     <!-- Header del Sitio -->
 
     <%- include("./partials/header.ejs") %>
-
 
     <section>
         <img src="/images/banner-paracaidas.jpg" alt="Paracaidas" class="banner">
@@ -29,43 +21,42 @@
         </div>
     </section>
 
-    <section> 
+    <section>
         <div class="padding-2por center-text">Categorias</div>
         <div class="categorias">
-            <div class="categoria-regalo" style= "background: url(/images/Gastronomia.jpg)">
+            <div class="categoria-regalo" style="background: url(/images/Gastronomia.jpg)">
                 <a href="#" class="categoria-link">Gastronomia</a>
             </div>
-            
-                <div class="categoria-regalo"style= "background: url(/images/Aire-libre.jpg)">
-                    <a href="#" class="categoria-link" >Aire libre</a>
-                </div>                
-            
-                <div class="categoria-regalo" style= "background: url(/images/espectaculo.jpg)">
-                    <a href="#" class="categoria-link" >Espectaculos</a>
-                </div>                
-            
-                <div class="categoria-regalo" style= "background: url(/images/conocimiento.jpg)">
-                    <a href="#" class="categoria-link" >Conocimiento</a>
-                </div>                
-            
-           
-                <div class="categoria-regalo" style= "background: url(/images/experienciaunica.jpg)">
-                    <a href="#" class="categoria-link" >Experiencias unicas</a>
-                </div>                
-           
-            
-                <div class="categoria-regalo" style= "background: url(/images/lugaresparaconocer.jpg)">
-                    <a href="#" class="categoria-link" >Lugares para conocer</a>
-                               
-                
-        </div>
+
+            <div class="categoria-regalo" style="background: url(/images/Aire-libre.jpg)">
+                <a href="#" class="categoria-link">Aire libre</a>
+            </div>
+
+            <div class="categoria-regalo" style="background: url(/images/espectaculo.jpg)">
+                <a href="#" class="categoria-link">Espectaculos</a>
+            </div>
+
+            <div class="categoria-regalo" style="background: url(/images/conocimiento.jpg)">
+                <a href="#" class="categoria-link">Conocimiento</a>
+            </div>
+
+
+            <div class="categoria-regalo" style="background: url(/images/experienciaunica.jpg)">
+                <a href="#" class="categoria-link">Experiencias unicas</a>
+            </div>
+
+
+            <div class="categoria-regalo" style="background: url(/images/lugaresparaconocer.jpg)">
+                <a href="#" class="categoria-link">Lugares para conocer</a>
+
+
+            </div>
     </section>
 
-
-
-
     <section class="comofunciona">
-        <div><p class="titulo-pasos">¿Cómo funciona?</p></div>
+        <div>
+            <p class="titulo-pasos">¿Cómo funciona?</p>
+        </div>
         <div class="pasos">
             <div class="detalle-paso">
                 <div><i class="fas fa-mouse-pointer imagen-paso"></i></div>
@@ -88,77 +79,107 @@
                     <p>Compra y envia tu regalo a la persona que quieras</p>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
-    <div><p class="padding-1por center-text eleccion-titulo"> Elegi tu proximo regalo</p></div>
-    <div><p class="padding-1por center-text eleccion-subtitulo">Escapadas</p></div>
+    <div>
+        <p class="padding-1por center-text eleccion-titulo"> Elegi tu proximo regalo</p>
+    </div>
+    <div>
+        <p class="padding-1por center-text eleccion-subtitulo">Escapadas</p>
+    </div>
 
     <section class="padding-1por">
-        
+
         <div class="regalo">
             <article class="ficha-regalo">
-                <div class="contenedor-imagen"><img src="/images/sanmartindelosandes.jpg" alt="Escapada" class="imagen-regalo"></div>
-                <div class="caract-regalo"><div><p class="titulo-regalo">Escapada a San Martin de los Andes</p></div>
-                <div><p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p></div>
-                <div class="puntuacion-regalo">
-                    <i class="fas fa-star estrella-regalo"></i>
-                    <p>4.5</p>
+                <div class="contenedor-imagen"><img src="/images/sanmartindelosandes.jpg" alt="Escapada"
+                        class="imagen-regalo"></div>
+                <div class="caract-regalo">
+                    <div>
+                        <p class="titulo-regalo">Escapada a San Martin de los Andes</p>
+                    </div>
+                    <div>
+                        <p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p>
+                    </div>
+                    <div class="puntuacion-regalo">
+                        <i class="fas fa-star estrella-regalo"></i>
+                        <p>4.5</p>
+                    </div>
+                    <div class="accion-regalo">
+                        <div class="detail">Detalle</div>
+                        <div class="shop">Comprar</div>
+                    </div>
                 </div>
-                <div class="accion-regalo">
-                    <div class="detail">Detalle</div>
-                    <div class="shop">Comprar</div>
-                </div></div>
             </article>
             <article class="ficha-regalo">
-                <div class="contenedor-imagen"><img src="/images/Escapada.jpg" alt="Escapada" class="imagen-regalo"></div>
-                <div class="caract-regalo"><div><p class="titulo-regalo">Un lugar tranquilo</p></div>
-                <div><p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p></div>
-                <div class="puntuacion-regalo">
-                    <i class="fas fa-star estrella-regalo"></i>
-                    <p>4.5</p>
+                <div class="contenedor-imagen"><img src="/images/Escapada.jpg" alt="Escapada" class="imagen-regalo">
                 </div>
-                <div class="accion-regalo">
-                    <div class="detail">Detalle</div>
-                    <div class="shop">Comprar</div>
-                </div></div>
+                <div class="caract-regalo">
+                    <div>
+                        <p class="titulo-regalo">Un lugar tranquilo</p>
+                    </div>
+                    <div>
+                        <p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p>
+                    </div>
+                    <div class="puntuacion-regalo">
+                        <i class="fas fa-star estrella-regalo"></i>
+                        <p>4.5</p>
+                    </div>
+                    <div class="accion-regalo">
+                        <div class="detail">Detalle</div>
+                        <div class="shop">Comprar</div>
+                    </div>
+                </div>
             </article>
             <article class="ficha-regalo">
-                <div class="contenedor-imagen"><img src="/images/escapada2.jpg" alt="Escapada" class="imagen-regalo"></div>                
-                <div class="caract-regalo"><div><p class="titulo-regalo">Mendoza y sus encantos</p></div>
-                <div><p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p></div>
-                <div class="puntuacion-regalo">
-                    <i class="fas fa-star estrella-regalo"></i>
-                    <p>4.5</p>
+                <div class="contenedor-imagen"><img src="/images/escapada2.jpg" alt="Escapada" class="imagen-regalo">
                 </div>
-                <div class="accion-regalo">
-                    <div class="detail">Detalle</div>
-                    <div class="shop">Comprar</div>
-                </div></div>
+                <div class="caract-regalo">
+                    <div>
+                        <p class="titulo-regalo">Mendoza y sus encantos</p>
+                    </div>
+                    <div>
+                        <p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p>
+                    </div>
+                    <div class="puntuacion-regalo">
+                        <i class="fas fa-star estrella-regalo"></i>
+                        <p>4.5</p>
+                    </div>
+                    <div class="accion-regalo">
+                        <div class="detail">Detalle</div>
+                        <div class="shop">Comprar</div>
+                    </div>
+                </div>
             </article>
             <article class="ficha-regalo">
-                <div class="contenedor-imagen"><img src="/images/Bariloche.jpg" alt="Escapada" class="imagen-regalo"></div>
-                <div class="caract-regalo"><div><p class="titulo-regalo">Escapada magica a Bariloche</p></div>
-                <div><p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p></div>
-                <div class="puntuacion-regalo">
-                    <i class="fas fa-star estrella-regalo"></i>
-                    <p>4.5</p>
+                <div class="contenedor-imagen"><img src="/images/Bariloche.jpg" alt="Escapada" class="imagen-regalo">
                 </div>
-                <div class="accion-regalo">
-                    <div class="detail">Detalle</div>
-                    <div class="shop">Comprar</div>
-                </div></div>
+                <div class="caract-regalo">
+                    <div>
+                        <p class="titulo-regalo">Escapada magica a Bariloche</p>
+                    </div>
+                    <div>
+                        <p class="detalle-regalo">Disfruta de la tranquilidad de la naturaleza.</p>
+                    </div>
+                    <div class="puntuacion-regalo">
+                        <i class="fas fa-star estrella-regalo"></i>
+                        <p>4.5</p>
+                    </div>
+                    <div class="accion-regalo">
+                        <div class="detail">Detalle</div>
+                        <div class="shop">Comprar</div>
+                    </div>
+                </div>
             </article>
         </div>
     </section>
-
 
     <!-- Footer del Sitio -->
 
     <%- include("./partials/footer.ejs") %>
 
-    
 </body>
 
 </html>
