@@ -190,7 +190,7 @@ header nav a {
 
 /****************** Formulario Alta producto ************************/
 
-section.creacion-producto {
+section.edicion-producto {
     width: 100%;
     height: 100%;
     background-color: rgb(220, 220, 220, 0.3);
@@ -347,6 +347,16 @@ button {
 
 button:hover {
     background-color: var(--azulregalostrong);
+}
+
+.imagen-producto {
+    margin-top: 2%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1%;
+    border-radius: 6px;
 }
 
 /* .divisor {
@@ -760,6 +770,18 @@ p.titulo-producto {
 
 button {
     font-size: 1em;
+}
+
+textarea.form-input {
+    width: 100%;
+}
+
+.imagen-producto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    padding: 0%;
 }
 
 }

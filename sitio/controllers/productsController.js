@@ -27,9 +27,16 @@ const controller = {
 	// Alta de producto
 	store: (req, res, next) => {
 		
+		var product_image = ""
+		if (req.files[0] !== undefined) {
+			product_image = req.files[0].filename
+		}
+
+		console.log (req.files[0],product_image)
+
 		products.push ({
 			id : products[products.length-1].id + 1,
-			image : req.files[0].filename,
+			image : product_image,
 			...req.body
 		});
 
@@ -45,7 +52,7 @@ const controller = {
 			return (req.params.id == item.id);
 		})
 
-		res.render("products/productEditForm",{product : product});
+		res.render("products/productEditForm",{product : product,categories : categories});
 	},
 
 	// Modificacion de producto
@@ -58,7 +65,9 @@ const controller = {
 				item.discount = req.body.discount;
 				item.category = req.body.category;
 				item.description = req.body.description;
-				item.image = req.files[0].filename;
+				if (req.files[0] !== undefined) {
+					item.image = req.files[0].filename;
+				}
 			}
 		});
 

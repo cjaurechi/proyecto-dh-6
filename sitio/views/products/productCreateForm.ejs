@@ -20,32 +20,39 @@
             </div>
 
             <form action="/productos" method="POST" enctype="multipart/form-data" class="form-producto">
-                <div class="form-linea">
+                <div class="form-linea-texto">
                     <label for="name" class="form-label">Nombre:</label>
                     <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto" class="form-input">
                 </div>
-                <div class="form-linea">
-                    <label for="price" class="form-label">Precio:</label>
-                    <input type="text" id="price" name="price" placeholder="Ej: 5678" class="form-input">
+                <div class="linea-compartida">
+                    <div class="form-linea-compartida-1">
+                        <label for="price" class="form-label-compartido">Precio:</label>
+                        <input type="text" id="price" name="price" placeholder="Ej: 5678" class="form-input-compartido">
+                    </div>
+                    <div class="form-linea-compartida-2">
+                        <label for="discount" class="form-label-compartido">Descuento:</label>
+                        <input type="text" id="discount" name="discount" placeholder="Ej: 15" class="form-input-compartido">
+                    </div>
                 </div>
-                <div class="form-linea">
-                    <label for="discount" class="form-label">Descuento:</label>
-                    <input type="text" id="discount" name="discount" placeholder="Ej: 15" class="form-input">
+                <div class="linea-compartida">
+                    <div class="form-linea-compartida-1">
+                        <label for="category" class="form-label-compartido">Categoría:</label>
+                        <select name="category" id="category" class="form-input-compartido">
+                            <option value="">Elegí</option>
+                            <% categories.find (function(item) { %>
+                            <option value="<%= item.id%>"><%= item.description%></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-linea-compartida-2">
+                        <label for="Imagen" class="form-label-compartido">Imagen:</label>
+                        <input type="file" id="image" name="image" class="form-input-imagen">
+                    </div>
                 </div>
-                <div class="form-linea">
-                    <label for="Imagen" class="form-label">Imagen:</label>
-                    <input type="file" id="image" name="image" class="form-input-imagen">
-                </div>
-                <div class="form-linea">
-                    <label for="category" class="form-label">Categoría:</label>
-                    <select name="category" id="category" class="form-input">
-                        <option value="">Elegí</option>
-                        <% categories.find (function(item) { %>
-                        <option value="<%= item.id%>"><%= item.description%></option>
-                        <% }) %>
-                    </select>
-                </div>
-                <div class="form-linea">
+<!--                 <div class="form-linea">
+                    <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
+                </div> -->
+                <div class="form-linea-texto">
                     <label for="description" class="form-label">Descripción:</label>
                     <textarea name="description" id="description" class="form-input"
                         placeholder="Ej: Ingrese un texto detallado del producto"></textarea>
