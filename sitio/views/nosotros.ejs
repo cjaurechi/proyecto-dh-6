@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head.ejs", {title: "Reegalo - Home"}) %>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+
+<body>
+
+    <!-- Header del Sitio -->
+
+    <%- include("./partials/header.ejs") %>
+
+    <section>
+        <div class="container-nosotros">
+            <div class="nosotros-img"> 
+                <img src="/images/nosotros.jpg" alt="Nosotros" class="nosotros">
+            </div> 
+            <div class="nosotros-text">
+                <h1> Nosotros </h1>
+                <p>Reegalo pone a disposición diferentes experiencias para regalar a las personas que más queremos. 
+                  Contamos con diferentes categorías:</p>
+                <% categories.forEach (function(category) {%> 
+                    <li class="categories">
+                        <a href="/categories/<%= category.id %>"><%= category.description %> </a>
+                    </li>
+                <% }) %>
+                <p> Reegalo es para todos aquellos que quieran regalar algo diferente, algo que no sea material y que quede en la memoria por siempre. </p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    
+
+    <!-- Footer del Sitio -->
+
+    <%- include("./partials/footer.ejs") %>
+
+</body>
+
+</html>
