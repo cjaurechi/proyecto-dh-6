@@ -1,204 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat-Regular'; 
-    
-  }
-  
-/* Color */
-
-.center-text {text-align: center;}
-:root {
-  --gris: #F9F8F8;
-  --azulreegalo: #18A0FB;
-  --azulregalostrong: #028ad8;
-  --goldestrella: #FFC107;
-  --azullinea: #b5e1ff;
-  --azulresumen: #038ECD;
-  --negro: #000000;
-  --blanco: #ffffff;
-  }
-
-@font-face {
-  font-family: 'Montserrat-SemiBold';
-  src: url('../fonts/Montserrat-SemiBold.ttf')
-}
-
-@font-face {
-  font-family: 'Montserrat-Regular';
-  src: url('../fonts/Montserrat-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'Montserrat-Light';
-  src: url('../fonts/Montserrat-Light.ttf')
-}
-
-img {
-  max-width: 100%;
-  max-height: 100%;
-}
-    
-/*   Header  */
-
-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  min-height: 50px;
-  box-shadow: 0 0.5px 1px gainsboro;
-}
-
-.navigation {
-  background-color: white;
-  font-family: Montserrat-Regular;
-  width: 100%;
-}
-
-.container-header {
-  display: flex;
-  height: 68px;
-  padding: 0 15px;
-  font-size: 1em;
-}
-
-.container-header-izq {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex: 2;
-}
-
-.logo {
-  max-width: 160px;
-  margin-right: 20px;
-  margin-left: 10px;
-}
-
-.logo-mini {
-  display: none;
-}
-
-.logo-navigation {
-  max-width: 100%;
-  max-height: 33.61px;
-}
-
-.container-navegacion-header{
-  justify-content: left;
-}
-
-.container-navegacion-header a {
-  padding: 0 10px;
-  font-size: 16px;
-}
-
-header nav a {
-  color:black;
-  text-decoration: none;
-}
-
-.fa-chevron-down {
-  font-size: 0.4em;
-}
-
-.container-header-der {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-.container-buscador {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: 1.3em;
-}
-
-.input-buscador {
-  border: 0.5px solid gainsboro;
-  border-radius: 5px;
-  padding: 1%;
-  margin-right: 2%;
-  width: 90%;
-  display: none;
-}
-
-.fa-search {
-  color: black;
-  margin-left: 2%;
-  cursor: pointer;
-}
-
-.container-acciones-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.sign-in {
-  background-color: white;
-  color: var(--azulreegalo);
-  text-align: center;
-  padding: 2%;
-  margin-right: 2%;
-  margin-left: 5%;
-  width: 150px;
-  border: 1px solid var(--azulreegalo);
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.sign-in:hover {
-  color: var(--azulregalostrong);
-  border: 1px solid var(--azulregalostrong);
-}
-
-.sign-up {
-  background-color: var(--azulreegalo);
-  color: white;
-  text-align: center;
-  padding: 2%;
-  margin-left: 2%;
-  margin-right: 5%;
-  width: 150px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.sign-up:hover {
-  background-color: var(--azulregalostrong);
-}
-
-.container-carrito {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 50px;
-  cursor: pointer;
-  font-size: 1.3em;
-}
-
-.fa-shopping-cart {
-  color: black;
-  margin-right: 3%;
-}
-
-.cantidad-carrito {
-  margin-left: 3%;
-}
-
-.container-small {
-  display: none;
-}
-
-/*  Main  */
+/*  Detalle de producto  */
 
 .principal {
     padding: 1%;
@@ -207,6 +7,11 @@ header nav a {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .indicador {
@@ -290,7 +95,6 @@ header nav a {
     text-align: center;
 }
 
-
 .imagen_ubicacion {
   text-align:center;
 } 
@@ -330,6 +134,7 @@ header nav a {
   align-items: center;
   line-height: 1.5em;
 }
+
 .caracteristicas {
   font-size: 1,2em;
   font-weight: normal;
@@ -671,140 +476,18 @@ header nav a {
   text-decoration: none;
 }
 
-/*   Footer  */
-
-footer {
-  border-top: 1px solid gainsboro;
-  padding: 1.3% 2%;
-}
-
-.top-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.contacto {
-  text-align: left;
-  margin-bottom: 1%;
-  width: 60%; /* agregado NRR */
-}
-
-.texto-contacto {
-  font-family: Montserrat-SemiBold;
-  margin-bottom: 1%;
-}
-
-.datos-contacto {
-  font-family: Montserrat-Light;
-  margin-bottom: 1%;
-}
-
-.numero-telefono {
-  font-weight: bold;
-}
-
-.email {
-  font-weight: bold;
-  color: var(--azulreegalo);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.bottom-navigation {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 1%;
-  width: 40%; /* Agregado NRR */
-}
-
-footer div nav a {
-  color:black;
-  text-decoration: none;
-  font-family: Montserrat-SemiBold;
-  margin: 0% 3%; /* agregado NRR */ 
-}
-
-.bottom-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; /* Agregado NRR */
-}
-
-.social-media {
-  width: 33%;
-  font-size: 1.5em;
-  color: gainsboro;
-  display: flex; /* Agregado NRR */
-  justify-content: flex-start; /* Agregado NRR */
-  align-items: center;
-/*   margin-top: 0.5%; */ /* Agregado NRR */
-}
-
-.fa-facebook,
-.fa-instagram,
-.fa-twitter {   
-  margin-right: 6%;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  font-size: 30px;
- 
-  text-decoration: none;
-  color: grey;
-  opacity: 0.3;
-}
-
-.container-logo-footer {
-  width: 33%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.8%;
-}
-
-.logo-footer {
-  width: 120px;
-  object-fit: scale-down;
-  opacity: 0.3;
-}
-
-.container-mercadopago-footer {
-  width: 33%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.pago-seguro {
-  height: 14px;
-  object-fit: scale-down;
-}
-
-.mercadopago {
-  height: 40px; /* Agregado NRR */
-  object-fit: scale-down;
-  margin-left: 6%;
-  opacity: 0.4;
-}
-
-.contacto-small {
-  display: none;
-}
-
-/* Media */
+/* Queries Media */
 
 @media (min-width: 480px){
+
   * {
     font-size: 15px;
   }
+
   .mapa {
     width: 400px;
   }
+
   .detalle_producto {
     font-size: 1em;
   }
@@ -840,13 +523,14 @@ footer div nav a {
   .estrella_producto {
     display:none;
   }
-
 }
 
 @media (min-width: 1024px){
+
   * {
       font-size: 15px;
   }
+
   .detalle_producto {
     font-size: 1.2em;
   }
@@ -908,10 +592,10 @@ footer div nav a {
   .container_footer_1 {
     justify-content: flex-end;
   }
-
 }
 
 @media (min-width: 1680px){
+
   * {
       font-size: 18px;
   }
@@ -981,210 +665,5 @@ footer div nav a {
   .container_footer_1 {
     justify-content: flex-end;
   }
-
 }
  
-/* Media Queries Header Footer */
-
-@media (max-width: 1080px) {
-  .container-header {
-      display: flex;
-      justify-content: space-between;
-  }
-
-  .container-navegacion-header {
-      display: none;
-  }
-
-  .container-buscador  {
-      display: none;
-  }
-
-  .container-acciones-header {
-      display: none;
-  }
-
-  .container-carrito {
-      display: none;
-  }
-
-  .cantidad-carrito {
-      visibility: hidden;
-  }
-
-  .container-small {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: 180px;
-      font-size: 1.3em;
-  }
-
-  .container-buscador-small {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .container-acciones-header-small {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .fa-user {
-      color: var(--azulreegalo);
-      cursor: pointer;
-  }
-
-  .fa-user:hover {
-      color: var(--azulregalostrong)
-  }
-
-  .container-carrito-small {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .menu-hamburguesa {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .fa-bars {
-      color: black;
-      cursor: pointer;
-  }
-
-  footer.footer {
-      font-size: 0.8em;
-  }
-
-}
-
-/* Tablet  */
-
-@media (max-width: 992px) {
-
-  footer.footer {
-      font-size: 0.7em;
-  }
-
-  .bottom-navigation { /* Agregado NRR */
-      display: none;
-  }
-
-  .contacto {
-    width: 100%;
-  }
-
-  .logo-footer {
-      width: 100px;
-  }
-
-  .pago-seguro {
-    display: none; /* Agregado NRR */
-  }
-
-  .mercadopago {
-      height: 20px;
-  }
-}
-
-/* Mobile L  */
-
-@media (max-width: 425px) {
-  .logo {
-      display: none;
-  }
-
-  .logo-mini {
-      display: flex;
-  }
-
-  .bottom-navigation,
-  .social-media,
-  .container-mercadopago-footer,
-  .contacto {
-      display: none;
-  }
-
-  .contacto-small {
-      display: block;
-      font-size: 1.3em;
-      margin: 2%;
-      width: 100%; /* agregado NRR */
-  }
-
-  .texto-contacto-small {
-      font-family: Montserrat-Bold;
-  }
-
-  .datos-contacto-small {
-      margin-top: 2%;
-      font-size: 0.8em;
-  }
-
-  .bottom-footer {
-      justify-content: center;
-  }
-
-  .container-logo-footer {
-      margin-top: 2%;
-  }
-}
-
-/* Mobile S  */
-
-@media (max-width: 320px) {
-
-  .logo {
-      display: none;
-  }
-
-  .logo-mini {
-      display: flex;
-  }
-
-  .bottom-navigation,
-  .social-media,
-  .container-mercadopago-footer,
-  .contacto {
-      display: none;
-  }
-
-  .contacto-small {
-      display: block;
-      font-size: 1.3em;
-      margin: 2%;
-      width: 100%; /* agregado NRR */
-  }
-
-  .texto-contacto-small {
-      font-family: Montserrat-Bold;
-  }
-
-  .datos-contacto-small {
-      margin-top: 2%;
-      font-size: 0.8em;
-  }
-
-  .bottom-footer {
-      justify-content: center;
-  }
-
-  .container-logo-footer {
-      margin-top: 2%;
-  }
-}
-
-@media (max-width: 3500px) { /* Agregado NRR */
-
-.contacto { /* Agregado NRR */
-  width: 70%;
-}
-
-.bottom-navigation { /* Agregado NRR */
-  width: 30%;
-}
-
-}

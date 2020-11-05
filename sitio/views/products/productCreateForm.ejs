@@ -3,6 +3,7 @@
 
 <head>
     <%- include("../partials/head.ejs", {title: "Reegalo - Alta de Producto"}) %>
+    <link rel="stylesheet" href="/stylesheets/app.css">
     <link rel="stylesheet" href="/stylesheets/productCreateForm.css">
 </head>
 
@@ -23,6 +24,15 @@
                 <div class="form-linea-texto">
                     <label for="name" class="form-label">Nombre:</label>
                     <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto" class="form-input">
+                </div>
+                <div class="form-linea-texto">
+                    <label for="name" class="form-label">Proveedor:</label>
+                    <select name="supplier" id="supplier" class="form-input">
+                        <option value="">Elegí</option>
+                        <% suppliers.find (function(item) { %>
+                        <option value="<%= item.id%>"><%= item.description%></option>
+                        <% }) %>
+                    </select>
                 </div>
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">
@@ -45,13 +55,35 @@
                         </select>
                     </div>
                     <div class="form-linea-compartida-2">
-                        <label for="Imagen" class="form-label-compartido">Imagen:</label>
-                        <input type="file" id="image" name="image" class="form-input-imagen">
+                        <label for="Imagen" class="form-label-compartido">Imagenes:</label>
+                        <input type="file" id="image" name="image" multiple="multiple" class="form-input-imagen">
                     </div>
                 </div>
-<!--                 <div class="form-linea">
-                    <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
-                </div> -->
+
+                <div class="linea-compartida">
+                    <div class="form-linea-compartida-1">
+                        <label for="fecha_desde" class="form-label-compartido">Vigencia Desde:</label>
+                        <input type="date" id="life_date_from" name="life_date_from" class="form-input-compartido">
+                    </div>
+                    <div class="form-linea-compartida-2">
+                        <label for="fecha_hasta" class="form-label-compartido">Vigencia Hasta:</label>
+                        <input type="date" id="life_date_to" name="life_date_to" class="form-input-compartido">
+                    </div>
+                </div>
+                <div class="linea-compartida">
+                    <div class="form-linea-compartida-1">
+                        <label for="stock" class="form-label-compartido">Disponible:</label>
+                        <input type="text" id="stock" name="stock" placeholder="Ej: 10" class="form-input-compartido">
+                    </div>
+                    <div class="form-linea-compartida-2">
+                        <label for="estado" class="form-label-compartido">Estado:</label>
+                        <select name="status" id="status" class="form-input-compartido">
+                            <option value="Habilitado" selected>Habilitado</option>
+                            <option value="Inhabilitado">Inhabilitado</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-linea-texto">
                     <label for="description" class="form-label">Descripción:</label>
                     <textarea name="description" id="description" class="form-input"

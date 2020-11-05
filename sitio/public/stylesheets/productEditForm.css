@@ -1,194 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Montserrat-Regular;
-}
 
-:root {
-    --gris: #F9F8F8;
-    --azulreegalo: #18A0FB;
-    --azulregalostrong: #028ad8;
-}
 
-@font-face {
-    font-family: 'Montserrat-SemiBold';
-    src: url('../fonts/Montserrat-SemiBold.ttf')
-}
-
-@font-face {
-    font-family: 'Montserrat-Regular';
-    src: url('../fonts/Montserrat-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Montserrat-Bold';
-    src: url('../fonts/Montserrat-Bold.ttf')
-}
-
-@font-face {
-    font-family: 'Montserrat-Light';
-    src: url('../fonts/Montserrat-Light.ttf')
-}
-
-/****************** Header ************************/
-
-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    min-height: 50px;
-    box-shadow: 0 0.5px 1px gainsboro;
-}
-
-.navigation {
-    background-color: white;
-    font-family: Montserrat-Regular;
-    width: 100%;
-}
-
-.container-header {
-    display: flex;
-    height: 68px;
-    padding: 0 15px;
-    font-size: 1em;
-}
-
-.container-header-izq {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex: 2;
-}
-
-.logo {
-    max-width: 160px;
-    margin-right: 20px;
-    margin-left: 10px;
-}
-
-.logo-mini {
-    display: none;
-}
-
-.logo-navigation {
-    max-width: 100%;
-    max-height: 33.61px;
-}
-
-.container-navegacion-header{
-    justify-content: left;
-}
-
-.container-navegacion-header a {
-    padding: 0 10px;
-}
-
-header nav a {
-    color:black;
-    text-decoration: none;
-}
-
-.fa-chevron-down {
-    font-size: 0.2em;
-}
-
-.container-header-der {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-}
-
-.container-buscador {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    font-size: 1.3em;
-}
-
-.input-buscador {
-    border: 0.5px solid gainsboro;
-    border-radius: 5px;
-    padding: 1%;
-    margin-right: 2%;
-    width: 90%;
-    display: none;
-}
-
-.fa-search {
-    color: black;
-    margin-left: 2%;
-    cursor: pointer;
-}
-
-.container-acciones-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.sign-in {
-    background-color: white;
-    color: var(--azulreegalo);
-    text-align: center;
-    padding: 2%;
-    margin-right: 2%;
-    margin-left: 5%;
-    width: 150px;
-    border: 1px solid var(--azulreegalo);
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.sign-in:hover {
-    color: var(--azulregalostrong);
-    border: 1px solid var(--azulregalostrong);
-}
-
-.sign-up {
-    background-color: var(--azulreegalo);
-    color: white;
-    text-align: center;
-    padding: 2%;
-    margin-left: 2%;
-    margin-right: 5%;
-    width: 150px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.sign-up:hover {
-    background-color: var(--azulregalostrong);
-}
-
-.container-carrito {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50px;
-    cursor: pointer;
-    font-size: 1.3em;
-}
-
-.fa-shopping-cart {
-    color: black;
-    margin-right: 3%;
-}
-
-.cantidad-carrito {
-    margin-left: 3%;
-}
-
-.container-small {
-    display: none;
-}
-
-/****************** Formulario Alta producto ************************/
+/* Formulario Edicion producto  */
 
 section.edicion-producto {
     width: 100%;
@@ -318,13 +130,6 @@ textarea.form-input {
     display: flex;
 }
 
-/* input#file-upload-buttom {
-    background-color: var(--azulreegalo);
-    color: white;
-}
-
-input-placeholder { color: red; } */
-
 .boton-producto {
     width: 100%;
     height: 50px;
@@ -349,321 +154,27 @@ button:hover {
     background-color: var(--azulregalostrong);
 }
 
-.imagen-producto {
-    margin-top: 2%;
-    height: 120px;
+.imagen-producto-contenedor {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: center;
-    padding-left: 1%;
+}
+
+.imagen-producto {
+    width:19%;
+    margin: 2% 0.5% 0% 0.5%;
+    height: 120px;
     border-radius: 6px;
 }
 
-/* .divisor {
-    height: 20px;
-    width: 100%;
-    margin-top: 2%;
-    text-align: center;
-} */
+/* Media Queries  */
 
-/****************** Footer ************************/
-
-footer {
-    border-top: 1px solid gainsboro;
-    padding: 1.3% 2%;
-}
-
-.top-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.contacto {
-    text-align: left;
-    margin-bottom: 1%;
-}
-
-.texto-contacto {
-    font-family: Montserrat-SemiBold;
-    margin-bottom: 1%;
-}
-
-.datos-contacto {
-    font-family: Montserrat-Light;
-    margin-bottom: 1%;
-}
-
-.numero-telefono {
-    font-weight: bold;
-}
-
-.email-footer {
-    font-weight: bold;
-    color: var(--azulreegalo);
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.bottom-navigation {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 1%;
-    width: 30%;
-}
-
-footer div nav a {
-    color:black;
-    text-decoration: none;
-    font-family: Montserrat-SemiBold;
-}
-
-.bottom-footer {
-    display: flex;
-    flex-direction: row;
-}
-
-.social-media {
-    width: 33%;
-    font-size: 1.5em;
-    color: gainsboro;
-    align-items: center;
-    margin-top: 0.5%;
-}
-
-.fa-facebook,
-.fa-instagram,
-.fa-twitter {   
-    margin-right: 6%;
-    cursor: pointer;
-}
-
-.container-logo-footer {
-    width: 33%;
-    text-align: center;
-    align-items: center;
-    margin-top: 0.8%;
-}
-
-.logo-footer {
-    width: 120px;
-    object-fit: scale-down;
-    opacity: 0.3;
-}
-
-.container-mercadopago-footer {
-    width: 33%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.pago-seguro {
-    height: 14px;
-    object-fit: scale-down;
-}
-
-.mercadopago {
-    height: 20px;
-    object-fit: scale-down;
-    margin-left: 6%;
-    opacity: 0.4;
-}
-
-.contacto-small {
-    display: none;
-}
-
-/****************** Media Queries ************************/
-
-/****************** Ajuste Header ************************/
-
-@media (max-width: 1080px) {
-    .container-header {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .container-navegacion-header {
-        display: none;
-    }
-
-    .container-buscador  {
-        display: none;
-    }
-
-    .container-acciones-header {
-        display: none;
-    }
-
-    .container-carrito {
-        display: none;
-    }
-
-    .cantidad-carrito {
-        visibility: hidden;
-    }
-
-    .container-small {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 180px;
-        font-size: 1.3em;
-    }
-
-    .container-buscador-small {
-        cursor: pointer;
-        margin-right: 5%;
-    }
-
-    .container-acciones-header-small {
-        cursor: pointer;
-        margin-right: 5%;
-    }
-
-    .fa-user {
-        color: var(--azulreegalo);
-        cursor: pointer;
-    }
-
-    .fa-user:hover {
-        color: var(--azulregalostrong)
-    }
-
-    .container-carrito-small {
-        cursor: pointer;
-        margin-right: 5%;
-    }
-
-    .menu-hamburguesa {
-        cursor: pointer;
-        margin-right: 5%;
-    }
-
-    .fa-bars {
-        color: black;
-        cursor: pointer;
-    }
-
-    div.indicador {
-        font-size: 1.5em;
-    }
-
-    div.detalle-carrito {
-        font-size: 0.8em;
-    }
-
-    section.recomendados {
-        font-size: 0.8em;
-    }
-
-    footer.footer {
-        font-size: 0.8em;
-    }
-}
-
-/****************** Tablet ************************/
-
-@media (max-width: 992px) {
-
-    div.container-producto {
-        width: 768px;
-    }
-
-    footer.footer {
-        font-size: 0.7em;
-    }
-
-    .logo-footer {
-        width: 100px;
-    }
-
-    .pago-seguro {
-        height: 10px;
-    }
-
-    .mercadopago {
-        height: 15px;
-    }
-}
-
-/****************** Mobile L ************************/
-
-@media (max-width: 425px) {
-    .logo {
-        display: none;
-    }
-
-    .logo-mini {
-        display: flex;
-    }
-
-
-    div.container-producto{
-        margin: 3% 2%;
-    }
-    .boton-producto {
-        width: 100%;
-        font-size: 1em;
-    }
-    
-
-    .boton-google {
-        width: 100%;
-        font-size: 1em;
-    }
-        
-    .boton-facebook {
-        width: 100%;
-        font-size: 1em;
-    }
-
-    .bottom-navigation,
-    .social-media,
-    .container-mercadopago-footer,
-    .contacto {
-        display: none;
-    }
-
-    .contacto-small {
-        display: block;
-        font-size: 1.3em;
-        margin: 2%;
-    }
-
-    .texto-contacto-small {
-        font-family: Montserrat-Bold;
-    }
-
-    .datos-contacto-small {
-        margin-top: 2%;
-        font-size: 0.8em;
-    }
-
-    .bottom-footer {
-        justify-content: center;
-    }
-
-    .container-logo-footer {
-        margin-top: 2%;
-    }
-}
-
-/****************** Mobile S ************************/
+/* Mobile S  */
 
 @media (max-width: 320px) {
-    .logo {
-        display: none;
-    }
-
-    .logo-mini {
-        display: flex;
-    }
     
     p.titulo-producto {
         font-size: 1em;
@@ -677,111 +188,103 @@ footer div nav a {
         font-size: 1.5em;
     }
 
-    .boton-producto, .boton-google, .boton-facebook {
+    .boton-producto {
         width: 100%;
         font-size: 0.7em;
         height: 40px;
     }
-    
+}
 
+/* Mobile L */
 
-    .bottom-navigation,
-    .social-media,
-    .container-mercadopago-footer,
-    .contacto {
-        display: none;
+@media (max-width: 425px) {
+
+    div.container-producto{
+        margin: 3% 2%;
     }
 
-    .contacto-small {
-        display: block;
-        font-size: 1.3em;
-        margin: 2%;
-    }
-
-    .texto-contacto-small {
-        font-family: Montserrat-Bold;
-    }
-
-    .datos-contacto-small {
-        margin-top: 2%;
-        font-size: 0.8em;
-    }
-
-    .bottom-footer {
-        justify-content: center;
-    }
-
-    .container-logo-footer {
-        margin-top: 2%;
+    .boton-producto {
+        width: 100%;
+        font-size: 1em;
     }
 }
 
-/****************** Mobile L ************************/
+/* Mobile L  */
 
 @media (max-width: 764px) {
 
-/****************** Formulario Alta producto ************************/
+    p.titulo-producto {
+        font-size: 1.2em; 
+    }
 
-p.titulo-producto {
-    font-size: 1.2em; 
+    .form-linea-texto {
+        margin: 2% 4% 0% 4%;
+        flex-direction:column;
+        align-items: flex-start;
+    }
+
+    .linea-compartida {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .form-linea-compartida-1 {
+        width: 100%;
+    }
+
+    .form-linea-compartida-2 {
+        width: 100%;
+        margin-top: 2%;
+    }
+
+    .form-label {
+        font-size: 0.8em;
+    }
+
+    .form-label-compartido {
+        font-size: 0.8em;
+    }
+
+    .form-input {
+        width: 100%;
+        font-size: 0.8em;
+    }
+
+    .form-input-compartido {
+        font-size: 0.8em;
+    }
+
+    .form-input-imagen {
+        font-size: 0.8em;
+    }
+
+    button {
+        font-size: 1em;
+    }
+
+    textarea.form-input {
+        width: 100%;
+    }
+
+    .imagen-producto-contenedor {
+        width: 50%;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .imagen-producto {
+        width:100%;
+        margin: 3% 0.5% 0% 0.5%;
+    }
+
 }
 
-.form-linea-texto {
-    margin: 2% 4% 0% 4%;
-    flex-direction:column;
-    align-items: flex-start;
-}
+/* Tablet  */
 
-.linea-compartida {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
+@media (max-width: 992px) {
 
-.form-linea-compartida-1 {
-    width: 100%;
-}
-
-.form-linea-compartida-2 {
-    width: 100%;
-    margin-top: 2%;
-}
-
-.form-label {
-    font-size: 0.8em;
-}
-
-.form-label-compartido {
-    font-size: 0.8em;
-}
-
-.form-input {
-    width: 100%;
-    font-size: 0.8em;
-}
-
-.form-input-compartido {
-    font-size: 0.8em;
-}
-
-.form-input-imagen {
-    font-size: 0.8em;
-}
-
-button {
-    font-size: 1em;
-}
-
-textarea.form-input {
-    width: 100%;
-}
-
-.imagen-producto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
-    padding: 0%;
-}
-
+    div.container-producto {
+        width: 768px;
+    }
 }
