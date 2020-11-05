@@ -9,7 +9,7 @@
     "last-login": "4/30/2020",
     "last-date-password": "6/23/2019",
     "language": "Luxembourgish",
-    "county": "France",
+    "country": "France",
     "brday": "7/25/2019",
     "residence": "0 Kedzie Hill"
   }, {
@@ -23,7 +23,7 @@
     "last-login": "8/22/2019",
     "last-date-password": "4/7/2020",
     "language": "Tajik",
-    "county": "Australia",
+    "country": "Australia",
     "brday": "7/23/2019",
     "residence": "28 Shasta Way"
   }, {
@@ -37,7 +37,7 @@
     "last-login": "11/29/2019",
     "last-date-password": "6/22/2019",
     "language": "German",
-    "county": "China",
+    "country": "China",
     "brday": "11/8/2019",
     "residence": "1395 Briar Crest Road"
   }, {
@@ -51,7 +51,7 @@
     "last-login": "12/4/2019",
     "last-date-password": "1/8/2020",
     "language": "Bislama",
-    "county": "Nigeria",
+    "country": "Nigeria",
     "brday": "10/10/2019",
     "residence": "619 Montana Pass"
   }, {
@@ -65,7 +65,7 @@
     "last-login": "9/25/2019",
     "last-date-password": "5/18/2019",
     "language": "Icelandic",
-    "county": "Portugal",
+    "country": "Portugal",
     "brday": "8/7/2019",
     "residence": "8 Rieder Place"
   }, {
@@ -79,7 +79,7 @@
     "last-login": "3/29/2020",
     "last-date-password": "7/31/2019",
     "language": "Italian",
-    "county": "Brazil",
+    "country": "Brazil",
     "brday": "3/13/2020",
     "residence": "6 Elgar Plaza"
   }, {
@@ -93,7 +93,7 @@
     "last-login": "2/23/2020",
     "last-date-password": "7/21/2019",
     "language": "Dzongkha",
-    "county": "Sweden",
+    "country": "Sweden",
     "brday": "12/23/2019",
     "residence": "65588 Shopko Crossing"
   }, {
@@ -107,7 +107,7 @@
     "last-login": "12/16/2019",
     "last-date-password": "2/8/2020",
     "language": "Japanese",
-    "county": "Armenia",
+    "country": "Armenia",
     "brday": "1/22/2020",
     "residence": "502 Weeping Birch Terrace"
   }, {
@@ -121,7 +121,7 @@
     "last-login": "10/8/2019",
     "last-date-password": "2/2/2020",
     "language": "Malayalam",
-    "county": "United States",
+    "country": "United States",
     "brday": "10/28/2019",
     "residence": "32440 Burning Wood Drive"
   }, {
@@ -135,7 +135,7 @@
     "last-login": "6/14/2019",
     "last-date-password": "9/3/2019",
     "language": "Lithuanian",
-    "county": "Palestinian Territory",
+    "country": "Palestinian Territory",
     "brday": "7/20/2019",
     "residence": "321 Rieder Trail"
   }, {
@@ -149,7 +149,7 @@
     "last-login": "11/25/2019",
     "last-date-password": "7/29/2019",
     "language": "Aymara",
-    "county": "France",
+    "country": "France",
     "brday": "12/6/2019",
     "residence": "4 Cherokee Junction"
   }, {
@@ -163,7 +163,7 @@
     "last-login": "3/4/2020",
     "last-date-password": "7/11/2019",
     "language": "Bulgarian",
-    "county": "Greece",
+    "country": "Greece",
     "brday": "7/6/2019",
     "residence": "5661 Eagle Crest Parkway"
   }, {
@@ -177,7 +177,7 @@
     "last-login": "11/22/2019",
     "last-date-password": "5/4/2019",
     "language": "Catalan",
-    "county": "Kazakhstan",
+    "country": "Kazakhstan",
     "brday": "10/10/2019",
     "residence": "8 Golden Leaf Place"
   }, {
@@ -191,7 +191,7 @@
     "last-login": "10/13/2019",
     "last-date-password": "8/29/2019",
     "language": "Greek",
-    "county": "Denmark",
+    "country": "Denmark",
     "brday": "6/1/2019",
     "residence": "98457 Nelson Hill"
   }, {
@@ -205,7 +205,7 @@
     "last-login": "7/1/2019",
     "last-date-password": "5/6/2019",
     "language": "Malay",
-    "county": "Indonesia",
+    "country": "Indonesia",
     "brday": "1/10/2020",
     "residence": "6317 Golf Parkway"
   }, {
@@ -219,7 +219,7 @@
     "last-login": "6/6/2019",
     "last-date-password": "10/28/2019",
     "language": "Maltese",
-    "county": "Tanzania",
+    "country": "Tanzania",
     "brday": "6/28/2019",
     "residence": "3 Towne Alley"
   }, {
@@ -233,7 +233,7 @@
     "last-login": "5/23/2019",
     "last-date-password": "11/5/2019",
     "language": "West Frisian",
-    "county": "Philippines",
+    "country": "Philippines",
     "brday": "5/14/2019",
     "residence": "0 East Street"
   }, {
@@ -247,7 +247,7 @@
     "last-login": "7/17/2019",
     "last-date-password": "12/6/2019",
     "language": "Italian",
-    "county": "Philippines",
+    "country": "Philippines",
     "brday": "10/26/2019",
     "residence": "1 Vidon Alley"
   }, {
@@ -261,7 +261,7 @@
     "last-login": "10/22/2019",
     "last-date-password": "6/26/2019",
     "language": "Georgian",
-    "county": "Western Sahara",
+    "country": "Western Sahara",
     "brday": "9/16/2019",
     "residence": "43669 Bonner Lane"
   }, {
@@ -275,7 +275,7 @@
     "last-login": "9/25/2019",
     "last-date-password": "6/15/2019",
     "language": "Lithuanian",
-    "county": "Russia",
+    "country": "Russia",
     "brday": "4/18/2020",
     "residence": "465 4th Circle"
   }]

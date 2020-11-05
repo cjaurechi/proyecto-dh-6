@@ -1,1 +1,31 @@
-[{"id":9,"name":"Salidas Exclusivas ","description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit non officiis consectetur ex. Exercitationem, velit non consectetur accusamus quaerat omnis ducimus culpa aliquam dolore earum provident sint, expedita recusandae. Rem!","category":"5","creation_user":"","creation_date":"","supplier":"10","price":"10.50","discount":"5","life_date_from":"2020-11-04","life_date_to":"2020-12-31","stock":"9","state":"Habilitado"},{"id":10,"name":"Visita guiada a Avellaneda","description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit non officiis consectetur ex. Exercitationem, velit non consectetur accusamus quaerat omnis ducimus culpa aliquam dolore earum provident sint, expedita recusandae. Rem!\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Sit non officiis consectetur ex. Exercitationem, velit non consectetur accusamus quaerat omnis ducimus culpa aliquam dolore earum provident sint, expedita recusandae. Rem!\r\n","category":"5","creation_date":"4/11/2020","supplier":"10","price":"150","discount":"5","life_date_from":"2020-11-04","life_date_to":"2020-12-31","stock":"12","state":"Habilitado"}]
+[
+    {
+        "id": 9,
+        "name": "Salidas Exclusivas ",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit non officiis consectetur ex. Exercitationem, velit non consectetur accusamus quaerat omnis ducimus culpa aliquam dolore earum provident sint, expedita recusandae. Rem!",
+        "category": "5",
+        "creation_user": "",
+        "creation_date": "",
+        "supplier": "10",
+        "price": "10.50",
+        "discount": "5",
+        "life_date_from": "2020-11-04",
+        "life_date_to": "2020-12-31",
+        "stock": "9",
+        "state": "Habilitado"
+    },
+    {
+        "id": 10,
+        "name": "Visita guiada a Avellaneda",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit non officiis consectetur ex. Exercitationem, velit non consectetur accusamus quaerat omnis ducimus culpa aliquam dolore earum provident sint, expedita recusandae. Rem!\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Sit non officiis consectetur ex. Exercitationem, velit non consectetur accusamus quaerat omnis ducimus culpa aliquam dolore earum provident sint, expedita recusandae. Rem!\r\n",
+        "category": "5",
+        "creation_date": "4/11/2020",
+        "supplier": "10",
+        "price": "150",
+        "discount": "5",
+        "life_date_from": "2020-11-04",
+        "life_date_to": "2020-12-31",
+        "stock": "12",
+        "state": "Habilitado"
+    }
+]
