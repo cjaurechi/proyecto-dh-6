@@ -13,4 +13,7 @@ router.get('/', indexController.home);
 /*** NOSOTROS ***/
 router.get('/nosotros', indexController.nosotros);
 
+/*** CONTACTO ***/
+router.get('/contacto', indexController.contacto);
+
 module.exports = router;

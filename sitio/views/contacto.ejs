@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head.ejs", {title: "Reegalo - Contacto"}) %>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+
+<body>
+
+    <!-- Header del Sitio -->
+
+    <%- include("./partials/header.ejs") %>
+
+    <section>
+        <div class="container-contacto">
+            <div class="texto-contacto">
+
+                <h1>Contactanos</h1>
+                <p> Si tenes alguna duda llamanos al +54 911 1234-5678 o escribinos al info@reegalo.com.ar.</p>
+                <p> Completa el siguiente formulario con tus datos para que podamos ayudarte</p>
+                
+            </div>
+            <div class="contacto"> 
+                <form class="form-contacto" >
+                    <div class="container-email-consulta">
+                        
+                        <input type="email" name="email" id="email" placeholder="Coreo electrónico">
+                    </div>
+                    <div class="container-nombre-consulta">
+                        
+                        <input type="text" name="name-consulta" id="text" placeholder="Nombre y Apellido">
+                    </div>
+                    <div class="container-descripcion-consulta">
+                        
+                        <input type="text" name="descripcion-consulta" id="consulta"
+                            placeholder="Consulta">
+                    </div>
+                    
+                    <div class="boton-consultar">
+                        <button type=“submit”>Continuar</button>
+                    </div>
+                </div>
+           
+           
+        </div>
+    </section>
+
+    
+
+    
+
+    <!-- Footer del Sitio -->
+
+    <%- include("./partials/footer.ejs") %>
+
+</body>
+
+</html>
