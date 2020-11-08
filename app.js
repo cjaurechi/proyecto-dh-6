@@ -26,10 +26,12 @@ app.set('views', path.join(__dirname, '/views'));
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
+const cartRouter = require('./routes/cart')
 
 app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
 app.use('/productos', productsRouter);
+app.use('/carrito', cartRouter);
 
 // ********** NO TOCAR A PARTIR DE ACÁ **********
 // ********** Para errores 404 **********
