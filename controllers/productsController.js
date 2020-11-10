@@ -16,9 +16,9 @@ let suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
 
 const controller = {
 
-    // Carrito de compra
-    productCart: (req, res) => {
-        res.render('products/productCart');
+    // Listado de productos
+    productList: (req, res) => {
+        res.render('products/productList');
     },
 
     // Detalle de producto

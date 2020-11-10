@@ -19,6 +19,9 @@ var upload = multer({storage : storage})
 // ********** Require de Controladores **********
 const productsController = require('../controllers/productsController');
 
+/*** LISTADO DE PRODUCTOS ***/
+router.get('/', productsController.productList);
+
 /*** DETALLE DE PRODUCTO ***/
 router.get('/detalle/', productsController.productDetail);
 
