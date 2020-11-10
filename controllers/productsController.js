@@ -70,18 +70,17 @@ const controller = {
 			let products_category = products.filter(function(item){
 				return (req.params.id == item.category);
 			})
-	console.log(products_category)
+
 			let category = categories.find(function(item){
 				return (req.params.id == item.id)
 			})
-	console.log(category)
+
 			for (let i = 0; i < products_category.length;i++) {
 				let product_image = products_images.find(function(item){
 					return (products_category[i].id == item.id && item.number == 0);
 				})
 				products_category[i].main_image = product_image.image
 			}
-			console.log(products_category)
 
 			res.render("products/productList",{products_category : products_category, category : category});
 	
