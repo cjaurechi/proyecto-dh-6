@@ -18,15 +18,24 @@ const controller = {
     res.render('index', {categories:categories, products:products});
   },
 
+  // Nosotros
+
   nosotros: (req, res) => {
     res.render('nosotros', {categories: categories});
   },
+
+  // Contacto
 
   contacto: (req, res) => {
     res.render('contacto');
   },
   comoregalar: (req, res) => {
-    res.render('comoregalar');
+    res.render('comoregalar'),
+
+  // Test
+
+  getTest: (req, res) => {
+    res.render('test');
   }
 
 }
