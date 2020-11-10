@@ -213,31 +213,33 @@ header nav a {
 
 .banner{
   width: 100%;
-  height: 380px;
+  height: 300px;
 }
 
 .banner-letters{
-  position: absolute;
-  top: 40%;
-  font-size: 3em;
+  box-sizing: border-box;
+  font-size: 2em;
   color: white;
   padding-left: 5%;
   font-family: 'Montserrat-SemiBold';
+  padding: 8%;
 }
 
 
 /* Categorias */
 
 div.categorias {
-  width: 100%;
+  
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
               
 div.categoria-regalo {
-  width: 16%;
-  height: 70px;
-  
+ width: 180px;
+ height: 70px;
+ margin: 1%;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -266,16 +268,25 @@ div.categoria-regalo {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
+  
 }
 
 .ficha-regalo{
+  background-color: white;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: stretch;
   text-align: center;
   padding:1%;
-  flex-grow: 1;
-  flex-basis: 0;
+  
+
+
+    
+    
+    
 }
 
 .caract-regalo{
@@ -293,18 +304,19 @@ div.categoria-regalo {
 }
 
 .titulo-regalo{
+  font-family: Montserrat-SemiBold;
   font-size: 1em;
   color: black;
-  padding: 2vh 0;
+  padding: 3vh 0;
+  height: 80px;
   text-align: left;
 }
 
 .detalle-regalo{
   font-size: 1em;
   color: gray;
-  padding: 2vh 0;
-  margin-bottom: 20%;
   text-align: left;
+  height: 280px;
 }
 
 .puntuacion-regalo{
@@ -809,9 +821,8 @@ button:hover {
     height: 250px;
   }
   .banner-letters{
-    position: absolute;
-    top: 40%;
-    font-size: 1.5em;
+    
+    font-size: 2em;
     color: white;
     padding-left: 5%;
     font-family: 'Montserrat-SemiBold';
@@ -986,8 +997,9 @@ div.categoria-regalo  {
 
   
 .banner-letters{
-    position: absolute;
-    top: 40%;
+    
+    box-sizing: border-box;
+    
     font-size: 1.5em;
     color: white;
     padding-left: 5%;
