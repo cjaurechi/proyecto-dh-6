@@ -29,8 +29,9 @@ const controller = {
   contacto: (req, res) => {
     res.render('contacto');
   },
+
   comoregalar: (req, res) => {
-    res.render('comoregalar'),
+    res.render('comoregalar');},
 
   // Test
 
