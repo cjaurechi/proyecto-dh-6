@@ -22,35 +22,30 @@ let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
-    // Listado de productos
-    productList: (req, res) => {
-        res.render('products/productList');
-    },
+	// Detalle de producto
+	productDetail: (req, res) => {
 
-    // Detalle de producto
-    productDetail: (req, res) => {
-
-		let product = products.find(function(item){
+		let product = products.find(function (item) {
 			return (req.params.id == item.id);
 		})
 
-		let category = categories.find(function(item){
+		let category = categories.find(function (item) {
 			return (product.category == item.id)
 		})
 
-		product_images = products_images.filter(function(item) {
+		product_images = products_images.filter(function (item) {
 			return (req.params.id == item.id)
 		})
 
-		product_comments = comments.filter(function(item) {
+		product_comments = comments.filter(function (item) {
 			return (req.params.id == item.product_id)
 		})
 
 		let cantidad_comentarios = 0
 		let suma_calificacion = 0
 
-		for (let i = 0; i < product_comments.length;i++) {
-			let user = users.find(function(item){
+		for (let i = 0; i < product_comments.length; i++) {
+			let user = users.find(function (item) {
 				return (product_comments[i].user_id == item.id);
 			})
 			product_comments[i].user_description = user.first_name
@@ -60,126 +55,126 @@ const controller = {
 
 		let promedio_calificacion = suma_calificacion / cantidad_comentarios
 
-		res.render("products/productDetail",{product : product,category : category,product_images : product_images,product_comments : product_comments, cantidad_comentarios : cantidad_comentarios, promedio_calificacion : promedio_calificacion});
+		res.render("products/productDetail", { product: product, category: category, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
 
 	},
-	
-	    // Detalle de producto
-		productList: (req, res) => {
 
-			let products_category = products.filter(function(item){
-				return (req.params.id == item.category);
+	// Detalle de producto
+	productList: (req, res) => {
+
+		let products_category = products.filter(function (item) {
+			return (req.params.id == item.category);
+		})
+
+		let category = categories.find(function (item) {
+			return (req.params.id == item.id)
+		})
+
+		for (let i = 0; i < products_category.length; i++) {
+			let product_image = products_images.find(function (item) {
+				return (products_category[i].id == item.id && item.number == 0);
 			})
+			products_category[i].main_image = product_image.image
+		}
 
-			let category = categories.find(function(item){
-				return (req.params.id == item.id)
-			})
+		res.render("products/productList", { products_category: products_category, category: category });
 
-			for (let i = 0; i < products_category.length;i++) {
-				let product_image = products_images.find(function(item){
-					return (products_category[i].id == item.id && item.number == 0);
-				})
-				products_category[i].main_image = product_image.image
-			}
+	},
 
-			res.render("products/productList",{products_category : products_category, category : category});
-	
-		},
-
-    // Formulario de creacion
+	// Formulario de creacion
 	create: (req, res) => {
 
-		suppliers = suppliers.filter(function(item) {
+		suppliers = suppliers.filter(function (item) {
 			return (item.status == 'Habilitado')
 		})
 
-		res.render("products/productCreateForm",{categories : categories,suppliers : suppliers});
+		res.render("products/productCreateForm", { categories: categories, suppliers: suppliers });
 	},
-	
+
 	// Alta de producto
 	store: (req, res, next) => {
-		
-		for (let i = 0; i< req.files.length;i++) {
+
+		for (let i = 0; i < req.files.length; i++) {
 			var product_image = ""
 			if (req.files[i] !== undefined) {
 				product_image = req.files[i].filename
 			}
-			products_images.push ({
-				id : products[products.length-1].id + 1,
-				image : product_image,
-				number : i,
+			products_images.push({
+				id: products[products.length - 1].id + 1,
+				image: product_image,
+				number: i,
 			})
 		}
 
 		let archivo = JSON.stringify(products_images);
-		fs.writeFileSync (productsImagesFilePath,archivo);
+		fs.writeFileSync(productsImagesFilePath, archivo);
 
 		fecha_actual = new Date()
 
-		products.push ({
-			id : products[products.length-1].id + 1,
-			name : req.body.name,
-			description : req.body.description,
-			category : req.body.category,
-			creation_user : req.body.user,
-			creation_date : fecha_actual.getDate() + "/" + (fecha_actual.getMonth() +1) + "/" + fecha_actual.getFullYear(),
-			supplier : req.body.supplier,
-			price : req.body.price,
-			discount : req.body.discount,
-			life_date_from : req.body.life_date_from,
-			life_date_to : req.body.life_date_to,
-			stock : req.body.stock,
-			state : req.body.status,
+		products.push({
+			id: products[products.length - 1].id + 1,
+			name: req.body.name,
+			description: req.body.description,
+			category: req.body.category,
+			creation_user: req.body.user,
+			creation_date: fecha_actual.getDate() + "/" + (fecha_actual.getMonth() + 1) + "/" + fecha_actual.getFullYear(),
+			supplier: req.body.supplier,
+			price: req.body.price,
+			discount: req.body.discount,
+			life_date_from: req.body.life_date_from,
+			life_date_to: req.body.life_date_to,
+			stock: req.body.stock,
+			state: req.body.status,
 		});
 
 		archivo = JSON.stringify(products);
-		fs.writeFileSync (productsFilePath,archivo);
+		fs.writeFileSync(productsFilePath, archivo);
 		res.redirect("/productos/crear");
 	},
 
 	// Formulario de modificacion
 	edit: (req, res) => {
 
-		let product = products.find(function(item){
+		let product = products.find(function (item) {
 			return (req.params.id == item.id);
 		})
 
-		suppliers = suppliers.filter(function(item) {
+		suppliers = suppliers.filter(function (item) {
 			return (item.status == 'Habilitado')
 		})
 
-		product_images = products_images.filter(function(item) {
+		product_images = products_images.filter(function (item) {
 			return (req.params.id == item.id)
 		})
 
-		res.render("products/productEditForm",{product : product,categories : categories,suppliers : suppliers, product_images : product_images});
+		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images });
 	},
 
 	// Modificacion de producto
 	update: (req, res, next) => {
 
 		if (req.files[0] !== undefined) {
-			products_images = products_images.filter(function(item) {
+			products_images = products_images.filter(function (item) {
 				return (item.id != req.params.id)
 			})
 
-			for (let i = 0; i< req.files.length;i++) {
+			for (let i = 0; i < req.files.length; i++) {
 				var product_image = ""
 				if (req.files[i] !== undefined) {
 					product_image = req.files[i].filename
 				}
-				products_images.push ({
-					id : req.params.id,
-					image : product_image,
-					number : i,
+				products_images.push({
+					id: req.params.id,
+					image: product_image,
+					number: i,
 				})
 			}
 		}
 
 		let archivo = JSON.stringify(products_images);
-		fs.writeFileSync (productsImagesFilePath,archivo);
+		fs.writeFileSync(productsImagesFilePath, archivo);
 
-		products.forEach (function(item) {
+		products.forEach(function (item) {
 			if (item.id == req.params.id) {
 				item.name = req.body.name;
 				description = req.body.description;
@@ -199,7 +194,7 @@ const controller = {
 		});
 
 		archivo = JSON.stringify(products);
-		fs.writeFileSync (productsFilePath,archivo);
+		fs.writeFileSync(productsFilePath, archivo);
 
 		res.redirect("/");
 	},
