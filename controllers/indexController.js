@@ -12,12 +12,22 @@ const controller = {
     res.render('index');
   },
 
+  // Nosotros
+
   nosotros: (req, res) => {
     res.render('nosotros', {categories: categories});
   },
 
+  // Contacto
+
   contacto: (req, res) => {
     res.render('contacto');
+  },
+
+  // Test
+
+  getTest: (req, res) => {
+    res.render('test');
   }
 
 }
