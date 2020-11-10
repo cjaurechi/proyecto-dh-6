@@ -14,6 +14,12 @@ const categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
 const suppliersFilePath = path.join(__dirname, '../data/suppliersDataBase.json');
 let suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
 
+const commentsFilePath = path.join(__dirname, '../data/commentsDataBase.json');
+let comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
+
+const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
 const controller = {
 
     // Carrito de compra
@@ -23,8 +29,63 @@ const controller = {
 
     // Detalle de producto
     productDetail: (req, res) => {
-        res.render('products/productDetail');
-    },
+
+		let product = products.find(function(item){
+			return (req.params.id == item.id);
+		})
+
+		let category = categories.find(function(item){
+			return (product.category == item.id)
+		})
+
+		product_images = products_images.filter(function(item) {
+			return (req.params.id == item.id)
+		})
+
+		product_comments = comments.filter(function(item) {
+			return (req.params.id == item.product_id)
+		})
+
+		let cantidad_comentarios = 0
+		let suma_calificacion = 0
+
+		for (let i = 0; i < product_comments.length;i++) {
+			let user = users.find(function(item){
+				return (product_comments[i].user_id == item.id);
+			})
+			product_comments[i].user_description = user.first_name
+			cantidad_comentarios += 1
+			suma_calificacion = suma_calificacion + product_comments[i].calification
+		}
+
+		let promedio_calificacion = suma_calificacion / cantidad_comentarios
+
+		res.render("products/productDetail",{product : product,category : category,product_images : product_images,product_comments : product_comments, cantidad_comentarios : cantidad_comentarios, promedio_calificacion : promedio_calificacion});
+
+	},
+	
+	    // Detalle de producto
+		productList: (req, res) => {
+
+			let products_category = products.filter(function(item){
+				return (req.params.id == item.category);
+			})
+	console.log(products_category)
+			let category = categories.find(function(item){
+				return (req.params.id == item.id)
+			})
+	console.log(category)
+			for (let i = 0; i < products_category.length;i++) {
+				let product_image = products_images.find(function(item){
+					return (products_category[i].id == item.id && item.number == 0);
+				})
+				products_category[i].main_image = product_image.image
+			}
+			console.log(products_category)
+
+			res.render("products/productList",{products_category : products_category, category : category});
+	
+		},
 
     // Formulario de creacion
 	create: (req, res) => {

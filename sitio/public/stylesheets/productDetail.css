@@ -63,15 +63,17 @@ img {
 .producto_categoria {
   font-size: 1.2em;
   padding: 1%;
+  font-weight: bold;
 }
 
 .informacion_producto_1 {
-  font-size: 1,2em;
-  padding: 1%;
+  font-size: 1.5em;
+  padding: 2%;
   text-align: left;
   font-weight: normal;
-  color: gray;
+  color: var(--negro);
   line-height: 1.8em;
+  font-weight: bold;
 }
 
 .texto_producto {
@@ -209,12 +211,14 @@ img {
   font-weight: lighter;
   font-size: 1.2em;
   padding-left: 2%;
+  font-weight: bold;
 }
 
 .opiniones_texto_chico {
   font-weight: lighter;
   font-size: 1em;
   line-height: 1em;
+  font-weight: bold;
 }
 
 .texto_informacion {
@@ -226,7 +230,7 @@ img {
 .precio {
   width: 100%;
   height:50px;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: bold;
   color: var(--azulresumen);
   display:flex;
@@ -236,17 +240,18 @@ img {
 }
 
 .texto_precio {
-  font-size: 1.1em;
+  font-size: 1.5em;
   font-weight: bold;
   color: var(--azulresumen);
   margin: 0% 4%;
 } 
 
-.texto_ver_cuotas {
-  font-size: 0.6em;
+.texto_ver_cuotas,.formas_envios {
+  font-size: 0.8em;
   color: var(--azulresumen);
   text-decoration: none;
   margin: 0% 4%;
+  font-weight: bold;
 }
 
 .envios {
@@ -263,6 +268,7 @@ img {
 .texto_envios {
   font-weight: normal;
   color: var(--negro);
+  font-weight:bold;
 } 
 
 .imagenes_envio {
@@ -381,6 +387,7 @@ img {
 .texto_ubicacion {
   font-size: 1.2em;
   padding-left: 1%;
+  font-weight: bold;
 }
 
 .contenedor_mapa {
@@ -416,19 +423,22 @@ img {
 }
 
 .opiniones_titulo, .opiniones_total, .opiniones_promedio {
-  font-size: 1.2em;
+  font-size: 1.4em;
   padding-right: 1%;
+  font-weight: bold;
 }
 
 .opiniones_total {
   color:gray;
   font-size: 1.1em;
+  font-weight: bold;
 }
 
 .usuario {
   font-size:1em;
   color: var(--azulreegalo);
   padding-right:1%;
+  font-weight: bold;
 }
 
 .fas.fa-star, .far.fa-star, .fas.fa-star-half-alt {
@@ -448,12 +458,14 @@ img {
   justify-content: flex-start;
   color: var(--azulreegalo);
   margin: 1% 0%;
+  font-size: 1.2em;
 }  
 
 .comentario {
   font-weight: normal;
   color: gray;
-  font-size: 0.8em;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .estrellas {
@@ -474,6 +486,7 @@ img {
   width: 100%;
   color: var(--azulreegalo);
   text-decoration: none;
+  font-weight: bold;
 }
 
 /* Queries Media */
@@ -666,4 +679,4 @@ img {
     justify-content: flex-end;
   }
 }
- 
+  

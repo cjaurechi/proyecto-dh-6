@@ -23,7 +23,10 @@ const productsController = require('../controllers/productsController');
 router.get('/carrito/', productsController.productCart);
 
 /*** DETALLE DE PRODUCTO ***/
-router.get('/detalle/', productsController.productDetail);
+router.get('/:id/detalle', productsController.productDetail);
+
+/*** LISTA DE PRODUCTO ***/
+router.get('/:id/listar', productsController.productList);
 
 /*** CREAR UN PRODUCTO ***/ 
 router.get('/crear', productsController.create); 

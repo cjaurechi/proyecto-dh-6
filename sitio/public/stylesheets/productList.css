@@ -1,0 +1,133 @@
+/* Listado de productos */
+
+  .principal {
+    padding: 1%;
+    background-color: var(--blanco);
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 2px 2px 14px 2px;
+}
+
+.indicador {
+  background-color: var(--gris);
+  padding: 1%;
+  width: 100%;
+  font-size: 30px;
+  font-family: Montserrat-SemiBold;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.fas.fa-arrow-left {
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detalle_producto {
+  font-size: 0.6em;
+  font-family: Montserrat-Regular;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.products-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: var(--gris);
+  }
+  
+  .product-box {
+    background-color: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 300ms;
+    margin: 20px 0;
+  }
+  
+  .product-box a {
+    display: block;
+    text-decoration: none;
+  }
+  
+  .product-box_image {
+    border-bottom: 1px solid var(--grisfondo);
+  }
+  
+  .product-box_data {
+    padding: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .product-box_data h3 {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+    font-weight: bold;
+    color: var(--azulresumen);
+  }
+  
+  .product-box_data span {
+    font-size: 0.9em;
+    font-weight: 300;
+    color: var(--verdedescuento);
+    font-weight: bold;
+    margin: 0 0 0 10px;
+    text-decoration:line-through;
+  }
+  
+  .product-box_data p {
+    font-size: 0.9em;
+    width: 100%;
+    color: var(--negro);
+    margin: 0;
+    height: 0;
+    transition: 300ms;
+    overflow: hidden;
+  }
+  
+  .product-box_data i {
+    color: var(--azulreegalo);
+    font-size: 1.1em;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border: solid 1px;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    right: 15px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
+  }
+  
+  .product-box:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .product-box:hover p {
+    height: 40px;
+    margin-top: 15px;
+  }
+  
+  .product-box:hover i {
+    transform: rotate(360deg);
+    box-shadow: 0 0 5px var(--azulreegalo);
+  }
+
