@@ -35,5 +35,6 @@ router.post('/',upload.any(), productsController.store);
 /*** MODIFICAR UN PRODUCTO ***/ 
 router.get('/:id/editar', productsController.edit); 
 router.put('/:id/editar',upload.any(), productsController.update); 
+router.delete('/:id/borrar', productsController.delete); 
 
 module.exports = router;

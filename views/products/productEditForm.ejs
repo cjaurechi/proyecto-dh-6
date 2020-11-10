@@ -20,10 +20,12 @@
                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
             </div>
 
-            <form action="/productos/<%= product.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data" class="form-producto">
+            <form action="/productos/<%= product.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data"
+                class="form-producto">
                 <div class="form-linea-texto">
                     <label for="name" class="form-label">Nombre:</label>
-                    <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto" value="<%= product.name %>" class="form-input">
+                    <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto"
+                        value="<%= product.name %>" class="form-input">
                 </div>
 
                 <div class="form-linea-texto">
@@ -31,7 +33,8 @@
                     <select name="supplier" id="supplier" class="form-input">
                         <option value="">Elegí</option>
                         <% suppliers.find (function(item) { %>
-                        <option value="<%= item.id%>" <% if (product.supplier==item.id) {%> Selected <% } %>><%= item.description%></option>
+                        <option value="<%= item.id%>" <% if (product.supplier==item.id) {%> Selected <% } %>>
+                            <%= item.description%></option>
                         <% }) %>
                     </select>
                 </div>
@@ -39,11 +42,13 @@
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">
                         <label for="price" class="form-label-compartido">Precio:</label>
-                        <input type="text" id="price" name="price" placeholder="Ej: 5678" value="<%= product.price %>" class="form-input-compartido">
+                        <input type="text" id="price" name="price" placeholder="Ej: 5678" value="<%= product.price %>"
+                            class="form-input-compartido">
                     </div>
                     <div class="form-linea-compartida-2">
                         <label for="discount" class="form-label-compartido">Descuento:</label>
-                        <input type="text" id="discount" name="discount" placeholder="Ej: 15" value="<%= product.discount %>" class="form-input-compartido">
+                        <input type="text" id="discount" name="discount" placeholder="Ej: 15"
+                            value="<%= product.discount %>" class="form-input-compartido">
                     </div>
                 </div>
                 <div class="linea-compartida">
@@ -52,35 +57,39 @@
                         <select name="category" id="category" class="form-input-compartido">
                             <option value="">Elegí</option>
                             <% categories.find (function(item) { %>
-                            <option value="<%= item.id%>" <% if (product.category==item.id) {%> Selected <% } %>><%= item.description%></option>
+                            <option value="<%= item.id%>" <% if (product.category==item.id) {%> Selected <% } %>>
+                                <%= item.description%></option>
                             <% }) %>
                         </select>
                     </div>
                     <div class="form-linea-compartida-2">
                         <label for="Imagen" class="form-label-compartido">Imagen:</label>
-                        <input type="file" id="image" name="image"  multiple="multiple"  class="form-input-imagen">
+                        <input type="file" id="image" name="image" multiple="multiple" class="form-input-imagen">
                     </div>
                 </div>
                 <div class="imagen-producto-contenedor">
                     <% product_images.filter (function(item) { %>
-                        <img src="/images/products/<%= item.image %>" alt="" class="imagen-producto">
+                    <img src="/images/products/<%= item.image %>" alt="" class="imagen-producto">
                     <% }) %>
-                </div> 
+                </div>
 
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">
                         <label for="fecha_desde" class="form-label-compartido">Vigencia Desde:</label>
-                        <input type="date" id="life_date_from" name="life_date_from" value="<%= product.life_date_from %>"class="form-input-compartido">
+                        <input type="date" id="life_date_from" name="life_date_from"
+                            value="<%= product.life_date_from %>" class="form-input-compartido">
                     </div>
                     <div class="form-linea-compartida-2">
                         <label for="fecha_hasta" class="form-label-compartido">Vigencia Hasta:</label>
-                        <input type="date" id="life_date_to" name="life_date_to" value="<%= product.life_date_to %>"class="form-input-compartido">
+                        <input type="date" id="life_date_to" name="life_date_to" value="<%= product.life_date_to %>"
+                            class="form-input-compartido">
                     </div>
                 </div>
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">
                         <label for="stock" class="form-label-compartido">Disponible:</label>
-                        <input type="text" id="stock" name="stock" placeholder="Ej: 10" value="<%= product.stock %>"class="form-input-compartido">
+                        <input type="text" id="stock" name="stock" placeholder="Ej: 10" value="<%= product.stock %>"
+                            class="form-input-compartido">
                     </div>
                     <div class="form-linea-compartida-2">
                         <label for="estado" class="form-label-compartido">Estado:</label>
@@ -96,7 +105,10 @@
                         placeholder="Ej: Ingrese un texto detallado del producto"><%= product.description %></textarea>
                 </div>
                 <div class="boton-producto">
-                    <button type="submit">Guardar producto</button>
+                    <button type="submit" class="boton-guardar">Guardar</button>
+                    <form action="/productos/<%= product.id %>/borrar?_method=DELETE" method="POST">
+                        <button type="submit" class="boton-eliminar">Eliminar</button>
+                    </form>
                 </div>
             </form>
         </div>

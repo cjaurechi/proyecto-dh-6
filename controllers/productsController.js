@@ -199,6 +199,25 @@ const controller = {
 		res.redirect("/");
 	},
 
+	delete: (req, res) => {
+		// Pasamos el contenido de productsDataBase.json a una variable
+		let content = fs.readFileSync(products, { encoding: 'utf-8' });
+
+		// Convertimos en un array para poder operar
+		content = JSON.parse(content);
+
+		// Localizamos y eliminamos el objeto que quereremos borrar?
+		let filtered_content = content.filter(function (element) {
+			return element.id != req.params.id;
+		})
+
+		// Volvemos a convertir el array en un string
+		content = JSON.stringify(filtered_content);
+
+		// Escribimos nuevamente el archivo productsDataBase.json
+		fs.writeFileSync(filePath, content);
+		res.redirect('/productos');
+	}
 };
 
 module.exports = controller;
