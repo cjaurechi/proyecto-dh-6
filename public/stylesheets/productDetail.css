@@ -246,7 +246,7 @@ img {
   margin: 0% 4%;
 } 
 
-.texto_ver_cuotas,.formas_envios {
+.texto_ver_cuotas, .formas_envios {
   font-size: 0.8em;
   color: var(--azulresumen);
   text-decoration: none;
