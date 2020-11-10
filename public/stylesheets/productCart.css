@@ -1,0 +1,324 @@
+/****************** Indicador ************************/
+
+
+section.indicador {
+    background-color: var(--gris);
+    margin-top: 1%;
+}
+
+div.indicador {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    padding: 1% 1.5%;
+}
+
+.fa-arrow-left {
+    cursor: pointer;
+}
+
+span.indicador {
+    font-family: Montserrat-SemiBold;
+    margin-left: 1%;
+}
+
+/****************** Detalle del Carrito ************************/
+
+/****************** Producto ************************/
+
+.detalle-carrito {
+    display: flex;
+    flex-direction: row;
+}
+
+.articulos-carrito {
+    width: 77%;
+    margin: 1%
+}
+
+.producto-carrito {
+    display: flex;
+    border: 0.5px solid rgba(0,0,0,.1);
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
+    margin-bottom: 2%;
+    padding: 2%;
+    max-height: 45%;
+}
+
+.container-imagen-producto {
+    max-width: 200px;
+    flex: 1;
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.container-detalle-producto {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalle-producto {
+    flex: 1;
+    margin: 1% 3%;
+}
+
+.titulo-producto {
+    font-family: Montserrat-SemiBold;
+    font-size: 1.5em;
+    margin-bottom: 1.5%;
+}
+
+.descripcion-producto {
+    font-family: Montserrat-Light;
+    font-size: 1em;
+}
+
+.precio-cantidad {
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.precio {
+    font-family: Montserrat-SemiBold;
+    font-size: 1.5em;
+}
+
+.fa-minus-square,
+.fa-plus-square {
+    color: var(--azulreegalo);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.fa-minus-square:hover,
+.fa-plus-square:hover {
+    color: var(--azulregalostrong);
+}
+
+.cantidad {
+    font-size: 1.5em;
+}
+
+/****************** Resumen de Compra ************************/
+
+.container-resumen-compra {
+    margin: 1%;
+    width: 33%;
+}
+
+.resumen-compra {
+    background-color: white;
+    border: 0.5px solid rgba(0,0,0,.1);
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
+    /* border-radius: 8px; */
+    padding: 4%;
+}
+
+.titulo-resumen-compra {
+    font-family: Montserrat-SemiBold;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 1%;
+}
+
+.resumen-producto {
+    display: flex;
+    flex-direction: row;
+    margin: 4% auto;
+    justify-content: space-between;
+}
+
+.cantidad-producto {
+    font-family: Montserrat-SemiBold;
+}
+
+.divisor {
+    border-top: 1px solid gainsboro;
+}
+
+.total-producto {
+    color: var(--azulreegalo);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 4% auto;
+}
+
+.total-titulo,
+.total-precio {
+    font-family: Montserrat-Bold;
+    font-size: 1.5em;
+}
+
+.botones-resumen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.finalizar-compra {
+    background-color: var(--azulreegalo);
+    color: white;
+    text-align: center;
+    font-family: Montserrat-Regular;
+    box-shadow: 1px 1px 1px lightgrey;
+    width: auto;
+    padding: 2%;
+    margin: 1%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.finalizar-compra:hover {
+    background-color: var(--azulregalostrong);
+}
+
+.seguir-compra {
+    color: var(--azulreegalo);
+    text-align: center;
+    font-family: Montserrat-Regular;
+    width: auto;
+    padding: 2%;
+    margin: 1%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seguir-compra:hover {
+    color: var(--azulregalostrong);
+}
+
+/****************** Recomendados ************************/
+
+.recomendados-titulo {
+    font-family: Montserrat-SemiBold;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 1%;
+}
+
+.productos-recomendados {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.ficha-producto {
+    background-color: white;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left; 
+    padding: 1%;
+    margin: 1%;
+    
+}
+
+.container-imagen-ficha {
+    width: 100%;
+    cursor: pointer;
+}
+
+.imagen-ficha {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    opacity: 0.4;
+}
+
+.imagen-ficha:hover {
+    opacity: 1;
+}
+
+.detalle-ficha {
+    width: 100%;
+}
+
+.titulo-regalo {
+    font-size: 1.2em;
+    font-family: Montserrat-SemiBold;
+    max-width: 350px;
+    margin: 4% 0;
+    white-space: nowrap;  /* Colapsa todo el texto excedente en un espacio en blanco */
+    overflow: hidden; /* Oculta el exceso de texto */
+    text-overflow: ellipsis; /* Esto es para que el titulo se acorte y queden ... al final */
+}
+
+.detalle-regalo {
+    color:lightgray;
+    font-size: 1em;
+    font-family: Montserrat-Regular;
+    margin: 4% auto;
+}
+
+.puntuacion-ficha {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2em;
+    margin: 2% auto;
+}
+
+.fa-star {
+    color:gold;
+    font-size: 1.2em;
+}
+
+.puntuacion {
+    font-family: Montserrat-SemiBold;
+    margin-right: 1%;
+}
+
+.acciones-ficha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2% 0;
+    width: 100%;
+}
+
+.boton-detalle {
+    background-color: white;
+    color: var(--azulreegalo);
+    text-align: center;
+    padding: 1.5% 0;
+    width: 150px;
+    border: 1px solid var(--azulreegalo);
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+.boton-detalle:hover {
+    color: var(--azulregalostrong);
+    border: 1px solid var(--azulregalostrong);
+}
+
+.boton-comprar {
+    background-color: var(--azulreegalo);
+    color: white;
+    text-align: center;
+    padding: 1.5% 0;
+    width: 150px;
+    border-radius: 5px;
+    margin-left: 2%;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.boton-comprar:hover {
+    background-color: var(--azulregalostrong);
+}
