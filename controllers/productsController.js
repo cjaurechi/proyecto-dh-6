@@ -22,10 +22,10 @@ let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
-    // Listado de productos
+/*     // Listado de productos
     productList: (req, res) => {
         res.render('products/productList');
-    },
+    }, */
 
     // Detalle de producto
     productDetail: (req, res) => {
