@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const moment = require('moment');
 const { Console } = require('console');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
@@ -21,11 +22,6 @@ const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
-
-/*     // Listado de productos
-    productList: (req, res) => {
-        res.render('products/productList');
-    }, */
 
     // Detalle de producto
     productDetail: (req, res) => {
@@ -75,12 +71,12 @@ const controller = {
 				return (req.params.id == item.id)
 			})
 
-			for (let i = 0; i < products_category.length;i++) {
+/* 			for (let i = 0; i < products_category.length;i++) {
 				let product_image = products_images.find(function(item){
 					return (products_category[i].id == item.id && item.number == 0);
 				})
 				products_category[i].main_image = product_image.image
-			}
+			} */
 
 			res.render("products/productList",{products_category : products_category, category : category});
 	
@@ -116,6 +112,11 @@ const controller = {
 
 		fecha_actual = new Date()
 
+		var main_image = ""
+		if (req.files[0] !== undefined) {
+			main_image = req.files[0].filename
+		}
+
 		products.push ({
 			id : products[products.length-1].id + 1,
 			name : req.body.name,
@@ -126,10 +127,11 @@ const controller = {
 			supplier : req.body.supplier,
 			price : req.body.price,
 			discount : req.body.discount,
-			life_date_from : req.body.life_date_from,
-			life_date_to : req.body.life_date_to,
+			life_date_from : moment(req.body.life_date_from).format('DD/MM/YYYY'),
+			life_date_to : moment(req.body.life_date_to).format('DD/MM/YYYY'),
 			stock : req.body.stock,
 			state : req.body.status,
+			main_image : main_image,
 		});
 
 		archivo = JSON.stringify(products);
@@ -179,22 +181,30 @@ const controller = {
 		let archivo = JSON.stringify(products_images);
 		fs.writeFileSync (productsImagesFilePath,archivo);
 
+		var main_image = ""
+		product_image = products_images.find(function(item) {
+			return (item.id == req.params.id & item.number == 0)
+		})
+
+		main_image = product_image.image	
+
 		products.forEach (function(item) {
 			if (item.id == req.params.id) {
-				item.name = req.body.name;
-				description = req.body.description;
-				category = req.body.category;
-				item.price = req.body.price;
-				item.discount = req.body.discount;
-				item.category = req.body.category;
-				item.description = req.body.description;
-				supplier = req.body.supplier;
-				price = req.body.price;
-				discount = req.body.discount;
-				life_date_from = req.body.life_date_from;
-				life_date_to = req.body.life_date_to;
-				stock = req.body.stock;
-				state = req.body.status;
+				item.name = req.body.name,
+				item.description = req.body.description,
+				item.category = req.body.category,
+				item.price = req.body.price,
+				item.discount = req.body.discount,
+				item.category = req.body.category,
+				item.description = req.body.description,
+				item.supplier = req.body.supplier,
+				item.price = req.body.price,
+				item.discount = req.body.discount,
+				item.life_date_from = moment(req.body.life_date_from).format('DD/MM/YYYY'),
+				item.life_date_to = moment(req.body.life_date_to).format('DD/MM/YYYY'),
+				item.stock = req.body.stock,
+				item.state = req.body.status,
+				item.main_image = main_image
 			}
 		});
 

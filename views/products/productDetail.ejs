@@ -16,7 +16,7 @@
     <main class="principal">
 
         <section class="indicador">
-            <i class="fas fa-arrow-left"></i> 
+            <a href="javascript:history.back()" class="fas fa-arrow-left"></a>
             <h2 class="detalle_producto">‏‏‎ ‎‏‏‎Detalle de Producto</h2>
         </section>
 
@@ -33,13 +33,13 @@
                 <div class="imagenes_producto">
                     <i class="fas fa-chevron-left"></i>
                     <article class="imagen_producto">
-                            <img class="imagen_ubicacion" src="/images/products/<%= product_images[1].image %>" alt="Imagen 1">
+                            <img class="imagen_ubicacion" src="/images/products/<%= product.main_image %>" alt="Imagen 1">
                     </article>
                     <article class="imagen_producto_medio">
-                            <img src="/images/products/<%= product_images[0].image %>" alt="Imagen 2">
+                            <img src="/images/products/<%= product.main_image %>" alt="Imagen 2">
                     </article>
                     <article class="imagen_producto">
-                            <img src="/images/products/<%= product_images[2].image %>" alt="Imagen 3">
+                            <img src="/images/products/<%= product.main_image %>" alt="Imagen 3">
                     </article>
                     <i class="fas fa-chevron-right"></i>
                 </div>    
