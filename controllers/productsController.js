@@ -70,12 +70,12 @@ const controller = {
 			return (req.params.id == item.id)
 		})
 
-		for (let i = 0; i < products_category.length; i++) {
+		/* for (let i = 0; i < products_category.length; i++) {
 			let product_image = products_images.find(function (item) {
 				return (products_category[i].id == item.id && item.number == 0);
 			})
 			products_category[i].main_image = product_image.image
-		}
+		} */
 
 		res.render("products/productList", { products_category: products_category, category: category });
 
