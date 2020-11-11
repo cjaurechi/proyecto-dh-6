@@ -42,12 +42,12 @@
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">
                         <label for="price" class="form-label-compartido">Precio:</label>
-                        <input type="text" id="price" name="price" placeholder="Ej: 5678" value="<%= product.price %>"
+                        <input type="number" id="price" name="price" placeholder="Ej: 5678" value="<%= product.price %>"
                             class="form-input-compartido">
                     </div>
                     <div class="form-linea-compartida-2">
                         <label for="discount" class="form-label-compartido">Descuento:</label>
-                        <input type="text" id="discount" name="discount" placeholder="Ej: 15"
+                        <input type="number" id="discount" name="discount" placeholder="Ej: 15"
                             value="<%= product.discount %>" class="form-input-compartido">
                     </div>
                 </div>
@@ -85,17 +85,30 @@
                             class="form-input-compartido">
                     </div>
                 </div>
+
+                <div class="linea-compartida">
+                    <div class="form-linea-compartida-1">
+                        <label for="expiration_days" class="form-label-compartido">Vencimiento:</label>
+                        <input type="number" id="expiration_days" name="expiration_days" value="<%= product.expiration_days %>" placeholder="Ej: 365" class="form-input-compartido">
+                    </div>
+                    <div class="form-linea-compartida-2">
+                        <label for="share" class="form-label-compartido">Compartir:</label>
+                        <input type="text" id="share" name="share" value="<%= product.share %>" placeholder="Ej: Para Compartir x 2" class="form-input-compartido">
+                    </div>
+                </div>
+
+
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">
                         <label for="stock" class="form-label-compartido">Disponible:</label>
-                        <input type="text" id="stock" name="stock" placeholder="Ej: 10" value="<%= product.stock %>"
+                        <input type="number" id="stock" name="stock" placeholder="Ej: 10" value="<%= product.stock %>"
                             class="form-input-compartido">
                     </div>
                     <div class="form-linea-compartida-2">
                         <label for="estado" class="form-label-compartido">Estado:</label>
                         <select name="status" id="status" class="form-input-compartido">
-                            <option value="Habilitado" selected>Habilitado</option>
-                            <option value="Inhabilitado">Inhabilitado</option>
+                            <option value="Habilitado" <% if (product.status=="Habilitado") {%> Selected <%} %>>Habilitado</option>
+                            <option value="Inhabilitado" <% if (product.status=="Inhabilitado") {%> Selected <%} %>>Inhabilitado</option>
                         </select>
                     </div>
                 </div>

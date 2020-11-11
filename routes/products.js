@@ -26,7 +26,7 @@ router.get('/', productsController.productList);
 router.get('/:id/detalle', productsController.productDetail);
 
 /*** LISTA DE PRODUCTO ***/
-router.get('/:id/listar', productsController.productList);
+router.get('/:id?/listar', productsController.productList);
 
 /*** CREAR UN PRODUCTO ***/ 
 router.get('/crear', productsController.create); 

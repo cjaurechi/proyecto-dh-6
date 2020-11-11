@@ -63,13 +63,26 @@ const controller = {
 	// Detalle de producto
 	productList: (req, res) => {
 
-		let products_category = products.filter(function (item) {
-			return (req.params.id == item.category);
-		})
+		let products_category = []
+		let category = []
 
-		let category = categories.find(function (item) {
-			return (req.params.id == item.id)
-		})
+		if (req.params.id !== undefined) {
+			products_category = products.filter(function (item) {
+				return (req.params.id == item.category & item.status == "Habilitado")
+			})
+
+			category = categories.find(function (item) {
+				return (req.params.id == item.id)
+			})
+		} else {
+			products_category = products.filter(function (item) {
+				return (item.status == "Habilitado")
+			})
+
+			category = categories
+		} 
+
+console.log (category.description)
 
 		/* for (let i = 0; i < products_category.length; i++) {
 			let product_image = products_images.find(function (item) {
@@ -78,7 +91,7 @@ const controller = {
 			products_category[i].main_image = product_image.image
 		} */
 
-		res.render("products/productList", { products_category: products_category, category: category });
+		res.render("products/productList", { products_category: products_category, category: category })
 
 	},
 
@@ -124,13 +137,15 @@ const controller = {
 			category : req.body.category,
 			creation_user : req.body.user,
 			creation_date : fecha_actual.getDate() + "/" + (fecha_actual.getMonth() +1) + "/" + fecha_actual.getFullYear(),
+			expiration_days : req.body.expiration_days,
+			share : req.body.share,
 			supplier : req.body.supplier,
 			price : req.body.price,
 			discount : req.body.discount,
 			life_date_from : moment(req.body.life_date_from).format('DD/MM/YYYY'),
 			life_date_to : moment(req.body.life_date_to).format('DD/MM/YYYY'),
 			stock : req.body.stock,
-			state : req.body.status,
+			status : req.body.status,
 			main_image : main_image,
 		});
 
@@ -193,6 +208,8 @@ const controller = {
 				item.name = req.body.name,
 				item.description = req.body.description,
 				item.category = req.body.category,
+				item.expiration_days = req.body.expiration_days,
+				item.share = req.body.share,
 				item.price = req.body.price,
 				item.discount = req.body.discount,
 				item.category = req.body.category,
@@ -203,7 +220,7 @@ const controller = {
 				item.life_date_from = moment(req.body.life_date_from).format('DD/MM/YYYY'),
 				item.life_date_to = moment(req.body.life_date_to).format('DD/MM/YYYY'),
 				item.stock = req.body.stock,
-				item.state = req.body.status,
+				item.status = req.body.status,
 				item.main_image = main_image
 			}
 		});
