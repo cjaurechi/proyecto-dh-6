@@ -10,6 +10,9 @@ const categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
 const productsImagesFilePath = path.join(__dirname, '../data/productsImagesDataBase.json');
 let products_images = JSON.parse(fs.readFileSync(productsImagesFilePath, 'utf-8'));
 
+const preguntasFrecuentesFilePath = path.join(__dirname, '../data/preguntasFrecuentes.json');
+let preguntasFrecuentes = JSON.parse(fs.readFileSync(preguntasFrecuentesFilePath, 'utf-8'));
+
 const controller = {
 
   // Home Page
@@ -32,6 +35,13 @@ const controller = {
 
   comoregalar: (req, res) => {
     res.render('comoregalar');},
+
+// Preguntas frecuentes
+
+  preguntasFrecuentes: (req, res) => {
+    res.render('preguntasFrecuentes',{preguntasFrecuentes: preguntasFrecuentes});
+  },
+
 
   // Test
 

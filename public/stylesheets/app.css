@@ -311,6 +311,29 @@ footer div nav a {
     display: none;
 }
 
+/* Preguntas Frecuentes */
+
+.container-preguntas{
+    margin: 5%;
+  }
+.contenedor-preguntasyrespuestas{
+    margin: 2%;
+}
+
+.contenedor-cadapregunta{
+    margin: 3% auto;
+    border: 1px solid gray;
+    
+}
+.pregunta{
+    font-family: Montserrat-Bold;
+    margin: 2% 1%;
+}
+
+.respuesta{
+    margin: 2% 1%;
+}
+
 /* Media Queries */
 
 @media (max-width: 1080px) {
