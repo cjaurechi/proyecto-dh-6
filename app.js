@@ -6,6 +6,7 @@ const logger = require('morgan');
 const express = require('express')
 const configuracion = require('dotenv').config();
 const methodOverride = require('method-override');
+const checkIp = require("./middlewares/check-ip")
 
 // ********** Express **********
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+app.use(checkIp)
 
 // ********** Template Engine **********
 app.set('view engine', 'ejs');
@@ -41,6 +43,7 @@ app.use((req, res, next) => next(createError(404)));
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  res.locals.path = req.path;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page

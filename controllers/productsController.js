@@ -56,6 +56,12 @@ const controller = {
 
 		let promedio_calificacion = suma_calificacion / cantidad_comentarios
 
+		if (isNaN(promedio_calificacion)) {
+			promedio_calificacion = ""
+		}
+
+		console.log (promedio_calificacion)
+
 		res.render("products/productDetail", { product: product, category: category, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
 
 	},
