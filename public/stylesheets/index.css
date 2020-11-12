@@ -347,6 +347,7 @@ div.categoria-regalo {
   border: 1px solid var(--azulreegalo);
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .detail:hover {
