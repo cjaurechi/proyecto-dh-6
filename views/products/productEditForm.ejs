@@ -89,11 +89,13 @@
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">
                         <label for="expiration_days" class="form-label-compartido">Vencimiento:</label>
-                        <input type="number" id="expiration_days" name="expiration_days" value="<%= product.expiration_days %>" placeholder="Ej: 365" class="form-input-compartido">
+                        <input type="number" id="expiration_days" name="expiration_days"
+                            value="<%= product.expiration_days %>" placeholder="Ej: 365" class="form-input-compartido">
                     </div>
                     <div class="form-linea-compartida-2">
                         <label for="share" class="form-label-compartido">Compartir:</label>
-                        <input type="text" id="share" name="share" value="<%= product.share %>" placeholder="Ej: Para Compartir x 2" class="form-input-compartido">
+                        <input type="text" id="share" name="share" value="<%= product.share %>"
+                            placeholder="Ej: Para Compartir x 2" class="form-input-compartido">
                     </div>
                 </div>
 
@@ -107,8 +109,10 @@
                     <div class="form-linea-compartida-2">
                         <label for="estado" class="form-label-compartido">Estado:</label>
                         <select name="status" id="status" class="form-input-compartido">
-                            <option value="Habilitado" <% if (product.status=="Habilitado") {%> Selected <%} %>>Habilitado</option>
-                            <option value="Inhabilitado" <% if (product.status=="Inhabilitado") {%> Selected <%} %>>Inhabilitado</option>
+                            <option value="Habilitado" <% if (product.status=="Habilitado") {%> Selected <%} %>>
+                                Habilitado</option>
+                            <option value="Inhabilitado" <% if (product.status=="Inhabilitado") {%> Selected <%} %>>
+                                Inhabilitado</option>
                         </select>
                     </div>
                 </div>
@@ -118,12 +122,15 @@
                         placeholder="Ej: Ingrese un texto detallado del producto"><%= product.description %></textarea>
                 </div>
                 <div class="boton-producto">
-                    <button type="submit" class="boton-guardar">Guardar</button>
-                    <form action="/productos/<%= product.id %>/borrar?_method=DELETE" method="POST">
-                        <button type="submit" class="boton-eliminar">Eliminar</button>
-                    </form>
+                    <button type="submit" class="boton-guardar">Guardar cambios</button>
                 </div>
             </form>
+            <form action="/productos/<%= product.id %>/borrar?_method=DELETE" method="POST" class="form-producto">
+                <div class="boton-producto">
+                    <button type="submit" class="boton-eliminar">Eliminar producto</button>
+                </div>
+            </form>
+
         </div>
     </section>
 

@@ -4,22 +4,22 @@ const moment = require('moment');
 const { Console } = require('console');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+var products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const productsImagesFilePath = path.join(__dirname, '../data/productsImagesDataBase.json');
-let products_images = JSON.parse(fs.readFileSync(productsImagesFilePath, 'utf-8'));
+var products_images = JSON.parse(fs.readFileSync(productsImagesFilePath, 'utf-8'));
 
 const categoriesFilePath = path.join(__dirname, '../data/categoriesDataBase.json');
-const categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
+var categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
 
 const suppliersFilePath = path.join(__dirname, '../data/suppliersDataBase.json');
-let suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
+var suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
 
 const commentsFilePath = path.join(__dirname, '../data/commentsDataBase.json');
-let comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
+var comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
 
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
-let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
@@ -232,23 +232,20 @@ console.log (category.description)
 	},
 
 	delete: (req, res) => {
-		// Pasamos el contenido de productsDataBase.json a una variable
-		let content = fs.readFileSync(products, { encoding: 'utf-8' });
+		// Pasamos el contenido de products a otra variable temporal
+		let content = products;
 
-		// Convertimos en un array para poder operar
-		content = JSON.parse(content);
-
-		// Localizamos y eliminamos el objeto que quereremos borrar?
+		// Localizamos y filtramos el producto que quereremos borrar
 		let filtered_content = content.filter(function (element) {
 			return element.id != req.params.id;
-		})
+		});
 
-		// Volvemos a convertir el array en un string
+		// Volvemos a convertir el contenido filtrado en un string
 		content = JSON.stringify(filtered_content);
 
-		// Escribimos nuevamente el archivo productsDataBase.json
-		fs.writeFileSync(filePath, content);
-		res.redirect('/productos');
+		// Escribimos nuevamente el archivo productsDataBase.json con el producto borrado
+		fs.writeFileSync(productsFilePath, content);
+		res.redirect('/');
 	}
 };
 
