@@ -173,7 +173,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": "espectaculo.jpg"
+        "main_image": "espectaculos.jpg"
     },
     {
         "id": 12,
@@ -189,7 +189,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": "espectaculo.jpg"
+        "main_image": "espectaculos.jpg"
     },
     {
         "id": 13,
@@ -205,7 +205,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": "espectaculo.jpg"
+        "main_image": "espectaculos.jpg"
     },
     {
         "id": 14,
@@ -221,7 +221,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": "espectaculo.jpg"
+        "main_image": "espectaculos.jpg"
     },
     {
         "id": 15,
@@ -237,7 +237,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": "espectaculo.jpg"
+        "main_image": "espectaculos.jpg"
     },
     {
         "id": 16,
@@ -333,7 +333,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Inhabilitado",
-        "main_image": " "
+        "main_image": "parapente.jpg"
     },
     {
         "id": 22,
@@ -349,7 +349,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": " "
+        "main_image": "parapente.jpg "
     },
     {
         "id": 23,
@@ -365,7 +365,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": " "
+        "main_image": "parapente.jpg "
     },
     {
         "id": 24,
@@ -381,7 +381,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": " "
+        "main_image": "parapente.jpg "
     },
     {
         "id": 25,
@@ -397,7 +397,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": " "
+        "main_image": "parapente.jpg "
     },
     {
         "id": 26,
@@ -413,7 +413,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": " "
+        "main_image": "escapadas.jpg "
     },
     {
         "id": 27,
@@ -429,7 +429,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": " "
+        "main_image": "escapadas.jpg"
     },
     {
         "id": 28,
@@ -445,7 +445,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Inhabilitado",
-        "main_image": " "
+        "main_image": "escapadas.jpg "
     },
     {
         "id": 29,
@@ -461,7 +461,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Inhabilitado",
-        "main_image": " "
+        "main_image": "escapadas.jpg "
     },
     {
         "id": 30,
@@ -477,7 +477,7 @@
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
         "status": "Habilitado",
-        "main_image": " "
+        "main_image": "escapadas.jpg "
     },
     {
         "id": 31,
