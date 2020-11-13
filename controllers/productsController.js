@@ -60,8 +60,6 @@ const controller = {
 			promedio_calificacion = ""
 		}
 
-		console.log (promedio_calificacion)
-
 		res.render("products/productDetail", { product: product, category: category, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
 
 	},
@@ -77,7 +75,7 @@ const controller = {
 				return (req.params.id == item.category & item.status == "Habilitado")
 			})
 
-			category = categories.find(function (item) {
+			category = categories.filter(function (item) {
 				return (req.params.id == item.id)
 			})
 		} else {
@@ -87,8 +85,6 @@ const controller = {
 
 			category = categories
 		} 
-
-console.log (category.description)
 
 		/* for (let i = 0; i < products_category.length; i++) {
 			let product_image = products_images.find(function (item) {
@@ -207,7 +203,11 @@ console.log (category.description)
 			return (item.id == req.params.id & item.number == 0)
 		})
 
-		main_image = product_image.image	
+		if (product_image == undefined) {
+			main_image = ""
+		} else {
+			main_image = product_image.image
+		}	
 
 		products.forEach (function(item) {
 			if (item.id == req.params.id) {
