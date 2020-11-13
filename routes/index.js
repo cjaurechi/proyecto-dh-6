@@ -18,6 +18,10 @@ router.get('/contacto', indexController.contacto);
 /*** COMO REGALAR ***/
 router.get('/comoregalar', indexController.comoregalar);
 
+
+/*** PREGUNTAS FRECUENTES ***/
+router.get('/preguntasFrecuentes', indexController.preguntasFrecuentes);
+
 /*** TEST ***/
 router.get('/test', indexController.getTest);
 

@@ -163,6 +163,11 @@ const controller = {
 			return (req.params.id == item.id);
 		})
 
+		console.log (product)
+		product.life_date_from = moment(product.life_date_from).format('YYYY-MM-DD')
+		product.life_date_to = moment(product.life_date_to).format('YYYY-MM-DD')
+		console.log (product.life_date_from,product.life_date_to)
+
 		suppliers = suppliers.filter(function (item) {
 			return (item.status == 'Habilitado')
 		})
