@@ -138,14 +138,14 @@ const controller = {
 			description : req.body.description,
 			category : req.body.category,
 			creation_user : req.body.user,
-			creation_date : fecha_actual.getDate() + "/" + (fecha_actual.getMonth() +1) + "/" + fecha_actual.getFullYear(),
+			creation_date : moment(fecha_actual).format('YYYY-MM-DD'),
 			expiration_days : req.body.expiration_days,
 			share : req.body.share,
 			supplier : req.body.supplier,
 			price : req.body.price,
 			discount : req.body.discount,
-			life_date_from : moment(req.body.life_date_from).format('DD/MM/YYYY'),
-			life_date_to : moment(req.body.life_date_to).format('DD/MM/YYYY'),
+			life_date_from : req.body.life_date_from,
+			life_date_to : req.body.life_date_to,
 			stock : req.body.stock,
 			status : req.body.status,
 			main_image : main_image,
@@ -162,11 +162,6 @@ const controller = {
 		let product = products.find(function (item) {
 			return (req.params.id == item.id);
 		})
-
-		console.log (product)
-		product.life_date_from = moment(product.life_date_from).format('YYYY-MM-DD')
-		product.life_date_to = moment(product.life_date_to).format('YYYY-MM-DD')
-		console.log (product.life_date_from,product.life_date_to)
 
 		suppliers = suppliers.filter(function (item) {
 			return (item.status == 'Habilitado')
@@ -228,8 +223,8 @@ const controller = {
 				item.supplier = req.body.supplier,
 				item.price = req.body.price,
 				item.discount = req.body.discount,
-				item.life_date_from = moment(req.body.life_date_from).format('DD/MM/YYYY'),
-				item.life_date_to = moment(req.body.life_date_to).format('DD/MM/YYYY'),
+				item.life_date_from = req.body.life_date_from,
+				item.life_date_to = req.body.life_date_to,
 				item.stock = req.body.stock,
 				item.status = req.body.status,
 				item.main_image = main_image

@@ -548,39 +548,5 @@
         "stock": "13",
         "status": "Habilitado",
         "main_image": "image1604976149866.jpg"
-    },
-    {
-        "id": 35,
-        "name": "Experiencia de entrenamiento extremo en Mendoza",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sint provident, blanditiis soluta dicta excepturi tempore nihil reprehenderit perspiciatis molestiae aut a ex ab repudiandae nostrum delectus obcaecati consectetur distincti?\r\nNobis sint provident, blanditiis soluta dicta excepturi tempore nihil ",
-        "category": "6",
-        "creation_date": "10/11/2020",
-        "expiration_days": "365",
-        "share": "Individual",
-        "supplier": "100",
-        "price": "1670",
-        "discount": "5",
-        "life_date_from": "Invalid date",
-        "life_date_to": "Invalid date",
-        "stock": "12",
-        "status": "Habilitado",
-        "main_image": "image1604981006300.jpg"
-    },
-    {
-        "id": 36,
-        "name": "Tour al pasado con el De Lorean de Volver al futuro",
-        "description": "Tour al pasado con el De Lorean de Volver al futuro. ",
-        "category": "5",
-        "creation_date": "11/11/2020",
-        "expiration_days": "366",
-        "share": "Individual",
-        "supplier": "25",
-        "price": "15000",
-        "discount": "5",
-        "life_date_from": "Invalid date",
-        "life_date_to": "Invalid date",
-        "stock": "100",
-        "status": "Habilitado",
-        "main_image": "image1605130770571.jpg"
     }
 ]
