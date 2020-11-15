@@ -315,7 +315,7 @@ footer div nav a {
 
 .container-preguntas{
     margin: 5%;
-  }
+}
 .contenedor-preguntasyrespuestas{
     margin: 2%;
 }
@@ -335,7 +335,7 @@ footer div nav a {
 }
 
 /* Media Queries */
-
+/* Laptop */
 @media (max-width: 1080px) {
 
     .container-header {
