@@ -296,69 +296,6 @@ div.categoria-regalo {
     flex-wrap: wrap;
   }
 
-  /* Pasos */
-
-  .comofunciona{
-    padding: 2%;
-  }
-
-  .titulo-pasos{
-    font-size: 1em;
-    margin: 2% 0;
-  }
-
-  .pasos{
-    margin: 2% 0;
-  }
-
-  .pasos-titulos{
-    color: black;
-    font-size: 12px;
-  }
-
-  .imagen-paso{
-    flex-grow: 0.5;
-    font-size: 2em;
-    margin-bottom: 4%;
-    padding: 4%;
-  }
-
-  .descripcion-paso{
-    flex-grow: 0.5;
-    text-align: center;
-    margin: 2%;
-    color: grey;
-    font-size: 10px;
-  }
-
-  .descripcion-paso span{
-    font-size: 12px;
-    color: black;
-  }
-
-  .descripcion-paso p{
-    font-size: 10;
-    color: gray;
-  }
-
-
-  .eleccion-titulo{
-    font-size: 1em;
-    margin-top: 5%
-  }
-
-  .eleccion-subtitulo{
-    font-size: 0.8em;
-  }
-
-  .titulo-regalo,
-  .detalle-regalo{
-    font-size: 0.8em;
-  }
-
-  .detalle-regalo{
-    margin-bottom: 2%;
-  }
 }
 
 /****************** Mobile S ************************/
