@@ -213,27 +213,6 @@ div.categoria-regalo {
   font-size: 1em;
 }
 
-/****************** Nosotros ************************/
-
-
-.container-nosotros{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 2%;
-}
-
-.nosotros-text, .nosotros-img{
-  flex-grow: 0.45;
-}
-.nosotros-text{
-  width: 50%;
-}
-.nosotros-text h1, .categories{
-  margin:2% 2% 2% auto;
-}
-
-
 /* Media Queries */
 /* Tablet */
 @media (max-width: 992px) {
