@@ -2,6 +2,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path')
+const numerosPositivos =require ("../middlewares/numerospositivos")
 
 const router = express.Router();
 
@@ -30,7 +31,7 @@ router.get('/:id?/listar', productsController.productList);
 
 /*** CREAR UN PRODUCTO ***/ 
 router.get('/crear', productsController.create); 
-router.post('/',upload.any(), productsController.store); 
+router.post('/',[upload.any(), numerosPositivos], productsController.store); 
 
 /*** MODIFICAR UN PRODUCTO ***/ 
 router.get('/:id/editar', productsController.edit); 

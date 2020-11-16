@@ -150,6 +150,7 @@ const controller = {
 			status : req.body.status,
 			main_image : main_image,
 		});
+		
 
 		archivo = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath, archivo);

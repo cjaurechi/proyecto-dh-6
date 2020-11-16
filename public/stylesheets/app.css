@@ -334,6 +334,13 @@ footer div nav a {
     margin: 2% 1%;
 }
 
+.msj-creacion{
+    color: green;
+    font-family: Montserrat-SemiBold;
+    font-size: 1em;
+    margin: 2%;
+}
+
 /* Media Queries */
 /* Laptop */
 @media (max-width: 1080px) {
