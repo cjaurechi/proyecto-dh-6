@@ -430,7 +430,7 @@
         "discount": 20,
         "life_date_from": "9/10/2020",
         "life_date_to": "9/10/2021",
-        "status": "Habilitado",
+        "status": "Inhabilitado",
         "main_image": "escapadas.jpg"
     },
     {

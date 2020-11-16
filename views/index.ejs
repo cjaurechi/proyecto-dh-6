@@ -80,7 +80,8 @@
     </div>
     <section class="padding-1por">
         <div class="regalo">
-            <% products.filter (function(product) {if (product.category == 6){ %>
+
+          <% products.filter (function(product) {if (product.category == 6 && product.status == 'Habilitado'){%>
             <article class="ficha-regalo">
                 <div class="contenedor-imagen"><img src="/images/products/<%= product.main_image %> " alt="imegen del producti"
                         class="imagen-regalo"></div>
@@ -101,7 +102,7 @@
                     </div>
                 </div>
             </article>
-            <% } })%> 
+        <% } })%> 
         </div>
     </section>
 
