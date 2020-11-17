@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="precio">
-                        <span class="texto_precio">$ <%= (product.price * (1 - (product.discount / 100))) %></span>
+                        <span class="texto_precio">$ <%= (product.price * (1 - (product.discount / 100))).toFixed(0) %></span>
                         <a class="texto_ver_cuotas" href="#">Ver cuotas</a> 
                     </div>
 

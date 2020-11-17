@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
 const { Console } = require('console');
+const {validationResult} = require('express-validator');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 var products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -100,16 +101,24 @@ const controller = {
 	// Formulario de creacion
 	create: (req, res) => {
 
+		let producto_actualizado = undefined
+
 		suppliers = suppliers.filter(function (item) {
 			return (item.status == 'Habilitado')
 		})
 
-		res.render("products/productCreateForm", { categories: categories, suppliers: suppliers });
+		res.render("products/productCreateForm", { producto_actualizado : producto_actualizado, categories: categories, suppliers: suppliers,product : {}, errors : {} });
 	},
 
 	// Alta de producto
 	store: (req, res, next) => {
 
+		let errors = validationResult(req).mapped()
+
+		if (Object.keys(errors).length != 0) {
+			return res.render("products/productCreateForm",{categories: categories, suppliers: suppliers, product : req.body, errors : errors})
+		}
+				
 		for (let i = 0; i < req.files.length; i++) {
 			var product_image = ""
 			if (req.files[i] !== undefined) {
@@ -154,6 +163,11 @@ const controller = {
 		archivo = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath, archivo);
 		res.redirect("/productos/crear");
+
+/* 		let producto_actualizado = req.body.name
+		console.log (producto_actualizado)
+		res.render("products/productCreateForm", { producto_actualizado : producto_actualizado, categories: categories, suppliers: suppliers,product : {}, errors : {} }); */
+
 	},
 
 	// Formulario de modificacion
@@ -171,11 +185,21 @@ const controller = {
 			return (req.params.id == item.id)
 		})
 
-		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images });
+		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors : {}  });
 	},
 
 	// Modificacion de producto
 	update: (req, res, next) => {
+
+		let errors = validationResult(req).mapped()
+
+		if (Object.keys(errors).length != 0) {
+			
+			product = req.body
+			product.id = req.params.id
+
+			return res.render("products/productEditForm",{product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors : errors})
+		}
 
 		if (req.files[0] !== undefined) {
 			products_images = products_images.filter(function (item) {
