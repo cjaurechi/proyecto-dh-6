@@ -4,6 +4,7 @@
 <head>
     <%- include("./partials/head.ejs", {title: "Reegalo - Contacto"}) %>
     <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
 </head>
 
 <body>
@@ -17,24 +18,17 @@
             <div>
                 <h1>Preguntas Frecuentes</h1>
             </div>
-               <div class="contenedor-preguntasyrespuestas"> 
+            <div class="contenedor-preguntasyrespuestas">
                 <% preguntasFrecuentes.filter (function(pregunta) { %>
-                    <div class="contenedor-cadapregunta">
-                        <div class="pregunta"> <%= pregunta.pregunta %> </div>
-                        <div class="respuesta"> <%= pregunta.respuesta %> </div>
-                        
-                    </div>
-                <% }) %> 
+                <div class="contenedor-cadapregunta">
+                    <div class="pregunta"> <%= pregunta.pregunta %> </div>
+                    <div class="respuesta"> <%= pregunta.respuesta %> </div>
+
+                </div>
+                <% }) %>
             </div>
-            
-           
-           
         </div>
     </section>
-
-    
-
-    
 
     <!-- Footer del Sitio -->
 

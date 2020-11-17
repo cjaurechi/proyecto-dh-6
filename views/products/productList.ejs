@@ -19,13 +19,13 @@
 
         <% category.find (function(item_category) { %>
 
-            <section class="indicador">
-                <a href="javascript:history.back()" class="fas fa-arrow-left"></a>
-                <h2 class="detalle_producto">‏‏‎ ‎‏‏‎<%= item_category.description %></h2>
-            </section> 
+            
 
             <div class="container products-wrapper">
                 <div class="row">
+                    <section class="indicador">
+                        <h2 class="detalle_producto">‏‏‎ ‎‏‏‎<%= item_category.description %></h2>
+                    </section> 
                     
                     <% products_category.forEach (function(item) { %>
                         <% if (item.category == item_category.id) { %>

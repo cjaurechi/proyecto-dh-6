@@ -1,9 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+const bcryptjs = require('bcryptjs');
+const moment = require('moment');
 let { check, validationResult, body } = require("express-validator")
 
-const usersDataBaseFilePath = path.join(__dirname, '../data/usersDataBase.json');
-
+const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
@@ -16,38 +18,34 @@ const controller = {
     createRegistro: (req, res) => {
 
         //Usuario que se registro
-
-        let usuario = {
+        let nuevo_usuario = {
+            id: users[users.length - 1].id + 1,
+            first_name: '',
+            last_name: '',
             email: req.body.email,
-            password: req.body.password,
-            passwordrepeat: req.body.passwordrepeat,
-            fecnac: req.body.fecnac
-        }
-
-        // Leo si ya hay algo en el archivo deusersDataBase
-
-        let archivoUsuario = fs.readFileSync(usersDataBaseFilePath, { encoding: 'utf-8' })
-
-        let usuarios;
-        if (archivoUsuario == "") {
-            usuarios = []
-        } else {
-            usuarios = JSON.parse(archivoUsuario)
+            password: bcryptjs.hashSync(req.body.password, 10),
+            passwordrepeat: bcryptjs.hashSync(req.body.passwordrepeat, 10),
+            rol: '',
+            image: '',
+            last_login: moment(new Date()).format('YYYY-MM-DD'),
+            last_date_password: moment(new Date()).format('YYYY-MM-DD'),
+            language: 'esp', // Dejo español por default
+            country: '',
+            brday: req.body.fecnac,
+            residence: '',
         }
 
         //Agregamos al usuario nuevo
-        usuarios.push(usuario);
+        users.push(nuevo_usuario);
 
-        //Convertimos en JSON
-        usuariosJSON = JSON.stringify(usuarios);
+        //Convertimos en string
+        users = JSON.stringify(users);
 
         //Lo escribimos en el archivo
-        fs.appendFileSync(usersDataBaseFilePath, usuariosJSON)
-
+        fs.writeFileSync(usersFilePath, users)
 
         res.redirect('/usuarios/registro');
     },
-
 
 
     // Login

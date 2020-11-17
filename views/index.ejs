@@ -3,11 +3,11 @@
 
 <head>
     <%- include("./partials/head.ejs", {title: "Reegalo - Home"}) %>
+    <link rel="stylesheet" href="/stylesheets/app.css">
     <link rel="stylesheet" href="/stylesheets/index.css">
 </head>
 
 <body>
-
     <!-- Header del Sitio -->
 
     <%- include("./partials/header.ejs") %>
@@ -15,48 +15,35 @@
     <section>
         <div class="banner" style="background: url(/images/banner-paracaidas.jpg)"> 
             <div class="banner-letters">
-            <p>Regala experiencias.</p>
-            <p>Regala historias.</p>
-            <p>Regala diferente.</p>
+                <p>Regala experiencias.</p>
+                <p>Regala historias.</p>
+                <p>Regala diferente.</p>
+            </div>
         </div>
-        </div>
-       
     </section>
-
     <section>
-
-       
         <div class="padding-2por center-text subtitulos">Categorias</div>
         <div class="categorias">
             <div class="categoria-regalo" style="background: url(/images/Gastronomia.jpg)">
                 <a href="/productos/1/listar" class="categoria-link">Gastronomia</a>
             </div>
-
             <div class="categoria-regalo" style="background: url(/images/Aire-libre.jpg)">
                 <a href="/productos/2/listar" class="categoria-link">Aire libre</a>
             </div>
-
             <div class="categoria-regalo" style="background: url(/images/espectaculo.jpg)">
                 <a href="/productos/3/listar" class="categoria-link">Espectaculos</a>
             </div>
-
             <div class="categoria-regalo" style="background: url(/images/conocimiento.jpg)">
                 <a href="/productos/4/listar" class="categoria-link">Conocimiento</a>
             </div>
-
-
             <div class="categoria-regalo" style="background: url(/images/experienciaunica.jpg)">
                 <a href="/productos/5/listar" class="categoria-link">Experiencias unicas</a>
             </div>
-
-
             <div class="categoria-regalo" style="background: url(/images/lugaresparaconocer.jpg)">
                 <a href="/productos/6/listar" class="categoria-link">Lugares para conocer</a>
-
-
             </div>
+        </div>
     </section>
-
     <section class="comofunciona">
         <div>
             <p class="titulo-pasos subtitulos">¿Cómo funciona?</p>
@@ -83,23 +70,18 @@
                     <p>Compra y envia tu regalo a la persona que quieras</p>
                 </div>
             </div>
-
         </div>
     </section>
-
     <div>
         <p class="padding-1por center-text eleccion-titulo subtitulos"> Elegi tu proximo regalo</p>
     </div>
     <div>
         <p class="padding-1por center-text eleccion-subtitulo">Escapadas</p>
     </div>
-
-    
     <section class="padding-1por">
         <div class="regalo">
-            
 
-            <% products.filter (function(product) {if (product.category == 6){ %>
+          <% products.filter (function(product) {if (product.category == 6 && product.status == 'Habilitado'){%>
             <article class="ficha-regalo">
                 <div class="contenedor-imagen"><img src="/images/products/<%= product.main_image %> " alt="imegen del producti"
                         class="imagen-regalo"></div>
@@ -120,7 +102,7 @@
                     </div>
                 </div>
             </article>
-            <% } })%> 
+        <% } })%> 
         </div>
     </section>
 
@@ -129,5 +111,4 @@
     <%- include("./partials/footer.ejs") %>
 
 </body>
-
 </html>

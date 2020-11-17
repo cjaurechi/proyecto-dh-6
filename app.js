@@ -8,6 +8,7 @@ const configuracion = require('dotenv').config();
 const methodOverride = require('method-override');
 const checkIp = require("./middlewares/check-ip")
 
+
 // ********** Express **********
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(checkIp)
+
 
 // ********** Template Engine **********
 app.set('view engine', 'ejs');

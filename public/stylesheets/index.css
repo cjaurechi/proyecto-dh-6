@@ -1,37 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Montserrat-Regular;
-}
-
-:root {
-  --gris: #F9F8F8;
-  --azulreegalo: #18A0FB;
-  --azulregalostrong: #028ad8;
-}
 /* Estilo */
 
 .center-text {text-align: center;}
-:root {
-  --gris: #F9F8F8;
-  --azulreegalo: #18A0FB;
-}
-
-@font-face {
-  font-family: 'Montserrat-SemiBold';
-  src: url('../fonts/Montserrat-SemiBold.ttf')
-}
-
-@font-face {
-  font-family: 'Montserrat-Regular';
-  src: url('../fonts/Montserrat-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'Montserrat-Light';
-  src: url('../fonts/Montserrat-Light.ttf')
-}
 
 img {
   max-width: 100%;
@@ -50,165 +19,6 @@ img {
 .padding-1por {padding:1%;}
 .padding-5por {padding:5%;}
 .subtitulos {font-size: 1.5em;}
-
-
-/* Header */
-
-
-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  min-height: 50px;
-  box-shadow: 0 0.5px 1px gainsboro;
-}
-
-.navigation {
-  background-color: white;
-  font-family: Montserrat-Regular;
-  width: 100%;
-}
-
-.container-header {
-  display: flex;
-  height: 68px;
-  padding: 0 15px;
-  font-size: 1em;
-}
-
-.container-header-izq {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex: 2;
-}
-
-.logo {
-  max-width: 160px;
-  margin-right: 20px;
-  margin-left: 10px;
-}
-
-.logo-mini {
-  display: none;
-}
-
-.logo-navigation {
-  max-width: 100%;
-  max-height: 33.61px;
-}
-
-.container-navegacion-header{
-  justify-content: left;
-}
-
-.container-navegacion-header a {
-  padding: 0 10px;
-}
-
-header nav a {
-  color:black;
-  text-decoration: none;
-}
-
-.fa-chevron-down {
-  font-size: 0.2em;
-}
-
-.container-header-der {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-.container-buscador {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: 1.3em;
-}
-
-.input-buscador {
-  border: 0.5px solid gainsboro;
-  border-radius: 5px;
-  padding: 1%;
-  margin-right: 2%;
-  width: 90%;
-  display: none;
-}
-
-.fa-search {
-  color: black;
-  margin-left: 2%;
-  cursor: pointer;
-}
-
-.container-acciones-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.sign-in {
-  background-color: white;
-  color: var(--azulreegalo);
-  text-align: center;
-  padding: 2%;
-  margin-right: 2%;
-  margin-left: 5%;
-  width: 150px;
-  border: 1px solid var(--azulreegalo);
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.sign-in:hover {
-  color: var(--azulregalostrong);
-  border: 1px solid var(--azulregalostrong);
-}
-
-.sign-up {
-  background-color: var(--azulreegalo);
-  color: white;
-  text-align: center;
-  padding: 2%;
-  margin-left: 2%;
-  margin-right: 5%;
-  width: 150px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.sign-up:hover {
-  background-color: var(--azulregalostrong);
-}
-
-.container-carrito {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 50px;
-  cursor: pointer;
-  font-size: 1.3em;
-}
-
-.fa-shopping-cart {
-  color: black;
-  margin-right: 3%;
-}
-
-.cantidad-carrito {
-  margin-left: 3%;
-}
-
-.container-small {
-  display: none;
-}
 
 /* Banner */
 
@@ -236,32 +46,25 @@ div.categorias {
   flex-wrap: wrap;
   flex-direction: row;
 }
-              
+
 div.categoria-regalo {
- width: 180px;
- height: 70px;
- margin: 1%;
- display: flex;
- justify-content: center;
- align-items: center;
- background-size: contain;
- object-fit: scale-down;
- border-radius: 12px;
-     
+  width: 180px;
+  height: 70px;
+  margin: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: contain;
+  object-fit: scale-down;
+  border-radius: 12px;
 }
-              
+
 .categoria-link {
   color: white;
- font-size: 1em;
- text-decoration: none;
- font-style: "Montserrat-SemiBold";
-      
+  font-size: 1em;
+  text-decoration: none;
+  font-style: "Montserrat-SemiBold";
 }
-
-
-
-
-
 
 /* Detalle regalo */
 
@@ -282,12 +85,6 @@ div.categoria-regalo {
   align-items: stretch;
   text-align: center;
   padding:1%;
-  
-
-
-    
-    
-    
 }
 
 .caract-regalo{
@@ -317,7 +114,7 @@ div.categoria-regalo {
   font-size: 1em;
   color: gray;
   text-align: left;
-  height: 280px;
+  height: 220px;
 }
 
 .puntuacion-regalo{
@@ -371,7 +168,6 @@ div.categoria-regalo {
   background-color: var(--azulregalostrong);
 }
 
-
 /* Pasos */
 
 .comofunciona{
@@ -417,334 +213,9 @@ div.categoria-regalo {
   font-size: 1em;
 }
 
-
-/* Footer */
-
-footer {
-  border-top: 1px solid gainsboro;
-  padding: 1.3% 2%;
-}
-
-.top-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.contacto {
-  text-align: left;
-  margin-bottom: 1%;
-}
-
-.texto-contacto {
-  font-family: Montserrat-SemiBold;
-  margin-bottom: 1%;
-}
-
-.datos-contacto {
-  font-family: Montserrat-Light;
-  margin-bottom: 1%;
-}
-
-.numero-telefono {
-  font-weight: bold;
-}
-
-.email {
-  font-weight: bold;
-  color: var(--azulreegalo);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.bottom-navigation {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 1%;
-  width: 30%;
-}
-
-footer div nav a {
-  color:black;
-  text-decoration: none;
-  font-family: Montserrat-SemiBold;
-}
-
-.bottom-footer {
-  display: flex;
-  flex-direction: row;
-}
-
-.social-media {
-  width: 33%;
-  font-size: 1.5em;
-  color: gainsboro;
-  align-items: center;
-  margin-top: 0.5%;
-  text-decoration: none;
-
-}
-
-.fa-facebook,
-.fa-instagram,
-.fa-twitter {   
-  margin-right: 6%;
-  cursor: pointer;
-  text-decoration: none;
-  color: grey;
-  opacity: 0.3;
-}
-
-.container-logo-footer {
-  width: 33%;
-  text-align: center;
-  align-items: center;
-  margin-top: 0.8%;
-}
-
-.logo-footer {
-  width: 120px;
-  object-fit: scale-down;
-  opacity: 0.3;
-}
-
-.container-mercadopago-footer {
-  width: 33%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.pago-seguro {
-  height: 14px;
-  object-fit: scale-down;
-}
-
-.mercadopago {
-  height: 20px;
-  object-fit: scale-down;
-  margin-left: 6%;
-  opacity: 0.4;
-}
-
-.contacto-small {
-  display: none;
-}
-
-/****************** Nosotros ************************/
-
-
-.container-nosotros{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 2%;
-}
-
-.nosotros-text, .nosotros-img{
-  flex-grow: 0.45;
-}
-.nosotros-text{
-  width: 50%;
-}
-.nosotros-text h1, .categories{
-  margin:2% 2% 2% auto;
-}
-
-/****************** Formulario Contacto ************************/
-
-
-.container-contacto{
-  margin: 5%;
-}
-
-.texto-contacto-pagina h1, .texto-contacto-pagina p{
-  margin:2% 2% 2% auto;
-}
-
-div.container-contacto-form{
-  width: 800px;
-  background-color: #FFFFFF;
-  padding: 2% 2%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-
-
-.form-contacto {
-  height: 330px;
-  width: 100%;
-  margin-top: 2%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.container-email-consulta,
-.container-nombre-consulta,
-.container-descripcion-consulta{
-  background-color: rgb(211, 211, 211, 0.2);
-  height: 50px;
-  border-radius: 6px;
-  border: 1px solid gainsboro;
-  padding: 1.2%;
-  width: 100%;
-  font-size: 2em;
-  display: flex;
-}
-
-input[type=email], input[type=text], select, textarea {
-  background-color: transparent;
-  width: 100%;
-  font-size: 0.7em;
-  font-family: Montserrat-Light;
-  margin: auto 2%;
-  border-style: hidden;
-  outline: none;
-  opacity: 0.4;
-}
-
-
-.boton-consultar {
-  width: 70%;
-  height: 50px;
-  margin-top: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-button {
-  background-color: var(--azulreegalo);
-  border: none;
-  width: 100%;
-  height: 100%;
-  font-size: 1.3em;
-  border-radius: 8px;
-  color: white;
-}
-
-button:hover {
-  background-color: var(--azulregalostrong);
-}
-
-
-/****************** Media Queries ************************/
-
-/****************** Ajuste Header ************************/
-
-@media (max-width: 1080px) {
-  .container-header {
-      display: flex;
-      justify-content: space-between;
-  }
-
-  .container-navegacion-header {
-      display: none;
-  }
-
-  .container-buscador  {
-      display: none;
-  }
-
-  .container-acciones-header {
-      display: none;
-  }
-
-  .container-carrito {
-      display: none;
-  }
-
-  .cantidad-carrito {
-      visibility: hidden;
-  }
-
-  .container-small {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: 180px;
-      font-size: 1.3em;
-  }
-
-  .container-buscador-small {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .container-acciones-header-small {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .fa-user {
-      color: var(--azulreegalo);
-      cursor: pointer;
-  }
-
-  .fa-user:hover {
-      color: var(--azulregalostrong)
-  }
-
-  .container-carrito-small {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .menu-hamburguesa {
-      cursor: pointer;
-      margin-right: 5%;
-  }
-
-  .fa-bars {
-      color: black;
-      cursor: pointer;
-  }
-
-  div.indicador {
-      font-size: 1.5em;
-  }
-
-  div.detalle-carrito {
-      font-size: 0.8em;
-  }
-
-  section.recomendados {
-      font-size: 0.8em;
-  }
-
-  footer.footer {
-      font-size: 0.8em;
-  }
-}
-
-/****************** Tablet ************************/
-
+/* Media Queries */
+/* Tablet */
 @media (max-width: 992px) {
-  div.indicador {
-      font-size: 1.5em;
-      margin-left: 2%;
-  }
-
-  .detalle-carrito {
-      flex-direction: column;
-      font-size: 0.85em;
-  }
-  
-  .articulos-carrito,
-  .container-resumen-compra {
-      width: auto;
-      margin: 1.5% 3%;
-
-  }
 
   .ficha-regalo {
     display: flex;
@@ -754,74 +225,35 @@ button:hover {
     padding: 1%;
     flex-grow: 1;
     flex-basis: 0;
-    width: 20%;
+    width: 35%;
+    margin: 5%;
   }
 
   .contenedor-imagen {
     height: 150px;
-}
+  }
 
   .regalo{
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
   }
 
-  section.recomendados {
-      font-size: 0.7em;
-  }
-
-  footer.footer {
-      font-size: 0.7em;
-  }
-
-  .logo-footer {
-      width: 100px;
-  }
-
-  .pago-seguro {
-      height: 10px;
-  }
-
-  .mercadopago {
-      height: 15px;
+  .detalle-regalo{
+    font-size: 0.8em;
+    
   }
 }
 
-/****************** Mobile L ************************/
+/* Mobile L */
 
 @media (max-width: 425px) {
-  .logo {
-      display: none;
-  }
-
-  .logo-mini {
-      display: flex;
-  }
-
-  div.indicador {
-      display:none;
-  }
-
-  .container-detalle-producto {
-      flex: 2;
-  }
-
-  .titulo-producto {
-      font-size: 1.2em;
-  }
-
-  .descripcion-producto {
-      font-size: 1em;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical; 
-  }
 
   .banner{
     height: 250px;
   }
+  
   .banner-letters{
     
     font-size: 2em;
@@ -830,7 +262,6 @@ button:hover {
     font-family: 'Montserrat-SemiBold';
   }
 
-
   .ficha-regalo {
     display: flex;
     flex-direction: column;
@@ -839,328 +270,184 @@ button:hover {
     padding: 1%;
     flex-grow: 1;
     flex-basis: 0;
-    width: 45%;
+    width: 50%;
   }
 
   .contenedor-imagen {
     height: 180px;
-}
+  }
 
-div.categorias {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-              
-div.categoria-regalo  {
- width: 130px;
- height: 50px;
- margin: 2% 0;    
-}
-              
-.categoria-link {
-  color: white;
- font-size: 0.7em;
- text-decoration: none;
- text-align: center;
- font-family: 'Montserrat-SemiBold'
-      
-}
-.regalo{
+  div.categorias {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  div.categoria-regalo  {
+    width: 130px;
+    height: 50px;
+    margin: 2% 0;    
+  }
+
+  .categoria-link {
+    color: white;
+    font-size: 0.7em;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Montserrat-SemiBold'
+  }
+
+  .regalo{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
   }
 
-  /* Pasos */
+  .detalle-regalo{overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;}
 
-.comofunciona{
-  padding: 2%;
-}
-
-.titulo-pasos{
-  font-size: 1em;
-  margin: 2% 0;
-}
-
-.pasos{
-  margin: 2% 0;
-}
-
-.pasos-titulos{
- color: black;
- font-size: 12px;
-}
-
-.imagen-paso{
-  flex-grow: 0.5;
-  font-size: 2em;
-  margin-bottom: 4%;
-  padding: 4%;
-}
-
-.descripcion-paso{
-  flex-grow: 0.5;
-  text-align: center;
-  margin: 2%;
-  color: grey;
-  font-size: 10px;
-}
-
-.descripcion-paso span{
-  font-size: 12px;
-  color: black;
-}
-
-.descripcion-paso p{
-  font-size: 10;
-  color: gray;
-}
-
-
-.eleccion-titulo{
-  font-size: 1em;
-  margin-top: 5%
-}
-
-.eleccion-subtitulo{
-  font-size: 0.8em;
-}
-
-.titulo-regalo .detalle-regalo{
-  font-size: 0.8em;
-}
-
-.detalle-regalo{
-  margin-bottom: 2%;
-}
-
-  .bottom-navigation,
-  .social-media,
-  .container-mercadopago-footer,
-  .contacto {
-      display: none;
-  }
-
-  .contacto-small {
-      display: block;
-      font-size: 1.3em;
-      margin: 2%;
-  }
-
-  .texto-contacto-small {
-      font-family: Montserrat-Bold;
-  }
-
-  .datos-contacto-small {
-      margin-top: 2%;
-      font-size: 0.8em;
-  }
-
-  .bottom-footer {
-      justify-content: center;
-  }
-
-  .container-logo-footer {
-      margin-top: 2%;
-  }
 }
 
 /****************** Mobile S ************************/
 
 @media (max-width: 320px) {
-  div.indicador {
-      display:none;
-  }
-
-  .logo {
-      display: none;
-  }
-
-  .logo-mini {
-      display: flex;
-  }
-
-  .container-detalle-producto {
-      flex: 2;
-  }
-
-  .titulo-producto {
-      font-size: 1.05em;
-  }
-
-  .descripcion-producto {
-      font-size: 1em;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical; 
-  }
-
-  
-.banner-letters{
-    
+  .banner-letters{
     box-sizing: border-box;
-    
     font-size: 1.5em;
     color: white;
     padding-left: 5%;
     font-family: 'Montserrat-SemiBold';
   }
+  
+  .banner{
+    height: 170px;
+  }
 
+  div.categorias {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
+  div.categoria-regalo  {
+    width: 150px;
+    height: 50px;
+    margin: 2% 0;    
+  }
 
-.banner{
-  height: 170px;
-}
+  .categoria-link {
+    font-size: 0.8em;
+    font-family: 'Montserrat-SemiBold'
+  }
 
-div.categorias {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-              
-div.categoria-regalo  {
- width: 150px;
- height: 50px;
- margin: 2% 0;    
-}
-              
-.categoria-link {
- font-size: 0.8em;
- font-family: 'Montserrat-SemiBold'
-}
-
-.regalo{
-    
+  .regalo{
     flex-wrap: wrap;
     justify-content: space-around;
   }
 
-  .titulo-regalo .detalle-regalo{
+  .ficha-regalo{
+    width: 55%;
+    margin: 6%;
+  }
+
+  .titulo-regalo,
+  .detalle-regalo{
     font-size: 0.3em;
   }
   
   .detalle-regalo{
     margin-bottom: 2%;
     font-size: 0.5em;
+    
   }
 
   .titulo-regalo{
     font-size: 0.7em;
   }
 
-
   /* Pasos */
 
-.comofunciona{
-  padding: 5% 2%;
-}
+  .subtitulos{ font-size: 0.8em;}
 
-.titulo-pasos{
-  font-size: 1em;
-  margin: 2% 0;
-}
-
-.pasos{
-  margin: 2% 0;
-}
-
-.pasos-titulos{
- color: black;
- font-size: 12px;
-}
-
-.imagen-paso{
-  flex-grow: 0.5;
-  font-size: 2em;
-  margin-bottom: 4%;
-  padding: 4%;
-}
-
-.descripcion-paso{
-  flex-grow: 0.5;
-  text-align: center;
-  margin: 2%;
-  color: grey;
-  font-size: 10px;
-}
-
-.descripcion-paso span{
-  font-size: 12
-};
-
-.descripcion-paso p{
-  font-size: 10;
-  color: gray;
-}
-
-
-.eleccion-titulo{
-  font-size: 1em;
-  margin-top: 5%
-}
-
-.eleccion-subtitulo{
-  font-size: 0.8em;
-}
-
-.titulo-regalo {
-  font-size: 0.8em;
-  height: 40px;
-}
-
-.detalle-regalo{
-  margin-bottom: 2%;
-  font-size: 0.8em;
-}
-
-.puntuacion-regalo{
-  font-size: 0.8em;
-}
-
-
-.imagen-regalo{
-  flex-grow: 1;
-  height: 100%px;
-  width: 100%;
-}
-  
-.contenedor-imagen{
-  height: 150px;
-}
-
-.detail, .shop {
-  font-size: 0.8em;
-}
-
-  .bottom-navigation,
-  .social-media,
-  .container-mercadopago-footer,
-  .contacto {
-      display: none;
+  .comofunciona{
+    padding: 5% 2%;
+    font-size: 0.7em;
   }
 
-  .contacto-small {
-      display: block;
-      font-size: 1.3em;
-      margin: 2%;
+  .titulo-pasos{
+    font-size: 1em;
+    margin: 2% 0;
   }
 
-  .texto-contacto-small {
-      font-family: Montserrat-SemiBold;
+  .pasos{
+    margin: 2% 0;
   }
 
-  .datos-contacto-small {
-      margin-top: 2%;
-      font-size: 0.8em;
+  .pasos-titulos{
+    color: black;
+    font-size: 12px;
   }
 
-  .bottom-footer {
-      justify-content: center;
+  .imagen-paso{
+    flex-grow: 0.5;
+    font-size: 2em;
+    margin-bottom: 4%;
+    padding: 4%;
   }
 
-  .container-logo-footer {
-      margin-top: 2%;
+  .descripcion-paso{
+    flex-grow: 0.5;
+    text-align: center;
+    margin: 2%;
+    color: grey;
+    font-size: 10px;
+  }
+
+  .descripcion-paso span{
+    font-size: 12;
+  }
+
+  .descripcion-paso p{
+    font-size: 10;
+    color: gray;
+  }
+
+  .eleccion-titulo{
+    font-size: 1em;
+    margin-top: 5%
+  }
+
+  .eleccion-subtitulo{
+    font-size: 0.8em;
+  }
+
+  .titulo-regalo {
+    font-size: 0.8em;
+    height: 40px;
+  }
+
+  .detalle-regalo{
+    margin-bottom: 2%;
+    font-size: 0.8em;
+  }
+
+  .puntuacion-regalo{
+    font-size: 0.8em;
+  }
+
+  .imagen-regalo{
+    flex-grow: 1;
+    height: 100%px;
+    width: 100%;
+  }
+
+  .contenedor-imagen{
+    height: 150px;
+  }
+
+  .detail,
+  .shop {
+    font-size: 0.8em;
   }
 }
