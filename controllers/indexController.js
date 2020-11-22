@@ -24,22 +24,22 @@ const controller = {
   // Nosotros
 
   nosotros: (req, res) => {
-    res.render('nosotros', {categories: categories});
+    res.render('index/nosotros', {categories: categories});
   },
 
   // Contacto
 
   contacto: (req, res) => {
-    res.render('contacto');
+    res.render('index/contacto');
   },
 
   comoregalar: (req, res) => {
-    res.render('comoregalar');},
+    res.render('index/comoregalar');},
 
 // Preguntas frecuentes
 
   preguntasFrecuentes: (req, res) => {
-    res.render('preguntasFrecuentes',{preguntasFrecuentes: preguntasFrecuentes});
+    res.render('index/preguntasFrecuentes',{preguntasFrecuentes: preguntasFrecuentes});
   },
 
 
