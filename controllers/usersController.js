@@ -76,7 +76,7 @@ const controller = {
             if (usuarioALoguearse == undefined) {
                 return res.render('users/login', { errors: { msg: 'Credenciales invalidas' } })
             }
-            
+
             //Si existe el usuario entonces lo gurdo en session
             req.session.usuarioLogueado = usuarioALoguearse;
             res.redirect("/")
