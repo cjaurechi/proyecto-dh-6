@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const bcryptjs = require('bcryptjs');
 const moment = require('moment');
-let { check, validationResult, body } = require("express-validator")
+const { check, validationResult, body } = require("express-validator")
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -54,42 +54,36 @@ const controller = {
         res.render('users/login');
     },
 
-    processLogin: function(req,res){
-       
-        let errors = validationResult(req);
-        if (errors.isEmpty()){
+    processLogin: (req, res) => {
 
-            let usuarioALoguearse = ""
-        
-        //Recorro el json de usuarios para ver si existe el usuario que se logueo
-            for (let i=0; i<users.length; i++){
-                if (users[i] == req.body.email){
-                    if (bcrypt.compareSync(req.body.password,users[i].password)){
-                        let usuarioALoguearse = users[i];
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let usuarioALoguearse
+
+            //Recorro el json de usuarios para ver si existe el usuario que se logueo
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].email == req.body.email) {
+                    if (bcryptjs.compareSync(req.body.password, users[i].password)) {
+                        usuarioALoguearse = users[i];
                         break;
                     }
                 }
             }
-            console.log(usuarioALoguearse)
-            // Si no existe el usuario mando un error con credenciales invalidas
-            if (usuarioALoguearse == ''){
-                return res.render('users/login', {errors:{
-                    msg: 'Credenciales invalidas'}
-                
-            })
-        }
 
+            console.log(usuarioALoguearse)
+
+            // Si no existe el usuario mando un error con credenciales invalidas
+            if (usuarioALoguearse == undefined) {
+                return res.render('users/login', { errors: { msg: 'Credenciales invalidas' } })
+            }
             
             //Si existe el usuario entonces lo gurdo en session
             req.session.usuarioLogueado = usuarioALoguearse;
-
-            return res.redirect("/")
-
-        }else{
-            return res.render('users/login',{errors: errors.errors})
+            res.redirect("/")
+        } else {
+            return res.render('users/login', { errors: errors.errors })
         }
     }
-
 }
 
 module.exports = controller;
