@@ -7,8 +7,6 @@ const { check, validationResult, body } = require("express-validator")
 const usersFilePath = path.join(__dirname, '../data/users.json');
 var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
-
-
 const controller = {
 
     // Registro
@@ -19,18 +17,25 @@ const controller = {
 
     createUser: (req, res) => {
         let errors = validationResult(req);
-        console.log(validationResult(req));
+
         if (errors.isEmpty()) {
-            //Usuario que se registro
+
+            // Guardo nombre de archivo para imagen de perfil
+            let filename = ""
+            req.files.forEach(function(file) {
+                filename = file.filename;
+            });
+
+            // Creo objeto literal de nuevo usuario
             let nuevo_usuario = {
                 id: users[users.length - 1].id + 1,
                 first_name: '',
                 last_name: '',
                 email: req.body.email,
                 password: bcryptjs.hashSync(req.body.password, 10),
-                brday: req.body.fecnac,
+                bday: req.body.fecnac,
                 rol: '',
-                image: '',
+                profile: filename,
                 last_login: moment(new Date()).format('YYYY-MM-DD'),
                 last_date_password: moment(new Date()).format('YYYY-MM-DD'),
                 language: 'esp', // Dejo español por default
@@ -38,18 +43,18 @@ const controller = {
                 residence: '',
             }
 
-            //Agregamos al usuario nuevo
+            // Agregamos nuevo usuario al array de usuarios
             users.push(nuevo_usuario);
 
-            //Convertimos en string
+            // Convertimos al array en string
             users = JSON.stringify(users);
 
-            //Lo escribimos en el archivo
+            // Escribimos el JSON de usuarios
             fs.writeFileSync(usersFilePath, users)
 
             res.redirect('/usuarios/registro');
         } else {
-            return res.render('users/register', {errors: errors.errors})
+            return res.render('users/register', { errors: errors.errors })
         }
     },
 
@@ -79,7 +84,7 @@ const controller = {
 
             // Si no existe el usuario mando un error con credenciales invalidas
             if (usuarioALoguearse == undefined) {
-                return res.render('users/login', { errors: { msg: 'Credenciales invalidas' } })
+                return res.render('users/login', { errors: [{ msg: 'Credenciales invalidas' }] });
             }
 
             //Si existe el usuario entonces lo gurdo en session

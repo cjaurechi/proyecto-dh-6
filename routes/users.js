@@ -11,10 +11,10 @@ const router = express.Router();
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/images/products')
+        cb(null, 'public/images/users')
     },
     filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+        cb(null, file.fieldname + '-' + req.body.email.replace(/\s/g, "-").toLowerCase() + '.jpg')
     }
 })
 
@@ -25,7 +25,7 @@ const usersController = require('../controllers/usersController');
 
 /*** REGISTRO ***/
 router.get('/registro', guestMiddleware, usersController.register);
-router.post('/registro', registerMiddleware, usersController.createUser);
+router.post('/registro', registerMiddleware, upload.any(), usersController.createUser); // Agregar registerMiddleware
 
 /*** LOGIN ***/
 router.get('/login', usersController.login);
