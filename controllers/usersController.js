@@ -54,6 +54,42 @@ const controller = {
         res.render('users/login');
     },
 
+    processLogin: function(req,res){
+       
+        let errors = validationResult(req);
+        if (errors.isEmpty()){
+
+            let usuarioALoguearse = ""
+        
+        //Recorro el json de usuarios para ver si existe el usuario que se logueo
+            for (let i=0; i<users.length; i++){
+                if (users[i] == req.body.email){
+                    if (bcrypt.compareSync(req.body.password,users[i].password)){
+                        let usuarioALoguearse = users[i];
+                        break;
+                    }
+                }
+            }
+            console.log(usuarioALoguearse)
+            // Si no existe el usuario mando un error con credenciales invalidas
+            if (usuarioALoguearse == ''){
+                return res.render('users/login', {errors:{
+                    msg: 'Credenciales invalidas'}
+                
+            })
+        }
+
+            
+            //Si existe el usuario entonces lo gurdo en session
+            req.session.usuarioLogueado = usuarioALoguearse;
+
+            return res.redirect("/")
+
+        }else{
+            return res.render('users/login',{errors: errors.errors})
+        }
+    }
+
 }
 
 module.exports = controller;

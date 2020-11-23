@@ -3,6 +3,8 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path')
 let {check,validationResult, body} = require("express-validator")
+let guestMiddleware = require('../middlewares/guestMiddleware')
+let authMiddleware = require('../middlewares/authMiddleware')
 
 const router = express.Router();
 
@@ -21,7 +23,7 @@ var upload = multer({storage : storage})
 const usersController = require('../controllers/usersController');
 
 /*** REGISTRO ***/
-router.get('/registro', usersController.registro);
+router.get('/registro',guestMiddleware, usersController.registro);
 router.post('/registro', 
 
 //[ check("mail").isEmail().withMessage("Este campo debe ser mail"),
@@ -32,5 +34,6 @@ usersController.createRegistro);
 
 /*** LOGIN ***/
 router.get('/login', usersController.login);
+router.post('/login',usersController.processLogin)
 
 module.exports = router;

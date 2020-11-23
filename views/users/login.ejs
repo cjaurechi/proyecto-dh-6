@@ -9,13 +9,27 @@
 
 <body>
     <%- include("../partials/header.ejs") %>
-    <form action="users/login" method="POST">
+
+    
+    <form action="login" method="POST">
     <section class="login">
         <div class="container-login">
             <p class="titulo-login">Iniciar sesión en</p>
             <div class="container-logo-login">
                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-login">
             </div>
+            <% if (typeof errors != 'undefined'){%>
+                <p> ERROR </p>
+              
+                <ul>
+                    <% for (let i=0; i< errors.lenght; i++){ %>
+                        <li>
+                            <%= errors[i].msg %>
+                        </li>
+                    <%}%>    
+                </ul>
+            <% } %>
+
             <div class="form-login">
                 <div class="container-email-login">
                     <div class="container-fa-envelop">
