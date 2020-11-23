@@ -7,46 +7,51 @@ const { check, validationResult, body } = require("express-validator")
 const usersFilePath = path.join(__dirname, '../data/users.json');
 var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
+
+
 const controller = {
 
     // Registro
 
-    registro: (req, res) => {
+    register: (req, res) => {
         res.render('users/register');
     },
 
-    createRegistro: (req, res) => {
+    createUser: (req, res) => {
+        let errors = validationResult(req);
+        console.log(validationResult(req));
+        if (errors.isEmpty()) {
+            //Usuario que se registro
+            let nuevo_usuario = {
+                id: users[users.length - 1].id + 1,
+                first_name: '',
+                last_name: '',
+                email: req.body.email,
+                password: bcryptjs.hashSync(req.body.password, 10),
+                brday: req.body.fecnac,
+                rol: '',
+                image: '',
+                last_login: moment(new Date()).format('YYYY-MM-DD'),
+                last_date_password: moment(new Date()).format('YYYY-MM-DD'),
+                language: 'esp', // Dejo español por default
+                country: '',
+                residence: '',
+            }
 
-        //Usuario que se registro
-        let nuevo_usuario = {
-            id: users[users.length - 1].id + 1,
-            first_name: '',
-            last_name: '',
-            email: req.body.email,
-            password: bcryptjs.hashSync(req.body.password, 10),
-            passwordrepeat: bcryptjs.hashSync(req.body.passwordrepeat, 10),
-            rol: '',
-            image: '',
-            last_login: moment(new Date()).format('YYYY-MM-DD'),
-            last_date_password: moment(new Date()).format('YYYY-MM-DD'),
-            language: 'esp', // Dejo español por default
-            country: '',
-            brday: req.body.fecnac,
-            residence: '',
+            //Agregamos al usuario nuevo
+            users.push(nuevo_usuario);
+
+            //Convertimos en string
+            users = JSON.stringify(users);
+
+            //Lo escribimos en el archivo
+            fs.writeFileSync(usersFilePath, users)
+
+            res.redirect('/usuarios/registro');
+        } else {
+            return res.render('users/register', {errors: errors.errors})
         }
-
-        //Agregamos al usuario nuevo
-        users.push(nuevo_usuario);
-
-        //Convertimos en string
-        users = JSON.stringify(users);
-
-        //Lo escribimos en el archivo
-        fs.writeFileSync(usersFilePath, users)
-
-        res.redirect('/usuarios/registro');
     },
-
 
     // Login
 

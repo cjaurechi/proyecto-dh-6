@@ -50,8 +50,19 @@
                     </div>
                     <input class="date" type="date" name="fecnac" id="date" placeholder="Fecha de nacimiento">
                 </div>
+
+                <% if (typeof errors != 'undefined') { %>
+                    <ul>
+                        <% errors.forEach(function(error) { %>
+                            <li>
+                                <%= error.msg %> 
+                            </li>
+                        <% }) %> 
+                    </ul>
+                <% } %> 
+
                 <div class="boton-register">
-                    <button type=“submit”>Continuar</button>
+                    <button type=“submit”>Registrar</button>
                 </div>
 
             </form>
