@@ -7,6 +7,7 @@ const express = require('express')
 const configuracion = require('dotenv').config();
 const methodOverride = require('method-override');
 const checkIp = require("./middlewares/check-ip")
+let session = require('express-session')
 
 
 // ********** Express **********
@@ -19,7 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
-app.use(checkIp)
+app.use(checkIp);
+app.use (session({secret: "Shh, secreto"}));
 
 
 // ********** Template Engine **********

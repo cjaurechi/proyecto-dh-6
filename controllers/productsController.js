@@ -19,7 +19,7 @@ var suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
 const commentsFilePath = path.join(__dirname, '../data/commentsDataBase.json');
 var comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
 
-const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+const usersFilePath = path.join(__dirname, '../data/users.json');
 var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
