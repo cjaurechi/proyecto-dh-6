@@ -4,7 +4,7 @@ const bcryptjs = require('bcryptjs');
 const moment = require('moment');
 let { check, validationResult, body } = require("express-validator")
 
-const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+const usersFilePath = path.join(__dirname, '../data/users.json');
 var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
