@@ -325,13 +325,20 @@ footer div nav a {
     border: 1px solid gray;
     
 }
-.pregunta{
-    font-family: Montserrat-Bold;
+
+
+.preguntayrespuesta{
+ 
     margin: 2% 1%;
 }
+.pregunta{
+    font-family: Montserrat-Bold;
+}
+
 
 .respuesta{
     margin: 2% 1%;
+   
 }
 
 .msj-creacion{

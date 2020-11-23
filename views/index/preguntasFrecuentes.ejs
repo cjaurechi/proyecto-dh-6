@@ -21,8 +21,11 @@
             <div class="contenedor-preguntasyrespuestas">
                 <% preguntasFrecuentes.filter (function(pregunta) { %>
                 <div class="contenedor-cadapregunta">
-                    <div class="pregunta"> <%= pregunta.pregunta %> </div>
-                    <div class="respuesta"> <%= pregunta.respuesta %> </div>
+                       <div class="preguntayrespuesta"> 
+                        <p class="pregunta"><%= pregunta.pregunta %> </p>
+                        <div class="respuesta"> <%= pregunta.respuesta %> </div>
+                    </div>
+                    
 
                 </div>
                 <% }) %>
