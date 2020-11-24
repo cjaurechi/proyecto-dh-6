@@ -1,6 +1,7 @@
 // ********** Requires **********
 const express = require('express');
 const path = require('path')
+let authMiddleware = require('../middlewares/authMiddleware')
 
 const router = express.Router();
 
@@ -8,6 +9,6 @@ const router = express.Router();
 const cartController = require('../controllers/cartController');
 
 /*** CARRITO DE COMPRA ***/
-router.get('/', cartController.productCart);
+router.get('/', authMiddleware, cartController.productCart);
 
 module.exports = router;

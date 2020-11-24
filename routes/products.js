@@ -3,6 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const validation = require('../middlewares/product_validator')
+let authMiddleware = require('../middlewares/authMiddleware')
 
 const router = express.Router();
 
@@ -22,22 +23,22 @@ const productsController = require('../controllers/productsController');
 const { ValidationHalt } = require('express-validator/src/base');
 
 /*** LISTADO DE PRODUCTOS ***/
-router.get('/', productsController.productList);
+router.get('/', authMiddleware, productsController.productList);
 
 /*** DETALLE DE PRODUCTO ***/
-router.get('/:id/detalle', productsController.productDetail);
+router.get('/:id/detalle',authMiddleware, productsController.productDetail);
 
 /*** LISTA DE PRODUCTO ***/
-router.get('/:id?/listar', productsController.productList);
+router.get('/:id?/listar', authMiddleware,productsController.productList);
 
 /*** CREAR UN PRODUCTO ***/ 
-router.get('/crear', productsController.create); 
+router.get('/crear',authMiddleware, productsController.create); 
 
 router.post('/',upload.any(),validation,productsController.store); 
 
 /*** MODIFICAR UN PRODUCTO ***/ 
-router.get('/:id/editar', productsController.edit); 
+router.get('/:id/editar',authMiddleware, productsController.edit); 
 router.put('/:id/editar',upload.any(),validation,productsController.update); 
-router.delete('/:id/borrar', productsController.delete); 
+router.delete('/:id/borrar',productsController.delete); 
 
 module.exports = router;

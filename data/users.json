@@ -314,5 +314,37 @@
         "country": "",
         "brday": "1990-01-01",
         "residence": ""
+    },
+    {
+        "id": 22,
+        "first_name": "",
+        "last_name": "",
+        "email": "norberto_rubado@hotmail.com",
+        "password": "$2a$10$KWwTF/K5rvceZA0QnOF/t..98DQLKroHF8zm8pmm3b27GfTu0p8WS",
+        "passwordrepeat": "$2a$10$palDzaJyJBqID4motZQHmOmuBntkHWRp2xvHARMDzTsqVA3nNNtxu",
+        "rol": "admin",
+        "image": "",
+        "last_login": "2020-11-23",
+        "last_date_password": "2020-11-23",
+        "language": "esp",
+        "country": "",
+        "brday": "1964-04-07",
+        "residence": ""
+    },
+    {
+        "id": 23,
+        "first_name": "",
+        "last_name": "",
+        "email": "adrian_rubado@hotmail.com",
+        "password": "$2a$10$fiWQ.MLuqaXp4IdhUGV6WO3SaEwU0xFEGfxNBA/HHqM9KnLca7sla",
+        "passwordrepeat": "$2a$10$yDEbBJ3Okvh9AByCHg6JM.ksmVoZh5FbBPcK1RfsVBJkVxCSJUoaK",
+        "rol": "user",
+        "image": "",
+        "last_login": "2020-11-23",
+        "last_date_password": "2020-11-23",
+        "language": "esp",
+        "country": "",
+        "brday": "2020-11-23",
+        "residence": ""
     }
 ]

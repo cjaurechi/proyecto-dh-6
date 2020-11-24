@@ -1,5 +1,6 @@
 // ********** Requires **********
 const express = require('express');
+let authMiddleware = require('../middlewares/authMiddleware')
 
 const router = express.Router();
 
@@ -7,22 +8,22 @@ const router = express.Router();
 const indexController = require('../controllers/indexController')
 
 /*** HOME PAGE ***/
-router.get('/', indexController.home);
+router.get('/',authMiddleware, indexController.home);
 
 /*** NOSOTROS ***/
-router.get('/nosotros', indexController.nosotros);
+router.get('/nosotros',authMiddleware, indexController.nosotros);
 
 /*** CONTACTO ***/
-router.get('/contacto', indexController.contacto);
+router.get('/contacto',authMiddleware, indexController.contacto);
 
 /*** COMO REGALAR ***/
-router.get('/comoregalar', indexController.comoregalar);
+router.get('/comoregalar',authMiddleware, indexController.comoregalar);
 
 
 /*** PREGUNTAS FRECUENTES ***/
-router.get('/preguntasFrecuentes', indexController.preguntasFrecuentes);
+router.get('/preguntasFrecuentes',authMiddleware, indexController.preguntasFrecuentes);
 
 /*** TEST ***/
-router.get('/test', indexController.getTest);
+router.get('/test',authMiddleware, indexController.getTest);
 
 module.exports = router;

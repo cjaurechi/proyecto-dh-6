@@ -64,7 +64,7 @@ const controller = {
             for (let i = 0; i < users.length; i++) {
                 if (users[i].email == req.body.email) {
                     if (bcryptjs.compareSync(req.body.password, users[i].password)) {
-                        usuarioALoguearse = users[i];
+                        usuarioALoguearse = users[i].email;
                         break;
                     }
                 }
@@ -74,11 +74,15 @@ const controller = {
 
             // Si no existe el usuario mando un error con credenciales invalidas
             if (usuarioALoguearse == undefined) {
-                return res.render('users/login', { errors: { msg: 'Credenciales invalidas' } })
+                return res.render('users/login', { errors: [{ "msg": 'Credenciales no invalidas' }] })
             }
             
             //Si existe el usuario entonces lo gurdo en session
             req.session.usuarioLogueado = usuarioALoguearse;
+
+            console.log(req.session.usuarioLogueado)
+            console.log(req.session)
+
             res.redirect("/")
         } else {
             return res.render('users/login', { errors: errors.errors })
