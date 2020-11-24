@@ -24,7 +24,7 @@ var upload = multer({ storage: storage })
 const usersController = require('../controllers/usersController');
 
 /*** REGISTRO ***/
-router.get('/registro', authMiddleware, usersController.registro);
+router.get('/registro', authMiddleware, usersController.register);
 /* router.post('/registro', [check('email').isEmail().withMessage('Este campo debe ser un email'), check('password').isLength({ min: 3 }).withMessage('Este campo debe contener al menos 3 caracteres')], usersController.createRegistro); */
 
 /* router.get('/registro', guestMiddleware, usersController.register); */
