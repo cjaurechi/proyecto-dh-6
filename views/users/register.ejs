@@ -24,7 +24,7 @@
 
 
 
-            <form class="form-register" method="POST" action="/usuarios/registro">
+            <form class="form-register" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
                 <div class="container-email-register">
                     <div class="container-fa-envelop">
                         <i class="far fa-envelope"></i>
@@ -50,8 +50,22 @@
                     </div>
                     <input class="date" type="date" name="fecnac" id="date" placeholder="Fecha de nacimiento">
                 </div>
+                <div class="container-img-perfil">
+                    <input class="form-input-imagen" type="file" name="profile" id="profile">
+                </div>
+
+                <% if (typeof errors != 'undefined') { %>
+                <ul>
+                    <% errors.forEach(function(error) { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+                </ul>
+                <% } %>
+
                 <div class="boton-register">
-                    <button type=“submit”>Continuar</button>
+                    <button type=“submit”>Registrar</button>
                 </div>
 
             </form>

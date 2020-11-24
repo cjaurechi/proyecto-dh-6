@@ -11,42 +11,52 @@ const controller = {
 
     // Registro
 
-    registro: (req, res) => {
+    register: (req, res) => {
         res.render('users/register');
     },
 
-    createRegistro: (req, res) => {
+    createUser: (req, res) => {
+        let errors = validationResult(req);
 
-        //Usuario que se registro
-        let nuevo_usuario = {
-            id: users[users.length - 1].id + 1,
-            first_name: '',
-            last_name: '',
-            email: req.body.email,
-            password: bcryptjs.hashSync(req.body.password, 10),
-            passwordrepeat: bcryptjs.hashSync(req.body.passwordrepeat, 10),
-            rol: '',
-            image: '',
-            last_login: moment(new Date()).format('YYYY-MM-DD'),
-            last_date_password: moment(new Date()).format('YYYY-MM-DD'),
-            language: 'esp', // Dejo español por default
-            country: '',
-            brday: req.body.fecnac,
-            residence: '',
+        if (errors.isEmpty()) {
+
+            // Guardo nombre de archivo para imagen de perfil
+            let filename = ""
+            req.files.forEach(function(file) {
+                filename = file.filename;
+            });
+
+            // Creo objeto literal de nuevo usuario
+            let nuevo_usuario = {
+                id: users[users.length - 1].id + 1,
+                first_name: '',
+                last_name: '',
+                email: req.body.email,
+                password: bcryptjs.hashSync(req.body.password, 10),
+                bday: req.body.fecnac,
+                rol: '',
+                profile: filename,
+                last_login: moment(new Date()).format('YYYY-MM-DD'),
+                last_date_password: moment(new Date()).format('YYYY-MM-DD'),
+                language: 'esp', // Dejo español por default
+                country: '',
+                residence: '',
+            }
+
+            // Agregamos nuevo usuario al array de usuarios
+            users.push(nuevo_usuario);
+
+            // Convertimos al array en string
+            users = JSON.stringify(users);
+
+            // Escribimos el JSON de usuarios
+            fs.writeFileSync(usersFilePath, users)
+
+            res.redirect('/usuarios/registro');
+        } else {
+            return res.render('users/register', { errors: errors.errors })
         }
-
-        //Agregamos al usuario nuevo
-        users.push(nuevo_usuario);
-
-        //Convertimos en string
-        users = JSON.stringify(users);
-
-        //Lo escribimos en el archivo
-        fs.writeFileSync(usersFilePath, users)
-
-        res.redirect('/usuarios/registro');
     },
-
 
     // Login
 
@@ -74,9 +84,9 @@ const controller = {
 
             // Si no existe el usuario mando un error con credenciales invalidas
             if (usuarioALoguearse == undefined) {
-                return res.render('users/login', { errors: [{ "msg": 'Credenciales no invalidas' }] })
+                return res.render('users/login', { errors: [{ "msg": 'Credenciales invalidas' }] })
             }
-            
+
             //Si existe el usuario entonces lo gurdo en session
             req.session.usuarioLogueado = usuarioALoguearse;
 
