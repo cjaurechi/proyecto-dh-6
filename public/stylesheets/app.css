@@ -14,6 +14,7 @@
     --goldestrella: #FFC107;
     --azullinea: #b5e1ff;
     --azulresumen: #038ECD;
+    --azulsidebar: #478cc5;
     --negro: #000000;
     --blanco: #ffffff;
     --grisfondo: #ebebeb;
@@ -347,6 +348,42 @@ footer div nav a {
     font-size: 1em;
     margin: 2%;
 }
+
+/* Sidebar */
+
+#sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: var(--azulsidebar);
+    left: -200px;
+    transition: all 500ms linear;
+  }
+  
+  #sidebar.active {
+    left: 0px;
+  }
+  
+  #sidebar ul li {
+    color: rgba(230, 230, 230, .9);
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(100, 100, 100, .3);
+    text-align: center;
+  }
+
+  #sidebar ul li a {
+    color:white;
+    text-decoration: none;
+  }
+  
+  .logo {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto; 
+  }
+
+/* Sidebar */
 
 /* Media Queries */
 /* Laptop */
