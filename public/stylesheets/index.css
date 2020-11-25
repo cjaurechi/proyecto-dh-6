@@ -18,7 +18,10 @@ img {
 .padding-2por {padding:2%;}
 .padding-1por {padding:1%;}
 .padding-5por {padding:5%;}
-.subtitulos {font-size: 1.5em;}
+.subtitulos {
+  font-size: 1.5em;
+  font-weight:bold;
+}
 
 /* Banner */
 
@@ -62,6 +65,7 @@ div.categoria-regalo {
 .categoria-link {
   color: white;
   font-size: 1em;
+  font-weight:bold;
   text-decoration: none;
   font-style: "Montserrat-SemiBold";
 }
@@ -178,6 +182,7 @@ div.categoria-regalo {
   text-align: center;
   padding: 2% 0;
   font-size: 18px;
+  font-weight:bold;
 }
 
 .pasos{
@@ -197,12 +202,17 @@ div.categoria-regalo {
 .descripcion-paso .pasos-titulos{
   color: black;
   font-size: 1em;
+  font-weight:bold;
 }
 
 .imagen-paso{
   flex-grow: 0.5;
   font-size: 5em;
   margin-bottom: 4%;
+}
+
+.fas.fa-mouse-pointer, .fas.fa-gift, .far.fa-smile-wink  {
+  color: var(--azulregalostrong);
 }
 
 .descripcion-paso{
@@ -368,7 +378,10 @@ div.categoria-regalo {
 
   /* Pasos */
 
-  .subtitulos{ font-size: 0.8em;}
+  .subtitulos{ 
+    font-size: 0.8em;
+    font-weight: bold;
+  }
 
   .comofunciona{
     padding: 5% 2%;
@@ -420,6 +433,7 @@ div.categoria-regalo {
 
   .eleccion-subtitulo{
     font-size: 0.8em;
+    font-weight:bold;
   }
 
   .titulo-regalo {
