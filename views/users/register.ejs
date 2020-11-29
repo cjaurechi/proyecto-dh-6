@@ -44,7 +44,7 @@
                     <div class="container-fa-birthday-cake">
                         <i class="fas fa-birthday-cake" style="width: 30px;"></i>
                     </div>
-                    <span class="texto-fecnac">Fecha de Nacimiento</span>
+                    <span class="texto-fecnac">Fecha de nacimiento</span>
                     <input type="date" name="fecnac" id="date">
                 </div>
                 <div class="container-img-perfil">
@@ -55,13 +55,11 @@
                     <input type="file" name="profile" id="profile" />
                 </div>
                 <% if (typeof errors != 'undefined') { %>
-                <ul>
-                    <% errors.forEach(function(error) { %>
-                    <li>
-                        <%= error.msg %>
-                    </li>
-                    <% }) %>
-                </ul>
+                <% errors.forEach(function(error) { %>
+                <div class="error-messages">
+                    <span>‣ <%= error.msg %></span>
+                </div>
+                <% }) %>
                 <% } %>
                 <div class="boton-register">
                     <button type=“submit”>Registrarse</button>

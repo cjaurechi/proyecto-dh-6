@@ -40,7 +40,6 @@ p.titulo-register {
 }
 
 .form-register {
-    height: 370px;
     width: 100%;
     margin-top: 2%;
     display: flex;
@@ -62,6 +61,7 @@ p.titulo-register {
     width: 100%;
     font-size: 1.8em;
     display: flex;
+    margin-bottom: 1.5%;
 }
 
 .container-fa-envelop,
@@ -100,6 +100,12 @@ input[type=file] {
     font-family: Montserrat-Light;
     margin: auto 2%;
     opacity: 0.3;
+}
+
+.error-messages {
+    align-self: flex-start;
+    color: tomato;
+    margin-top: 1%;
 }
 
 .boton-register {

@@ -22,7 +22,7 @@ const controller = {
 
             // Guardo nombre de archivo para imagen de perfil
             let filename = ""
-            req.files.forEach(function(file) {
+            req.files.forEach(function (file) {
                 filename = file.filename;
             });
 
@@ -51,8 +51,7 @@ const controller = {
 
             // Escribimos el JSON de usuarios
             fs.writeFileSync(usersFilePath, users)
-
-            res.redirect('/usuarios/registro');
+            res.render('users/login', { login_success: '¡Te registraste exitosamente! Ya podés iniciar sesión en Reegalo' });
         } else {
             return res.render('users/register', { errors: errors.errors })
         }

@@ -1,5 +1,14 @@
 /****************** Formulario Login ************************/
 
+.login-success {
+    height: 50px;
+    background-color: var(--azulreegalo);
+    color: white;
+    padding-top: 1%;
+    text-align: center;
+    font-weight: bold;
+}
+
 section.login {
     width: 100%;
     height: 100%;
