@@ -40,7 +40,7 @@ p.titulo-register {
 }
 
 .form-register {
-    height: 330px;
+    height: 370px;
     width: 100%;
     margin-top: 2%;
     display: flex;
@@ -52,30 +52,28 @@ p.titulo-register {
 .container-email-register,
 .container-password-register,
 .container-password-repeat,
-.container-fecha-nacimiento {
+.container-fecha-nacimiento,
+.container-img-perfil {
     background-color: rgb(211, 211, 211, 0.2);
     height: 50px;
     border-radius: 6px;
     border: 1px solid gainsboro;
     padding: 1.2%;
     width: 100%;
-    font-size: 2em;
+    font-size: 1.8em;
     display: flex;
 }
 
-.date{
-    opacity: 0.3;
-}
-
 .container-fa-envelop,
-.container-fa-lock,
-.container-fa-lock2,
-.container-fa-birthday-cake{
+.container-fa-key,
+.container-fa-key2,
+.container-fa-birthday-cake,
+.container-fa-camera {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     margin: auto 2%;
-    opacity: 0.1;
+    opacity: 0.3;
 }
 
 input[type=email], input[type=password], input[type=date], select, textarea {
@@ -86,55 +84,22 @@ input[type=email], input[type=password], input[type=date], select, textarea {
     margin: auto 2%;
     border-style: hidden;
     outline: none;
+    opacity: 0.5;
+} 
+
+input[type=file] {
+    font-family: Montserrat-Light;
+    margin: auto 2%;
     opacity: 0.4;
 }
 
-input[type=date] {
-    opacity: 0.3;
-}
-
-.confirm-pass{
-    background-color: transparent;
-    width: 100%;
+.texto-perfil,
+.texto-fecnac {
+    width: 80%;
     font-size: 0.7em;
     font-family: Montserrat-Light;
     margin: auto 2%;
-    border-style: hidden;
-    outline: none;
-    opacity: 0.4;
-}
-
-
-.opciones-password {
-    width: 100%;
-    height: 30px;
-    margin-top: 2%;
-    display: flex;
-    flex-flow: row;
-    vertical-align: bottom;
-}
-
-.recordar {
-    height: 18px;
-    width: 50%;
-    text-align: left;
-}
-
-input[type=checkbox] {
-    vertical-align: middle; 
-    position: relative;
-    bottom: .08em;
-}
-
-.recuperar {
-    height: 18px;
-    width: 50%;
-    text-align: right;
-}
-
-.recuperar a {
-    text-decoration: none;
-    color: var(--azulreegalo)
+    opacity: 0.3;
 }
 
 .boton-register {
@@ -160,11 +125,10 @@ button:hover {
     background-color: var(--azulregalostrong);
 }
 
-.divisor {
-    height: 20px;
-    width: 100%;
-    margin-top: 2%;
-    text-align: center;
+.logo-google,
+.logo-facebook {
+    max-height: 30px;
+    margin: auto 4%;
 }
 
 .boton-google {
@@ -179,12 +143,6 @@ button:hover {
     align-items: center;
     margin-top: 2%;
     cursor: pointer;
-}
-
-.logo-google,
-.logo-facebook {
-    max-height: 30px;
-    margin: auto 4%;
 }
 
 .boton-facebook {

@@ -20,40 +20,40 @@
             <div class="container-logo-register">
                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-register">
             </div>
-            <p class="subtitulo-register">Regala historias</p>
-
-
-
             <form class="form-register" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
                 <div class="container-email-register">
                     <div class="container-fa-envelop">
-                        <i class="far fa-envelope"></i>
+                        <i class="far fa-envelope" style="width: 30px;"></i>
                     </div>
                     <input type="email" name="email" id="email" placeholder="Coreo electrónico">
                 </div>
                 <div class="container-password-register">
-                    <div class="container-fa-lock">
-                        <i class="fas fa-lock" style="width: 32px;"></i>
+                    <div class="container-fa-key">
+                        <i class="fas fa-key" style="width: 30px;"></i>
                     </div>
                     <input type="password" name="password" id="password" placeholder="Contraseña">
                 </div>
                 <div class="container-password-repeat">
-                    <div class="container-fa-lock2">
-                        <i class="fas fa-lock" style="width: 32px;"></i>
+                    <div class="container-fa-key2">
+                        <i class="fas fa-key" style="width: 30px;"></i>
                     </div>
-                    <input class="confirm-pass" type="password" name="passwordrepeat" id="password-repeat"
+                    <input type="password" name="passwordrepeat" id="password-repeat"
                         placeholder="Confirmar contraseña">
                 </div>
                 <div class="container-fecha-nacimiento">
                     <div class="container-fa-birthday-cake">
-                        <i class="fas fa-birthday-cake" style="width: 32px;"></i>
+                        <i class="fas fa-birthday-cake" style="width: 30px;"></i>
                     </div>
-                    <input class="date" type="date" name="fecnac" id="date" placeholder="Fecha de nacimiento">
+                    <span class="texto-fecnac">Fecha de Nacimiento</span>
+                    <input type="date" name="fecnac" id="date">
                 </div>
                 <div class="container-img-perfil">
-                    <input class="form-input-imagen" type="file" name="profile" id="profile">
+                    <div class="container-fa-camera">
+                        <i class="fas fa-camera" style="width: 30px;"></i>
+                    </div>
+                    <span class="texto-perfil">Imagen de perfil</span>
+                    <input type="file" name="profile" id="profile" />
                 </div>
-
                 <% if (typeof errors != 'undefined') { %>
                 <ul>
                     <% errors.forEach(function(error) { %>
@@ -63,15 +63,10 @@
                     <% }) %>
                 </ul>
                 <% } %>
-
                 <div class="boton-register">
-                    <button type=“submit”>Registrar</button>
+                    <button type=“submit”>Registrarse</button>
                 </div>
-
             </form>
-
-
-            <div class="divisor">o hacelo con</div>
             <div class="boton-google">
                 <div class="logo-google">
                     <img src="/images/logo-google.png" alt="Google" class="logo-google">
