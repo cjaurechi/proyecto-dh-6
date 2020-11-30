@@ -19,7 +19,6 @@ const controller = {
         let errors = validationResult(req);
 
         if (errors.isEmpty()) {
-
             // Guardo nombre de archivo para imagen de perfil
             let filename = ""
             req.files.forEach(function (file) {

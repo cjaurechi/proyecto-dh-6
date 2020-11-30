@@ -3,14 +3,14 @@ const { check, validationResult, body } = require("express-validator");
 let registerMiddleware = [
     check('email').isEmail().withMessage('Por favor escribí una dirección de correo electrónico válida'),
     check('password').isLength({ min: 6 }).withMessage('La contraseña debe contener al menos 6 caracteres'),
-    check('passwordrepeat').custom((value, {req, loc, path}) => {
+    body('passwordrepeat').custom((value, { req, loc, path }) => {
         if (value !== req.body.password) {
-            throw new Error('Las contraseñas deben coincidir');
+            return false;
         } else {
             return true;
         }
-    }),
-    check('fecnac').isLength()
+    }).withMessage('Las contraseñas deben coincidir')
+    // ¿Agregar validaciones para los campos de fecha y foto de perfil? (Validar mayoría de edad y que el campo foto de perfil no esté vacío)
 ]
 
 module.exports = registerMiddleware;
