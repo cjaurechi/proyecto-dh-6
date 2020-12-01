@@ -27,9 +27,15 @@
                 <i class="fas fa-search"></i>
             </div>
             <div class="container-acciones-header">
+                <% if (typeof user == 'undefined') { %>
                 <a href="/usuarios/login" class="sign-in">Iniciar sesión</a>
                 <a href="/usuarios/registro" class="sign-up">Registrarse</a>
-                <!-- <a href="#" class="sign-off">Cerrar sesión</a> -->
+                <!-- <a href="/usuarios/logout" class="sign-off">Cerrar sesión</a> -->
+                <% } else { %>
+                <a href="/usuarios/logout" class="sign-off">Cerrar sesión</a>
+                <!-- <a href="/usuarios/login" class="sign-in">Iniciar sesión</a>
+                <a href="/usuarios/registro" class="sign-up">Registrarse</a> -->
+                <% } %>
             </div>
             <div class="container-carrito">
                 <a href="/carrito"><i class="fas fa-shopping-cart"></i></a>
