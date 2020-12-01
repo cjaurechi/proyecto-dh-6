@@ -87,11 +87,20 @@
                             <% } %>
                         </div>    
                     </div>
-                    <div class="form-linea-compartida-2">
-                        <label for="Imagen" class="form-label-compartido">Imagen:</label>
-                        <input type="file" id="image" name="image" multiple="multiple" class="form-input-imagen">
+                </div>
+
+                <div class="linea-compartida">
+                    <div class="form-linea-compartida-imagen">
+                        <label for="Imagen" class="form-label-compartido">Imagenes:<span class= "error"> * </span></label>
+                        <div class="form-linea-texto_error">
+                            <input type="file" id="image" name="image" multiple="multiple" class="form-input-imagen">
+                            <% if (errors.image != undefined) { %>
+                                <p class="error"><%= errors.image.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
+
                 <div class="imagen-producto-contenedor">
                     <% product_images.filter (function(item) { %>
                     <img src="/images/products/<%= item.image %>" alt="" class="imagen-producto">
@@ -135,12 +144,16 @@
                     <div class="form-linea-compartida-2">
                         <label for="share" class="form-label-compartido">Compartir:<span class= "error"> * </span></label>
                         <div class="form-linea-texto_error">
-                            <input type="text" id="share" name="share" value="<%= product.share %>"
-                                placeholder="Ej: Para Compartir x 2" class="form-input-compartido">
+                            <select name="share" id="share" class="form-input-compartido">
+                                <option value="Invividual" <% if (product.share=="Individual") {%> Selected <%} %>>Individual</option>
+                                <option value="Para Compartir x 2" <% if (product.share=="Para Compartir x 2") {%> Selected <%} %>>Para Compartir x 2</option>
+                                <option value="Para Compartir x 3" <% if (product.share=="Para Compartir x 3") {%> Selected <%} %>>Para Compartir x 3</option>
+                                <option value="Para Compartir x 4" <% if (product.share=="Para Compartir x 4") {%> Selected <%} %>>Para Compartir x 4</option>
+                            </select>
                             <% if (errors.share != undefined) { %>
                                 <p class="error"><%= errors.share.msg %></p>
                             <% } %>
-                        </div>        
+                        </div>
                     </div>
                 </div>
 

@@ -298,5 +298,20 @@
         "country": "Russia",
         "brday": "4/18/2020",
         "residence": "465 4th Circle"
+    },
+    {
+        "id": 21,
+        "first_name": "",
+        "last_name": "",
+        "email": "norberto.rubado@gmail.com",
+        "password": "$2a$10$d8UkoWCDWo1fJWcQ5cgdIePJThJhi0N2QWU/9qo.p833YCKRzUjBS",
+        "bday": "2020-12-01",
+        "rol": "admin",
+        "profile": "profile-norberto.rubado@gmail.com.jpg",
+        "last_login": "2020-12-01",
+        "last_date_password": "2020-12-01",
+        "language": "esp",
+        "country": "",
+        "residence": ""
     }
 ]
