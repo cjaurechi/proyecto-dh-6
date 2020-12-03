@@ -63,22 +63,20 @@ const controller = {
     },
 
     processLogin: (req, res) => {
-
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let usuarioALoguearse
+            let usuarioALoguearse;
 
             //Recorro el json de usuarios para ver si existe el usuario que se logueo
             for (let i = 0; i < users.length; i++) {
                 if (users[i].email == req.body.email) {
                     if (bcryptjs.compareSync(req.body.password, users[i].password)) {
                         usuarioALoguearse = users[i].email;
+                        res.locals.rol = users[i].rol;
                         break;
                     }
                 }
             }
-
-            console.log(usuarioALoguearse)
 
             // Si no existe el usuario mando un error con credenciales invalidas
             if (usuarioALoguearse == undefined) {
@@ -87,10 +85,8 @@ const controller = {
 
             //Si existe el usuario entonces lo gurdo en session
             req.session.usuarioLogueado = usuarioALoguearse;
-
-            console.log(req.session.usuarioLogueado)
-            console.log(req.session)
-
+            res.locals.user = usuarioALoguearse;
+            console.log(res.locals.rol);
             res.redirect("/")
         } else {
             return res.render('users/login', { errors: errors.errors })
