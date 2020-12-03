@@ -37,9 +37,9 @@ router.get('/crear',authMiddleware, productsController.create);
 router.post('/',upload.any(),validation,productsController.store); 
 
 /*** MODIFICAR UN PRODUCTO ***/ 
-router.get('/listado',authMiddleware, productsController.productListForm); 
-router.get('/:id/editar',authMiddleware, productsController.edit); 
-router.put('/:id/editar',upload.any(),validation,productsController.update); 
-router.delete('/:id/borrar',productsController.delete); 
+router.get('/listado', authMiddleware, productsController.productListForm); 
+router.get('/:id/editar', authMiddleware, productsController.edit); 
+router.put('/:id/editar', upload.any(),validation,productsController.update); 
+router.delete('/:id/borrar', productsController.delete); 
 
 module.exports = router;

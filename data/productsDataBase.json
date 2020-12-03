@@ -402,22 +402,6 @@
         "main_image": "parapente.jpg "
     },
     {
-        "id": 26,
-        "name": "Escapada a Tandil",
-        "description": "Tandil, un lugar para descansar",
-        "category": 6,
-        "creation_date": "9/10/2020",
-        "expiration_days": 365,
-        "share": "Para Compartir x 2",
-        "supplier": "6",
-        "price": 1876,
-        "discount": 5,
-        "life_date_from": "9/10/2020",
-        "life_date_to": "9/10/2021",
-        "status": "Habilitado",
-        "main_image": "escapadas.jpg "
-    },
-    {
         "id": 27,
         "name": "Puerto Madero de Noche",
         "description": "Hotel en Puerto Madero con todo incluido",
