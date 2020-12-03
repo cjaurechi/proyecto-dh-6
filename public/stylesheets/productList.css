@@ -3,18 +3,15 @@
   .principal {
     padding: 1%;
     background-color: var(--blanco);
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
 }
 
-/* img {
-  max-width: 100%;
-  max-height: 100%;
-  padding: 2px 2px 14px 2px;
-  border-radius: 2%;
-} */
+.container-categoria{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1% 5%;
+}
 
 .indicador {
   background-color: var(--gris);
@@ -44,13 +41,24 @@
   align-items: center;
 }
 
-.products-wrapper {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: var(--gris);
-  }
-  
-  .product-box {
+.container-productos{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 1%;
+}
+
+.container-producto{
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+}
+
+.product-box {
     background-color: #ffffff;
     border-radius: 5px;
     overflow: hidden;
@@ -68,14 +76,12 @@
  }
   
  .product-box_image img {
-  width: 250px;
+  width: 100%;
   height: 350px;
 }
 
-
   .product-box_data {
     padding: 15px;
-    position: relative;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -97,18 +103,8 @@
     margin: 0 0 0 10px;
     text-decoration:line-through;
   }
-
-  .product-box_data h4 {
-    font-size: 1em;
-    font-weight: 300;
-    margin: 0;
-    color: black;
-    text-decoration: none;
-    
-  }
-
   
-  .product-box_data p {
+  .product-box_data .product-description {
     font-size: 0.9em;
     width: 100%;
     color: var(--negro);
@@ -140,10 +136,52 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
   
-  .product-box:hover p {
-    height: 40px;
+  .product-name {
+    font-weight:bold;
+    width:100%;
+    height: 100%;
+    padding-bottom: 10px;
+  }
+
+  .product-box:hover .product-description {
+    height: 100%;
     margin-top: 15px;
   }
   
- 
+/* Media Queries  */
 
+/* Mobile L */
+
+@media (min-width: 575px) {
+
+  .container-producto{
+    width: 50%;
+  }
+
+}
+
+/* Tablet  */
+
+@media (min-width: 900px) {
+
+  .container-producto{
+    width: 33%;
+  }
+
+}
+
+/* Mobile L  */
+
+@media (min-width: 1200px) {
+
+  .container-producto{
+    width: 25%;
+  }
+
+  @media (min-width: 1500px) {
+
+    .container-producto{
+      width: 20%;
+    }
+
+}

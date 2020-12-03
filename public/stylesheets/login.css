@@ -107,7 +107,7 @@ input[type=email], input[type=password], select, textarea {
 
 input[type=checkbox] {
     vertical-align: middle; 
-    position: relative;
+/* position: relative; */
     bottom: .08em;
 }
 
