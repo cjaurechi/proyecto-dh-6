@@ -5,8 +5,6 @@
     <%- include("../partials/head.ejs", {title: "Reegalo - Productos"}) %>
     <link rel="stylesheet" href="/stylesheets/app.css">
     <link rel="stylesheet" href="/stylesheets/productList.css">
-    	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 </head>
 
 <body>
@@ -21,32 +19,33 @@
 
             
 
-            <div class="container products-wrapper">
-                <div class="row">
-                    <section class="indicador">
-                        <h2 class="detalle_producto">‏‏‎ ‎‏‏‎<%= item_category.description %></h2>
-                    </section> 
+            <div class="container-categoria">
+                <section class="indicador">
+                    <h2 class="detalle_producto">‏‏‎ ‎‏‏‎<%= item_category.description %></h2>
+                </section> 
+
+                <div class="container-productos">
                     
                     <% products_category.forEach (function(item) { %>
                         <% if (item.category == item_category.id) { %>
-                            <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="container-producto">
                                 <section class="product-box">
                                     <a href="/productos/<%= item.id %>/detalle">
                                         <figure class="product-box_image">
                                             <img src="/images/products/<%= item.main_image %>" alt="imagen de producto">
                                         </figure>
                                         <article class="product-box_data">
+                                            <p class="product-name"><%= item.name %></p>
                                             <h3>$ <%= item.price %></h3>
                                             <span><%= item.discount %> % OFF</span>
-                                            <p><%= item.name %></p>
-                                            <i class="fas fa-gift"></i>
+                                            <p class="product-description"><%= item.description %></p>
+<!--                                             <i class="fas fa-gift"></i> -->
                                         </article>
                                     </a>
                                 </section>
                             </div>
                         <% } %>
                     <% }) %>
-
                 </div>
             </div>
         <% }) %>

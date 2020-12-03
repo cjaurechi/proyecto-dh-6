@@ -87,16 +87,35 @@ const controller = {
 			category = categories
 		} 
 
-		/* for (let i = 0; i < products_category.length; i++) {
-			let product_image = products_images.find(function (item) {
-				return (products_category[i].id == item.id && item.number == 0);
-			})
-			products_category[i].main_image = product_image.image
-		} */
-
 		res.render("products/productList", { products_category: products_category, category: category })
 
 	},
+
+		// Listado de productos para edicion
+		productListForm: (req, res) => {
+
+			let products_category = []
+			let category = []
+	
+			if (req.params.id !== undefined) {
+				products_category = products.filter(function (item) {
+					return (req.params.id == item.category & item.status == "Habilitado")
+				})
+	
+				category = categories.filter(function (item) {
+					return (req.params.id == item.id)
+				})
+			} else {
+				products_category = products.filter(function (item) {
+					return (item.status == "Habilitado")
+				})
+	
+				category = categories
+			} 
+	
+			res.render("products/productListForm", { products_category: products_category, category: category })
+	
+		},
 
 	// Formulario de creacion
 	create: (req, res) => {
