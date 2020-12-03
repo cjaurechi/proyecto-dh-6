@@ -17,7 +17,7 @@
                 <a href="/productos">Regalos</a>
                 <a href="/nosotros">Nosotros</a>
                 <a href="/comoregalar">¿Cómo regalar?</a>
-                <% if (typeof locals.rol == 'admin') { %>
+                <% if (locals.user && locals.user.rol == 'admin') { %>
                 <a href="/productos/crear">Crear regalo</a>
                 <% } %>
             </nav>
@@ -29,7 +29,7 @@
             </div>
             <div class="container-acciones-header">
                 <% if (locals.user) { %>
-                <span class="welcome-header">Bienvenido <%= locals.user %></span>
+                <span class="welcome-header">Bienvenido <%= locals.user.email %></span>
                 <a href="/usuarios/logout" class="sign-off" alt="Esto no funciona!">Cerrar sesión</a>
                 <% } else { %>
                 <a href="/usuarios/login" class="sign-in">Iniciar sesión</a>

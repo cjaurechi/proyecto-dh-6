@@ -71,8 +71,7 @@ const controller = {
             for (let i = 0; i < users.length; i++) {
                 if (users[i].email == req.body.email) {
                     if (bcryptjs.compareSync(req.body.password, users[i].password)) {
-                        usuarioALoguearse = users[i].email;
-                        res.locals.rol = users[i].rol;
+                        usuarioALoguearse = users[i];
                         break;
                     }
                 }
@@ -84,9 +83,7 @@ const controller = {
             }
 
             //Si existe el usuario entonces lo gurdo en session
-            req.session.usuarioLogueado = usuarioALoguearse;
-            res.locals.user = usuarioALoguearse;
-            console.log(res.locals.rol);
+            req.session.user = usuarioALoguearse;
             res.redirect("/")
         } else {
             return res.render('users/login', { errors: errors.errors })

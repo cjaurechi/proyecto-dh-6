@@ -1,6 +1,6 @@
 function localsMiddleware(req, res, next) {
-    if(req.session.usuarioLogueado != undefined) {
-        res.locals.user = req.session.usuarioLogueado;
+    if(typeof req.session.user != 'undefined') {
+        res.locals.user = req.session.user;
     }
     return next();
 }
