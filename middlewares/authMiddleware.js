@@ -11,17 +11,17 @@ function authMiddleware (req,res,next){
     res.locals.message = "Error de Acceso";
     res.locals.path = req.originalUrl;
 
-    if (req.session.usuarioLogueado != undefined){
+    if (req.session.user != undefined){
         
         //Recorro el json de usuarios para obtener el rol del usuario
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].email == req.session.usuarioLogueado) {
-                usuarioRol = users[i].rol;
-            }
-        }
+        // for (let i = 0; i < users.length; i++) {
+        //     if (users[i].email == req.session.user) {
+        //         usuarioRol = users[i].rol;
+        //     }
+        // }
 
-        if (usuarioRol == undefined) {
-            usuarioRol = "user"
+        if (req.session.user.rol == undefined) {
+            req.session.user.rol = "user"
         }
 
         switch (arrayUrl[1]) {
@@ -31,9 +31,9 @@ function authMiddleware (req,res,next){
                     return res.render('error')
                 }    
             case 'productos':
-                if ((arrayUrl[2] == "crear" ||
-                    arrayUrl[3] == "editar") & 
-                    usuarioRol != "admin") { 
+                if ((arrayUrl[3] == "crear" ||
+                    arrayUrl[5] == "editar") & 
+                    req.session.user.rol != "admin") { 
                     res.locals.error = {"stack" : "Para acceder a esta pagina el usuario debe ser Administrador"} 
                     return res.render('error')
                 }
@@ -49,9 +49,9 @@ function authMiddleware (req,res,next){
                 return res.render('error')
 
             case 'productos':
-                if (arrayUrl[2] == "crear" ||
-                    arrayUrl[3] == "detalle" ||
-                    arrayUrl[3] == "editar") { 
+                if (arrayUrl[3] == "crear" ||
+                    arrayUrl[5] == "detalle" ||
+                    arrayUrl[5] == "editar") { 
                     res.locals.error = {"stack" : "Para acceder a esta pagina debe estar logeado"} 
                     return res.render('error')    
                 }

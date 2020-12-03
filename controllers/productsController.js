@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
 const { Console } = require('console');
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 var products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -24,10 +24,10 @@ var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
-    // Detalle de producto
-    productDetail: (req, res) => {
+	// Detalle de producto
+	productDetail: (req, res) => {
 
-		let product = products.find(function(item){
+		let product = products.find(function (item) {
 			return (req.params.id == item.id);
 		})
 
@@ -85,37 +85,37 @@ const controller = {
 			})
 
 			category = categories
-		} 
+		}
 
 		res.render("products/productList", { products_category: products_category, category: category })
 
 	},
 
-		// Listado de productos para edicion
-		productListForm: (req, res) => {
+	// Listado de productos para edicion
+	productListForm: (req, res) => {
 
-			let products_category = []
-			let category = []
-	
-			if (req.params.id !== undefined) {
-				products_category = products.filter(function (item) {
-					return (req.params.id == item.category & item.status == "Habilitado")
-				})
-	
-				category = categories.filter(function (item) {
-					return (req.params.id == item.id)
-				})
-			} else {
-				products_category = products.filter(function (item) {
-					return (item.status == "Habilitado")
-				})
-	
-				category = categories
-			} 
-	
-			res.render("products/productListForm", { products_category: products_category, category: category })
-	
-		},
+		let products_category = []
+		let category = []
+
+		if (req.params.id !== undefined) {
+			products_category = products.filter(function (item) {
+				return (req.params.id == item.category & item.status == "Habilitado")
+			})
+
+			category = categories.filter(function (item) {
+				return (req.params.id == item.id)
+			})
+		} else {
+			products_category = products.filter(function (item) {
+				return (item.status == "Habilitado")
+			})
+
+			category = categories
+		}
+
+		res.render("products/productListForm", { products_category: products_category, category: category })
+
+	},
 
 	// Formulario de creacion
 	create: (req, res) => {
@@ -126,7 +126,7 @@ const controller = {
 			return (item.status == 'Habilitado')
 		})
 
-		res.render("products/productCreateForm", { producto_actualizado : producto_actualizado, categories: categories, suppliers: suppliers,product : {}, errors : {} });
+		res.render("products/productCreateForm", { producto_actualizado: producto_actualizado, categories: categories, suppliers: suppliers, product: {}, errors: {} });
 	},
 
 	// Alta de producto
@@ -135,9 +135,9 @@ const controller = {
 		let errors = validationResult(req).mapped()
 
 		if (Object.keys(errors).length != 0) {
-			return res.render("products/productCreateForm",{categories: categories, suppliers: suppliers, product : req.body, errors : errors})
+			return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
 		}
-				
+
 		for (let i = 0; i < req.files.length; i++) {
 			var product_image = ""
 			if (req.files[i] !== undefined) {
@@ -160,33 +160,33 @@ const controller = {
 			main_image = req.files[0].filename
 		}
 
-		products.push ({
-			id : products[products.length-1].id + 1,
-			name : req.body.name,
-			description : req.body.description,
-			category : req.body.category,
-			creation_user : req.body.user,
-			creation_date : moment(fecha_actual).format('YYYY-MM-DD'),
-			expiration_days : req.body.expiration_days,
-			share : req.body.share,
-			supplier : req.body.supplier,
-			price : req.body.price,
-			discount : req.body.discount,
-			life_date_from : req.body.life_date_from,
-			life_date_to : req.body.life_date_to,
-			stock : req.body.stock,
-			status : req.body.status,
-			main_image : main_image,
+		products.push({
+			id: products[products.length - 1].id + 1,
+			name: req.body.name,
+			description: req.body.description,
+			category: req.body.category,
+			creation_user: req.body.user,
+			creation_date: moment(fecha_actual).format('YYYY-MM-DD'),
+			expiration_days: req.body.expiration_days,
+			share: req.body.share,
+			supplier: req.body.supplier,
+			price: req.body.price,
+			discount: req.body.discount,
+			life_date_from: req.body.life_date_from,
+			life_date_to: req.body.life_date_to,
+			stock: req.body.stock,
+			status: req.body.status,
+			main_image: main_image,
 		});
-		
+
 
 		archivo = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath, archivo);
-		res.redirect("/productos/crear");
+		res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
 
-/* 		let producto_actualizado = req.body.name
-		console.log (producto_actualizado)
-		res.render("products/productCreateForm", { producto_actualizado : producto_actualizado, categories: categories, suppliers: suppliers,product : {}, errors : {} }); */
+		/* 		let producto_actualizado = req.body.name
+				console.log (producto_actualizado)
+				res.render("products/productCreateForm", { producto_actualizado : producto_actualizado, categories: categories, suppliers: suppliers,product : {}, errors : {} }); */
 
 	},
 
@@ -205,7 +205,7 @@ const controller = {
 			return (req.params.id == item.id)
 		})
 
-		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors : {}  });
+		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: {} });
 	},
 
 	// Modificacion de producto
@@ -214,11 +214,11 @@ const controller = {
 		let errors = validationResult(req).mapped()
 
 		if (Object.keys(errors).length != 0) {
-			
+
 			product = req.body
 			product.id = req.params.id
 
-			return res.render("products/productEditForm",{product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors : errors})
+			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors })
 		}
 
 		if (req.files[0] !== undefined) {
@@ -243,7 +243,7 @@ const controller = {
 		fs.writeFileSync(productsImagesFilePath, archivo);
 
 		var main_image = ""
-		product_image = products_images.find(function(item) {
+		product_image = products_images.find(function (item) {
 			return (item.id == req.params.id & item.number == 0)
 		})
 
@@ -251,27 +251,27 @@ const controller = {
 			main_image = ""
 		} else {
 			main_image = product_image.image
-		}	
+		}
 
-		products.forEach (function(item) {
+		products.forEach(function (item) {
 			if (item.id == req.params.id) {
 				item.name = req.body.name,
-				item.description = req.body.description,
-				item.category = req.body.category,
-				item.expiration_days = req.body.expiration_days,
-				item.share = req.body.share,
-				item.price = req.body.price,
-				item.discount = req.body.discount,
-				item.category = req.body.category,
-				item.description = req.body.description,
-				item.supplier = req.body.supplier,
-				item.price = req.body.price,
-				item.discount = req.body.discount,
-				item.life_date_from = req.body.life_date_from,
-				item.life_date_to = req.body.life_date_to,
-				item.stock = req.body.stock,
-				item.status = req.body.status,
-				item.main_image = main_image
+					item.description = req.body.description,
+					item.category = req.body.category,
+					item.expiration_days = req.body.expiration_days,
+					item.share = req.body.share,
+					item.price = req.body.price,
+					item.discount = req.body.discount,
+					item.category = req.body.category,
+					item.description = req.body.description,
+					item.supplier = req.body.supplier,
+					item.price = req.body.price,
+					item.discount = req.body.discount,
+					item.life_date_from = req.body.life_date_from,
+					item.life_date_to = req.body.life_date_to,
+					item.stock = req.body.stock,
+					item.status = req.body.status,
+					item.main_image = main_image
 			}
 		});
 
