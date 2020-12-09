@@ -7,8 +7,8 @@ module.exports = [
     check('price').isDecimal().withMessage("El precio del producto debe ser numerico"),
     check('discount').isDecimal().withMessage("El descuento del producto debe ser numerico"),
     check('category').notEmpty().withMessage("El producto debe tener asociada uan categoria"),
-/*     check('life_dato_from').isDate().withMessage("El producto debe tener asignada una fecha de vigencia desde"),
-    check('life_dato_to').isDate().withMessage("El producto debe tener asignada una fecha de vigencia hasta"), */
+    check('life_dato_from').isDate().withMessage("El producto debe tener asignada una fecha de vigencia desde"),
+    check('life_dato_to').isDate().withMessage("El producto debe tener asignada una fecha de vigencia hasta"),
     check('expiration_days').isInt({gt: 0}).withMessage("Los dias de vencimiento del producto debe mayor o igual a 0"),
     check('share').isLength({min: 10, max:30}).withMessage("El campo compartir del producto debe tener minimo 10 caracteres y maximo 30"),
     check('stock').isInt({gt: 0}).withMessage("La disponibilidad del producto debe ser mayor o igual a 0"),

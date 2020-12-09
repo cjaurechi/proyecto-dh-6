@@ -164,7 +164,7 @@ const controller = {
 		let category = []
 
 		if (req.params.id !== undefined) {
-			if (req.query.keywords !== "") {
+			if (req.query.keywords !== "" && req.query.keywords !== undefined) {
 				products_category = products.filter(function (item) {
 					return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
 				})
@@ -180,14 +180,14 @@ const controller = {
 			})
 
 		} else {
-			if (req.query.keywords !== "") {
+			if (req.query.keywords !== ""  && req.query.keywords !== undefined) {
 				products_category = products.filter(function (item) {
 					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
 				})
 			}
 			else {
 				products_category = products.filter(function (item) {
-					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
+					return (item.status == "Habilitado")
 				})
 			}
 			category = categories
@@ -289,6 +289,11 @@ const controller = {
 	update: (req, res, next) => {
 
 		let errors = validationResult(req).mapped()
+
+		console.log(req.body,req.params,errors) 
+		
+		/* Chequear con Alejandro : se cargan datos en el form , en el req.body llegan bien pero el check del express validator lo toma como error y en el error figuran como undefined
+		Si le saco el check del midleeware se actualiza bien*/
 
 		if (Object.keys(errors).length != 0) {
 

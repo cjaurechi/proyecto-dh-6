@@ -59,7 +59,7 @@
 }
 
 .product-box {
-    background-color: #ffffff;
+    background-color: var(--blanco);
     border-radius: 5px;
     overflow: hidden;
     transition: 300ms;
@@ -125,7 +125,7 @@
     position: absolute;
     top: -40px;
     right: 15px;
-    background-color: #ffffff;
+    background-color: var(--blanco);
     display: flex;
     justify-content: center;
     align-items: center;

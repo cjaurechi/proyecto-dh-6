@@ -434,10 +434,6 @@ footer div nav a {
         display: none;
     }
 
-    .container-buscador  {
-        display: none;
-    }
-
     .container-acciones-header {
         display: none;
     }
@@ -453,7 +449,7 @@ footer div nav a {
     .container-small {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         width: 180px;
         font-size: 1.3em;

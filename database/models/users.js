@@ -44,6 +44,9 @@ module.exports = (sequelize,Datatypes) => {
         phone: {
             type: DataTypes.STRING
         },
+        dark_mode: {
+            type: DataTypes.STRING
+        },
         status: {
             type: DataTypes.STRING
         }

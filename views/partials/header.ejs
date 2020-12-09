@@ -26,12 +26,9 @@
             <div class="container-buscador">
 
 				<form action="/productos/filtro" method="GET" class="search-form">
-					<input type="text" name="keywords" placeholder="Buscar productos y más" class="search-form_input">
+					<input type="text" name="keywords" placeholder="Buscar productos..." class="search-form_input">
 					<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
                 </form>
-
-<!--                 <input type="text" class="input-buscador">
-                <i class="fas fa-search"></i> -->
             </div>
             <div class="container-acciones-header">
                 <% if (locals.user) { %>
@@ -47,9 +44,9 @@
                 <p class="cantidad-carrito"></p>
             </div>
             <div class="container-small">
-                <div class="container-buscador-small">
+<!--                 <div class="container-buscador-small">
                     <i class="fas fa-search"></i>
-                </div>
+                </div> -->
                 <div class="container-acciones-header-small">
                     <a href="/usuarios/login">
                         <i class="fas fa-user"></i>
