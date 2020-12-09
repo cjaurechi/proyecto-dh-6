@@ -91,6 +91,46 @@ const controller = {
 
 	},
 
+	// Detalle con busqueda de producto
+	productSearch: (req, res) => {
+
+		let products_category = []
+		let category = []
+
+		if (req.params.id !== undefined) {
+			if (req.query.keywords !== "") {
+				products_category = products.filter(function (item) {
+					return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
+				})
+			}	
+			else {
+				products_category = products.filter(function (item) {
+					return (req.params.id == item.category & item.status == "Habilitado")
+				})	
+			}
+
+			category = categories.filter(function (item) {
+				return (req.params.id == item.id)
+			})
+
+		} else {
+			if (req.query.keywords !== "") {
+				products_category = products.filter(function (item) {
+					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
+				})
+			}
+			else {
+				products_category = products.filter(function (item) {
+					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
+				})
+			}
+			category = categories
+		}
+
+		res.render("products/productList", { products_category: products_category, category: category })
+
+	},
+
 	// Listado de productos para edicion
 	productListForm: (req, res) => {
 
@@ -113,7 +153,47 @@ const controller = {
 			category = categories
 		}
 
-		res.render("products/productListForm", { products_category: products_category, category: category })
+		res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
+
+	},
+
+	// Listado de productos con busqueda para edicion
+	productSearchForm: (req, res) => {
+
+		let products_category = []
+		let category = []
+
+		if (req.params.id !== undefined) {
+			if (req.query.keywords !== "") {
+				products_category = products.filter(function (item) {
+					return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
+				})
+			}	
+			else {
+				products_category = products.filter(function (item) {
+					return (req.params.id == item.category & item.status == "Habilitado")
+				})	
+			}
+
+			category = categories.filter(function (item) {
+				return (req.params.id == item.id)
+			})
+
+		} else {
+			if (req.query.keywords !== "") {
+				products_category = products.filter(function (item) {
+					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
+				})
+			}
+			else {
+				products_category = products.filter(function (item) {
+					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
+				})
+			}
+			category = categories
+		}
+
+		res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
 
 	},
 
@@ -182,11 +262,8 @@ const controller = {
 
 		archivo = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath, archivo);
+		
 		res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
-
-		/* 		let producto_actualizado = req.body.name
-				console.log (producto_actualizado)
-				res.render("products/productCreateForm", { producto_actualizado : producto_actualizado, categories: categories, suppliers: suppliers,product : {}, errors : {} }); */
 
 	},
 
@@ -278,7 +355,18 @@ const controller = {
 		archivo = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath, archivo);
 
-		res.redirect("/");
+		let products_category = []
+		let category = []
+
+		products_category = products.filter(function (item) {
+			return (item.status == "Habilitado")
+		})
+
+		category = categories
+
+		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
+
+/* 		res.redirect("/"); */
 	},
 
 	delete: (req, res) => {
@@ -295,7 +383,19 @@ const controller = {
 
 		// Escribimos nuevamente el archivo productsDataBase.json con el producto borrado
 		fs.writeFileSync(productsFilePath, content);
-		res.redirect('/');
+		
+		let products_category = []
+		let category = []
+
+		products_category = products.filter(function (item) {
+			return (item.status == "Habilitado")
+		})
+
+		category = categories
+
+		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' })
+		
+/* 		res.redirect('/'); */
 	}
 };
 

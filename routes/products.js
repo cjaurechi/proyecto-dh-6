@@ -25,6 +25,8 @@ const { ValidationHalt } = require('express-validator/src/base');
 /*** LISTADO DE PRODUCTOS ***/
 router.get('/', authMiddleware, productsController.productList);
 
+router.get('/filtro', authMiddleware, productsController.productSearch);
+
 /*** DETALLE DE PRODUCTO ***/
 router.get('/:id/detalle',authMiddleware, productsController.productDetail);
 
@@ -34,12 +36,13 @@ router.get('/:id?/listar', authMiddleware,productsController.productList);
 /*** CREAR UN PRODUCTO ***/ 
 router.get('/crear',authMiddleware, productsController.create); 
 
-router.post('/',upload.any(),validation,productsController.store); 
+router.post('/crear',authMiddleware, upload.any(),validation,productsController.store); 
 
 /*** MODIFICAR UN PRODUCTO ***/ 
 router.get('/listado', authMiddleware, productsController.productListForm); 
+router.get('/listadofiltro', authMiddleware, productsController.productSearchForm); 
 router.get('/:id/editar', authMiddleware, productsController.edit); 
-router.put('/:id/editar', upload.any(),validation,productsController.update); 
-router.delete('/:id/borrar', productsController.delete); 
+router.put('/:id/editar',authMiddleware, upload.any(),validation,productsController.update); 
+router.delete('/:id/borrar',authMiddleware, productsController.delete); 
 
 module.exports = router;

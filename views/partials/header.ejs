@@ -24,8 +24,14 @@
         </div>
         <div class="container-header-der">
             <div class="container-buscador">
-                <input type="text" class="input-buscador">
-                <i class="fas fa-search"></i>
+
+				<form action="/productos/filtro" method="GET" class="search-form">
+					<input type="text" name="keywords" placeholder="Buscar productos y más" class="search-form_input">
+					<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
+                </form>
+
+<!--                 <input type="text" class="input-buscador">
+                <i class="fas fa-search"></i> -->
             </div>
             <div class="container-acciones-header">
                 <% if (locals.user) { %>
@@ -72,7 +78,7 @@
             <li><a href="/usuarios/registro">Registrate</a></li>
             <li><a href="/productos/crear">Creacion</a></li>
             <li><a href="/productos/38/editar">Edicion</a></li>
-            <li><a href="/productos/listado">Listado</a></li>
+            <li><a href="/productos/listadofiltro">Listado</a></li>
         </ul>
     </div>
 

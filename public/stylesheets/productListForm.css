@@ -5,6 +5,15 @@
     background-color: var(--blanco);
 }
 
+.update-success {
+  height: 50px;
+  background-color: var(--azulreegalo);
+  color: white;
+  padding-top: 1%;
+  text-align: center;
+  font-weight: bold;
+}
+
 .container-categoria{
   width: 100%;
   display: flex;
