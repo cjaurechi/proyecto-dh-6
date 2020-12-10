@@ -1,10 +1,13 @@
 
-    const btnToggle = document.querySelector('.menu-hamburguesa'); 
+    window.addEventListener("load",function(){
 
-    console.log(btnToggle)
+        const btnToggle = document.querySelector('.menu-hamburguesa'); 
+    
+        btnToggle.addEventListener('click', function () {
 
-    btnToggle.addEventListener('click', function () {
-    console.log('click')
-    document.getElementById('sidebar').classList.toggle('active');
-    console.log(document.getElementById('sidebar'))
-    });
+        document.getElementById('sidebar').classList.toggle('active');
+
+        });
+
+    })
+   
