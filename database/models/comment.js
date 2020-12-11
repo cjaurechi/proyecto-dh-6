@@ -5,29 +5,28 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
+        user_id: {
+            type: DataTypes.INTEGER
+        },
         product_id: {
             type: DataTypes.INTEGER
         },
-        image: {
+        comment: {
             type: DataTypes.STRING
         },
-        number: {
+        created_at: {
+            type: DataTypes.DATE
+        },
+        score: {
             type: DataTypes.INTEGER
         }
     };
 
     let config = {
-        tableName: 'product_image',
+        tableName: 'comments',
         timestamps: false
     };
-
-    // product_image.associate = function(models) {
-    //     product_image.belongsTo(models.products, {
-    //         as: "producto_imagen",
-    //         foreignKey: "product_id"
-    //     })
-    // }
             
-    let product_image = sequelize.define('product_image', cols, config);
-    return product_image;
+    let comments = sequelize.define('comments', cols, config);
+    return comments;
 }

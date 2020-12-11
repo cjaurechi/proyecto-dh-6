@@ -1,4 +1,4 @@
-module.exports = (sequelize,Datatypes) => {
+module.exports = (sequelize, DataTypes) => {
     let cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -24,19 +24,19 @@ module.exports = (sequelize,Datatypes) => {
             type: DataTypes.INTEGER
         }
     };
+
     let config = {
-        tableName: "purchase_product",
-        timestamps:false
+        tableName: 'purchase_product',
+        timestamps: false
     };
-    let purchase_product = sequelize.define(purchase_product,"cols",config);
     
-    purchase_product.associate = function(models) {
-        purchase_product.hasMany(models.purchases, {
-            as: "producto_compra",
-            foreignKey: "purchase_id"
-        })
-    }
+    // purchase_product.associate = function(models) {
+    //     purchase_product.hasMany(models.purchases, {
+    //         as: "producto_compra",
+    //         foreignKey: "purchase_id"
+    //     })
+    // }
 
-    return purchase_product
-
+    let purchase_product = sequelize.define('purchase_product', cols, config);
+    return purchase_product;
 }
