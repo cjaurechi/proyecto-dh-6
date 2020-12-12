@@ -46,6 +46,24 @@ module.exports = (sequelize, DataTypes) => {
     // }
 
     let purchases = sequelize.define('purchases', cols, config);
-    return purchases
 
+    purchases.associate = function(models) {
+        purchases.belongsTo(models.users, {
+            as: 'users',
+            foreignKey: 'user_id'
+        });
+        purchases.hasOne(models.statuses, {
+            as: 'statuses',
+            foreignKey: 'status_id'
+        });
+        purchases.belogsToMany(models.products, {
+            as: 'products',
+            through: 'purchase_product',
+            foreignKey: 'product_id',
+            otherKey: 'purchase_id',
+            timestamps: false
+        })
+    }
+
+    return purchases;
 }

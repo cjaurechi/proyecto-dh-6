@@ -29,5 +29,13 @@ module.exports = (sequelize, DataTypes) => {
     // }
 
     let suppliers = sequelize.define('suppliers', cols, config);
+
+    suppliers.associate = function(models) {
+        suppliers.hasMany(models.products, {
+            as: 'products',
+            foreignKey: 'supplier_id'
+        });
+    }
+
     return suppliers
 }

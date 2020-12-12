@@ -19,5 +19,12 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     let statuses = sequelize.define('statuses', cols, config);
+
+    statuses.associate = function(models) {
+        statuses.belongsTo(models.purchases, {
+            as: 'purchases',
+            foreignKey: 'status_id'
+        })
+    }
     return statuses
 }

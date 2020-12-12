@@ -59,16 +59,34 @@ module.exports = (sequelize, DataTypes) => {
     //         as: "categorias",
     //         foreignKey: "category_id"
     //     })
-    //     products.belongsTo(models.suppliers, {
-    //         as: "proveedores",
-    //         foreignKey: "supplier_id"
-    //     })
-    //     products.hasMany(models.product_image, {
-    //         as: "producto_imagen",
-    //         foreignKey: "product_id"
-    //     })
-    // }
 
     let products = sequelize.define('products', cols, config);
+
+    products.associate = function(models) {
+        products.hasMany(models.comments, {
+            as: 'comments',
+            foreignKey: 'product_id'
+        });
+        products.belongsTo(models.suppliers, {
+            as: 'suppliers',
+            foreignKey: 'supplier_id'
+        });
+        products.hasMany(models.product_image, {
+            as: 'product_image',
+            foreignKey: 'product_id'
+        });
+        products.belongsTo(models.categories, {
+            as: 'categories',
+            foreignKey: 'category_id'
+        });
+        products.belogsToMany(models.purchases, {
+            as: 'purchases',
+            through: 'purchase_product',
+            foreignKey: 'purchase_id',
+            otherKey: 'product_id',
+            timestamps: false
+        })
+    }
+
     return products;
 }

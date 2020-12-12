@@ -20,14 +20,15 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'product_image',
         timestamps: false
     };
-
-    // product_image.associate = function(models) {
-    //     product_image.belongsTo(models.products, {
-    //         as: "producto_imagen",
-    //         foreignKey: "product_id"
-    //     })
-    // }
             
     let product_image = sequelize.define('product_image', cols, config);
+
+    product_image.associate = function(models) {
+        product_image.belongsTo(models.products, {
+            as: 'products',
+            foreignKey: 'product_id'
+        });
+    }
+
     return product_image;
 }
