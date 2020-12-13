@@ -29,13 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'purchase_product',
         timestamps: false
     };
-    
-    // purchase_product.associate = function(models) {
-    //     purchase_product.hasMany(models.purchases, {
-    //         as: "producto_compra",
-    //         foreignKey: "purchase_id"
-    //     })
-    // }
 
     let purchase_product = sequelize.define('purchase_product', cols, config);
     return purchase_product;

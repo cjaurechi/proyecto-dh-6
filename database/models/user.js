@@ -32,11 +32,11 @@ module.exports = (sequelize, DataTypes) => {
         language: {
             type: DataTypes.STRING
         },
-        country: {
-            type: DataTypes.STRING
-        },
         brday: {
             type: DataTypes.DATE
+        },
+        country: {
+            type: DataTypes.STRING
         },
         residence: {
             type: DataTypes.STRING
