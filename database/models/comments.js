@@ -10,6 +10,15 @@ module.exports = (sequelize,Datatypes) => {
         },
         product_id: {
             type: DataTypes.INTEGER
+        },
+        comment: {
+            type: DataTypes.STRING
+        },
+        calification: {
+            type: DataTypes.DECIMAL
+        },
+        comment_date: {
+            type: DataTypes.DATE
         }
     };
     let config = {

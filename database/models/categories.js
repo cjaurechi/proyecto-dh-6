@@ -10,9 +10,6 @@ module.exports = (sequelize,Datatypes) => {
         },
         description: {
             type: DataTypes.STRING
-        },
-        image: {
-            type: DataTypes.STRING
         }
     };
     let config = {
