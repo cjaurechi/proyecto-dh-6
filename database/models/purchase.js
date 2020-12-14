@@ -33,18 +33,6 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     };
 
-    // purchases.associate = function(models) {
-    //     purchases.belongsTo(models.users, {
-    //         as: "usuarios",
-    //         foreignKey: "user_id"
-    //     })
-
-    //     purchases.hasMany(models.purchase_product, {
-    //         as: "compra_producto",
-    //         foreignKey: "purchase_id"
-    //     })
-    // }
-
     let purchases = sequelize.define('purchases', cols, config);
 
     purchases.associate = function(models) {
@@ -56,11 +44,11 @@ module.exports = (sequelize, DataTypes) => {
             as: 'statuses',
             foreignKey: 'status_id'
         });
-        purchases.belogsToMany(models.products, {
+        purchases.belongsToMany(models.products, {
             as: 'products',
             through: 'purchase_product',
-            foreignKey: 'product_id',
-            otherKey: 'purchase_id',
+            foreignKey: 'purchase_id',
+            otherKey: 'product_id',
             timestamps: false
         })
     }

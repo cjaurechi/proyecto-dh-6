@@ -54,12 +54,6 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     };
 
-    // products.associate = function(models) {
-    //     products.belongsTo(models.categories, {
-    //         as: "categorias",
-    //         foreignKey: "category_id"
-    //     })
-
     let products = sequelize.define('products', cols, config);
 
     products.associate = function(models) {
@@ -79,11 +73,11 @@ module.exports = (sequelize, DataTypes) => {
             as: 'categories',
             foreignKey: 'category_id'
         });
-        products.belogsToMany(models.purchases, {
+        products.belongsToMany(models.purchases, {
             as: 'purchases',
             through: 'purchase_product',
-            foreignKey: 'purchase_id',
-            otherKey: 'product_id',
+            foreignKey: 'product_id',
+            otherKey: 'purchase_id',
             timestamps: false
         })
     }
