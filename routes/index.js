@@ -26,4 +26,7 @@ router.get('/preguntasFrecuentes',authMiddleware, indexController.preguntasFrecu
 /*** TEST ***/
 router.get('/test',authMiddleware, indexController.getTest);
 
+/*** GENERACION SQL PARA INSERT EN MYSQL ***/
+router.get('/generarsql', indexController.generarsql);
+
 module.exports = router;
