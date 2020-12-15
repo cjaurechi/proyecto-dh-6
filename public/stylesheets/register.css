@@ -108,7 +108,7 @@ input[type=file] {
     margin-top: 1%;
 }
 
-.boton-register {
+.contenedor-register {
     width: 70%;
     height: 50px;
     margin-top: 2%;
@@ -117,7 +117,7 @@ input[type=file] {
     align-items: center;
 }
 
-button {
+.boton-register {
     background-color: var(--azulreegalo);
     border: none;
     width: 100%;
