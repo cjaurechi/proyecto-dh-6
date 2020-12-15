@@ -61,6 +61,7 @@ const controller = {
                 .then(usuario => {
                     if (bcryptjs.compareSync(req.body.password, usuario.password)) {
                         req.session.user = usuario;
+                        res.locals.user = usuario;
                     }
                     res.redirect("/");
                 })
