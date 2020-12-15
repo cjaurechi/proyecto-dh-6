@@ -122,7 +122,7 @@ input[type=checkbox] {
     color: var(--azulreegalo)
 }
 
-.boton-login {
+.contenedor-login {
     width: 70%;
     height: 50px;
     margin-top: 2%;
@@ -131,7 +131,7 @@ input[type=checkbox] {
     align-items: center;
 }
 
-button {
+.boton-login {
     background-color: var(--azulreegalo);
     border: none;
     width: 100%;
