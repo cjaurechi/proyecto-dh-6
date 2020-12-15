@@ -62,6 +62,13 @@ const controller = {
                     if (bcryptjs.compareSync(req.body.password, usuario.password)) {
                         req.session.user = usuario;
                         res.locals.user = usuario;
+                        db.users.update({
+                            last_login: moment(new Date()).format('YYYY-MM-DD')
+                        }, {
+                            where: {
+                                email: req.body.email
+                            }
+                        })
                     }
                     res.redirect("/");
                 })
@@ -71,6 +78,15 @@ const controller = {
         } else {
             return res.render('users/login', { errors: errors.errors })
         }
+    },
+
+    getProfile: (req, res) => {
+        console.log(res.locals.user);
+        res.render('users/profile', { user: res.locals.user });
+    },
+
+    updateProfile: (req, res) => {
+        res.send('updated')
     }
 }
 
