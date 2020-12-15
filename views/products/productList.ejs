@@ -27,7 +27,7 @@
                 <div class="container-productos">
                     
                     <% products_category.forEach (function(item) { %>
-                        <% if (item.category == item_category.id) { %>
+                        <% if (item.category_id == item_category.id) { %>
                             <div class="container-producto">
                                 <section class="product-box">
                                     <a href="/productos/<%= item.id %>/detalle">
