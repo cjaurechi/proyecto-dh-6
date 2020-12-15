@@ -11,7 +11,7 @@ let registerMiddleware = [
         }
     }).withMessage('Las contraseñas deben coincidir'),
     body('profile').custom((value, { req, loc, path }) => {
-        if (value == undefined) {
+        if (req.files == undefined) {
             return false;
         } else {
             return true;
