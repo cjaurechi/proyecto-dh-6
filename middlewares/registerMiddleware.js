@@ -17,7 +17,7 @@ let registerMiddleware = [
             return true;
         }
     }).withMessage('Por favor, seleccioná una foto de perfil')
-    // ¿Agregar validaciones para los campos de fecha y foto de perfil? (Validar mayoría de edad y que el campo foto de perfil no esté vacío)
+    // ¿Agregar validacion para los campos de fecha? (Validar mayoría de edad)
 ]
 
 module.exports = registerMiddleware;

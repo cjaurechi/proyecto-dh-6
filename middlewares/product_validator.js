@@ -1,4 +1,4 @@
-const {check,body} = require('express-validator');
+const { check, body} = require('express-validator');
 const moment = require("moment");
 
 module.exports = [
@@ -6,7 +6,7 @@ module.exports = [
     check('supplier').notEmpty().withMessage("El producto debe tener asignado un proveedor"),
     check('price').isDecimal().withMessage("El precio del producto debe ser numerico"),
     check('discount').isDecimal().withMessage("El descuento del producto debe ser numerico"),
-    check('category').notEmpty().withMessage("El producto debe tener asociada uan categoria"),
+    check('category').notEmpty().withMessage("El producto debe tener asociada una categoria"),
     check('life_dato_from').isDate().withMessage("El producto debe tener asignada una fecha de vigencia desde"),
     check('life_dato_to').isDate().withMessage("El producto debe tener asignada una fecha de vigencia hasta"),
     check('expiration_days').isInt({gt: 0}).withMessage("Los dias de vencimiento del producto debe mayor o igual a 0"),
@@ -19,7 +19,7 @@ module.exports = [
         fecha_actual = moment(fecha_actual).format('YYYY-MM-DD')
         if (value < fecha_actual) {
             throw new Error('La fecha de vigencia desde debe ser mayor o igual a hoy');
-          }
-        return true  
+        }
+        return true;
     })
 ]
