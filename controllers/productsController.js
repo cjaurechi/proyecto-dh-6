@@ -39,7 +39,7 @@ const controller = {
 			where : {product_id : req.params.id}});
 
 		Promise.all([product, product_images, product_comments])
-		  .then(function ([product, product_images, product_comments]) {
+		.then(function ([product, product_images, product_comments]) {
 
 			let cantidad_comentarios = 0
 			let suma_calificacion = 0
@@ -61,10 +61,10 @@ const controller = {
 	
 			res.render("products/productDetail", { product: product, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
 	
-		  })
-		  .catch(error => {
+		})
+		.catch(error => {
 			res.render('error', { error: error });
-		  })
+		})
 
 	},
 
@@ -77,8 +77,11 @@ const controller = {
 		if (req.params.id !== undefined) {
 
 			products_category = db.products.findAll({
-				where : {category_id : req.params.id,
-						 status : "Habilitado"}});
+				where : {
+					category_id : req.params.id,
+					status : "Habilitado"
+				}
+			});
 
 			category = db.categories.findByPk(req.params.id)
 
@@ -92,14 +95,12 @@ const controller = {
 		}
 
 		Promise.all([products_category, category])
-		  .then(function ([products_category, category]) {
-
+		.then(function ([products_category, category]) {
 			res.render("products/productList", { products_category: products_category, category: category })
-			
-		  })
-		  .catch(error => {
+		})
+		.catch(error => {
 			res.render('error', { error: error });
-		  })
+		})
 
 	},
 
@@ -154,7 +155,9 @@ const controller = {
 
 			products_category = db.products.findAll({
 				where : {category_id : req.params.id,
-						 status : "Habilitado"}});
+					status : "Habilitado"
+				}
+			});
 
 			category = db.categories.findByPk(req.params.id)
 
@@ -169,11 +172,10 @@ const controller = {
 
 		Promise.all([products_category, category])
 		.then(function ([products_category, category]) {
-
-		  res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
+			res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
 		})
 		.catch(error => {
-		  res.render('error', { error: error });
+			res.render('error', { error: error });
 		})
 
 	},

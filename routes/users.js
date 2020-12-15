@@ -28,7 +28,11 @@ router.get('/registro', authMiddleware, usersController.register);
 router.post('/registro', upload.any(), registerMiddleware, usersController.createUser);
 
 /*** LOGIN ***/
-router.get('/login', authMiddleware,usersController.login);
+router.get('/login', authMiddleware, usersController.login);
 router.post('/login', usersController.processLogin)
+
+/*** PROFILE ***/
+router.get('/perfil', authMiddleware, usersController.getProfile);
+router.post('/perfil', usersController.updateProfile)
 
 module.exports = router;
