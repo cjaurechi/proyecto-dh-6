@@ -84,7 +84,7 @@ const controller = {
       let sql = "insert into categories values ('" + 
       categories[i].id + "','" +
       categories[i].description + "','" +  
-      categories[i].description + "');" 
+      categories[i].description + "');" + "\n"
       fs.appendFileSync(categoriesSQLFilePath, sql);
     }
 
@@ -112,7 +112,7 @@ const controller = {
       products[i].life_date_to + "','" +
       products[i].stock + "','" +
       products[i].status + "','" +
-      products[i].main_image + "');" 
+      products[i].main_image + "');" + "\n"
       fs.appendFileSync(productsSQLFilePath, sql);
     }
 
@@ -124,12 +124,14 @@ const controller = {
 
     }
 
+    let id = 0 
     for (let i=0; i<productsImages.length; i++) {
+      id += 1
       let sql = "insert into product_image values ('" + 
-      productsImages[i].id + "','" +
+      id + "','" +
       productsImages[i].id + "','" +
       productsImages[i].image + "','" +
-      productsImages[i].number + "');" 
+      productsImages[i].number + "');" + "\n"
       fs.appendFileSync(product_imageSQLFilePath, sql);
     }
 
@@ -141,14 +143,16 @@ const controller = {
   
       }
   
+      id = 0 
       for (let i=0; i<comments.length; i++) {
+        id += 1
         let sql = "insert into comments values ('" + 
-        comments[i].id + "','" +
+        id + "','" +
         comments[i].user_id + "','" +
         comments[i].product_id + "','" +
         comments[i].comment + "','" +
         comments[i].comment_date + "','" +
-        comments[i].calification + "');"
+        comments[i].calification + "');" + "\n"
         fs.appendFileSync(commentsSQLFilePath, sql);
       }
 
@@ -164,8 +168,8 @@ const controller = {
         let sql = "insert into suppliers values ('" + 
         suppliers[i].id + "','" +
         suppliers[i].description + "','" +
-        suppliers[i].status + "','" +
-        suppliers[i].description + "');" 
+        suppliers[i].description + "','" +
+        suppliers[i].status + "');" + "\n"
         fs.appendFileSync(suppliersSQLFilePath, sql);
       }
 
@@ -194,7 +198,7 @@ const controller = {
         users[i].residence + "','" +
         users[i].phone + "','" +
         users[i].dark_mode + "','" +
-        users[i].status + "');" 
+        users[i].status + "');" + "\n"
         fs.appendFileSync(usersSQLFilePath, sql);
       }
   }

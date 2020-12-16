@@ -29,41 +29,42 @@ const controller = {
 	// Detalle de producto
 	productDetail: (req, res) => {
 
-		let product = products.find(function (item) {
-			return (req.params.id == item.id);
+		let product = db.products.findByPk(req.params.id,{
+			include: [{association : "categories"}]})
+
+		let product_images = db.product_image.findAll({
+			where : {product_id : req.params.id}});
+			
+		let product_comments = db.comments.findAll({
+			where : {product_id : req.params.id}});
+
+		Promise.all([product, product_images, product_comments])
+		.then(function ([product, product_images, product_comments]) {
+
+			let cantidad_comentarios = 0
+			let suma_calificacion = 0
+	
+			for (let i = 0; i < product_comments.length; i++) {
+				let user = users.find(function (item) {
+					return (product_comments[i].user_id == item.id);
+				})
+				product_comments[i].user_description = user.first_name
+				cantidad_comentarios += 1
+				suma_calificacion = suma_calificacion + product_comments[i].calification
+			}
+	
+			let promedio_calificacion = suma_calificacion / cantidad_comentarios
+	
+			if (isNaN(promedio_calificacion)) {
+				promedio_calificacion = ""
+			}
+	
+			res.render("products/productDetail", { product: product, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
+	
 		})
-
-		let category = categories.find(function (item) {
-			return (product.category == item.id)
+		.catch(error => {
+			res.render('error', { error: error });
 		})
-
-		product_images = products_images.filter(function (item) {
-			return (req.params.id == item.id)
-		})
-
-		product_comments = comments.filter(function (item) {
-			return (req.params.id == item.product_id)
-		})
-
-		let cantidad_comentarios = 0
-		let suma_calificacion = 0
-
-		for (let i = 0; i < product_comments.length; i++) {
-			let user = users.find(function (item) {
-				return (product_comments[i].user_id == item.id);
-			})
-			product_comments[i].user_description = user.first_name
-			cantidad_comentarios += 1
-			suma_calificacion = suma_calificacion + product_comments[i].calification
-		}
-
-		let promedio_calificacion = suma_calificacion / cantidad_comentarios
-
-		if (isNaN(promedio_calificacion)) {
-			promedio_calificacion = ""
-		}
-
-		res.render("products/productDetail", { product: product, category: category, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
 
 	},
 
@@ -74,22 +75,32 @@ const controller = {
 		let category = []
 
 		if (req.params.id !== undefined) {
-			products_category = products.filter(function (item) {
-				return (req.params.id == item.category & item.status == "Habilitado")
-			})
 
-			category = categories.filter(function (item) {
-				return (req.params.id == item.id)
-			})
+			products_category = db.products.findAll({
+				where : {
+					category_id : req.params.id,
+					status : "Habilitado"
+				}
+			});
+
+			category = db.categories.findByPk(req.params.id)
+
 		} else {
-			products_category = products.filter(function (item) {
-				return (item.status == "Habilitado")
-			})
 
-			category = categories
+			products_category = db.products.findAll({
+				where : {status: "Habilitado"}})
+
+			category = db.categories.findAll()
+
 		}
 
-		res.render("products/productList", { products_category: products_category, category: category })
+		Promise.all([products_category, category])
+		.then(function ([products_category, category]) {
+			res.render("products/productList", { products_category: products_category, category: category })
+		})
+		.catch(error => {
+			res.render('error', { error: error });
+		})
 
 	},
 
@@ -136,26 +147,36 @@ const controller = {
 	// Listado de productos para edicion
 	productListForm: (req, res) => {
 
+
 		let products_category = []
 		let category = []
 
 		if (req.params.id !== undefined) {
-			products_category = products.filter(function (item) {
-				return (req.params.id == item.category & item.status == "Habilitado")
-			})
 
-			category = categories.filter(function (item) {
-				return (req.params.id == item.id)
-			})
+			products_category = db.products.findAll({
+				where : {category_id : req.params.id,
+					status : "Habilitado"
+				}
+			});
+
+			category = db.categories.findByPk(req.params.id)
+
 		} else {
-			products_category = products.filter(function (item) {
-				return (item.status == "Habilitado")
-			})
 
-			category = categories
+			products_category = db.products.findAll({
+				where : {status: "Habilitado"}})
+
+			category = db.categories.findAll()
+
 		}
 
-		res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
+		Promise.all([products_category, category])
+		.then(function ([products_category, category]) {
+			res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
+		})
+		.catch(error => {
+			res.render('error', { error: error });
+		})
 
 	},
 

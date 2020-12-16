@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs", {title: "Reegalo - Tu perfil" }) %>
+        <link rel="stylesheet" href="/stylesheets/app.css">
+        <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+
+<body>
+    <%- include("../partials/header.ejs") %>
+        <section class="container-profile">
+            <section class="left-panel">
+                
+                Panel perfil de usuario
+
+            </section>
+            <section class="right-panel">
+                <form action="/perfil" method="POST" enctype="multipart/form-data">
+                    <div class="container-profile-field">
+                        <div class="container-fa-envelop">
+                            <i class="far fa-envelope" style="width: 30px;"></i>
+                            <input type="email" name="email" id="email" placeholder="Coreo electrónico">
+                        </div>
+
+                    </div>
+                </form>
+
+            </section>
+        </section>
+
+
+        <%- include("../partials/footer.ejs") %>
+</body>
+
+</html>

@@ -9,8 +9,15 @@ let registerMiddleware = [
         } else {
             return true;
         }
-    }).withMessage('Las contraseñas deben coincidir')
-    // ¿Agregar validaciones para los campos de fecha y foto de perfil? (Validar mayoría de edad y que el campo foto de perfil no esté vacío)
+    }).withMessage('Las contraseñas deben coincidir'),
+    body('profile').custom((value, { req, loc, path }) => {
+        if (req.files == undefined) {
+            return false;
+        } else {
+            return true;
+        }
+    }).withMessage('Por favor, seleccioná una foto de perfil')
+    // ¿Agregar validacion para los campos de fecha? (Validar mayoría de edad)
 ]
 
 module.exports = registerMiddleware;

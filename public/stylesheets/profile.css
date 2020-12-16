@@ -1,0 +1,15 @@
+.container-profile {
+    display: flex;
+    flex-flow: row nowrap;
+
+}
+
+.left-panel {
+    background-color: pink;
+    width: 30%;
+}
+
+.right-panel {
+    background-color: aquamarine;
+    width: 100%;
+}
