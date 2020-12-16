@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         supplier_id: {
             type: DataTypes.INTEGER
         },
-        creation_date: {
+        created_at: {
             type: DataTypes.DATE
         },
         expiration_days: {
@@ -44,8 +44,8 @@ module.exports = (sequelize, DataTypes) => {
         status: {
             type: DataTypes.INTEGER
         },
-        main_image: {
-            type: DataTypes.STRING
+        user_id: {
+            type: DataTypes.INTEGER
         }
     };
 
