@@ -70,7 +70,16 @@ const controller = {
         } else {
             return res.render('users/login', { errors: errors.errors })
         }
+    },
+
+    // Logout
+
+    logout: (req, res) => {
+
+        res.locals.user = ''
+        res.render('users/logout');
     }
+
 }
 
 module.exports = controller;

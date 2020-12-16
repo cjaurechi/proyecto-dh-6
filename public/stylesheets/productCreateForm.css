@@ -172,7 +172,7 @@ textarea.form-input {
     align-items: center;
 }
 
-button {
+.boton-guardar {
     background-color: var(--azulreegalo);
     border: none;
     width: 30%;
@@ -182,7 +182,7 @@ button {
     color: white;
 }
 
-button:hover {
+.button-guardar:hover {
     background-color: var(--azulregalostrong);
 }
 

@@ -31,4 +31,8 @@ router.post('/registro', upload.any(), registerMiddleware, usersController.creat
 router.get('/login', authMiddleware,usersController.login);
 router.post('/login', usersController.processLogin)
 
+/*** LOGOUT ***/
+router.get('/logout', authMiddleware,usersController.logout);
+
+
 module.exports = router;

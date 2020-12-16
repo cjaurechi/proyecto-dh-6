@@ -3,6 +3,7 @@ const path = require('path');
 const moment = require('moment');
 const { Console } = require('console');
 const { validationResult } = require('express-validator');
+const db = require('../database/models');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 var products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -213,60 +214,95 @@ const controller = {
 	// Alta de producto
 	store: (req, res, next) => {
 
-		let errors = validationResult(req).mapped()
+		// let errors = validationResult(req).mapped()
 
-		if (Object.keys(errors).length != 0) {
-			return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
-		}
+		// if (Object.keys(errors).length != 0) {
+		// 	return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
+		// }
 
-		for (let i = 0; i < req.files.length; i++) {
-			var product_image = ""
-			if (req.files[i] !== undefined) {
-				product_image = req.files[i].filename
-			}
-			products_images.push({
-				id: products[products.length - 1].id + 1,
-				image: product_image,
-				number: i,
-			})
-		}
+		// for (let i = 0; i < req.files.length; i++) {
+		//  	var product_image = ""
+		//  	if (req.files[i] !== undefined) {
+		//  		product_image = req.files[i].filename
+		//  	}
+		//  	products_images.push({
+		//  		id: products[products.length - 1].id + 1,
+		//  		image: product_image,
+		//  		number: i,
+		//  	})
+		//  }
 
-		let archivo = JSON.stringify(products_images);
-		fs.writeFileSync(productsImagesFilePath, archivo);
+		// let archivo = JSON.stringify(products_images);
+		// fs.writeFileSync(productsImagesFilePath, archivo);
 
-		fecha_actual = new Date()
+		// var main_image = ""
+		// if (req.files[0] !== undefined) {
+		// main_image = req.files[0].filename
+		// }
 
-		var main_image = ""
-		if (req.files[0] !== undefined) {
-			main_image = req.files[0].filename
-		}
-
-		products.push({
-			id: products[products.length - 1].id + 1,
-			name: req.body.name,
-			description: req.body.description,
-			category: req.body.category,
-			creation_user: req.body.user,
-			creation_date: moment(fecha_actual).format('YYYY-MM-DD'),
-			expiration_days: req.body.expiration_days,
-			share: req.body.share,
-			supplier: req.body.supplier,
-			price: req.body.price,
-			discount: req.body.discount,
-			life_date_from: req.body.life_date_from,
-			life_date_to: req.body.life_date_to,
-			stock: req.body.stock,
-			status: req.body.status,
-			main_image: main_image,
-		});
+		// products.push({
+		// 	id: products[products.length - 1].id + 1,
+		// 	name: req.body.name,
+		// 	description: req.body.description,
+		// 	category: req.body.category,
+		// 	creation_user: req.body.user,
+		// 	creation_date: moment(fecha_actual).format('YYYY-MM-DD'),
+		// 	expiration_days: req.body.expiration_days,
+		// 	share: req.body.share,
+		// 	supplier: req.body.supplier,
+		// 	price: req.body.price,
+		// 	discount: req.body.discount,
+		// 	life_date_from: req.body.life_date_from,
+		// 	life_date_to: req.body.life_date_to,
+		// 	stock: req.body.stock,
+		// 	status: req.body.status,
+		// 	main_image: main_image,
+		// });
 
 
-		archivo = JSON.stringify(products);
-		fs.writeFileSync(productsFilePath, archivo);
+		// archivo = JSON.stringify(products);
+		// fs.writeFileSync(productsFilePath, archivo);
 		
-		res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
+		// res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
 
-	},
+	
+
+
+		// Puse uno al id de proveedor y categoria para probar si funciona el alta
+
+		let errors = validationResult(req);
+        if (errors.isEmpty()) {
+		db.products.create({
+				name: req.body.name,
+				description: req.body.description,
+				category_id: req.body.category,
+				creation_user: 6,
+				supplier_id: 100,
+				creation_date: moment(new Date()).format('YYYY-MM-DD'),
+				expiration_days: req.body.expiration_days,
+				share: req.body.share,
+				price: req.body.price,
+				discount: req.body.discount,
+				life_date_from: req.body.life_date_from,
+				life_date_to: req.body.life_date_to,
+				stock: req.body.stock,
+				status: req.body.status
+				// main_image: req.body.file
+
+
+		}).then (resultado =>{
+			res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
+
+		   })
+		   .catch(error => {
+			   console.log(error)
+			return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
+		   })
+
+
+		}
+    },
+		
 
 	// Formulario de modificacion
 	edit: (req, res) => {

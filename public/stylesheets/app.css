@@ -423,6 +423,19 @@ footer div nav a {
 
 /* Media Queries */
 /* Laptop */
+
+
+/* Msj logout */
+
+.msj-logout {
+    text-align: center;
+}
+.msj-logout p{
+    font-family: Montserrat-SemiBold;
+    padding: 0.5%;
+}
+
+
 @media (max-width: 1080px) {
 
     .container-header {
