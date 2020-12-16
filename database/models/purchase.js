@@ -14,15 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         total: {
             type: DataTypes.DECIMAL
         },
-        email_address: {
-            type: DataTypes.STRING
-        },
-        recipient_address: {
-            type: DataTypes.STRING
-        },
-        message: {
-            type: DataTypes.STRING
-        },
+        
         status_id: {
             type: DataTypes.INTEGER
         }
