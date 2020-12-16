@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     };
 
-    let purchases = sequelize.define('recipients', cols, config);
+    let recipients = sequelize.define('recipients', cols, config);
 
     recipients.associate = function(models) {
         
