@@ -61,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
             as: 'comments',
             foreignKey: 'product_id'
         });
+        
         products.belongsTo(models.suppliers, {
             as: 'suppliers',
             foreignKey: 'supplier_id'
@@ -79,6 +80,10 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'product_id',
             otherKey: 'purchase_id',
             timestamps: false
+        });
+        products.belongsTo(models.users, {
+            as: 'users',
+            foreignKey: 'user_id'
         })
     }
 
