@@ -20,7 +20,7 @@
                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
             </div>
 
-            <form action="/productos/<%= product.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data"
+            <form action="/productos/<%= product.id %>/editar?_method=PUT" method="POST" enctype="multipart/form-data"
                 class="form-producto">
                 <div class="form-linea-texto">
                     <label for="name" class="form-label">Nombre:<span class= "error"> * </span></label>
@@ -89,23 +89,7 @@
                     </div>
                 </div>
 
-                <div class="linea-compartida">
-                    <div class="form-linea-compartida-imagen">
-                        <label for="Imagen" class="form-label-compartido">Imagenes:<span class= "error"> * </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="file" id="image" name="image" multiple="multiple" class="form-input-imagen">
-                            <% if (errors.image != undefined) { %>
-                                <p class="error"><%= errors.image.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="imagen-producto-contenedor">
-                    <% product_images.filter (function(item) { %>
-                    <img src="/images/products/<%= item.image %>" alt="" class="imagen-producto">
-                    <% }) %>
-                </div>
+               
 
                 <div class="linea-compartida">
                     <div class="form-linea-compartida-1">

@@ -327,21 +327,32 @@ const controller = {
 
 	// Formulario de modificacion
 	edit: (req, res) => {
+		console.log(req.params.id)
+		let product = req.params.id
+		let suppliers = db.suppliers.findAll({where: {status: "habilitado"}})
+		
+		Promise.all([product, suppliers])
+    		.then(function ([product, suppliers]) {
+		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: {} })
+    })
+    .catch(error => {
+      res.render('error', { error: error });
+    })},
 
-		let product = products.find(function (item) {
-			return (req.params.id == item.id);
-		})
+	// 	let product = products.find(function (item) {
+	// 		return (req.params.id == item.id);
+	// 	})
 
-		suppliers = suppliers.filter(function (item) {
-			return (item.status == 'Habilitado')
-		})
+	// 	suppliers = suppliers.filter(function (item) {
+	// 		return (item.status == 'Habilitado')
+	// 	})
 
-		product_images = products_images.filter(function (item) {
-			return (req.params.id == item.id)
-		})
+	// 	product_images = products_images.filter(function (item) {
+	// 		return (req.params.id == item.id)
+	// 	})
 
-		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: {} });
-	},
+	// 	res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: {} });
+	// },
 
 	// Modificacion de producto
 	update: (req, res, next) => {
@@ -433,33 +444,46 @@ const controller = {
 	},
 
 	delete: (req, res) => {
-		// Pasamos el contenido de products a otra variable temporal
-		let content = products;
 
-		// Localizamos y filtramos el producto que quereremos borrar
-		let filtered_content = content.filter(function (element) {
-			return element.id != req.params.id;
-		});
+	console.log(req.params.id)
+  
+	  db.product.destroy({
+    	where:{
+     	 id: req.params.id
+   			 }
+  		})
+  		.then (()=> res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
+  		.catch(error => {
+    console.log(error)
+    res.render('error', { error: error })
+  })
+	// 	// Pasamos el contenido de products a otra variable temporal
+	// 	let content = products;
 
-		// Volvemos a convertir el contenido filtrado en un string
-		content = JSON.stringify(filtered_content);
+	// 	// Localizamos y filtramos el producto que quereremos borrar
+	// 	let filtered_content = content.filter(function (element) {
+	// 		return element.id != req.params.id;
+	// 	});
 
-		// Escribimos nuevamente el archivo productsDataBase.json con el producto borrado
-		fs.writeFileSync(productsFilePath, content);
+	// 	// Volvemos a convertir el contenido filtrado en un string
+	// 	content = JSON.stringify(filtered_content);
+
+	// 	// Escribimos nuevamente el archivo productsDataBase.json con el producto borrado
+	// 	fs.writeFileSync(productsFilePath, content);
 		
-		let products_category = []
-		let category = []
+	// 	let products_category = []
+	// 	let category = []
 
-		products_category = products.filter(function (item) {
-			return (item.status == "Habilitado")
-		})
+	// 	products_category = products.filter(function (item) {
+	// 		return (item.status == "Habilitado")
+	// 	})
 
-		category = categories
+	// 	category = categories
 
-		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' })
+	// 	res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' })
 		
-/* 		res.redirect('/'); */
-	}
+
+	 }
 };
 
 module.exports = controller;
