@@ -21,8 +21,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
-app.use(checkIp);
-app.use(session({ secret: "Shh, secreto", resave: false, saveUninitialized: true }));
+// app.use(checkIp);
+app.use(session({ 
+  secret: "Shh, secreto", 
+  resave: false, 
+  saveUninitialized: true,
+  rolling: true,
+  cookie: {
+    httpOnly: true,
+    maxAge: 1*60*60*1000
+  }
+}));
 app.use(localsMiddleware);
 
 // ********** Template Engine **********
