@@ -289,7 +289,7 @@ const controller = {
 	
 
 
-		// Puse uno al id de proveedor y categoria para probar si funciona el alta
+		// Puse uno al id de proveedor y el usuario para probar si funciona el alta. Tambien la fecha
 
 		
 
@@ -300,7 +300,7 @@ const controller = {
 				name: req.body.name,
 				description: req.body.description,
 				category_id: req.body.category,
-				supplier_id: 1,
+				supplier_id: req.body.supplier,
 				creation_at: moment(new Date()).format('YYYY-MM-DD'),
 				expiration_days: req.body.expiration_days,
 				share: req.body.share,
@@ -310,19 +310,14 @@ const controller = {
 				life_date_to: req.body.life_date_to,
 				stock: req.body.stock,
 				status: req.body.status,
-				user_id: 1,		
-				
-				
-				// main_image: req.body.file
-
+				user_id: 1,
 
 		}).then (resultado =>{
 			res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
 
 		   })
 		   .catch(error => {
-			   console.log(error)
-			return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
+			   return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
 		   })
 
 
