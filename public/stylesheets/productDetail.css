@@ -349,6 +349,14 @@ img {
   background-color: var(--azulreegalo);
 }
 
+.link_aeditar{
+  color: var(--blanco);
+  font-size: 1em;
+  text-decoration: none;
+
+  
+}
+
 .compra_boton:hover {
   background-color: var(--azulregalostrong);
   border: 1px solid var(--azulregalostrong);

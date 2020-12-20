@@ -272,9 +272,9 @@ const controller = {
 	// Formulario de modificacion
 	edit: (req, res) => {
 		console.log(req.params.id)
-		let product = req.params.id
-		let suppliers = db.suppliers.findAll({ where: { status: "habilitado" } })
-
+		let product = db.products.findByPk(req.params.id)
+		let suppliers = db.suppliers.findAll({where: {status: "habilitado"}})
+		
 		Promise.all([product, suppliers])
 			.then(function ([product, suppliers]) {
 				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: {} })
@@ -302,91 +302,121 @@ const controller = {
 	// Modificacion de producto
 	update: (req, res, next) => {
 
-		let errors = validationResult(req).mapped()
+		let errors = validationResult(req);
+		console.log(errors)
+        if (errors.isEmpty()) {
+			let product = db.products.findByPk(req.params.id)	
+		db.products.update({
+				name: req.body.name,
+				description: req.body.description,
+				category_id: req.body.category,
+				supplier_id: req.body.supplier,
+				expiration_days: req.body.expiration_days,
+				share: req.body.share,
+				price: req.body.price,
+				discount: req.body.discount,
+				life_date_from: req.body.life_date_from,
+				life_date_to: req.body.life_date_to,
+				stock: req.body.stock,
+				status: req.body.status,
 
-		console.log(req.body, req.params, errors)
+		}, {where: {id: req.params.id}})
+		.then (resultado =>{
+			res.render("products/productListForm", {product: product , products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
 
-		/* Chequear con Alejandro : se cargan datos en el form , en el req.body llegan bien pero el check del express validator lo toma como error y en el error figuran como undefined
-		Si le saco el check del midleeware se actualiza bien*/
+		   })
+		   .catch(error => {
+			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors })  })
 
-		if (Object.keys(errors).length != 0) {
 
-			product = req.body
-			product.id = req.params.id
-
-			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors })
 		}
+    },
 
-		if (req.files[0] !== undefined) {
-			products_images = products_images.filter(function (item) {
-				return (item.id != req.params.id)
-			})
+// 		let errors = validationResult(req).mapped()
 
-			for (let i = 0; i < req.files.length; i++) {
-				var product_image = ""
-				if (req.files[i] !== undefined) {
-					product_image = req.files[i].filename
-				}
-				products_images.push({
-					id: req.params.id,
-					image: product_image,
-					number: i,
-				})
-			}
-		}
+// 		console.log(req.body,req.params,errors) 
+		
+// 		/* Chequear con Alejandro : se cargan datos en el form , en el req.body llegan bien pero el check del express validator lo toma como error y en el error figuran como undefined
+// 		Si le saco el check del midleeware se actualiza bien*/
 
-		let archivo = JSON.stringify(products_images);
-		fs.writeFileSync(productsImagesFilePath, archivo);
+// 		if (Object.keys(errors).length != 0) {
 
-		var main_image = ""
-		product_image = products_images.find(function (item) {
-			return (item.id == req.params.id & item.number == 0)
-		})
+// 			product = req.body
+// 			product.id = req.params.id
 
-		if (product_image == undefined) {
-			main_image = ""
-		} else {
-			main_image = product_image.image
-		}
+// 			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors })
+// 		}
 
-		products.forEach(function (item) {
-			if (item.id == req.params.id) {
-				item.name = req.body.name,
-					item.description = req.body.description,
-					item.category = req.body.category,
-					item.expiration_days = req.body.expiration_days,
-					item.share = req.body.share,
-					item.price = req.body.price,
-					item.discount = req.body.discount,
-					item.category = req.body.category,
-					item.description = req.body.description,
-					item.supplier = req.body.supplier,
-					item.price = req.body.price,
-					item.discount = req.body.discount,
-					item.life_date_from = req.body.life_date_from,
-					item.life_date_to = req.body.life_date_to,
-					item.stock = req.body.stock,
-					item.status = req.body.status,
-					item.main_image = main_image
-			}
-		});
+// 		if (req.files[0] !== undefined) {
+// 			products_images = products_images.filter(function (item) {
+// 				return (item.id != req.params.id)
+// 			})
 
-		archivo = JSON.stringify(products);
-		fs.writeFileSync(productsFilePath, archivo);
+// 			for (let i = 0; i < req.files.length; i++) {
+// 				var product_image = ""
+// 				if (req.files[i] !== undefined) {
+// 					product_image = req.files[i].filename
+// 				}
+// 				products_images.push({
+// 					id: req.params.id,
+// 					image: product_image,
+// 					number: i,
+// 				})
+// 			}
+// 		}
 
-		let products_category = []
-		let category = []
+// 		let archivo = JSON.stringify(products_images);
+// 		fs.writeFileSync(productsImagesFilePath, archivo);
 
-		products_category = products.filter(function (item) {
-			return (item.status == "Habilitado")
-		})
+// 		var main_image = ""
+// 		product_image = products_images.find(function (item) {
+// 			return (item.id == req.params.id & item.number == 0)
+// 		})
 
-		category = categories
+// 		if (product_image == undefined) {
+// 			main_image = ""
+// 		} else {
+// 			main_image = product_image.image
+// 		}
 
-		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
+// 		products.forEach(function (item) {
+// 			if (item.id == req.params.id) {
+// 				item.name = req.body.name,
+// 					item.description = req.body.description,
+// 					item.category = req.body.category,
+// 					item.expiration_days = req.body.expiration_days,
+// 					item.share = req.body.share,
+// 					item.price = req.body.price,
+// 					item.discount = req.body.discount,
+// 					item.category = req.body.category,
+// 					item.description = req.body.description,
+// 					item.supplier = req.body.supplier,
+// 					item.price = req.body.price,
+// 					item.discount = req.body.discount,
+// 					item.life_date_from = req.body.life_date_from,
+// 					item.life_date_to = req.body.life_date_to,
+// 					item.stock = req.body.stock,
+// 					item.status = req.body.status,
+// 					item.main_image = main_image
+// 			}
+// 		});
 
-		/* 		res.redirect("/"); */
-	},
+// 		archivo = JSON.stringify(products);
+// 		fs.writeFileSync(productsFilePath, archivo);
+
+// 		let products_category = []
+// 		let category = []
+
+// 		products_category = products.filter(function (item) {
+// 			return (item.status == "Habilitado")
+// 		})
+
+// 		category = categories
+
+// 		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
+
+// /* 		res.redirect("/"); */
+// 	},
 
 	delete: (req, res) => {
 
