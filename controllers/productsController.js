@@ -291,15 +291,17 @@ const controller = {
 
 		// Puse uno al id de proveedor y categoria para probar si funciona el alta
 
+		
+
 		let errors = validationResult(req);
+		console.log(errors)
         if (errors.isEmpty()) {
 		db.products.create({
 				name: req.body.name,
 				description: req.body.description,
 				category_id: req.body.category,
-				creation_user: 6,
-				supplier_id: 100,
-				creation_date: moment(new Date()).format('YYYY-MM-DD'),
+				supplier_id: 1,
+				creation_at: moment(new Date()).format('YYYY-MM-DD'),
 				expiration_days: req.body.expiration_days,
 				share: req.body.share,
 				price: req.body.price,
@@ -307,7 +309,10 @@ const controller = {
 				life_date_from: req.body.life_date_from,
 				life_date_to: req.body.life_date_to,
 				stock: req.body.stock,
-				status: req.body.status
+				status: req.body.status,
+				user_id: 1,		
+				
+				
 				// main_image: req.body.file
 
 
