@@ -9,28 +9,77 @@
 
 <body>
     <%- include("../partials/header.ejs") %>
-        <section class="container-profile">
-            <section class="left-panel">
-                
-                Panel perfil de usuario
+        <% if (typeof edit_success !='undefined' ) { %>
+            <div class="edit-success">
+                <%= user.first_name %>, tu perfil fue actualizado exitosamente.
+            </div>
+            <% } %>
 
-            </section>
-            <section class="right-panel">
-                <form action="/perfil" method="POST" enctype="multipart/form-data">
-                    <div class="container-profile-field">
-                        <div class="container-fa-envelop">
-                            <i class="far fa-envelope" style="width: 30px;"></i>
-                            <input type="email" name="email" id="email" placeholder="Coreo electrónico">
-                        </div>
+                <section class="container-profile">
+                    <section class="left-panel">
+                        <p>Tu imagen actual</p>
+                        <img src="/images/users/<%= user.image %>" alt="" class="user-profile-pic">
 
-                    </div>
-                </form>
+                    </section>
+                    <section class="right-panel">
+                        <form method="POST" action="/usuarios/<%= user.id %>/actualizar" enctype="multipart/form-data"
+                            class="edit-form">
+                            <div class="container-field">
+                                <label for="first_name">Nombre: </label>
+                                <input type="text" name="first_name" id="first_name" value="<%= user.first_name %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Apellido: </label>
+                                <input type="text" name="last_name" id="last_name" value="<%= user.last_name %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Email: </label>
+                                <input type="email" name="email" id="email" value="<%= user.email %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Rol: </label>
+                                <input type="text" name="rol" id="rol" value="<%= user.rol %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Idioma: </label>
+                                <input type="text" name="language" id="language" value="<%= user.language %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Fecha de nacimiento: </label>
+                                <input type="date" name="brday" id="brday" value="<%= user.brday %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Pais: </label>
+                                <input type="text" name="country" id="country" value="<%= user.country %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Ciudad: </label>
+                                <input type="text" name="residence" id="residence" value="<%= user.residence %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Telefono: </label>
+                                <input type="text" name="phone" id="phone" value="<%= user.phone %>">
+                            </div>
+                            <div class="container-field">
+                                <label for="first_name">Tema: </label>
+                                <select name="dark_mode" id="dark_mode">
+                                    <% if(user.dark_mode=='n' ) { %>
+                                        <option value="n" selected>Claro</option>
+                                        <option value="y">Oscuro</option>
+                                        <% } else { %>
+                                            <option value="n">Claro</option>
+                                            <option value="y" selected>Oscuro</option>
+                                            <% } %>
+                                </select>
+                            </div>
+                            <div>
+                                <button type=“submit” class="boton-register">Editar perfil</button>
+                            </div>
+                        </form>
+                    </section>
+                </section>
 
-            </section>
-        </section>
-
-
-        <%- include("../partials/footer.ejs") %>
+                <%- include("../partials/footer.ejs") %>
 </body>
 
 </html>

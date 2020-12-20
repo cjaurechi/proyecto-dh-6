@@ -85,15 +85,45 @@ const controller = {
     logout: (req, res) => {
 
         res.locals.user = ''
-        res.render('users/logout')},
-        
+        res.render('users/logout')
+    },
+
     getProfile: (req, res) => {
-        console.log(res.locals.user);
-        res.render('users/profile', { user: res.locals.user });
+        db.users.findByPk(req.params.id)
+            .then(user => {
+                res.render('users/profile', { user: user });
+            })
+            .catch(error => {
+                res.render('users/profile', { errors: error });
+            })
     },
 
     updateProfile: (req, res) => {
-        res.send('updated')
+        console.log('Llego hasta acá');
+        db.users.update({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            rol: req.body.rol,
+            language: req.body.language,
+            brday: req.body.brday,
+            country: req.body.country,
+            residence: req.body.residence,
+            phone: req.body.phone,
+            dark_mode: req.body.dark_mode
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(user => {
+                console.log();
+                res.render('users/profile', { user: user, edit_success: 'true' })
+            })
+            .catch(error => {
+                res.render('users/profile', { errors: error });
+            })
     }
 
 }

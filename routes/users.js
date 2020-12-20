@@ -35,7 +35,7 @@ router.post('/login', usersController.processLogin)
 router.get('/logout', authMiddleware,usersController.logout);
 
 /*** PROFILE ***/
-router.get('/perfil', authMiddleware, usersController.getProfile);
-router.post('/perfil', usersController.updateProfile)
+router.get('/:id/perfil', authMiddleware, usersController.getProfile);
+router.post('/:id/actualizar', usersController.updateProfile)
 
 module.exports = router;
