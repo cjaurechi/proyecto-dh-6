@@ -35,7 +35,7 @@
             <div class="container-acciones-header">
                 <% if (locals.user) { %>
                     <a href="/usuarios/<%= locals.user.id %>/perfil" style="text-decoration: none;"
-                        class="welcome-header">Bienvenido <%= locals.user.email %></a>
+                        class="welcome-header">Bienvenido <%= locals.user.first_name %> </a>
                     <a href="/usuarios/logout" class="sign-off" alt="Esto no funciona!">Cerrar sesión</a>
                     <% } else { %>
                         <a href="/usuarios/login" class="sign-in">Iniciar sesión</a>
