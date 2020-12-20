@@ -100,7 +100,7 @@ const controller = {
 
     updateProfile: (req, res) => {
         console.log('Llego hasta acá');
-        db.users.update({
+        let updateUser = db.users.update({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
@@ -118,8 +118,13 @@ const controller = {
                 }
             })
             .then(user => {
-                console.log();
-                res.render('users/profile', { user: user, edit_success: 'true' })
+                db.users.findByPk(req.params.id)
+                    .then(user => {
+                        res.render('users/profile', { user: user, edit_success: true })
+                    })
+                    .catch(error => {
+                        res.render('users/profile', { errors: error });
+                    })
             })
             .catch(error => {
                 res.render('users/profile', { errors: error });

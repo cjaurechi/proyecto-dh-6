@@ -22,8 +22,8 @@
 
                     </section>
                     <section class="right-panel">
-                        <form method="POST" action="/usuarios/<%= user.id %>/actualizar" enctype="multipart/form-data"
-                            class="edit-form">
+                        <form method="POST" action="/usuarios/<%= user.id %>/actualizar?_method=PUT"
+                            enctype="multipart/form-data" class="edit-form">
                             <div class="container-field">
                                 <label for="first_name">Nombre: </label>
                                 <input type="text" name="first_name" id="first_name" value="<%= user.first_name %>">

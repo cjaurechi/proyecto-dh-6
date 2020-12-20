@@ -36,6 +36,6 @@ router.get('/logout', authMiddleware,usersController.logout);
 
 /*** PROFILE ***/
 router.get('/:id/perfil', authMiddleware, usersController.getProfile);
-router.post('/:id/actualizar', usersController.updateProfile)
+router.put('/:id/actualizar', authMiddleware, upload.any(), usersController.updateProfile)
 
 module.exports = router;
