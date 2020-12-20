@@ -29,42 +29,45 @@ const controller = {
 	// Detalle de producto
 	productDetail: (req, res) => {
 
-		let product = db.products.findByPk(req.params.id,{
-			include: [{association : "categories"}]})
+		let product = db.products.findByPk(req.params.id, {
+			include: [{ association: "categories" }]
+		})
 
 		let product_images = db.product_image.findAll({
-			where : {product_id : req.params.id}});
-			
+			where: { product_id: req.params.id }
+		});
+
 		let product_comments = db.comments.findAll({
-			where : {product_id : req.params.id}});
+			where: { product_id: req.params.id }
+		});
 
 		Promise.all([product, product_images, product_comments])
-		.then(function ([product, product_images, product_comments]) {
+			.then(function ([product, product_images, product_comments]) {
 
-			let cantidad_comentarios = 0
-			let suma_calificacion = 0
-	
-			for (let i = 0; i < product_comments.length; i++) {
-				let user = users.find(function (item) {
-					return (product_comments[i].user_id == item.id);
-				})
-				product_comments[i].user_description = user.first_name
-				cantidad_comentarios += 1
-				suma_calificacion = suma_calificacion + product_comments[i].calification
-			}
-	
-			let promedio_calificacion = suma_calificacion / cantidad_comentarios
-	
-			if (isNaN(promedio_calificacion)) {
-				promedio_calificacion = ""
-			}
-	
-			res.render("products/productDetail", { product: product, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
-	
-		})
-		.catch(error => {
-			res.render('error', { error: error });
-		})
+				let cantidad_comentarios = 0
+				let suma_calificacion = 0
+
+				for (let i = 0; i < product_comments.length; i++) {
+					let user = users.find(function (item) {
+						return (product_comments[i].user_id == item.id);
+					})
+					product_comments[i].user_description = user.first_name
+					cantidad_comentarios += 1
+					suma_calificacion = suma_calificacion + product_comments[i].calification
+				}
+
+				let promedio_calificacion = suma_calificacion / cantidad_comentarios
+
+				if (isNaN(promedio_calificacion)) {
+					promedio_calificacion = ""
+				}
+
+				res.render("products/productDetail", { product: product, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
+
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
 
 	},
 
@@ -77,9 +80,9 @@ const controller = {
 		if (req.params.id !== undefined) {
 
 			products_category = db.products.findAll({
-				where : {
-					category_id : req.params.id,
-					status : "Habilitado"
+				where: {
+					category_id: req.params.id,
+					status: "Habilitado"
 				}
 			});
 
@@ -88,19 +91,20 @@ const controller = {
 		} else {
 
 			products_category = db.products.findAll({
-				where : {status: "Habilitado"}})
+				where: { status: "Habilitado" }
+			})
 
 			category = db.categories.findAll()
 
 		}
 
 		Promise.all([products_category, category])
-		.then(function ([products_category, category]) {
-			res.render("products/productList", { products_category: products_category, category: category })
-		})
-		.catch(error => {
-			res.render('error', { error: error });
-		})
+			.then(function ([products_category, category]) {
+				res.render("products/productList", { products_category: products_category, category: category })
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
 
 	},
 
@@ -115,11 +119,11 @@ const controller = {
 				products_category = products.filter(function (item) {
 					return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
 				})
-			}	
+			}
 			else {
 				products_category = products.filter(function (item) {
 					return (req.params.id == item.category & item.status == "Habilitado")
-				})	
+				})
 			}
 
 			category = categories.filter(function (item) {
@@ -154,8 +158,9 @@ const controller = {
 		if (req.params.id !== undefined) {
 
 			products_category = db.products.findAll({
-				where : {category_id : req.params.id,
-					status : "Habilitado"
+				where: {
+					category_id: req.params.id,
+					status: "Habilitado"
 				}
 			});
 
@@ -164,19 +169,20 @@ const controller = {
 		} else {
 
 			products_category = db.products.findAll({
-				where : {status: "Habilitado"}})
+				where: { status: "Habilitado" }
+			})
 
 			category = db.categories.findAll()
 
 		}
 
 		Promise.all([products_category, category])
-		.then(function ([products_category, category]) {
-			res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
-		})
-		.catch(error => {
-			res.render('error', { error: error });
-		})
+			.then(function ([products_category, category]) {
+				res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
 
 	},
 
@@ -191,11 +197,11 @@ const controller = {
 				products_category = products.filter(function (item) {
 					return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
 				})
-			}	
+			}
 			else {
 				products_category = products.filter(function (item) {
 					return (req.params.id == item.category & item.status == "Habilitado")
-				})	
+				})
 			}
 
 			category = categories.filter(function (item) {
@@ -203,7 +209,7 @@ const controller = {
 			})
 
 		} else {
-			if (req.query.keywords !== ""  && req.query.keywords !== undefined) {
+			if (req.query.keywords !== "" && req.query.keywords !== undefined) {
 				products_category = products.filter(function (item) {
 					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
 				})
@@ -234,74 +240,16 @@ const controller = {
 
 	// Alta de producto
 	store: (req, res, next) => {
-
-		// let errors = validationResult(req).mapped()
-
-		// if (Object.keys(errors).length != 0) {
-		// 	return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
-		// }
-
-		// for (let i = 0; i < req.files.length; i++) {
-		//  	var product_image = ""
-		//  	if (req.files[i] !== undefined) {
-		//  		product_image = req.files[i].filename
-		//  	}
-		//  	products_images.push({
-		//  		id: products[products.length - 1].id + 1,
-		//  		image: product_image,
-		//  		number: i,
-		//  	})
-		//  }
-
-		// let archivo = JSON.stringify(products_images);
-		// fs.writeFileSync(productsImagesFilePath, archivo);
-
-		// var main_image = ""
-		// if (req.files[0] !== undefined) {
-		// main_image = req.files[0].filename
-		// }
-
-		// products.push({
-		// 	id: products[products.length - 1].id + 1,
-		// 	name: req.body.name,
-		// 	description: req.body.description,
-		// 	category: req.body.category,
-		// 	creation_user: req.body.user,
-		// 	creation_date: moment(fecha_actual).format('YYYY-MM-DD'),
-		// 	expiration_days: req.body.expiration_days,
-		// 	share: req.body.share,
-		// 	supplier: req.body.supplier,
-		// 	price: req.body.price,
-		// 	discount: req.body.discount,
-		// 	life_date_from: req.body.life_date_from,
-		// 	life_date_to: req.body.life_date_to,
-		// 	stock: req.body.stock,
-		// 	status: req.body.status,
-		// 	main_image: main_image,
-		// });
-
-
-		// archivo = JSON.stringify(products);
-		// fs.writeFileSync(productsFilePath, archivo);
-		
-		// res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
-
-	
-
-
-		// Puse uno al id de proveedor y el usuario para probar si funciona el alta. Tambien la fecha
-
-		
-
 		let errors = validationResult(req);
-		console.log(errors)
-        if (errors.isEmpty()) {
-		db.products.create({
+
+		if (errors.isEmpty()) {
+
+			db.products.create({
 				name: req.body.name,
 				description: req.body.description,
 				category_id: req.body.category,
 				supplier_id: req.body.supplier,
-				creation_at: moment(new Date()).format('YYYY-MM-DD'),
+				created_at: moment(new Date()).format('YYYY-MM-DD'),
 				expiration_days: req.body.expiration_days,
 				share: req.body.share,
 				price: req.body.price,
@@ -310,34 +258,31 @@ const controller = {
 				life_date_to: req.body.life_date_to,
 				stock: req.body.stock,
 				status: req.body.status,
-				user_id: 1,
+				user_id: req.session.user.id
 
-		}).then (resultado =>{
-			res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
-
-		   })
-		   .catch(error => {
-			   return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
-		   })
-
-
+			}).then(resultado => {
+				res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
+			}).catch(error => {
+				return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
+			})
 		}
-    },
-		
+	},
+
 
 	// Formulario de modificacion
 	edit: (req, res) => {
 		console.log(req.params.id)
 		let product = req.params.id
-		let suppliers = db.suppliers.findAll({where: {status: "habilitado"}})
-		
+		let suppliers = db.suppliers.findAll({ where: { status: "habilitado" } })
+
 		Promise.all([product, suppliers])
-    		.then(function ([product, suppliers]) {
-		res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: {} })
-    })
-    .catch(error => {
-      res.render('error', { error: error });
-    })},
+			.then(function ([product, suppliers]) {
+				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: {} })
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+	},
 
 	// 	let product = products.find(function (item) {
 	// 		return (req.params.id == item.id);
@@ -359,8 +304,8 @@ const controller = {
 
 		let errors = validationResult(req).mapped()
 
-		console.log(req.body,req.params,errors) 
-		
+		console.log(req.body, req.params, errors)
+
 		/* Chequear con Alejandro : se cargan datos en el form , en el req.body llegan bien pero el check del express validator lo toma como error y en el error figuran como undefined
 		Si le saco el check del midleeware se actualiza bien*/
 
@@ -440,50 +385,50 @@ const controller = {
 
 		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
 
-/* 		res.redirect("/"); */
+		/* 		res.redirect("/"); */
 	},
 
 	delete: (req, res) => {
 
-	console.log(req.params.id)
-  
-	  db.product.destroy({
-    	where:{
-     	 id: req.params.id
-   			 }
-  		})
-  		.then (()=> res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
-  		.catch(error => {
-    console.log(error)
-    res.render('error', { error: error })
-  })
-	// 	// Pasamos el contenido de products a otra variable temporal
-	// 	let content = products;
+		console.log(req.params.id)
 
-	// 	// Localizamos y filtramos el producto que quereremos borrar
-	// 	let filtered_content = content.filter(function (element) {
-	// 		return element.id != req.params.id;
-	// 	});
+		db.product.destroy({
+			where: {
+				id: req.params.id
+			}
+		})
+			.then(() => res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
+			.catch(error => {
+				console.log(error)
+				res.render('error', { error: error })
+			})
+		// 	// Pasamos el contenido de products a otra variable temporal
+		// 	let content = products;
 
-	// 	// Volvemos a convertir el contenido filtrado en un string
-	// 	content = JSON.stringify(filtered_content);
+		// 	// Localizamos y filtramos el producto que quereremos borrar
+		// 	let filtered_content = content.filter(function (element) {
+		// 		return element.id != req.params.id;
+		// 	});
 
-	// 	// Escribimos nuevamente el archivo productsDataBase.json con el producto borrado
-	// 	fs.writeFileSync(productsFilePath, content);
-		
-	// 	let products_category = []
-	// 	let category = []
+		// 	// Volvemos a convertir el contenido filtrado en un string
+		// 	content = JSON.stringify(filtered_content);
 
-	// 	products_category = products.filter(function (item) {
-	// 		return (item.status == "Habilitado")
-	// 	})
+		// 	// Escribimos nuevamente el archivo productsDataBase.json con el producto borrado
+		// 	fs.writeFileSync(productsFilePath, content);
 
-	// 	category = categories
+		// 	let products_category = []
+		// 	let category = []
 
-	// 	res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' })
-		
+		// 	products_category = products.filter(function (item) {
+		// 		return (item.status == "Habilitado")
+		// 	})
 
-	 }
+		// 	category = categories
+
+		// 	res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' })
+
+
+	}
 };
 
 module.exports = controller;
