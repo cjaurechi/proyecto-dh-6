@@ -81,7 +81,6 @@ const controller = {
     // Logout
 
     logout: (req, res) => {
-        console.log(res.session);
         req.session.destroy();
         res.cookie('recordar', null, { maxAge: 0 })
         return res.render('users/logout', { user: undefined })
