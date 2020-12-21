@@ -57,6 +57,9 @@ const controller = {
                     if (bcryptjs.compareSync(req.body.password, usuario.password)) {
                         req.session.user = usuario;
                         res.locals.user = usuario;
+                        if (req.body.recordar) {
+                            res.cookie('recordar', usuario.email, { maxAge: 240 * 1000 })
+                        }
                         db.users.update({
                             last_login: moment(new Date()).format('YYYY-MM-DD')
                         }, {
@@ -78,9 +81,10 @@ const controller = {
     // Logout
 
     logout: (req, res) => {
-
-        res.locals.user = ''
-        res.render('users/logout')
+        console.log(res.session);
+        req.session.destroy();
+        res.cookie('recordar', null, { maxAge: 0 })
+        return res.render('users/logout', { user: undefined })
     },
 
     // Perfil de usuario
