@@ -1,12 +1,7 @@
-const fs = require('fs');
-const path = require('path');
 const bcryptjs = require('bcryptjs');
 const moment = require('moment');
 const { check, validationResult, body } = require("express-validator");
 const db = require('../database/models');
-
-const usersFilePath = path.join(__dirname, '../data/users.json');
-var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
@@ -88,6 +83,8 @@ const controller = {
         res.render('users/logout')
     },
 
+    // Perfil de usuario
+
     getProfile: (req, res) => {
         db.users.findByPk(req.params.id)
             .then(user => {
@@ -98,9 +95,10 @@ const controller = {
             })
     },
 
+    // Actualizar datos de usuario
+
     updateProfile: (req, res) => {
-        console.log('Llego hasta acá');
-        let updateUser = db.users.update({
+        db.users.update({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
@@ -117,6 +115,30 @@ const controller = {
                     id: req.params.id
                 }
             })
+            .then(user => {
+                db.users.findByPk(req.params.id)
+                    .then(user => {
+                        res.render('users/profile', { user: user, edit_success: true })
+                    })
+                    .catch(error => {
+                        res.render('users/profile', { errors: error });
+                    })
+            })
+            .catch(error => {
+                res.render('users/profile', { errors: error });
+            })
+    },
+
+    // Actualizar foto de perfil
+
+    updateAvatar: (req, res) => {
+        db.users.update({
+            image: req.files[0].filename
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
             .then(user => {
                 db.users.findByPk(req.params.id)
                     .then(user => {
