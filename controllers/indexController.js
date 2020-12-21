@@ -118,7 +118,7 @@ const controller = {
 
     // product_image
 
-    try {
+/*     try {
       fs.unlinkSync(product_imageSQLFilePath)
     } catch(err) {
 
@@ -133,7 +133,25 @@ const controller = {
       productsImages[i].image + "','" +
       productsImages[i].number + "');" + "\n"
       fs.appendFileSync(product_imageSQLFilePath, sql);
+    } */
+
+    try {
+      fs.unlinkSync(product_imageSQLFilePath)
+    } catch(err) {
+
     }
+
+    let id = 0 
+    for (let i=0; i<products.length; i++) {
+      id += 1
+      let sql = "insert into product_image values ('" + 
+      id + "','" +
+      products[i].id + "','" +
+      products[i].main_image + 
+      "','0');" + "\n"
+      fs.appendFileSync(product_imageSQLFilePath, sql);
+    }
+    
 
       // comments
 

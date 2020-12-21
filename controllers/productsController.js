@@ -79,20 +79,28 @@ const controller = {
 
 		if (req.params.id !== undefined) {
 
-			products_category = db.products.findAll({
+			products_category = db.products.findAll(
+				{
 				where: {
 					category_id: req.params.id,
 					status: "Habilitado"
+					}
+				},
+				{
+				include: [{ association: "product_image" }]
 				}
-			});
+			);
 
 			category = db.categories.findByPk(req.params.id)
 
 		} else {
 
-			products_category = db.products.findAll({
-				where: { status: "Habilitado" }
-			})
+			products_category = db.products.findAll(
+				{
+				where: { status: "Habilitado" },
+				include: [{ association: "product_image" }]
+				}
+			)
 
 			category = db.categories.findAll()
 
