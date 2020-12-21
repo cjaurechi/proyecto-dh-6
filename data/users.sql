@@ -1,4 +1,5 @@
-insert into users values ('1','Tootsie','Jiggens','tjiggens0@bluehost.com','L5J9g7O1qz','user','','undefined','undefined','Luxembourgish','France','undefined','0 Kedzie Hill','undefined','undefined','undefined');
+insert into users values ('1','','','admin@dh.com','$2a$10$DVBpNXgqc7nfxk6wnZCg/.oQ39UFnMWznKqmOIiO93zx9OzxQJ3Ri','admin','profile-admin@dh.com.jpg','2020-12-20','2020-12-20','esp','','2020-12-12','','','n','active');
+insert into users values ('2','','','user@dh.com','$2a$10$j0gnUS5gdzaji1ICXUSZKOs6CAqC23Fl/Z4Pd.oTnqWrJZ9yRXQv6','user','profile-user@dh.com.jpg','2020-12-21','2020-12-21','esp','','2020-12-10','','','n','active');
 insert into users values ('2','Morissa','Bartusek','mbartusek1@state.gov','kewrt2z','user','','undefined','undefined','Tajik','Australia','undefined','28 Shasta Way','undefined','undefined','undefined');
 insert into users values ('3','Pancho','Bringloe','pbringloe2@prnewswire.com','WhYyzmQrUY','user','','undefined','undefined','German','China','undefined','1395 Briar Crest Road','undefined','undefined','undefined');
 insert into users values ('4','Germain','Verdey','gverdey3@ebay.com','rijnLq','user','','undefined','undefined','Bislama','Nigeria','undefined','619 Montana Pass','undefined','undefined','undefined');
@@ -21,4 +22,4 @@ insert into users values ('20','Suzy','Beards','sbeardsj@slashdot.org','6zHTUOb8
 insert into users values ('21','','','norberto.rubado@gmail.com','$2a$10$d8UkoWCDWo1fJWcQ5cgdIePJThJhi0N2QWU/9qo.p833YCKRzUjBS','admin','','2020-12-01','2020-12-01','esp','','2020-12-01','','undefined','undefined','undefined');
 insert into users values ('22','','','ana.rubado@estoes.me','$2a$10$/7tXGS6ukZpKOy5XwnMV5uAfIlHnaYub7VGW3FzNYE08debSkfk82','','','2020-12-01','2020-12-01','esp','','2020-12-02','','undefined','undefined','undefined');
 insert into users values ('23','','','carlos@digitalhouse.com','$2a$10$qU4VJ5jUdmPDDXPBoY1G8ee4qLi7Vb7wOvol8/Bm3ZOl9qQB/Cs0e','admin','','2020-12-03','2020-12-03','esp','','1990-01-01','','undefined','undefined','undefined');
-insert into users values ('24','','','paula@digitalhouse.com','$2a$10$P27Dn1xSy3r3hU8rnMpOqeyVj9jvDninsH7w24xaTFjoL1kCYs/LG','','','2020-12-03','2020-12-03','esp','','1990-01-02','','undefined','undefined','undefined');
+insert into users values ('24','','','paula@digitalhouse.com','$2a$10$P27Dn1xSy3r3hU8rnMpOqeyVj9jvDninsH7w24xaTFjoL1kCYs/LG','admin','','2020-12-03','2020-12-03','esp','','1990-01-02','','undefined','undefined','undefined');
