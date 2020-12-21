@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { DH_CHECK_P_NOT_PRIME } = require('constants');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -111,8 +112,7 @@ const controller = {
       products[i].life_date_from + "','" +
       products[i].life_date_to + "','" +
       products[i].stock + "','" +
-      products[i].status + "','" +
-      products[i].main_image + "');" + "\n"
+      products[i].status + "','admin@dh.com');" + "\n"
       fs.appendFileSync(productsSQLFilePath, sql);
     }
 
