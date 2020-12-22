@@ -82,6 +82,9 @@
             <li><a href="/comoregalar">¿Cómo regalar?</a></li>
             <li><a href="/usuarios/login">Ingresa</a></li>
             <li><a href="/usuarios/registro">Registrate</a></li>
+            <% if (locals.user != undefined) { %>
+                <li><a href="/usuarios/<%= locals.user.id %>/perfil">Edicion de Usuario</a></li>
+            <% } %>
             <li><a href="/productos/crear">Creacion</a></li>
             <li><a href="/productos/listadofiltro">Listado</a></li>
         </ul>

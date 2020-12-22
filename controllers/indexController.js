@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { DH_CHECK_P_NOT_PRIME } = require('constants');
+const db = require('../database/models');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -38,7 +39,28 @@ const controller = {
   // Home Page
 
   home: (req, res) => {
-    res.render('index', {categories:categories, products:products});
+
+		let products = []
+		let categories = []
+
+    products = db.products.findAll(
+      {
+      where: { status: "Habilitado" },
+      include: [{ association: "product_image" }]
+      }
+    )
+
+    categories = db.categories.findAll()
+
+		Promise.all([products,categories])
+			.then(function ([products, categories]) {
+        res.render('index', {categories:categories, products:products});
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+
+/*     res.render('index', {categories:categories, products:products}); */
   },
 
   // Nosotros
