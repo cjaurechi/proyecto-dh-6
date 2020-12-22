@@ -368,7 +368,7 @@ const controller = {
 
 			}, { where: { id: req.params.id } })
 				.then(resultado => {
-					res.render("products/productListForm", { product: product, products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
+					res.render("products/productEditForm", { product: product, products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
 
 				})
 				.catch(error => {
@@ -468,17 +468,25 @@ const controller = {
 	delete: (req, res) => {
 
 		console.log(req.params.id)
+		let product = db.products.findByPk(req.params.id)
+		db.products.update({
+			status: "Deshabilitado",
 
-		db.product.destroy({
-			where: {
-				id: req.params.id
-			}
-		})
-			.then(() => res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
-			.catch(error => {
-				console.log(error)
-				res.render('error', { error: error })
-			})
+		}, { where: { id: req.params.id } })
+		.then(() => res.redirect("/productos"))	
+		.catch(error => {
+			console.log(error)
+			res.render('error', { error: error })})
+		// db.products.destroy({
+		// 	where: {
+		// 		id: req.params.id
+		// 	}
+		// })
+		// 	.then(() => res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
+		// 	.catch(error => {
+		// 		console.log(error)
+		// 		res.render('error', { error: error })
+		// 	})
 		// 	// Pasamos el contenido de products a otra variable temporal
 		// 	let content = products;
 

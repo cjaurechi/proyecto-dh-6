@@ -13,12 +13,17 @@
 
     <%- include("../partials/header.ejs") %>
 
+
+
     <section class="edicion-producto">
         <div class="container-producto">
             <p class="titulo-producto">Edicion de producto</p>
             <div class="container-logo-producto">
                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
             </div>
+
+
+           
 
             <form action="/productos/<%= product.id %>/editar?_method=PUT" method="POST" enctype="multipart/form-data"
                 class="form-producto">
@@ -186,6 +191,17 @@
                     <button type="submit" class="boton-eliminar">Eliminar producto</button>
                 </div>
             </form> -->
+
+            <% if ( errors != 'undefined'){%>
+              <ul>
+                    <% for (let i=0; i< errors.length; i++){ %>
+                    <li>
+                        <%= errors[i].msg %>
+                    </li>
+                    <%}%>    
+                </ul>
+            <% } %>
+
 
         </div>
     </section>

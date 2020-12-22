@@ -155,13 +155,15 @@
                     <% if (locals.user && locals.user.rol=='admin' ) { %>
                         <div class="compra">
                             <div class="compra_centrada">
-                                <button class="compra_boton" type= "submit"><a class="link_aeditar"href="editar">Editar</a></button>
+                                <button class="compra_boton" type= "submit"><a class="link_aeditar" href="editar">Editar</a></button>
                             </div>  
                         </div>
                          <div class="compra">
-                            <div class="compra_centrada">
-                                <button class="compra_boton" type= "submit"><a class="link_aeditar"href="editar">Eliminar</a></button>
-                            </div>  
+                            <form action="borrar?_method=DELETE" method="POST" >
+                                <button>Eliminar</button>
+                            </form>
+                            
+                            
                         </div>
                     <% } %>
                         
