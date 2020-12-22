@@ -8,6 +8,7 @@ const configuracion = require('dotenv').config();
 const methodOverride = require('method-override');
 const checkIp = require("./middlewares/check-ip")
 const localsMiddleware = require('./middlewares/localsMiddleware')
+const rememberMiddleware = require('./middlewares/rememberMiddleware')
 const session = require('express-session')
 
 
@@ -22,17 +23,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 // app.use(checkIp);
-app.use(session({ 
-  secret: "Shh, secreto", 
-  resave: false, 
-  saveUninitialized: true,
-  rolling: true,
-  cookie: {
-    httpOnly: true,
-    maxAge: 1*60*60*1000
-  }
-}));
+app.use(session({ secret: "Shh, secreto", resave: false, saveUninitialized: true }));
 app.use(localsMiddleware);
+app.use(rememberMiddleware);
+
 
 // ********** Template Engine **********
 app.set('view engine', 'ejs');

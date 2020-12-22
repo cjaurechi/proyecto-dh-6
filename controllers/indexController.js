@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const { DH_CHECK_P_NOT_PRIME } = require('constants');
+const db = require('../database/models');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -37,7 +39,28 @@ const controller = {
   // Home Page
 
   home: (req, res) => {
-    res.render('index', {categories:categories, products:products});
+
+		let products = []
+		let categories = []
+
+    products = db.products.findAll(
+      {
+      where: { status: "Habilitado" },
+      include: [{ association: "product_image" }]
+      }
+    )
+
+    categories = db.categories.findAll()
+
+		Promise.all([products,categories])
+			.then(function ([products, categories]) {
+        res.render('index', {categories:categories, products:products});
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+
+/*     res.render('index', {categories:categories, products:products}); */
   },
 
   // Nosotros
@@ -111,14 +134,13 @@ const controller = {
       products[i].life_date_from + "','" +
       products[i].life_date_to + "','" +
       products[i].stock + "','" +
-      products[i].status + "','" +
-      products[i].main_image + "');" + "\n"
+      products[i].status + "','admin@dh.com');" + "\n"
       fs.appendFileSync(productsSQLFilePath, sql);
     }
 
     // product_image
 
-    try {
+/*     try {
       fs.unlinkSync(product_imageSQLFilePath)
     } catch(err) {
 
@@ -133,7 +155,25 @@ const controller = {
       productsImages[i].image + "','" +
       productsImages[i].number + "');" + "\n"
       fs.appendFileSync(product_imageSQLFilePath, sql);
+    } */
+
+    try {
+      fs.unlinkSync(product_imageSQLFilePath)
+    } catch(err) {
+
     }
+
+    let id = 0 
+    for (let i=0; i<products.length; i++) {
+      id += 1
+      let sql = "insert into product_image values ('" + 
+      id + "','" +
+      products[i].id + "','" +
+      products[i].main_image + 
+      "','0');" + "\n"
+      fs.appendFileSync(product_imageSQLFilePath, sql);
+    }
+    
 
       // comments
 

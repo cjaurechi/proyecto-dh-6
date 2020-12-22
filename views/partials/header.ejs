@@ -34,34 +34,41 @@
             </div>
             <div class="container-acciones-header">
                 <% if (locals.user) { %>
-                    <a href="/usuarios/<%= locals.user.id %>/perfil" style="text-decoration: none;"
-                        class="welcome-header">Bienvenido <%= locals.user.first_name %> </a>
+                    <div style="text-align: center; font-size: small; color: var(--azulreegalo);">
+                        <span>Bienvenid@</span>
+                        <span style="color: var(--azulreegalo); font-family: 'Montserrat-Bold';">
+                            <%= locals.user.email %>
+                        </span>
+                    </div>
                     <a href="/usuarios/logout" class="sign-off" alt="Esto no funciona!">Cerrar sesión</a>
                     <% } else { %>
                         <a href="/usuarios/login" class="sign-in">Iniciar sesión</a>
                         <a href="/usuarios/registro" class="sign-up">Registrarse</a>
                         <% } %>
             </div>
-            <div class="container-carrito">
-                <a href="/carrito"><i class="fas fa-shopping-cart"></i></a>
-                <p class="cantidad-carrito"></p>
-            </div>
-            <div class="container-small">
-                <!--                 <div class="container-buscador-small">
-                    <i class="fas fa-search"></i>
-                </div> -->
-                <div class="container-acciones-header-small">
-                    <a href="/usuarios/login">
-                        <i class="fas fa-user"></i>
-                    </a>
+            <% if (locals.user) { %>
+                <div class="container-perfil" data-tooltip="Mi perfil">
+                    <a href="/usuarios/<%= locals.user.id %>/perfil"><i class="fas fa-user"></i></a>
                 </div>
-                <div class="menu-hamburguesa">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="container-carrito-small">
-                    <i class="fas fa-shopping-cart"></i>
-                </div>
-            </div>
+                <% } %>
+                    <div class="container-carrito">
+                        <a href="/carrito"><i class="fas fa-shopping-cart"></i></a>
+                        <p class="cantidad-carrito"></p>
+                    </div>
+
+                    <div class="container-small">
+                        <div class="container-acciones-header-small">
+                            <a href="/usuarios/login">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        </div>
+                        <div class="menu-hamburguesa">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div class="container-carrito-small">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
         </div>
     </div>
 
@@ -75,6 +82,9 @@
             <li><a href="/comoregalar">¿Cómo regalar?</a></li>
             <li><a href="/usuarios/login">Ingresa</a></li>
             <li><a href="/usuarios/registro">Registrate</a></li>
+            <% if (locals.user != undefined) { %>
+                <li><a href="/usuarios/<%= locals.user.id %>/perfil">Edicion de Usuario</a></li>
+            <% } %>
             <li><a href="/productos/crear">Creacion</a></li>
             <li><a href="/productos/listadofiltro">Listado</a></li>
         </ul>

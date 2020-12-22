@@ -1,12 +1,7 @@
-const fs = require('fs');
-const path = require('path');
 const bcryptjs = require('bcryptjs');
 const moment = require('moment');
 const { check, validationResult, body } = require("express-validator");
 const db = require('../database/models');
-
-const usersFilePath = path.join(__dirname, '../data/users.json');
-var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
@@ -62,6 +57,9 @@ const controller = {
                     if (bcryptjs.compareSync(req.body.password, usuario.password)) {
                         req.session.user = usuario;
                         res.locals.user = usuario;
+                        if (req.body.recordar) {
+                            res.cookie('recordar', usuario.email, { maxAge: 240 * 1000 })
+                        }
                         db.users.update({
                             last_login: moment(new Date()).format('YYYY-MM-DD')
                         }, {
@@ -83,10 +81,12 @@ const controller = {
     // Logout
 
     logout: (req, res) => {
-
-        res.locals.user = ''
-        res.render('users/logout')
+        req.session.destroy();
+        res.cookie('recordar', null, { maxAge: 0 })
+        return res.render('users/logout', { user: undefined })
     },
+
+    // Perfil de usuario
 
     getProfile: (req, res) => {
         db.users.findByPk(req.params.id)
@@ -98,8 +98,9 @@ const controller = {
             })
     },
 
+    // Actualizar datos de usuario
+
     updateProfile: (req, res) => {
-        console.log('Llego hasta acá');
         db.users.update({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -118,8 +119,37 @@ const controller = {
                 }
             })
             .then(user => {
-                console.log();
-                res.render('users/profile', { user: user, edit_success: 'true' })
+                db.users.findByPk(req.params.id)
+                    .then(user => {
+                        res.render('users/profile', { user: user, edit_success: true })
+                    })
+                    .catch(error => {
+                        res.render('users/profile', { errors: error });
+                    })
+            })
+            .catch(error => {
+                res.render('users/profile', { errors: error });
+            })
+    },
+
+    // Actualizar foto de perfil
+
+    updateAvatar: (req, res) => {
+        db.users.update({
+            image: req.files[0].filename
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(user => {
+                db.users.findByPk(req.params.id)
+                    .then(user => {
+                        res.render('users/profile', { user: user, edit_success: true })
+                    })
+                    .catch(error => {
+                        res.render('users/profile', { errors: error });
+                    })
             })
             .catch(error => {
                 res.render('users/profile', { errors: error });

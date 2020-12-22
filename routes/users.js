@@ -18,7 +18,17 @@ var storage = multer.diskStorage({
     }
 })
 
+var storageAvatar = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/images/users')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + req.session.user.email.replace(/\s/g, "-").toLowerCase() + '.jpg')
+    }
+})
+
 var upload = multer({ storage: storage })
+var uploadAvatar = multer({ storage: storageAvatar})
 
 // ********** Require de Controladores **********
 const usersController = require('../controllers/usersController');
@@ -36,6 +46,7 @@ router.get('/logout', authMiddleware,usersController.logout);
 
 /*** PROFILE ***/
 router.get('/:id/perfil', authMiddleware, usersController.getProfile);
-router.post('/:id/actualizar', usersController.updateProfile)
+router.put('/:id/actualizar', authMiddleware, upload.any(), usersController.updateProfile)
+router.put('/:id/actualizarAvatar', authMiddleware, uploadAvatar.any(), usersController.updateAvatar)
 
 module.exports = router;

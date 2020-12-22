@@ -214,18 +214,24 @@ header nav a {
     background-color: var(--azulregalostrong);
 }
 
-.container-carrito {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.container-carrito,
+.container-perfil {
+    text-align: center;
     width: 50px;
     cursor: pointer;
     font-size: 1.3em;
 }
 
-.fa-shopping-cart {
+.fa-shopping-cart,
+.fa-user {
     color: black;
     margin-right: 3%;
+    transition: color 0.3s ease 0s;
+}
+
+.fa-shopping-cart:hover,
+.fa-user:hover {
+    color: var(--azulregalostrong);
 }
 
 .cantidad-carrito {
@@ -234,6 +240,32 @@ header nav a {
 
 .container-small {
     display: none;
+}
+
+/* Tooltip */
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s linear;
+    padding: 7px;
+    color:white;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px silver;    
+}
+
+[data-tooltip]:hover:before {
+    opacity: 1;
+    color: white;
+    font-size: 0.7em;
+    background: var(--azulreegalo);
+    margin-top: 30px;
+    margin-left: -27px;    
+}
+
+[data-tooltip]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
 }
 
 /* Footer */
@@ -413,14 +445,6 @@ footer div nav a {
     text-decoration: none;
 }
 
-/* .logo {
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto; 
-} */
-
-/* Sidebar */
-
 /* Media Queries */
 /* Laptop */
 
@@ -451,9 +475,11 @@ footer div nav a {
         display: none;
     }
 
-    .container-carrito {
+    .container-carrito,
+    .container-perfil {
         display: none;
     }
+
 
     .cantidad-carrito {
         visibility: hidden;

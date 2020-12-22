@@ -14,5 +14,5 @@ insert into comments values ('13','1','14','Salida a pasear con barbijo','04/11/
 insert into comments values ('14','4','14','Salida a pasear con barbijo','04/11/2020','4.5');
 insert into comments values ('15','4','15','Salida a pasear con barbijo','04/11/2020','4.5');
 insert into comments values ('16','5','15','Salida a pasear con barbijo','04/11/2020','4.5');
-insert into comments values ('17','1','14','Salida a pasear con barbijo','2020-11-04','4.5');
-insert into comments values ('18','4','15','Salida a pasear con barbijo','2020-11-04','4.5');
+insert into comments values ('17','1','14','Salida a pasear con barbijo','04/11/2020','4.5');
+insert into comments values ('18','4','15','Salida a pasear con barbijo','04/11/2020','4.5');

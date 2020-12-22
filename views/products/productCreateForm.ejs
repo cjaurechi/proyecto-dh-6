@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <%- include("../partials/head.ejs", {title: "Reegalo - Alta de Producto"}) %>
-    <link rel="stylesheet" href="/stylesheets/app.css">
-    <link rel="stylesheet" href="/stylesheets/productCreateForm.css">
+    <%- include("../partials/head.ejs", {title: "Reegalo - Alta de Producto" }) %>
+        <link rel="stylesheet" href="/stylesheets/app.css">
+        <link rel="stylesheet" href="/stylesheets/productCreateForm.css">
 </head>
 
 <body>
@@ -13,219 +13,256 @@
 
     <%- include("../partials/header.ejs") %>
 
-    <% if (typeof store_success != 'undefined') { %>
-    <div class="store-success">
-        <%= store_success %>
-    </div>
-    <% } %>
-
-    <section class="creacion-producto">
-
-        <div class="container-producto">
-            <!-- <%# if (producto_actualizado != undefined) { %>
-                <p >Se creo el producto : <%#= producto_actualizado %></p>
-            <%# } %> -->
-            <p class="titulo-producto">Alta de producto</p>
-            <div class="container-logo-producto">
-                <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
+        <% if (typeof store_success !='undefined' ) { %>
+            <div class="store-success">
+                <%= store_success %>
             </div>
+            <% } %>
 
-            <form action="/productos/crear" method="POST" enctype="multipart/form-data" class="form-producto">
-                <div class="form-linea-texto">
-                    <label for="name" class="form-label">Nombre:<span class="error"> * </span></label>
-                    <div class="form-linea-texto_error">
-                        <input type="text" id="name" name="name" value="<%= product.name ? product.name : '' %>"
-                            placeholder="Ej: Nombre del producto" class="form-input">
-                        <% if (errors.name != undefined) { %>
-                        <p class="error"><%= errors.name.msg %></p>
-                        <% } %>
-                    </div>
-                </div>
-                <div class="form-linea-texto">
-                    <label for="name" class="form-label">Proveedor:<span class="error"> * </span></label>
-                    <div class="form-linea-texto_error">
-                        <select name="supplier" id="supplier" class="form-input">
-                            <option value="">Elegí</option>
-                            <% suppliers.find (function(item) { %>
-                            <option value="<%= item.id%>" <% if (product.supplier==item.id) {%> Selected <% } %>>
-                                <%= item.description%></option>
-                            <% }) %>
-                        </select>
-                        <% if (errors.supplier != undefined) { %>
-                        <p class="error"><%= errors.supplier.msg %></p>
-                        <% } %>
-                    </div>
-                </div>
-                <div class="linea-compartida">
-                    <div class="form-linea-compartida-1">
-                        <label for="price" class="form-label-compartido">Precio:<span class="error"> * </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="number" id="price" name="price"
-                                value="<%= product.price ? product.price : '' %>" placeholder="Ej: 5678"
-                                class="form-input-compartido">
-                            <% if (errors.price != undefined) { %>
-                            <p class="error"><%= errors.price.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="form-linea-compartida-2">
-                        <label for="discount" class="form-label-compartido">Descuento:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="number" id="discount" name="discount"
-                                value="<%= product.discount ? product.discount : '' %>" placeholder="Ej: 15"
-                                class="form-input-compartido">
-                            <% if (errors.discount != undefined) { %>
-                            <p class="error"><%= errors.discount.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
-                <div class="linea-compartida">
-                    <div class="form-linea-compartida-1">
-                        <label for="category" class="form-label-compartido">Categoría:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <select name="category" id="category" class="form-input-compartido">
-                                <option value="">Elegí</option>
-                                <% categories.find (function(item) { %>
-                                <option value="<%= item.id%>" <% if (product.category==item.id) {%> Selected <% } %>>
-                                    <%= item.description%></option>
-                                <% }) %>
-                            </select>
-                            <% if (errors.category != undefined) { %>
-                            <p class="error"><%= errors.category.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
+                <section class="creacion-producto">
 
-                <div class="linea-compartida">
-                    <div class="form-linea-compartida-imagen">
-                        <label for="Imagen" class="form-label-compartido">Imagenes:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="file" id="image" name="image" multiple="multiple" class="form-input-imagen">
-                            <% if (errors.image != undefined) { %>
-                            <p class="error"><%= errors.image.msg %></p>
-                            <% } %>
+                    <div class="container-producto">
+                        <p class="titulo-producto">Alta de producto</p>
+                        <div class="container-logo-producto">
+                            <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
                         </div>
-                    </div>
-                </div>
 
-                <div class="linea-compartida">
-                    <div class="form-linea-compartida-1">
-                        <label for="fecha_desde" class="form-label-compartido">Vigencia Desde:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="date" id="life_date_from" name="life_date_from"
-                                value="<%= product.life_date_from ? product.life_date_from : '' %>"
-                                class="form-input-compartido">
-                            <% if (errors.life_date_from != undefined) { %>
-                            <p class="error"><%= errors.life_date_from.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="form-linea-compartida-2">
-                        <label for="fecha_hasta" class="form-label-compartido">Vigencia Hasta:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="date" id="life_date_to" name="life_date_to"
-                                value="<%= product.life_date_to ? product.life_date_to : '' %>"
-                                class="form-input-compartido">
-                            <% if (errors.life_date_to != undefined) { %>
-                            <p class="error"><%= errors.life_date_to.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
+                        <form action="/productos/crear" method="POST" enctype="multipart/form-data"
+                            class="form-producto">
+                            <div class="form-linea-texto">
+                                <label for="name" class="form-label">Nombre<span class="error">*</span></label>
+                                <div class="form-linea-texto_error">
+                                    <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto"
+                                        class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-linea-texto">
+                                <label for="name" class="form-label">Proveedor<span class="error">*</span></label>
+                                <div class="form-linea-texto_error">
+                                    <select name="supplier" id="supplier" class="form-input">
+                                        <option value="">Elegí</option>
+                                        <% suppliers.find (function(item) { %>
+                                            <option value="<%= item.id%>" <% if (product.supplier==item.id) {%> Selected
+                                                <% } %>>
+                                                    <%= item.description%>
+                                            </option>
+                                            <% }) %>
+                                    </select>
+                                    <% if (errors.supplier !=undefined) { %>
+                                        <p class="error">
+                                            <%= errors.supplier.msg %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="linea-compartida">
+                                <div class="form-linea-compartida-1">
+                                    <label for="price" class="form-label-compartido">Precio:<span class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <input type="number" id="price" name="price"
+                                            value="<%= product.price ? product.price : '' %>" placeholder="Ej: 5678"
+                                            class="form-input-compartido">
+                                        <% if (errors.price !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.price.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-linea-compartida-2">
+                                    <label for="discount" class="form-label-compartido">Descuento:<span class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <input type="number" id="discount" name="discount"
+                                            value="<%= product.discount ? product.discount : '' %>" placeholder="Ej: 15"
+                                            class="form-input-compartido">
+                                        <% if (errors.discount !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.discount.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="linea-compartida">
+                                <div class="form-linea-compartida-1">
+                                    <label for="category" class="form-label-compartido">Categoría:<span class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <select name="category" id="category" class="form-input-compartido">
+                                            <option value="">Elegí</option>
+                                            <% categories.find (function(item) { %>
+                                                <option value="<%= item.id%>" <% if (product.category==item.id) {%>
+                                                    Selected <% } %>>
+                                                        <%= item.description%>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                        <% if (errors.category !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.category.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="linea-compartida">
-                    <div class="form-linea-compartida-1">
-                        <label for="expiration_days" class="form-label-compartido">Vencimiento:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="number" id="expiration_days" name="expiration_days"
-                                value="<%= product.expiration_days ? product.expiration_days : '' %>"
-                                placeholder="Ej: 365" class="form-input-compartido">
-                            <% if (errors.expiration_days != undefined) { %>
-                            <p class="error"><%= errors.expiration_days.msg %></p>
-                            <% } %>
-                        </div>
+                            <div class="linea-compartida">
+                                <div class="form-linea-compartida-imagen">
+                                    <label for="Imagen" class="form-label-compartido">Imagenes:<span class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <input type="file" id="image" name="image" multiple="multiple"
+                                            class="form-input-imagen">
+                                        <% if (errors.image !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.image.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="linea-compartida">
+                                <div class="form-linea-compartida-1">
+                                    <label for="fecha_desde" class="form-label-compartido">Vigencia Desde:<span
+                                            class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <input type="date" id="life_date_from" name="life_date_from"
+                                            value="<%= product.life_date_from ? product.life_date_from : '' %>"
+                                            class="form-input-compartido">
+                                        <% if (errors.life_date_from !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.life_date_from.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-linea-compartida-2">
+                                    <label for="fecha_hasta" class="form-label-compartido">Vigencia Hasta:<span
+                                            class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <input type="date" id="life_date_to" name="life_date_to"
+                                            value="<%= product.life_date_to ? product.life_date_to : '' %>"
+                                            class="form-input-compartido">
+                                        <% if (errors.life_date_to !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.life_date_to.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="linea-compartida">
+                                <div class="form-linea-compartida-1">
+                                    <label for="expiration_days" class="form-label-compartido">Vencimiento:<span
+                                            class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <input type="number" id="expiration_days" name="expiration_days"
+                                            value="<%= product.expiration_days ? product.expiration_days : '' %>"
+                                            placeholder="Ej: 365" class="form-input-compartido">
+                                        <% if (errors.expiration_days !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.expiration_days.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-linea-compartida-2">
+                                    <label for="share" class="form-label-compartido">Compartir:<span class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <select name="share" id="share" class="form-input-compartido">
+                                            <option value="Invividual" <% if (product.share=="Individual" ) {%> Selected
+                                                <%} %>>
+                                                    Individual
+                                            </option>
+                                            <option value="Para Compartir x 2" <% if
+                                                (product.share=="Para Compartir x 2" ) {%>
+                                                Selected <%} %>>Para Compartir x 2</option>
+                                            <option value="Para Compartir x 3" <% if
+                                                (product.share=="Para Compartir x 3" ) {%>
+                                                Selected <%} %>>Para Compartir x 3</option>
+                                            <option value="Para Compartir x 4" <% if
+                                                (product.share=="Para Compartir x 4" ) {%>
+                                                Selected <%} %>>Para Compartir x 4</option>
+                                        </select>
+                                        <% if (errors.share !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.share.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="linea-compartida">
+                                <div class="form-linea-compartida-1">
+                                    <label for="stock" class="form-label-compartido">Disponible:<span class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <input type="number" id="stock" name="stock"
+                                            value="<%= product.stock ? product.stock : '' %>" placeholder="Ej: 10"
+                                            class="form-input-compartido">
+                                        <% if (errors.stock !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.stock.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-linea-compartida-2">
+                                    <label for="estado" class="form-label-compartido">Estado:<span class="error"> *
+                                        </span></label>
+                                    <div class="form-linea-texto_error">
+                                        <select name="status" id="status" class="form-input-compartido">
+                                            <option value="Habilitado" <% if (product.status=="Habilitado" ||
+                                                product.status==undefined) {%> Selected
+                                                <%} %>>Habilitado
+                                            </option>
+                                            <option value="Inhabilitado" <% if (product.status=="Inhabilitado" ) {%>
+                                                Selected <%} %>>
+                                                    Inhabilitado</option>
+                                        </select>
+                                        <% if (errors.status !=undefined) { %>
+                                            <p class="error">
+                                                <%= errors.status.msg %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-linea-texto">
+                                <label for="description" class="form-label">Descripción:<span class="error"> *
+                                    </span></label>
+                                <div class="form-linea-texto_error">
+                                    <textarea name="description" id="description" class="form-input"
+                                        placeholder="Ej: Ingrese un texto detallado del producto"><%= product.description ? product.description : '' %></textarea>
+                                    <% if (errors.description !=undefined) { %>
+                                        <p class="error">
+                                            <%= errors.description.msg %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="boton-producto">
+                                <button type="submit" class="boton-guardar">Guardar producto</button>
+                            </div>
+                        </form>
+
+
                     </div>
-                    <div class="form-linea-compartida-2">
-                        <label for="share" class="form-label-compartido">Compartir:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <select name="share" id="share" class="form-input-compartido">
-                                <option value="Invividual" <% if (product.share=="Individual") {%> Selected <%} %>>
-                                    Individual</option>
-                                <option value="Para Compartir x 2" <% if (product.share=="Para Compartir x 2") {%>
-                                    Selected <%} %>>Para Compartir x 2</option>
-                                <option value="Para Compartir x 3" <% if (product.share=="Para Compartir x 3") {%>
-                                    Selected <%} %>>Para Compartir x 3</option>
-                                <option value="Para Compartir x 4" <% if (product.share=="Para Compartir x 4") {%>
-                                    Selected <%} %>>Para Compartir x 4</option>
-                            </select>
-                            <% if (errors.share != undefined) { %>
-                            <p class="error"><%= errors.share.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
+                </section>
 
-                <div class="linea-compartida">
-                    <div class="form-linea-compartida-1">
-                        <label for="stock" class="form-label-compartido">Disponible:<span class="error"> *
-                            </span></label>
-                        <div class="form-linea-texto_error">
-                            <input type="number" id="stock" name="stock"
-                                value="<%= product.stock ? product.stock : '' %>" placeholder="Ej: 10"
-                                class="form-input-compartido">
-                            <% if (errors.stock != undefined) { %>
-                            <p class="error"><%= errors.stock.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="form-linea-compartida-2">
-                        <label for="estado" class="form-label-compartido">Estado:<span class="error"> * </span></label>
-                        <div class="form-linea-texto_error">
-                            <select name="status" id="status" class="form-input-compartido">
-                                <option value="Habilitado"
-                                    <% if (product.status=="Habilitado"  || product.status == undefined) {%> Selected
-                                    <%} %>>Habilitado</option>
-                                <option value="Inhabilitado" <% if (product.status=="Inhabilitado") {%> Selected <%} %>>
-                                    Inhabilitado</option>
-                            </select>
-                            <% if (errors.status != undefined) { %>
-                            <p class="error"><%= errors.status.msg %></p>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
+                <!-- Footer del Sitio -->
 
-                <div class="form-linea-texto">
-                    <label for="description" class="form-label">Descripción:<span class="error"> * </span></label>
-                    <div class="form-linea-texto_error">
-                        <textarea name="description" id="description" class="form-input"
-                            placeholder="Ej: Ingrese un texto detallado del producto"><%= product.description ? product.description : '' %></textarea>
-                        <% if (errors.description != undefined) { %>
-                        <p class="error"><%= errors.description.msg %></p>
-                        <% } %>
-                    </div>
-                </div>
-                <div class="boton-producto">
-                    <button type="submit" class="boton-guardar">Guardar producto</button>
-                </div>
-            </form>
-
-
-        </div>
-    </section>
-
-    <!-- Footer del Sitio -->
-
-    <%- include("../partials/footer.ejs") %>
+                <%- include("../partials/footer.ejs") %>
 
 </body>
 
