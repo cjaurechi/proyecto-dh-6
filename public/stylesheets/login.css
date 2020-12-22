@@ -66,7 +66,7 @@ p.titulo-login {
     border: 1px solid gainsboro;
     padding: 1.2%;
     width: 100%;
-    font-size: 2em;
+    font-size: 1.8em;
     display: flex;
 }
 
@@ -76,13 +76,13 @@ p.titulo-login {
     flex-flow: column wrap;
     align-items: center;
     margin: auto 2%;
-    opacity: 0.1;
+    opacity: 0.2;
 }
 
 input[type=email], input[type=password], select, textarea {
     background-color: transparent;
     width: 100%;
-    font-size: 0.7em;
+    font-size: 0.65em;
     font-family: Montserrat-Light;
     margin: auto 2%;
     border-style: hidden;
@@ -100,18 +100,19 @@ input[type=email], input[type=password], select, textarea {
 }
 
 .recordar {
+    font-size: 0.95em;
     height: 18px;
     width: 50%;
     text-align: left;
 }
 
 input[type=checkbox] {
-    vertical-align: middle; 
-/* position: relative; */
+    vertical-align: middle;
     bottom: .08em;
 }
 
 .recuperar {
+    font-size: 0.95em;
     height: 18px;
     width: 50%;
     text-align: right;
@@ -134,11 +135,12 @@ input[type=checkbox] {
 .boton-login {
     background-color: var(--azulreegalo);
     border: none;
-    width: 100%;
+    width: 150px;
     height: 100%;
-    font-size: 1.3em;
+    font-size: 1.1em;
     border-radius: 8px;
     color: white;
+    cursor: pointer;
 }
 
 button:hover {
@@ -158,8 +160,8 @@ button:hover {
     border-radius: 6px;
     border: 1px solid gainsboro;
     padding: 1.2%;
-    width: 70%;
-    font-size: 1.4em;
+    width: 350px;
+    font-size: 1.1em;
     display: flex;
     align-items: center;
     margin-top: 2%;
@@ -177,8 +179,8 @@ button:hover {
     height: 50px;
     border-radius: 6px;
     padding: 1.2%;
-    width: 70%;
-    font-size: 1.4em;
+    width: 350px;
+    font-size: 1.1em;
     display: flex;
     align-items: center;
     margin-top: 2%;

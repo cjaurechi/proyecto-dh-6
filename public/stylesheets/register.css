@@ -73,7 +73,7 @@ p.titulo-register {
     flex-flow: column wrap;
     align-items: center;
     margin: auto 2%;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 input[type=email], input[type=password], input[type=date], select, textarea {
@@ -120,11 +120,12 @@ input[type=file] {
 .boton-register {
     background-color: var(--azulreegalo);
     border: none;
-    width: 100%;
+    width: 150px;
     height: 100%;
     font-size: 1em;
     border-radius: 8px;
     color: white;
+    cursor: pointer;
 }
 
 button:hover {
@@ -143,8 +144,8 @@ button:hover {
     border-radius: 6px;
     border: 1px solid gainsboro;
     padding: 1.2%;
-    width: 70%;
-    font-size: 1em;
+    width: 350px;
+    font-size: 1.1em;
     display: flex;
     align-items: center;
     margin-top: 2%;
@@ -156,8 +157,8 @@ button:hover {
     height: 50px;
     border-radius: 6px;
     padding: 1.2%;
-    width: 70%;
-    font-size: 1em;
+    width: 350px;
+    font-size: 1.1em;
     display: flex;
     align-items: center;
     margin-top: 2%;
