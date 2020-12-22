@@ -82,17 +82,17 @@ const controller = {
 
 			products_category = db.products.findAll(
 				{
-				where: {
-					category_id: req.params.id,
-					status: "Habilitado"
+					where: {
+						category_id: req.params.id,
+						status: "Habilitado"
 					},
-				include: [{ association: "product_image" }]
+					include: [{ association: "product_image" }]
 				}
 			);
 
 			category = db.categories.findAll(
 				{
-					where: {id: req.params.id}
+					where: { id: req.params.id }
 				}
 			)
 
@@ -100,8 +100,8 @@ const controller = {
 
 			products_category = db.products.findAll(
 				{
-				where: { status: "Habilitado" },
-				include: [{ association: "product_image" }]
+					where: { status: "Habilitado" },
+					include: [{ association: "product_image" }]
 				}
 			)
 
@@ -111,7 +111,7 @@ const controller = {
 
 		Promise.all([products_category, category])
 			.then(function ([products_category, category]) {
-				console.log(products_category,category)
+				console.log(products_category, category)
 				res.render("products/productList", { products_category: products_category, category: category })
 			})
 			.catch(error => {
@@ -125,34 +125,34 @@ const controller = {
 
 		let products_category = []
 		let category = []
-		console.log(req.query.keywords,1)
+		console.log(req.query.keywords, 1)
 		if (req.params.id !== undefined) {
 			if (req.query.keywords !== "") {
-				console.log(req.query.keywords,2)
-				let key_search = "%"+ req.query.keywords +"%"
+				console.log(req.query.keywords, 2)
+				let key_search = "%" + req.query.keywords + "%"
 				products_category = db.products.findAll(
 					{
-					where: {
-						category_id: req.params.id,
-						status: "Habilitado",
-						name: {[Op.like]: key_search}
+						where: {
+							category_id: req.params.id,
+							status: "Habilitado",
+							name: { [Op.like]: key_search }
 						}
 					},
 					{
-					include: [{ association: "product_image" }]
+						include: [{ association: "product_image" }]
 					}
 				);
 			} else {
-				console.log(req.query.keywords,3)
+				console.log(req.query.keywords, 3)
 				products_category = db.products.findAll(
 					{
-					where: {
-						category_id: req.params.id,
-						status: "Habilitado"
+						where: {
+							category_id: req.params.id,
+							status: "Habilitado"
 						}
 					},
 					{
-					include: [{ association: "product_image" }]
+						include: [{ association: "product_image" }]
 					}
 				);
 			}
@@ -160,15 +160,16 @@ const controller = {
 			category = db.categories.findByPk(req.params.id)
 
 		} else {
-			console.log(req.query.keywords,4)
-			let key_search = "%"+ req.query.keywords +"%"
-			console.log(key_search,5)
+			console.log(req.query.keywords, 4)
+			let key_search = "%" + req.query.keywords + "%"
+			console.log(key_search, 5)
 			products_category = db.products.findAll(
 				{
-				where: { status: "Habilitado",
-						 name: {[Op.like]: key_search}
-					   },
-				include: [{ association: "product_image" }]
+					where: {
+						status: "Habilitado",
+						name: { [Op.like]: key_search }
+					},
+					include: [{ association: "product_image" }]
 				}
 			)
 
@@ -279,7 +280,6 @@ const controller = {
 	// Alta de producto
 	store: (req, res, next) => {
 		let errors = validationResult(req);
-
 		if (errors.isEmpty()) {
 
 			db.products.create({
@@ -297,12 +297,20 @@ const controller = {
 				stock: req.body.stock,
 				status: req.body.status,
 				user_id: req.session.user.id
-
-			}).then(resultado => {
-				res.render("products/productCreateForm", { producto_actualizado: '', categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
-			}).catch(error => {
-				return res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
 			})
+				.then(product => {
+					for (let i = 0; i < req.files.length; i++) {
+						db.product_image.create({
+							product_id: product.id,
+							image: req.files[i].filename,
+							number: i
+						})
+					}
+					res.redirect('/productos/' + product.id + '/detalle');
+					// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
+				}).catch(error => {
+					return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
+				})
 		}
 	},
 
@@ -311,8 +319,8 @@ const controller = {
 	edit: (req, res) => {
 		console.log(req.params.id)
 		let product = db.products.findByPk(req.params.id)
-		let suppliers = db.suppliers.findAll({where: {status: "habilitado"}})
-		
+		let suppliers = db.suppliers.findAll({ where: { status: "habilitado" } })
+
 		Promise.all([product, suppliers])
 			.then(function ([product, suppliers]) {
 				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: {} })
@@ -342,9 +350,9 @@ const controller = {
 
 		let errors = validationResult(req);
 		console.log(errors)
-        if (errors.isEmpty()) {
-			let product = db.products.findByPk(req.params.id)	
-		db.products.update({
+		if (errors.isEmpty()) {
+			let product = db.products.findByPk(req.params.id)
+			db.products.update({
 				name: req.body.name,
 				description: req.body.description,
 				category_id: req.body.category,
@@ -358,103 +366,104 @@ const controller = {
 				stock: req.body.stock,
 				status: req.body.status,
 
-		}, {where: {id: req.params.id}})
-		.then (resultado =>{
-			res.render("products/productListForm", {product: product , products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
+			}, { where: { id: req.params.id } })
+				.then(resultado => {
+					res.render("products/productListForm", { product: product, products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
 
-		   })
-		   .catch(error => {
-			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors })  })
+				})
+				.catch(error => {
+					return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors })
+				})
 
 
 		}
-    },
+	},
 
-// 		let errors = validationResult(req).mapped()
+	// 		let errors = validationResult(req).mapped()
 
-// 		console.log(req.body,req.params,errors) 
-		
-// 		/* Chequear con Alejandro : se cargan datos en el form , en el req.body llegan bien pero el check del express validator lo toma como error y en el error figuran como undefined
-// 		Si le saco el check del midleeware se actualiza bien*/
+	// 		console.log(req.body,req.params,errors) 
 
-// 		if (Object.keys(errors).length != 0) {
+	// 		/* Chequear con Alejandro : se cargan datos en el form , en el req.body llegan bien pero el check del express validator lo toma como error y en el error figuran como undefined
+	// 		Si le saco el check del midleeware se actualiza bien*/
 
-// 			product = req.body
-// 			product.id = req.params.id
+	// 		if (Object.keys(errors).length != 0) {
 
-// 			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors })
-// 		}
+	// 			product = req.body
+	// 			product.id = req.params.id
 
-// 		if (req.files[0] !== undefined) {
-// 			products_images = products_images.filter(function (item) {
-// 				return (item.id != req.params.id)
-// 			})
+	// 			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors })
+	// 		}
 
-// 			for (let i = 0; i < req.files.length; i++) {
-// 				var product_image = ""
-// 				if (req.files[i] !== undefined) {
-// 					product_image = req.files[i].filename
-// 				}
-// 				products_images.push({
-// 					id: req.params.id,
-// 					image: product_image,
-// 					number: i,
-// 				})
-// 			}
-// 		}
+	// 		if (req.files[0] !== undefined) {
+	// 			products_images = products_images.filter(function (item) {
+	// 				return (item.id != req.params.id)
+	// 			})
 
-// 		let archivo = JSON.stringify(products_images);
-// 		fs.writeFileSync(productsImagesFilePath, archivo);
+	// 			for (let i = 0; i < req.files.length; i++) {
+	// 				var product_image = ""
+	// 				if (req.files[i] !== undefined) {
+	// 					product_image = req.files[i].filename
+	// 				}
+	// 				products_images.push({
+	// 					id: req.params.id,
+	// 					image: product_image,
+	// 					number: i,
+	// 				})
+	// 			}
+	// 		}
 
-// 		var main_image = ""
-// 		product_image = products_images.find(function (item) {
-// 			return (item.id == req.params.id & item.number == 0)
-// 		})
+	// 		let archivo = JSON.stringify(products_images);
+	// 		fs.writeFileSync(productsImagesFilePath, archivo);
 
-// 		if (product_image == undefined) {
-// 			main_image = ""
-// 		} else {
-// 			main_image = product_image.image
-// 		}
+	// 		var main_image = ""
+	// 		product_image = products_images.find(function (item) {
+	// 			return (item.id == req.params.id & item.number == 0)
+	// 		})
 
-// 		products.forEach(function (item) {
-// 			if (item.id == req.params.id) {
-// 				item.name = req.body.name,
-// 					item.description = req.body.description,
-// 					item.category = req.body.category,
-// 					item.expiration_days = req.body.expiration_days,
-// 					item.share = req.body.share,
-// 					item.price = req.body.price,
-// 					item.discount = req.body.discount,
-// 					item.category = req.body.category,
-// 					item.description = req.body.description,
-// 					item.supplier = req.body.supplier,
-// 					item.price = req.body.price,
-// 					item.discount = req.body.discount,
-// 					item.life_date_from = req.body.life_date_from,
-// 					item.life_date_to = req.body.life_date_to,
-// 					item.stock = req.body.stock,
-// 					item.status = req.body.status,
-// 					item.main_image = main_image
-// 			}
-// 		});
+	// 		if (product_image == undefined) {
+	// 			main_image = ""
+	// 		} else {
+	// 			main_image = product_image.image
+	// 		}
 
-// 		archivo = JSON.stringify(products);
-// 		fs.writeFileSync(productsFilePath, archivo);
+	// 		products.forEach(function (item) {
+	// 			if (item.id == req.params.id) {
+	// 				item.name = req.body.name,
+	// 					item.description = req.body.description,
+	// 					item.category = req.body.category,
+	// 					item.expiration_days = req.body.expiration_days,
+	// 					item.share = req.body.share,
+	// 					item.price = req.body.price,
+	// 					item.discount = req.body.discount,
+	// 					item.category = req.body.category,
+	// 					item.description = req.body.description,
+	// 					item.supplier = req.body.supplier,
+	// 					item.price = req.body.price,
+	// 					item.discount = req.body.discount,
+	// 					item.life_date_from = req.body.life_date_from,
+	// 					item.life_date_to = req.body.life_date_to,
+	// 					item.stock = req.body.stock,
+	// 					item.status = req.body.status,
+	// 					item.main_image = main_image
+	// 			}
+	// 		});
 
-// 		let products_category = []
-// 		let category = []
+	// 		archivo = JSON.stringify(products);
+	// 		fs.writeFileSync(productsFilePath, archivo);
 
-// 		products_category = products.filter(function (item) {
-// 			return (item.status == "Habilitado")
-// 		})
+	// 		let products_category = []
+	// 		let category = []
 
-// 		category = categories
+	// 		products_category = products.filter(function (item) {
+	// 			return (item.status == "Habilitado")
+	// 		})
 
-// 		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
+	// 		category = categories
 
-// /* 		res.redirect("/"); */
-// 	},
+	// 		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
+
+	// /* 		res.redirect("/"); */
+	// 	},
 
 	delete: (req, res) => {
 

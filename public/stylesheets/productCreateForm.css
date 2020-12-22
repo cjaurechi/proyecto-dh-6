@@ -77,9 +77,9 @@ p.titulo-producto {
 }
 
 .error {
-    text-align:left;
-    font-size: 0.7em;
-    color: red;
+    margin-left: 3px;
+    font-size: 1em;
+    color:tomato;
 }
 
 .linea-compartida {
