@@ -144,6 +144,7 @@ img {
 .resumen_compra {
   width: 100%;
   padding: 1%;
+  
 }
 
 .titulo_resumen {
@@ -161,7 +162,7 @@ img {
 .resumen_informacion {
   width: 100%;
   height:150px;
-  font-size: 1.4em;
+  font-size: 1em;
   line-height: 1.2em;
   display:none;
 }
@@ -174,7 +175,7 @@ img {
 
 .fas.fa-gift, .fas.fa-calendar-check, .fas.fa-user-friends {
   color: var(--azulreegalo);
-  font-size: 1.8em; 
+  font-size: 0.8em; 
   margin:1%;
   padding: 1%;
 }
@@ -195,7 +196,7 @@ img {
 
 .opiniones_texto {
   font-weight: lighter;
-  font-size: 1.2em;
+  font-size: 1em;
   padding-left: 2%;
   font-weight: bold;
 }
@@ -496,7 +497,7 @@ img {
   }
 
   .detalle_producto {
-    font-size: 1em;
+    font-size: 0.95em;
   }
 
   .resumen_informacion {
