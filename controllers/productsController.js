@@ -314,7 +314,6 @@ const controller = {
 		}
 	},
 
-
 	// Formulario de modificacion
 	edit: (req, res) => {
 		console.log(req.params.id)
@@ -329,21 +328,6 @@ const controller = {
 				res.render('error', { error: error });
 			})
 	},
-
-	// 	let product = products.find(function (item) {
-	// 		return (req.params.id == item.id);
-	// 	})
-
-	// 	suppliers = suppliers.filter(function (item) {
-	// 		return (item.status == 'Habilitado')
-	// 	})
-
-	// 	product_images = products_images.filter(function (item) {
-	// 		return (req.params.id == item.id)
-	// 	})
-
-	// 	res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: {} });
-	// },
 
 	// Modificacion de producto
 	update: (req, res, next) => {
@@ -367,116 +351,29 @@ const controller = {
 				status: req.body.status,
 
 			}, { where: { id: req.params.id } })
-				.then(resultado => {
-					res.render("products/productEditForm", { product: product, products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
-
+				.then(product => {
+					res.redirect('/productos/' + req.params.id + '/detalle');
+					// res.render("products/productEditForm", { product: product, products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
 				})
 				.catch(error => {
 					return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors })
 				})
-
-
 		}
 	},
 
-	// 		let errors = validationResult(req).mapped()
-
-	// 		console.log(req.body,req.params,errors) 
-
-	// 		/* Chequear con Alejandro : se cargan datos en el form , en el req.body llegan bien pero el check del express validator lo toma como error y en el error figuran como undefined
-	// 		Si le saco el check del midleeware se actualiza bien*/
-
-	// 		if (Object.keys(errors).length != 0) {
-
-	// 			product = req.body
-	// 			product.id = req.params.id
-
-	// 			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors })
-	// 		}
-
-	// 		if (req.files[0] !== undefined) {
-	// 			products_images = products_images.filter(function (item) {
-	// 				return (item.id != req.params.id)
-	// 			})
-
-	// 			for (let i = 0; i < req.files.length; i++) {
-	// 				var product_image = ""
-	// 				if (req.files[i] !== undefined) {
-	// 					product_image = req.files[i].filename
-	// 				}
-	// 				products_images.push({
-	// 					id: req.params.id,
-	// 					image: product_image,
-	// 					number: i,
-	// 				})
-	// 			}
-	// 		}
-
-	// 		let archivo = JSON.stringify(products_images);
-	// 		fs.writeFileSync(productsImagesFilePath, archivo);
-
-	// 		var main_image = ""
-	// 		product_image = products_images.find(function (item) {
-	// 			return (item.id == req.params.id & item.number == 0)
-	// 		})
-
-	// 		if (product_image == undefined) {
-	// 			main_image = ""
-	// 		} else {
-	// 			main_image = product_image.image
-	// 		}
-
-	// 		products.forEach(function (item) {
-	// 			if (item.id == req.params.id) {
-	// 				item.name = req.body.name,
-	// 					item.description = req.body.description,
-	// 					item.category = req.body.category,
-	// 					item.expiration_days = req.body.expiration_days,
-	// 					item.share = req.body.share,
-	// 					item.price = req.body.price,
-	// 					item.discount = req.body.discount,
-	// 					item.category = req.body.category,
-	// 					item.description = req.body.description,
-	// 					item.supplier = req.body.supplier,
-	// 					item.price = req.body.price,
-	// 					item.discount = req.body.discount,
-	// 					item.life_date_from = req.body.life_date_from,
-	// 					item.life_date_to = req.body.life_date_to,
-	// 					item.stock = req.body.stock,
-	// 					item.status = req.body.status,
-	// 					item.main_image = main_image
-	// 			}
-	// 		});
-
-	// 		archivo = JSON.stringify(products);
-	// 		fs.writeFileSync(productsFilePath, archivo);
-
-	// 		let products_category = []
-	// 		let category = []
-
-	// 		products_category = products.filter(function (item) {
-	// 			return (item.status == "Habilitado")
-	// 		})
-
-	// 		category = categories
-
-	// 		res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
-
-	// /* 		res.redirect("/"); */
-	// 	},
-
 	delete: (req, res) => {
 
-		console.log(req.params.id)
-		let product = db.products.findByPk(req.params.id)
+		// Soft delete: Solamente movemos el status a deshabilitado pero sigue vivo en la BD
 		db.products.update({
 			status: "Deshabilitado",
-
 		}, { where: { id: req.params.id } })
-		.then(() => res.redirect("/productos"))	
-		.catch(error => {
-			console.log(error)
-			res.render('error', { error: error })})
+			.then(() => res.redirect("/productos"))
+			.catch(error => {
+				console.log(error)
+				res.render('error', { error: error })
+			})
+
+		// Hard delete: Este borra el producto de la BD
 		// db.products.destroy({
 		// 	where: {
 		// 		id: req.params.id
@@ -487,32 +384,6 @@ const controller = {
 		// 		console.log(error)
 		// 		res.render('error', { error: error })
 		// 	})
-		// 	// Pasamos el contenido de products a otra variable temporal
-		// 	let content = products;
-
-		// 	// Localizamos y filtramos el producto que quereremos borrar
-		// 	let filtered_content = content.filter(function (element) {
-		// 		return element.id != req.params.id;
-		// 	});
-
-		// 	// Volvemos a convertir el contenido filtrado en un string
-		// 	content = JSON.stringify(filtered_content);
-
-		// 	// Escribimos nuevamente el archivo productsDataBase.json con el producto borrado
-		// 	fs.writeFileSync(productsFilePath, content);
-
-		// 	let products_category = []
-		// 	let category = []
-
-		// 	products_category = products.filter(function (item) {
-		// 		return (item.status == "Habilitado")
-		// 	})
-
-		// 	category = categories
-
-		// 	res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' })
-
-
 	}
 };
 

@@ -57,8 +57,8 @@
                             </div>
                             <div class="linea-compartida">
                                 <div class="form-linea-compartida-1">
-                                    <label for="price" class="form-label-compartido">Precio:<span class="error"> *
-                                        </span></label>
+                                    <label for="price" class="form-label-compartido">Precio<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <input type="number" id="price" name="price"
                                             value="<%= product.price ? product.price : '' %>" placeholder="Ej: 5678"
@@ -71,8 +71,8 @@
                                     </div>
                                 </div>
                                 <div class="form-linea-compartida-2">
-                                    <label for="discount" class="form-label-compartido">Descuento:<span class="error"> *
-                                        </span></label>
+                                    <label for="discount" class="form-label-compartido">Descuento<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <input type="number" id="discount" name="discount"
                                             value="<%= product.discount ? product.discount : '' %>" placeholder="Ej: 15"
@@ -87,8 +87,8 @@
                             </div>
                             <div class="linea-compartida">
                                 <div class="form-linea-compartida-1">
-                                    <label for="category" class="form-label-compartido">Categoría:<span class="error"> *
-                                        </span></label>
+                                    <label for="category" class="form-label-compartido">Categoría<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <select name="category" id="category" class="form-input-compartido">
                                             <option value="">Elegí</option>
@@ -110,8 +110,8 @@
 
                             <div class="linea-compartida">
                                 <div class="form-linea-compartida-imagen">
-                                    <label for="Imagen" class="form-label-compartido">Imagenes:<span class="error"> *
-                                        </span></label>
+                                    <label for="Imagen" class="form-label-compartido">Imagenes<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <input type="file" id="image" name="image" multiple="multiple"
                                             class="form-input-imagen">
@@ -126,9 +126,8 @@
 
                             <div class="linea-compartida">
                                 <div class="form-linea-compartida-1">
-                                    <label for="fecha_desde" class="form-label-compartido">Vigencia Desde:<span
-                                            class="error"> *
-                                        </span></label>
+                                    <label for="fecha_desde" class="form-label-compartido">Vigencia Desde<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <input type="date" id="life_date_from" name="life_date_from"
                                             value="<%= product.life_date_from ? product.life_date_from : '' %>"
@@ -141,9 +140,8 @@
                                     </div>
                                 </div>
                                 <div class="form-linea-compartida-2">
-                                    <label for="fecha_hasta" class="form-label-compartido">Vigencia Hasta:<span
-                                            class="error"> *
-                                        </span></label>
+                                    <label for="fecha_hasta" class="form-label-compartido">Vigencia Hasta<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <input type="date" id="life_date_to" name="life_date_to"
                                             value="<%= product.life_date_to ? product.life_date_to : '' %>"
@@ -159,9 +157,8 @@
 
                             <div class="linea-compartida">
                                 <div class="form-linea-compartida-1">
-                                    <label for="expiration_days" class="form-label-compartido">Vencimiento:<span
-                                            class="error"> *
-                                        </span></label>
+                                    <label for="expiration_days" class="form-label-compartido">Vencimiento<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <input type="number" id="expiration_days" name="expiration_days"
                                             value="<%= product.expiration_days ? product.expiration_days : '' %>"
@@ -174,8 +171,8 @@
                                     </div>
                                 </div>
                                 <div class="form-linea-compartida-2">
-                                    <label for="share" class="form-label-compartido">Compartir:<span class="error"> *
-                                        </span></label>
+                                    <label for="share" class="form-label-compartido">Compartir<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <select name="share" id="share" class="form-input-compartido">
                                             <option value="Invividual" <% if (product.share=="Individual" ) {%> Selected
@@ -203,8 +200,8 @@
 
                             <div class="linea-compartida">
                                 <div class="form-linea-compartida-1">
-                                    <label for="stock" class="form-label-compartido">Disponible:<span class="error"> *
-                                        </span></label>
+                                    <label for="stock" class="form-label-compartido">Disponible<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <input type="number" id="stock" name="stock"
                                             value="<%= product.stock ? product.stock : '' %>" placeholder="Ej: 10"
@@ -217,8 +214,8 @@
                                     </div>
                                 </div>
                                 <div class="form-linea-compartida-2">
-                                    <label for="estado" class="form-label-compartido">Estado:<span class="error"> *
-                                        </span></label>
+                                    <label for="estado" class="form-label-compartido">Estado<span
+                                            class="error">*</span></label>
                                     <div class="form-linea-texto_error">
                                         <select name="status" id="status" class="form-input-compartido">
                                             <option value="Habilitado" <% if (product.status=="Habilitado" ||
@@ -239,8 +236,8 @@
                             </div>
 
                             <div class="form-linea-texto">
-                                <label for="description" class="form-label">Descripción:<span class="error"> *
-                                    </span></label>
+                                <label for="description" class="form-label">Descripción<span
+                                        class="error">*</span></label>
                                 <div class="form-linea-texto_error">
                                     <textarea name="description" id="description" class="form-input"
                                         placeholder="Ej: Ingrese un texto detallado del producto"><%= product.description ? product.description : '' %></textarea>
