@@ -261,7 +261,7 @@ const controller = {
 			category = categories
 		}
 
-		res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
+		res.render("products/productAdmin", { products_category: products_category, category: category, update_success: undefined })
 
 	},
 

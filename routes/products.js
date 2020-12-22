@@ -39,7 +39,7 @@ router.post('/crear', authMiddleware, upload.any(), validation, productsControll
 
 /*** MODIFICAR UN PRODUCTO ***/ 
 router.get('/listado', authMiddleware, productsController.productListForm); 
-router.get('/listadofiltro', authMiddleware, productsController.productSearchForm); 
+router.get('/administrar', authMiddleware, productsController.productSearchForm); 
 router.get('/:id/editar', authMiddleware, productsController.edit); 
 router.put('/:id/editar',authMiddleware, upload.any(),validation,productsController.update); 
 router.delete('/:id/borrar',authMiddleware, productsController.delete); 

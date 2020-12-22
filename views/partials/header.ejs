@@ -20,7 +20,7 @@
                 <a href="/nosotros">Nosotros</a>
                 <a href="/comoregalar">¿Cómo regalar?</a>
                 <% if (locals.user && locals.user.rol=='admin' ) { %>
-                    <a href="/productos/crear">Crear regalo</a>
+                    <a href="/productos/administrar">Administrar</a>
                     <% } %>
             </nav>
         </div>
@@ -82,11 +82,11 @@
             <li><a href="/comoregalar">¿Cómo regalar?</a></li>
             <li><a href="/usuarios/login">Ingresa</a></li>
             <li><a href="/usuarios/registro">Registrate</a></li>
-            <% if (locals.user != undefined) { %>
+            <% if (locals.user !=undefined) { %>
                 <li><a href="/usuarios/<%= locals.user.id %>/perfil">Edicion de Usuario</a></li>
-            <% } %>
-            <li><a href="/productos/crear">Creacion</a></li>
-            <li><a href="/productos/listadofiltro">Listado</a></li>
+                <% } %>
+                    <li><a href="/productos/crear">Creacion</a></li>
+                    <li><a href="/productos/listadofiltro">Administrar</a></li>
         </ul>
     </div>
 
