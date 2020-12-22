@@ -152,7 +152,6 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div class="formas_envios">
                         <span class= "texto_formas_envios">Consultar formas de Envio</span>
                         <img  class="imagenes_envio" src="/images/delivery_reegalo.png" alt="Icono 4">
@@ -171,12 +170,19 @@
                         </div>  
                     </div> 
                     
-                   
+                    <% if (locals.user && locals.user.rol=='admin' ) { %>
                         <div class="compra">
                             <div class="compra_centrada">
                                 <button class="compra_boton" type= "submit"><a class="link_aeditar"href="editar">Editar</a></button>
                             </div>  
                         </div>
+                        <!-- <div class="compra">
+                            <div class="compra_centrada">
+                                <button class="compra_boton" type= "submit"><a class="link_aeditar"href="editar">Editar</a></button>
+                            </div>  
+                        </div> -->
+                    <% } %>
+                        
                            
                      
                     <div class="medios_pago">
@@ -184,8 +190,6 @@
                             <img src="/images/medios_pago.png" alt="Icono medios">
                         </div>  
                     </div> 
-=======
->>>>>>> 6bf034569dad7915746556d85d166be5377a9cc2
                 </div>
 
             </div>
