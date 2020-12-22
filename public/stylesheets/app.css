@@ -445,14 +445,6 @@ footer div nav a {
     text-decoration: none;
 }
 
-/* .logo {
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto; 
-} */
-
-/* Sidebar */
-
 /* Media Queries */
 /* Laptop */
 
@@ -483,9 +475,11 @@ footer div nav a {
         display: none;
     }
 
-    .container-carrito {
+    .container-carrito,
+    .container-perfil {
         display: none;
     }
+
 
     .cantidad-carrito {
         visibility: hidden;
