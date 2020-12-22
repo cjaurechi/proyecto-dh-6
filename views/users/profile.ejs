@@ -46,15 +46,14 @@
                                 <label for="first_name">Email: </label>
                                 <input type="email" name="email" id="email" value="<%= user.email %>">
                             </div>
+                            <% if(user.rol=='admin' ) { %>
                             <div class="container-field">
                                 <label for="first_name">Rol: </label>
                                 <select name="rol" id="rol">
-                                    <% if(user.rol=='admin' ) { %>
+                                   
                                         <option value="admin" selected>Administrador</option>
                                         <option value="user">Usuario</option>
-                                        <% } else { %>
-                                            <option value="admin">Administrador</option>
-                                            <option value="user" selected>Usuario</option>
+                        
                                             <% } %>
                                 </select>
                             </div>
