@@ -31,7 +31,7 @@ const controller = {
 	productDetail: (req, res) => {
 
 		let product = db.products.findByPk(req.params.id, {
-			include: [{ association: "categories" }]
+			include: [{ association: "categories" }] // Analizar si no podemos incluir la relación con product_comments acá!
 		})
 
 		let product_images = db.product_image.findAll({
@@ -72,52 +72,27 @@ const controller = {
 
 	},
 
-	// Detalle de producto
-	productList: (req, res) => {
-
-		let products_category = []
+	// Listado de todos los productos
+	productList: async (req, res) => {
 		let category = []
 
-		if (req.params.id !== undefined) {
+		category = await db.categories.findAll(
+			{ include: [{ association: 'products', include: ['product_image'] }] })
 
-			products_category = db.products.findAll(
-				{
-					where: {
-						category_id: req.params.id,
-						status: "Habilitado"
-					},
-					include: [{ association: "product_image" }]
-				}
-			);
+		res.render("products/productList", { category: category })
+	},
 
-			category = db.categories.findAll(
-				{
-					where: { id: req.params.id }
-				}
-			)
+	// Listado de productos por categoría
+	productsPerCategory: async (req, res) => {
+		let category = []
 
-		} else {
-
-			products_category = db.products.findAll(
-				{
-					where: { status: "Habilitado" },
-					include: [{ association: "product_image" }]
-				}
-			)
-
-			category = db.categories.findAll()
-
-		}
-
-		Promise.all([products_category, category])
-			.then(function ([products_category, category]) {
-				console.log(products_category, category)
-				res.render("products/productList", { products_category: products_category, category: category })
-			})
-			.catch(error => {
-				res.render('error', { error: error });
+		category = await db.categories.findAll(
+			{
+				where: { id: req.params.id },
+				include: [{ association: 'products', include: ['product_image'] }]
 			})
 
+		res.render("products/productList", { category: category })
 	},
 
 	// Detalle con busqueda de producto
@@ -190,7 +165,6 @@ const controller = {
 	// Listado de productos para edicion
 	productListForm: (req, res) => {
 
-
 		let products_category = []
 		let category = []
 
@@ -228,40 +202,55 @@ const controller = {
 	// Listado de productos con busqueda para edicion
 	productSearchForm: (req, res) => {
 
+		// let products_category = []
+		// let category = []
+
+		// if (req.params.id !== undefined) {
+		// 	if (req.query.keywords !== "" && req.query.keywords !== undefined) {
+		// 		products_category = products.filter(function (item) {
+		// 			return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
+		// 		})
+		// 	}
+		// 	else {
+		// 		products_category = products.filter(function (item) {
+		// 			return (req.params.id == item.category & item.status == "Habilitado")
+		// 		})
+		// 	}
+
+		// 	category = categories.filter(function (item) {
+		// 		return (req.params.id == item.id)
+		// 	})
+
+		// } else {
+		// 	if (req.query.keywords !== "" && req.query.keywords !== undefined) {
+		// 		products_category = products.filter(function (item) {
+		// 			return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
+		// 		})
+		// 	}
+		// 	else {
+		// 		products_category = products.filter(function (item) {
+		// 			return (item.status == "Habilitado")
+		// 		})
+		// 	}
+		// 	category = categories
+		// }
+
 		let products_category = []
 		let category = []
 
-		if (req.params.id !== undefined) {
-			if (req.query.keywords !== "" && req.query.keywords !== undefined) {
-				products_category = products.filter(function (item) {
-					return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
-				})
-			}
-			else {
-				products_category = products.filter(function (item) {
-					return (req.params.id == item.category & item.status == "Habilitado")
-				})
-			}
+		products_category = db.products.findAll({
+			where: { status: "Habilitado" }
+		})
 
-			category = categories.filter(function (item) {
-				return (req.params.id == item.id)
+		category = db.categories.findAll()
+
+		Promise.all([products_category, category])
+			.then(function ([products_category, category]) {
+				res.render("products/productAdmin", { products_category: products_category, category: category, update_success: undefined })
 			})
-
-		} else {
-			if (req.query.keywords !== "" && req.query.keywords !== undefined) {
-				products_category = products.filter(function (item) {
-					return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
-				})
-			}
-			else {
-				products_category = products.filter(function (item) {
-					return (item.status == "Habilitado")
-				})
-			}
-			category = categories
-		}
-
-		res.render("products/productAdmin", { products_category: products_category, category: category, update_success: undefined })
+			.catch(error => {
+				res.render('error', { error: error });
+			})
 
 	},
 
