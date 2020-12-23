@@ -77,7 +77,7 @@ const controller = {
 		let category = []
 
 		category = await db.categories.findAll(
-			{ include: [{ association: 'products', include: ['product_image'] }] })
+			{ include: [{ association: 'products', where: { status: 'Habilitado' }, include: ['product_image'] }] })
 
 		res.render("products/productList", { category: category })
 	},
@@ -97,161 +97,26 @@ const controller = {
 
 	// Detalle con busqueda de producto
 	productSearch: (req, res) => {
-
-		let products_category = []
-		let category = []
-		console.log(req.query.keywords, 1)
-		if (req.params.id !== undefined) {
-			if (req.query.keywords !== "") {
-				console.log(req.query.keywords, 2)
-				let key_search = "%" + req.query.keywords + "%"
-				products_category = db.products.findAll(
-					{
-						where: {
-							category_id: req.params.id,
-							status: "Habilitado",
-							name: { [Op.like]: key_search }
-						}
-					},
-					{
-						include: [{ association: "product_image" }]
-					}
-				);
-			} else {
-				console.log(req.query.keywords, 3)
-				products_category = db.products.findAll(
-					{
-						where: {
-							category_id: req.params.id,
-							status: "Habilitado"
-						}
-					},
-					{
-						include: [{ association: "product_image" }]
-					}
-				);
-			}
-
-			category = db.categories.findByPk(req.params.id)
-
-		} else {
-			console.log(req.query.keywords, 4)
-			let key_search = "%" + req.query.keywords + "%"
-			console.log(key_search, 5)
-			products_category = db.products.findAll(
-				{
-					where: {
-						status: "Habilitado",
-						name: { [Op.like]: key_search }
-					},
-					include: [{ association: "product_image" }]
-				}
-			)
-
-			category = db.categories.findAll()
-
-		}
-
-		Promise.all([products_category, category])
-			.then(function ([products_category, category]) {
-				res.render("products/productList", { products_category: products_category, category: category })
-			})
-			.catch(error => {
-				res.render('error', { error: error });
-			})
-
-	},
-
-	// Listado de productos para edicion
-	productListForm: (req, res) => {
-
-		let products_category = []
-		let category = []
-
-		if (req.params.id !== undefined) {
-
-			products_category = db.products.findAll({
-				where: {
-					category_id: req.params.id,
-					status: "Habilitado"
-				}
-			});
-
-			category = db.categories.findByPk(req.params.id)
-
-		} else {
-
-			products_category = db.products.findAll({
-				where: { status: "Habilitado" }
-			})
-
-			category = db.categories.findAll()
-
-		}
-
-		Promise.all([products_category, category])
-			.then(function ([products_category, category]) {
-				res.render("products/productListForm", { products_category: products_category, category: category, update_success: undefined })
-			})
-			.catch(error => {
-				res.render('error', { error: error });
+		db.products.findAll({
+			where: {
+				name: { [Op.substring]: req.body.keywords }
+			},
+			include: [{ association: 'categories' }, { association: 'product_image' }]
+		})
+			.then(products => {
+				res.render('products/searchResults', { products: products })
 			})
 
 	},
 
 	// Listado de productos con busqueda para edicion
-	productSearchForm: (req, res) => {
-
-		// let products_category = []
-		// let category = []
-
-		// if (req.params.id !== undefined) {
-		// 	if (req.query.keywords !== "" && req.query.keywords !== undefined) {
-		// 		products_category = products.filter(function (item) {
-		// 			return (req.params.id == item.category & item.status == "Habilitado" && item.name.includes(req.query.keywords))
-		// 		})
-		// 	}
-		// 	else {
-		// 		products_category = products.filter(function (item) {
-		// 			return (req.params.id == item.category & item.status == "Habilitado")
-		// 		})
-		// 	}
-
-		// 	category = categories.filter(function (item) {
-		// 		return (req.params.id == item.id)
-		// 	})
-
-		// } else {
-		// 	if (req.query.keywords !== "" && req.query.keywords !== undefined) {
-		// 		products_category = products.filter(function (item) {
-		// 			return (item.status == "Habilitado" && item.name.includes(req.query.keywords))
-		// 		})
-		// 	}
-		// 	else {
-		// 		products_category = products.filter(function (item) {
-		// 			return (item.status == "Habilitado")
-		// 		})
-		// 	}
-		// 	category = categories
-		// }
-
-		let products_category = []
+	productAdminGet: async (req, res) => {
 		let category = []
 
-		products_category = db.products.findAll({
-			where: { status: "Habilitado" }
-		})
+		category = await db.categories.findAll(
+			{ include: [{ association: 'products', include: ['product_image'] }] })
 
-		category = db.categories.findAll()
-
-		Promise.all([products_category, category])
-			.then(function ([products_category, category]) {
-				res.render("products/productAdmin", { products_category: products_category, category: category, update_success: undefined })
-			})
-			.catch(error => {
-				res.render('error', { error: error });
-			})
-
+		res.render("products/productAdmin", { category: category })
 	},
 
 	// Formulario de creacion
@@ -341,7 +206,7 @@ const controller = {
 
 			}, { where: { id: req.params.id } })
 				.then(product => {
-					res.redirect('/productos/' + req.params.id + '/detalle');
+					res.redirect('/productos/' + req.params.id + '/detalle'); // Revisar como podemos renderizar los errores en la UI
 					// res.render("products/productEditForm", { product: product, products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
 				})
 				.catch(error => {

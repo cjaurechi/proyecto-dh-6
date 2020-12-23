@@ -16,17 +16,12 @@
         <main class="principal">
 
             <% category.forEach (function(item_category) { %>
-
-
-
                 <div class="container-categoria">
                     <section class="indicador">
                         <h2 class="detalle_producto">‏‏‎ ‎‏‏‎<%= item_category.description %>
                         </h2>
                     </section>
-
                     <div class="container-productos">
-
                         <% item_category.products.forEach (function(item) { %>
                             <% if (item.category_id==item_category.id) { %>
                                 <div class="container-producto">

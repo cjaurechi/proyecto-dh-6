@@ -44,7 +44,7 @@ router.post('/login', usersController.processLogin)
 /*** LOGOUT ***/
 router.get('/logout', authMiddleware,usersController.logout);
 
-/*** PROFILE ***/
+/*** PERFIL ***/
 router.get('/:id/perfil', authMiddleware, usersController.getProfile);
 router.put('/:id/actualizar', authMiddleware, upload.any(), usersController.updateProfile)
 router.put('/:id/actualizarAvatar', authMiddleware, uploadAvatar.any(), usersController.updateAvatar)
