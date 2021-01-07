@@ -19,11 +19,11 @@
                 <h1>Preguntas Frecuentes</h1>
             </div>
             <div class="contenedor-preguntasyrespuestas">
-                <% preguntasFrecuentes.filter (function(pregunta) { %>
+                <% questions_answers.forEach (function(pregunta) { %>
                 <div class="contenedor-cadapregunta">
                        <div class="preguntayrespuesta"> 
-                        <p class="pregunta"><%= pregunta.pregunta %> </p>
-                        <div class="respuesta"> <%= pregunta.respuesta %> </div>
+                        <p class="pregunta"><%= pregunta.question %> </p>
+                        <div class="respuesta"> <%= pregunta.answer %> </div>
                     </div>
                     
 

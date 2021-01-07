@@ -32,6 +32,7 @@ const product_imageSQLFilePath = path.join(__dirname, '../data/product_image.sql
 const commentsSQLFilePath = path.join(__dirname, '../data/comments.sql');
 const suppliersSQLFilePath = path.join(__dirname, '../data/suppliers.sql');
 const usersSQLFilePath = path.join(__dirname, '../data/users.sql');
+const questions_answersSQLFilePath = path.join(__dirname, '../data/questions_answers.sql');
 
 
 const controller = {
@@ -60,12 +61,14 @@ const controller = {
 				res.render('error', { error: error });
 			})
 
-/*     res.render('index', {categories:categories, products:products}); */
   },
 
   // Nosotros
 
   nosotros: (req, res) => {
+
+    categories = db.categories.findAll()
+
     res.render('index/nosotros', {categories: categories});
   },
 
@@ -102,7 +105,18 @@ const controller = {
 // Preguntas frecuentes
 
   preguntasFrecuentes: (req, res) => {
-    res.render('index/preguntasFrecuentes',{preguntasFrecuentes: preguntasFrecuentes});
+
+    questions_answers = db.questions_answers.findAll()
+
+		Promise.all([questions_answers])
+			.then(function ([questions_answers]) {
+        
+        res.render('index/preguntasFrecuentes',{questions_answers: questions_answers});
+ 			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+
   },
 
 
