@@ -83,9 +83,8 @@
             <li><a href="/usuarios/registro">Registrate</a></li>
             <% if (locals.user !=undefined) { %>
                 <li><a href="/usuarios/<%= locals.user.id %>/perfil">Edicion de Usuario</a></li>
-                <% } %>
-                    <li><a href="/productos/crear">Creacion</a></li>
-                    <li><a href="/productos/listadofiltro">Administrar</a></li>
+            <% } %>
+            <li><a href="/productos/administrar">Administrar</a></li>
         </ul>
     </div>
 
