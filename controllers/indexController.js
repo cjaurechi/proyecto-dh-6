@@ -67,9 +67,14 @@ const controller = {
 
   nosotros: (req, res) => {
 
-    categories = db.categories.findAll()
+    db.categories.findAll()
+    .then ((categories) => {
+          res.render('index/nosotros', {categories: categories});
+        })
+        .catch(error => {
+          res.render('error', { error: error });
+        })
 
-    res.render('index/nosotros', {categories: categories});
   },
 
   // Contacto
@@ -106,16 +111,14 @@ const controller = {
 
   preguntasFrecuentes: (req, res) => {
 
-    questions_answers = db.questions_answers.findAll()
-
-		Promise.all([questions_answers])
-			.then(function ([questions_answers]) {
-        
-        res.render('index/preguntasFrecuentes',{questions_answers: questions_answers});
- 			})
-			.catch(error => {
-				res.render('error', { error: error });
-			})
+    db.questions_answers.findAll()
+    .then ((questions_answers) => {
+          res.render('index/preguntasFrecuentes',{questions_answers: questions_answers});
+/*           res.render('index/nosotros', {categories: categories}); */
+        })
+        .catch(error => {
+          res.render('error', { error: error });
+        })
 
   },
 
