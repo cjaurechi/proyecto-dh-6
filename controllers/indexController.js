@@ -3,6 +3,8 @@ const path = require('path');
 const { DH_CHECK_P_NOT_PRIME } = require('constants');
 const db = require('../database/models');
 
+// Informaciopn solo para generar archivos desde los JSON para importar en la base de datos
+
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
@@ -175,23 +177,6 @@ const controller = {
 
     // product_image
 
-/*     try {
-      fs.unlinkSync(product_imageSQLFilePath)
-    } catch(err) {
-
-    }
-
-    let id = 0 
-    for (let i=0; i<productsImages.length; i++) {
-      id += 1
-      let sql = "insert into product_image values ('" + 
-      id + "','" +
-      productsImages[i].id + "','" +
-      productsImages[i].image + "','" +
-      productsImages[i].number + "');" + "\n"
-      fs.appendFileSync(product_imageSQLFilePath, sql);
-    } */
-
     try {
       fs.unlinkSync(product_imageSQLFilePath)
     } catch(err) {
@@ -276,6 +261,23 @@ const controller = {
         users[i].status + "');" + "\n"
         fs.appendFileSync(usersSQLFilePath, sql);
       }
+
+      // questions_answers
+
+    try {
+      fs.unlinkSync(questions_answersSQLFilePath)
+    } catch(err) {
+
+    }
+
+    for (let i=0; i<preguntasFrecuentes.length; i++) {
+      let sql = "insert into questions_answers values ('" + 
+      preguntasFrecuentes[i].id + "','" +
+      preguntasFrecuentes[i].pregunta + "','" +  
+      preguntasFrecuentes[i].respuesta + "');" + "\n"
+      fs.appendFileSync(questions_answersSQLFilePath, sql);
+    }
+
   }
 
 }
