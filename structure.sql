@@ -261,8 +261,7 @@ CREATE TABLE IF NOT EXISTS `reegalo`.`questions_answers` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `question` VARCHAR(150) NOT NULL,
   `answer` VARCHAR(700) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
