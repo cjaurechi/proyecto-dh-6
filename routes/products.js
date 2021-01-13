@@ -8,40 +8,44 @@ let authMiddleware = require('../middlewares/authMiddleware')
 const router = express.Router();
 
 var storage = multer.diskStorage({
-    destination : function (req,file,cb) {
-        cb(null,'public/images/products')
+    destination: function (req, file, cb) {
+        cb(null, 'public/images/products')
     },
-    filename : function(req,file,cb) {
-        cb(null,file.fieldname + Date.now() + path.extname(file.originalname))
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + Date.now() + path.extname(file.originalname))
     }
 })
 
-var upload = multer({storage : storage})
+var upload = multer({ storage: storage })
 
 // ********** Require de Controladores **********
 const productsController = require('../controllers/productsController');
 const { ValidationHalt } = require('express-validator/src/base');
 
-/*** LISTADO DE PRODUCTOS ***/
+/*** LISTADO DE PRODUCTOS (USUARIO Y ADMIN) ***/
 router.get('/', authMiddleware, productsController.productList);
 
-router.get('/filtro', authMiddleware, productsController.productSearch);
+/*** PANEL DE ADMINISTRACIÓN (ADMIN) ***/
+router.get('/administrar', authMiddleware, productsController.productAdminGet);
+
+/*** PRODUCTOS POR CATEGORIA ***/
+router.get('/:id?/listar', authMiddleware, productsController.productsPerCategory);
+
+/*** BUSQUEDA DE PRODUCTOS ***/
+router.post('/busqueda', authMiddleware, productsController.productSearch);
 
 /*** DETALLE DE PRODUCTO ***/
-router.get('/:id/detalle',authMiddleware, productsController.productDetail);
+router.get('/:id/detalle', authMiddleware, productsController.productDetail);
 
-/*** LISTA DE PRODUCTO ***/
-router.get('/:id?/listar', authMiddleware,productsController.productList);
+/*** CREAR UN PRODUCTO ***/
+router.get('/crear', authMiddleware, productsController.create);
+router.post('/crear', authMiddleware, upload.any(), validation, productsController.store);
 
-/*** CREAR UN PRODUCTO ***/ 
-router.get('/crear', authMiddleware, productsController.create); 
-router.post('/crear', authMiddleware, upload.any(), validation, productsController.store); 
+/*** EDICIÓN DE PRODUCTOS ***/
+router.get('/:id/editar', authMiddleware, productsController.edit);
+router.put('/:id/editar', authMiddleware, upload.any(), validation, productsController.update);
 
-/*** MODIFICAR UN PRODUCTO ***/ 
-router.get('/listado', authMiddleware, productsController.productListForm); 
-router.get('/administrar', authMiddleware, productsController.productSearchForm); 
-router.get('/:id/editar', authMiddleware, productsController.edit); 
-router.put('/:id/editar',authMiddleware, upload.any(),validation,productsController.update); 
-router.delete('/:id/borrar',authMiddleware, productsController.delete); 
+/*** BORRADO DE PRODUCTOS ***/
+router.delete('/:id/borrar', authMiddleware, productsController.delete);
 
 module.exports = router;

@@ -27,7 +27,7 @@
                             <img src="/images/logo-reegalo-blue.png" alt="" class="logo-producto">
                         </div>
 
-                        <form action="/productos/crear" method="POST" enctype="multipart/form-data"
+                        <form id="formulario-producto" action="/productos/crear" method="POST" enctype="multipart/form-data"
                             class="form-producto">
                             <div class="form-linea-texto">
                                 <label for="name" class="form-label">Nombre<span class="error">*</span></label>
@@ -35,6 +35,11 @@
                                     <input type="text" id="name" name="name" placeholder="Ej: Nombre del producto"
                                         class="form-input">
                                 </div>
+                                <% if (errors.name !=undefined) { %>
+                                    <p class="error">
+                                        <%= errors.name.msg %>
+                                    </p>
+                                <% } %>
                             </div>
                             <div class="form-linea-texto">
                                 <label for="name" class="form-label">Proveedor<span class="error">*</span></label>
@@ -67,7 +72,7 @@
                                             <p class="error">
                                                 <%= errors.price.msg %>
                                             </p>
-                                            <% } %>
+                                        <% } %>
                                     </div>
                                 </div>
                                 <div class="form-linea-compartida-2">
@@ -260,6 +265,179 @@
                 <!-- Footer del Sitio -->
 
                 <%- include("../partials/footer.ejs") %>
+
+                <script>
+                    
+                    let form = document.getElementById("formulario-producto")
+
+                    const product = {
+                        name : "",
+                        supplier : "",
+                        price : "",
+                        discount : "",
+                        category : "",
+                        life_date_to : "",
+                        life_date_from : "",
+                        expiration_days : "",
+                        share : "",
+                        stock : "",
+                        status : "",
+                        description : ""
+                    } 
+
+                    form.name.addEventListener("keyup",function() {
+                        if (validator.isAlpha(name.value) && validator.isLength(name.value,{min:10,max:50})){
+                            delete errors.name 
+                            product.name = this.value
+                        } else {
+                            errors.name.msg = "El nombre del producto debe tener minimo 10 caracteres y maximo 50"
+                            product.name = ""
+                        }
+                    })
+
+                    form.supplier.addEventListener("keyup",function() {
+                        if (supplier.value == "" || validator.isNull(supplier.value)){
+                            errors.supplier.msg = "El producto debe tener asignado un proveedor"
+                            product.supplier = ""
+                        } else {
+                            delete errors.supplier
+                            product.supplier = this.value
+                        }
+                    })
+
+                    form.price.addEventListener("keyup",function() {
+                        if (validator.isDecimal(price.value) && price.value > 0 ){
+                            delete errors.price 
+                            product.price = this.value
+                        } else {
+                            errors.price.msg = "El precio del producto debe ser numerico"
+                            product.price = ""
+                        }
+                    })
+
+                    form.discount.addEventListener("keyup",function() {
+                        if (validator.isDecimal(discount.value) && discount.value > 0 ){
+                            delete errors.discount  
+                            product.discount = this.value
+                        } else {
+                            errors.discount.msg = "El descuento del producto debe ser numerico"
+                            product.discount = ""
+                        }
+                    })
+
+                    form.category.addEventListener("keyup",function() {
+                        if (category.value == "" || validator.isNull(category.value)){
+                            errors.category.msg = "El producto debe tener asociada una categoria"
+                            product.category = ""
+                        } else {
+                            delete errors.category  
+                            product.category = this.value
+                        }
+                    })
+
+                    form.life_date_to.addEventListener("keyup",function() {
+                        if (life_date_to.value == "" && life_date_to.value < "hoy"){
+                            errors.life_date_to.msg = "El producto debe tener asignada una fecha de vigencia desde"
+                            product.life_date_to = ""
+                        } else {
+                            delete errors.life_date_to  
+                            product.life_date_to = this.value
+                        }
+                    })
+
+                    form.life_date_from.addEventListener("keyup",function() {
+                        if (life_date_from.value == "" || life_date_from.value > life_date_from.value){
+                            errors.life_date_from.msg = "El producto debe tener asignada una fecha de vigencia hasta"
+                            product.life_date_from = ""
+                        } else {
+                            delete errors.life_date_from  
+                            product.life_date_from = this.value
+                        }
+                    })
+
+                    form.expiration_days.addEventListener("keyup",function() {
+                        if (validator.isDecimal(expiration_days.value) && expiration_days.value > 0){
+                            delete errors.expiration_days  
+                            product.expiration_days = this.value
+                        } else {
+                            errors.expiration_days.msg = "Los dias de vencimiento del producto debe mayor o igual a 0"
+                            product.expiration_days = ""
+                        }
+                    })
+
+                    form.share.addEventListener("keyup",function() {
+                        if (share.value == "" || validator.isNull(share.value)){
+                            errors.share.msg = "El producto debe tener asignado si es para compartir"
+                            product.share = ""
+                        } else {
+                            delete errors.share   
+                            product.share = this.value
+                        }
+                    })
+                    
+                    form.stock.addEventListener("keyup",function() {
+                        if (validator.isDecimal(stock.value) && stock.value > 0 ){
+                            delete errors.stock 
+                            product.stock = this.value
+                        } else {
+                            errors.stock.msg = "El stock del producto debe ser numerico"
+                            product.stock = ""
+                        }
+                    })
+
+                    form.status.addEventListener("keyup",function() {
+                        if (status.value == "" || validator.isNull(status.value)){
+                            errors.status.msg = "El precio del producto debe ser numerico"
+                            product.status = ""
+                        } else {
+                            delete errors.status 
+                            product.status = this.value
+                        }
+                    })
+
+                    form.description.addEventListener("keyup",function() {
+                        if (validator.isAlpha(description.value) && validator.isLength(description.value,{min:10,max:300})){
+                            delete errors.description 
+                            product.description = this.value
+                        } else {
+                            errors.description.msg = "La descripcion del producto debe tener minimo 10 caracteres y maximo 300"
+                            product.description = ""
+                        }
+                    })
+
+                    form.addEventListener("submit",function(e) {
+                        e.preventDefault()
+
+                        if (Object.keys(errors).length > 0 ) {
+
+                        } else {
+                            fetch ('http://localhost:3001/api/productos/crear',
+                            method : 'POST',
+                            body : JSON.stringify(product),
+                            headers : {
+                                'Content-Type' : 'application/json'}
+                            )
+                            .then(res => res.json())
+                            .then(data => {
+                                form.name.value = ""
+                                form.supplier.value = ""
+                                form.price.value = ""
+                                form.discount.value = ""
+                                form.category.value = ""
+                                form.life_date_to.value = ""
+                                form.life_date_from.value = ""
+                                form.expiration_days.value = ""
+                                form.share.value = ""
+                                form.stock.value = ""
+                                form.status.value = ""
+                                form.description.value = ""
+
+                            })
+                        }
+
+                    }
+                    
+                </script>
 
 </body>
 

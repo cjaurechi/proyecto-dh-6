@@ -254,6 +254,16 @@ CREATE TABLE IF NOT EXISTS `reegalo`.`recipient_purchase` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `reegalo`.`questions_answers`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `reegalo`.`questions_answers` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `question` VARCHAR(150) NOT NULL,
+  `answer` VARCHAR(700) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -617,3 +627,12 @@ insert into comments values ('152','2','41','Salida a pasear con barbijo 15','4.
 insert into comments values ('153','2','41','Salida a pasear con barbijo 16','4.5','2020-12-10');
 insert into comments values ('154','2','41','Salida a pasear con barbijo 17','4.5','2020-12-10');
 insert into comments values ('155','2','41','Salida a pasear con barbijo 18','4.5','2020-12-10');
+
+-- -----------------------------------------------------
+-- Table `reegalo`.`questions_answers` -- insert
+-- -----------------------------------------------------
+insert into questions_answers values ("1","Como hago para regalar?","Elegis el regalo que mas te guste, lo agregas al carrito, pagas y te llega una tarjeta para disfrutar del regalo");
+insert into questions_answers values ("2","Si se me está por vencer el regalo, ¿puedo extenderlo?","Vas a poder cambiarlo a crédito (por el valor abonado por tu código) que tendrá vigencia de un año, por otra Bigbox o la misma con nuevo vencimiento a la venta. Luego de los 60 días desde el límite del uso, lamentablemente, no será posible reactivar el código.");
+insert into questions_answers values ("3","Quiero unir mis regalos, ¿cómo hago?","Para unir tus regalos deberás convertirlos en crédito. Cambiar Regalo que te permitirá convertir tus regalos en crédito.");
+insert into questions_answers values ("4","Como reservar?","Para reservar comunicate directamente con el lugar (los datos de contacto figuran en la descripción!) y hacé tu reserva indicando el código de tu Reegalo. Todas las reservas se realizan con anticipación y se encuentran sujetas a disponibilidad y condiciones del prestador de la experiencia. Las experiencias se deben reservar y realizar durante el plazo de vigencia del Reegalo. Luego de la fecha de vencimiento, el código Reegalo queda inhabilitado y no puede ser utilizado. No es posible realizar una reserva para una fecha posterior al vencimiento.");
+insert into questions_answers values ("5","¿Para cuántas personas es el Reegalo?","La cantidad de personas que podrán disfrutar la experiencia dependerá de cada Reegalo y de la actividad seleccionada. Las experiencias varían entre una y dos personas.");

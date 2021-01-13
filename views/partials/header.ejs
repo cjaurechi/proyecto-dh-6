@@ -26,8 +26,7 @@
         </div>
         <div class="container-header-der">
             <div class="container-buscador">
-
-                <form action="/productos/filtro" method="GET" class="search-form">
+                <form action="/productos/busqueda" method="POST" class="search-form">
                     <input type="text" name="keywords" placeholder="Buscar productos..." class="search-form_input">
                     <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
                 </form>
@@ -80,13 +79,13 @@
             <li><a href="/nosotros">Nosotros</a></li>
             <li><a href="/contacto">Contacto</a></li>
             <li><a href="/comoregalar">¿Cómo regalar?</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas Frecuentes</a></li>
             <li><a href="/usuarios/login">Ingresa</a></li>
             <li><a href="/usuarios/registro">Registrate</a></li>
             <% if (locals.user !=undefined) { %>
                 <li><a href="/usuarios/<%= locals.user.id %>/perfil">Edicion de Usuario</a></li>
-                <% } %>
-                    <li><a href="/productos/crear">Creacion</a></li>
-                    <li><a href="/productos/listadofiltro">Administrar</a></li>
+            <% } %>
+            <li><a href="/productos/administrar">Administrar</a></li>
         </ul>
     </div>
 

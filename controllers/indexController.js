@@ -3,6 +3,8 @@ const path = require('path');
 const { DH_CHECK_P_NOT_PRIME } = require('constants');
 const db = require('../database/models');
 
+// Informaciopn solo para generar archivos desde los JSON para importar en la base de datos
+
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
@@ -32,6 +34,7 @@ const product_imageSQLFilePath = path.join(__dirname, '../data/product_image.sql
 const commentsSQLFilePath = path.join(__dirname, '../data/comments.sql');
 const suppliersSQLFilePath = path.join(__dirname, '../data/suppliers.sql');
 const usersSQLFilePath = path.join(__dirname, '../data/users.sql');
+const questions_answersSQLFilePath = path.join(__dirname, '../data/questions_answers.sql');
 
 
 const controller = {
@@ -60,13 +63,20 @@ const controller = {
 				res.render('error', { error: error });
 			})
 
-/*     res.render('index', {categories:categories, products:products}); */
   },
 
   // Nosotros
 
   nosotros: (req, res) => {
-    res.render('index/nosotros', {categories: categories});
+
+  db.categories.findAll()
+  .then ((categories) => {
+        res.render('index/nosotros', {categories: categories});
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+
   },
 
   // Contacto
@@ -76,14 +86,42 @@ const controller = {
   },
 
   comoregalar: (req, res) => {
-    res.render('index/comoregalar');},
+
+		let products = []
+		let categories = []
+
+    products = db.products.findAll(
+      {
+      where: { status: "Habilitado" },
+      include: [{ association: "product_image" }]
+      }
+    )
+
+    categories = db.categories.findAll()
+
+		Promise.all([products,categories])
+			.then(function ([products, categories]) {
+        res.render('index/comoregalar', {categories:categories, products:products});
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+
+  },
 
 // Preguntas frecuentes
 
   preguntasFrecuentes: (req, res) => {
-    res.render('index/preguntasFrecuentes',{preguntasFrecuentes: preguntasFrecuentes});
-  },
 
+    db.questions_answers.findAll()
+    .then ((questions_answers) => {
+          res.render('index/preguntasFrecuentes',{questions_answers: questions_answers});
+        })
+        .catch(error => {
+          res.render('error', { error: error });
+        })
+  
+    },
 
   // Test
 
@@ -139,23 +177,6 @@ const controller = {
     }
 
     // product_image
-
-/*     try {
-      fs.unlinkSync(product_imageSQLFilePath)
-    } catch(err) {
-
-    }
-
-    let id = 0 
-    for (let i=0; i<productsImages.length; i++) {
-      id += 1
-      let sql = "insert into product_image values ('" + 
-      id + "','" +
-      productsImages[i].id + "','" +
-      productsImages[i].image + "','" +
-      productsImages[i].number + "');" + "\n"
-      fs.appendFileSync(product_imageSQLFilePath, sql);
-    } */
 
     try {
       fs.unlinkSync(product_imageSQLFilePath)
@@ -241,6 +262,23 @@ const controller = {
         users[i].status + "');" + "\n"
         fs.appendFileSync(usersSQLFilePath, sql);
       }
+
+      // questions_answers
+
+    try {
+      fs.unlinkSync(questions_answersSQLFilePath)
+    } catch(err) {
+
+    }
+
+    for (let i=0; i<preguntasFrecuentes.length; i++) {
+      let sql = "insert into questions_answers values ('" + 
+      preguntasFrecuentes[i].id + "','" +
+      preguntasFrecuentes[i].pregunta + "','" +  
+      preguntasFrecuentes[i].respuesta + "');" + "\n"
+      fs.appendFileSync(questions_answersSQLFilePath, sql);
+    }
+
   }
 
 }
