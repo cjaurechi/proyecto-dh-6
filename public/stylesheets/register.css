@@ -47,7 +47,7 @@ p.titulo-register {
     justify-content: space-evenly;
     align-items: center;
 }
-
+.container-user-register,
 .container-email-register,
 .container-password-register,
 .container-password-repeat,
@@ -64,6 +64,7 @@ p.titulo-register {
     margin-bottom: 1.5%;
 }
 
+.container-fa-user,
 .container-fa-envelop,
 .container-fa-key,
 .container-fa-key2,
@@ -76,7 +77,7 @@ p.titulo-register {
     opacity: 0.2;
 }
 
-input[type=email], input[type=password], input[type=date], select, textarea {
+input[type=email], input[type=password], input[type=date], input[type=text],select, textarea {
     background-color: transparent;
     width: 100%;
     font-size: 0.65em;
