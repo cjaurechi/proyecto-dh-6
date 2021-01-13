@@ -6,6 +6,10 @@ let emailInput = document.querySelector('input[name = email]')
 let nameInput = document.querySelector('input[name = name]')
 let lastNameInput = document.querySelector('input[name = last_name]')
 let passwordInput = document.querySelector('input[name = password]')
+let passwordConfirmationInput = document.querySelector('input[name = passwordrepeat]')
+
+
+
 
 emailInput.addEventListener('keyup', function(){
     if (validator.isEmail(emailInput.value)){
@@ -48,5 +52,18 @@ passwordInput.addEventListener('keyup', function(){
     }else{
         passwordInput.classList.remove('success')
         passwordInput.classList.add('error')
+    }
+})
+
+
+
+passwordConfirmationInput.addEventListener('keyup', function(){
+    if (validator.equals(passwordConfirmationInput.value,passwordInput.value )  
+    ){
+        passwordConfirmationInput.classList.remove('error')
+        passwordConfirmationInput.classList.add('success')
+    }else{
+        passwordConfirmationInput.classList.remove('success')
+        passwordConfirmationInput.classList.add('error')
     }
 })
