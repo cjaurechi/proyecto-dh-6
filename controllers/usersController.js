@@ -15,8 +15,8 @@ const controller = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             db.users.create({
-                first_name: '',
-                last_name: '',
+                first_name: req.body.name,
+                last_name: req.body.last_name,
                 email: req.body.email,
                 password: bcryptjs.hashSync(req.body.password, 10),
                 rol: '',
