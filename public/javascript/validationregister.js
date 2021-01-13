@@ -5,6 +5,7 @@
 let emailInput = document.querySelector('input[name = email]')
 let nameInput = document.querySelector('input[name = name]')
 let lastNameInput = document.querySelector('input[name = last_name]')
+let passwordInput = document.querySelector('input[name = password]')
 
 emailInput.addEventListener('keyup', function(){
     if (validator.isEmail(emailInput.value)){
@@ -33,5 +34,19 @@ lastNameInput.addEventListener('keyup', function(){
     }else{
         lastNameInput.classList.remove('success')
         lastNameInput.classList.add('error')
+    }
+})
+
+
+passwordInput.addEventListener('keyup', function(){
+    if (validator.isLength(passwordInput.value, {min:8})  
+    //Password expresion that requires one lower case letter, one upper case letter, one digit, and no spaces.
+    // && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)$/.test(passwordInput.value)
+    ){
+        passwordInput.classList.remove('error')
+        passwordInput.classList.add('success')
+    }else{
+        passwordInput.classList.remove('success')
+        passwordInput.classList.add('error')
     }
 })
