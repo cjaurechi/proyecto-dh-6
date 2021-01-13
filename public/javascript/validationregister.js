@@ -7,7 +7,8 @@ let nameInput = document.querySelector('input[name = name]')
 let lastNameInput = document.querySelector('input[name = last_name]')
 let passwordInput = document.querySelector('input[name = password]')
 let passwordConfirmationInput = document.querySelector('input[name = passwordrepeat]')
-
+let dateInput = document.querySelector('input[name = fecnac]')
+let imageInput = document.querySelector('input[name = profile]')
 
 
 
@@ -56,7 +57,6 @@ passwordInput.addEventListener('keyup', function(){
 })
 
 
-
 passwordConfirmationInput.addEventListener('keyup', function(){
     if (validator.equals(passwordConfirmationInput.value,passwordInput.value )  
     ){
@@ -67,3 +67,16 @@ passwordConfirmationInput.addEventListener('keyup', function(){
         passwordConfirmationInput.classList.add('error')
     }
 })
+
+
+dateInput.addEventListener('keyup', function(){
+    if (validator.isBefore(dateInput[01-01-2020] )  
+    ){
+        dateInput.classList.remove('error')
+        dateInput.classList.add('success')
+    }else{
+        dateInput.classList.remove('success')
+        dateInput.classList.add('error')
+    }
+})
+
