@@ -11,6 +11,7 @@ let dateInput = document.querySelector('input[name = fecnac]')
 let imageInput = document.querySelector('input[name = profile]')
 
 
+//Validar email
 
 emailInput.addEventListener('keyup', function(){
     if (validator.isEmail(emailInput.value)){
@@ -22,6 +23,8 @@ emailInput.addEventListener('keyup', function(){
     }
 })
 
+//VAlidar nombre
+
 nameInput.addEventListener('keyup', function(){
     if (validator.isAlpha(nameInput.value) && validator.isLength(nameInput.value, {min:2, max:20})){
         nameInput.classList.remove('error')
@@ -31,6 +34,8 @@ nameInput.addEventListener('keyup', function(){
         nameInput.classList.add('error')
     }
 })
+
+//validar apellido
 
 lastNameInput.addEventListener('keyup', function(){
     if (validator.isAlpha(lastNameInput.value) && validator.isLength(lastNameInput.value, {min:2, max:20})){
@@ -42,6 +47,8 @@ lastNameInput.addEventListener('keyup', function(){
     }
 })
 
+
+//validar pass
 
 passwordInput.addEventListener('keyup', function(){
     if (validator.isLength(passwordInput.value, {min:8})  
@@ -56,7 +63,7 @@ passwordInput.addEventListener('keyup', function(){
     }
 })
 
-
+// validar confirmacion de contra
 passwordConfirmationInput.addEventListener('keyup', function(){
     if (validator.equals(passwordConfirmationInput.value,passwordInput.value )  
     ){
@@ -69,14 +76,14 @@ passwordConfirmationInput.addEventListener('keyup', function(){
 })
 
 
-dateInput.addEventListener('keyup', function(){
-    if (validator.isBefore(dateInput[01-01-2020] )  
-    ){
-        dateInput.classList.remove('error')
-        dateInput.classList.add('success')
-    }else{
-        dateInput.classList.remove('success')
-        dateInput.classList.add('error')
-    }
-})
+// dateInput.addEventListener('keyup', function(){
+//     if (validator.isBefore(dateInput[01-01-2020] )  
+//     ){
+//         dateInput.classList.remove('error')
+//         dateInput.classList.add('success')
+//     }else{
+//         dateInput.classList.remove('success')
+//         dateInput.classList.add('error')
+//     }
+// })
 
