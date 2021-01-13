@@ -2,10 +2,9 @@
 
 
 
-
-
 let emailInput = document.querySelector('input[name = email]')
 let nameInput = document.querySelector('input[name = name]')
+let lastNameInput = document.querySelector('input[name = last_name]')
 
 emailInput.addEventListener('keyup', function(){
     if (validator.isEmail(emailInput.value)){
@@ -24,5 +23,15 @@ nameInput.addEventListener('keyup', function(){
     }else{
         nameInput.classList.remove('success')
         nameInput.classList.add('error')
+    }
+})
+
+lastNameInput.addEventListener('keyup', function(){
+    if (validator.isAlpha(lastNameInput.value) && validator.isLength(lastNameInput.value, {min:2, max:20})){
+        lastNameInput.classList.remove('error')
+        lastNameInput.classList.add('success')
+    }else{
+        lastNameInput.classList.remove('success')
+        lastNameInput.classList.add('error')
     }
 })
