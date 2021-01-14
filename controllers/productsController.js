@@ -133,7 +133,9 @@ const controller = {
 
 	// Alta de producto
 	store: (req, res, next) => {
+
 		let errors = validationResult(req);
+
 		if (errors.isEmpty()) {
 
 			db.products.create({
@@ -165,6 +167,8 @@ const controller = {
 				}).catch(error => {
 					return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
 				})
+		} else {
+			return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors.mapped() })
 		}
 	},
 
@@ -212,6 +216,8 @@ const controller = {
 				.catch(error => {
 					return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors })
 				})
+		} else {
+			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors.mapped() })
 		}
 	},
 

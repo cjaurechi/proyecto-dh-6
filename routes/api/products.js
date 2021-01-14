@@ -16,7 +16,26 @@ var storage = multer.diskStorage({
     }
 })
 
-var upload = multer({ storage: storage })
+/* var upload = multer({ storage: storage }) */
+
+var upload = multer({
+    storage,
+ 
+    // Validate image
+    fileFilter: (req, file, cb) => {
+ 
+       const acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+ 
+       const ext = path.extname(file.originalname);
+       
+       if (!acceptedExtensions.includes(ext)) {
+          req.file = file;
+       }
+ 
+       cb(null, acceptedExtensions.includes(ext));
+    }
+ });
+
 
 // ********** Require de Controladores **********
 const productsAPIController = require('../../controllers/api/productsController');

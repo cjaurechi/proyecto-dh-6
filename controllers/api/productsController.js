@@ -48,7 +48,9 @@ const controller = {
     
     // Alta de producto
 	store: (req, res, next) => {
+		console.log(req,1)
 		let errors = validationResult(req);
+/* 		console.log(req.files.length,2) */
 		if (errors.isEmpty()) {
 
 			db.products.create({
@@ -68,6 +70,7 @@ const controller = {
 				user_id: req.session.user.id
 			})
 				.then(product => {
+/* 					console.log(req.files,3) */
 					for (let i = 0; i < req.files.length; i++) {
 						db.product_image.create({
 							product_id: product.id,
