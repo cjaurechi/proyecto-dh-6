@@ -35,10 +35,21 @@
 
     <section class="register">
         <div class="container-register">
+           
             <p class="titulo-register">Bienvenido a</p>
+            
             <div class="container-logo-register">
                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-register">
             </div>
+
+            <% if (typeof errors != 'undefined') { %>
+                <% errors.forEach(function(error) { %>
+                <div class="error-messages">
+                    <span>‣ <%= error.msg %></span>
+                </div>
+                <% }) %>
+                <% } %>
+                
             <form class="form-register" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
                 <div class="container-user-register">
                     <div class="container-fa-user">
@@ -85,13 +96,7 @@
                     <span class="texto-perfil">Imagen de perfil *</span>
                     <input type="file" name="profile" id="profile" />
                 </div>
-                <% if (typeof errors != 'undefined') { %>
-                <% errors.forEach(function(error) { %>
-                <div class="error-messages">
-                    <span>‣ <%= error.msg %></span>
-                </div>
-                <% }) %>
-                <% } %>
+                
                 <div class="contenedor-register">
                     <button type=“submit” class="boton-register">Registrarse</button>
                 </div>
