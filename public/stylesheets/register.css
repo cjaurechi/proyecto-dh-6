@@ -69,7 +69,9 @@ p.titulo-register {
 .container-fa-key,
 .container-fa-key2,
 .container-fa-birthday-cake,
-.container-fa-camera {
+.container-fa-camera,
+.container-fa-eye,
+.container-fa-eye2 {
     display: flex;
     flex-flow: column wrap;
     align-items: center;

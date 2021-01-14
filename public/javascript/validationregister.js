@@ -9,6 +9,8 @@ let passwordInput = document.querySelector('input[name = password]')
 let passwordConfirmationInput = document.querySelector('input[name = passwordrepeat]')
 let dateInput = document.querySelector('input[name = fecnac]')
 let imageInput = document.querySelector('input[name = profile]')
+let revealPassword = document.querySelector('.container-fa-eye')
+let revealPasswordConfirmation = document.querySelector('.container-fa-eye2')
 
 
 //Validar email
@@ -61,6 +63,20 @@ passwordInput.addEventListener('keyup', function(){
         passwordInput.classList.remove('success')
         passwordInput.classList.add('error')
     }
+})
+
+//Ver password
+
+revealPassword.addEventListener('click',function(){
+    passwordInput.type = passwordInput.type == 'password' ? 'text' : 'password'
+    
+})
+
+//Ver confirmacion de password
+
+revealPasswordConfirmation.addEventListener('click',function(){
+    passwordConfirmationInput.type = passwordConfirmationInput.type == 'password' ? 'text' : 'password'
+    
 })
 
 // validar confirmacion de contra
