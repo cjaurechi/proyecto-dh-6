@@ -15,11 +15,11 @@ const controller = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             db.users.create({
-                first_name: '',
-                last_name: '',
+                first_name: req.body.name,
+                last_name: req.body.last_name,
                 email: req.body.email,
                 password: bcryptjs.hashSync(req.body.password, 10),
-                rol: '',
+                rol: 'user',
                 image: req.files[0].filename,
                 last_login: null,
                 last_date_password: moment(new Date()).format('YYYY-MM-DD'),
