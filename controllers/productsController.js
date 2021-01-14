@@ -6,23 +6,23 @@ const { validationResult } = require('express-validator');
 const db = require('../database/models');
 const { Op } = require("sequelize");
 
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-var products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+// const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
+// var products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-const productsImagesFilePath = path.join(__dirname, '../data/productsImagesDataBase.json');
-var products_images = JSON.parse(fs.readFileSync(productsImagesFilePath, 'utf-8'));
+// const productsImagesFilePath = path.join(__dirname, '../data/productsImagesDataBase.json');
+// var products_images = JSON.parse(fs.readFileSync(productsImagesFilePath, 'utf-8'));
 
-const categoriesFilePath = path.join(__dirname, '../data/categoriesDataBase.json');
-var categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
+// const categoriesFilePath = path.join(__dirname, '../data/categoriesDataBase.json');
+// var categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
 
-const suppliersFilePath = path.join(__dirname, '../data/suppliersDataBase.json');
-var suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
+// const suppliersFilePath = path.join(__dirname, '../data/suppliersDataBase.json');
+// var suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
 
-const commentsFilePath = path.join(__dirname, '../data/commentsDataBase.json');
-var comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
+// const commentsFilePath = path.join(__dirname, '../data/commentsDataBase.json');
+// var comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
 
-const usersFilePath = path.join(__dirname, '../data/users.json');
-var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+// const usersFilePath = path.join(__dirname, '../data/users.json');
+// var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 
 const controller = {

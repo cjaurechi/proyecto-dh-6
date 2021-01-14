@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path')
 
-const usersFilePath = path.join(__dirname, '../data/users.json');
-var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+// const usersFilePath = path.join(__dirname, '../data/users.json');
+// var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 function authMiddleware(req, res, next) {
 
