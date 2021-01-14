@@ -4,7 +4,7 @@ let registerMiddleware = [
     check('name').isLength({ min: 2 }).withMessage('El nombre debe contener al menos 2 caracteres'),
     check('last_name').isLength({ min: 2 }).withMessage('El apellido debe contener al menos 2 caracteres'),
     check('email').isEmail().withMessage('Por favor escribí una dirección de correo electrónico válida'),
-    check('password').isLength({ min: 6 }).withMessage('La contraseña debe contener al menos 6 caracteres'),
+    check('password').isLength({ min: 8 }).withMessage('La contraseña debe contener al menos 8 caracteres'),
     body('passwordrepeat').custom((value, { req, loc, path }) => {
         if (value !== req.body.password) {
             return false;
