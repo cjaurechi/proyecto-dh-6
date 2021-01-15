@@ -5,7 +5,7 @@ let registerMiddleware = [
     check('last_name').isLength({ min: 2 }).withMessage('El apellido debe contener al menos 2 caracteres'),
     check('email').isEmail().withMessage('Por favor escribí una dirección de correo electrónico válida'),
     check('fecnac').custom((value, { req }) => {
-        if(new Date(value) <= new Date(req.body.fecnac)) {
+        if(new Date(value) <= new Date(req.body.fecnac) || req.body.fecnac == undefined) {
             return false;
         } else {
             return true;
@@ -20,13 +20,13 @@ let registerMiddleware = [
         }
     }).withMessage('Las contraseñas deben coincidir'),
     body('profile').custom((value, { req, loc, path }) => {
-        if (req.files == undefined) {
-            return false;
-        } else {
-            return true;
-        }
-    }).withMessage('Por favor, seleccioná una foto de perfil')
-    // ¿Agregar validacion para los campos de fecha? (Validar mayoría de edad)
+        console.log (value, req.files)
+        if (req.files[0] == undefined) {
+            throw new Error ('Por favor, seleccioná una foto de perfil');
+        } 
+        return true;
+    })
+   
 ]
 
 module.exports = registerMiddleware;
