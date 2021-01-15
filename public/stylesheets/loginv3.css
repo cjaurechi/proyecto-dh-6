@@ -1,0 +1,206 @@
+/****************** Formulario Login ************************/
+
+.login-success {
+    height: 50px;
+    background-color: var(--azulreegalo);
+    color: white;
+    padding-top: 1%;
+    text-align: center;
+    font-weight: bold;
+}
+
+section.login {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(220, 220, 220, 0.3);
+    display: flex;
+    justify-content: center;
+}
+
+div.container-login {
+    width: 800px;
+    background-color: #FFFFFF;
+    margin: 3% auto;
+    padding: 2% 6%;
+    border: 0.5px solid rgba(0,0,0,.1);
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+p.titulo-login {
+    font-size: 1.5em;
+    font-family: Montserrat-SemiBold;
+    text-align: center;
+}
+
+.container-logo-login {
+    width: 100%;
+    height: 4em;
+    margin-top: 2%;
+    text-align: center;
+}
+
+.logo-login {
+    max-width: 45%;
+    max-height: 100%;
+}
+
+.form-login {
+    height: 140px;
+    width: 100%;
+    margin-top: 2%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container-email-login,
+.container-password-login {
+    background-color: rgb(211, 211, 211, 0.2);
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid gainsboro;
+    padding: 1.2%;
+    width: 100%;
+    font-size: 1.8em;
+    display: flex;
+}
+
+.container-fa-envelop,
+.container-fa-lock {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin: auto 2%;
+    opacity: 0.2;
+}
+
+input[type=email], input[type=password], select, textarea {
+    background-color: transparent;
+    width: 100%;
+    font-size: 0.65em;
+    font-family: Montserrat-Light;
+    margin: auto 2%;
+    border-style: hidden;
+    outline: none;
+    opacity: 0.4;
+}
+
+.opciones-password {
+    width: 100%;
+    height: 30px;
+    margin-top: 2%;
+    display: flex;
+    flex-flow: row wrap;
+    vertical-align: bottom;
+}
+
+.recordar {
+    font-size: 0.95em;
+    height: 18px;
+    width: 50%;
+    text-align: left;
+}
+
+input[type=checkbox] {
+    vertical-align: middle;
+    bottom: .08em;
+}
+
+.recuperar {
+    font-size: 0.95em;
+    height: 18px;
+    width: 50%;
+    text-align: right;
+}
+
+.recuperar a {
+    text-decoration: none;
+    color: var(--azulreegalo)
+}
+
+.contenedor-login {
+    width: 70%;
+    height: 50px;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-login {
+    background-color: var(--azulreegalo);
+    border: none;
+    width: 150px;
+    height: 100%;
+    font-size: 1.1em;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--azulregalostrong);
+}
+
+.divisor {
+    height: 20px;
+    width: 100%;
+    margin-top: 2%;
+    text-align: center;
+}
+
+.boton-google {
+    background-color: white;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid gainsboro;
+    padding: 1.2%;
+    width: 350px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.logo-google,
+.logo-facebook {
+    max-height: 30px;
+    margin: auto 4%;
+}
+
+.boton-facebook {
+    background-color: rgb(24, 119, 242);
+    height: 50px;
+    border-radius: 6px;
+    padding: 1.2%;
+    width: 350px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    color: white;
+    cursor: pointer;
+}
+
+.texto-google-mobile,
+.texto-facebook-mobile {
+    display: none;
+}
+
+.registrar {
+    width: 100%;
+    height: 30px;
+    margin-top: 4%;
+    text-align: center;
+}
+
+.registrar a {
+    text-decoration: none;
+    color: var(--azulreegalo);
+}
