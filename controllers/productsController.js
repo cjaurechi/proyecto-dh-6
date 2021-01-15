@@ -124,11 +124,23 @@ const controller = {
 
 		let producto_actualizado = undefined
 
-		suppliers = suppliers.filter(function (item) {
+/* 		suppliers = suppliers.filter(function (item) {
 			return (item.status == 'Habilitado')
+		}) */
+
+		let categories = db.categories.findAll()
+
+		let suppliers = db.suppliers.findAll(
+			{ where: { status: 'Habilitado' }})
+
+		Promise.all([categories, suppliers])
+		.then(function ([categories, suppliers]) {
+			res.render("products/productCreateForm", { producto_actualizado: producto_actualizado, categories: categories, suppliers: suppliers, product: {}, errors: {} });
+		})
+		.catch(error => {
+			res.render('error', { error: error });
 		})
 
-		res.render("products/productCreateForm", { producto_actualizado: producto_actualizado, categories: categories, suppliers: suppliers, product: {}, errors: {} });
 	},
 
 	// Alta de producto

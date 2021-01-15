@@ -47,7 +47,7 @@
                                 <div class="form-linea-texto_error">
                                     <select name="supplier" id="supplier" class="form-input">
                                         <option value="">Elegí</option>
-                                        <% suppliers.find (function(item) { %>
+                                        <% suppliers.forEach (function(item) { %>
                                             <option value="<%= item.id%>" <% if (product.supplier==item.id) {%> Selected
                                                 <% } %>>
                                                     <%= item.description%>
@@ -98,7 +98,7 @@
                                     <div class="form-linea-texto_error">
                                         <select name="category" id="category" class="form-input-compartido">
                                             <option value="">Elegí</option>
-                                            <% categories.find (function(item) { %>
+                                            <% categories.forEach (function(item) { %>
                                                 <option value="<%= item.id%>" <% if (product.category==item.id) {%>
                                                     Selected <% } %>>
                                                         <%= item.description%>
