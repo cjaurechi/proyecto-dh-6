@@ -2,86 +2,69 @@
 <html lang="en">
 
 <head>
-    <%- include("../partials/head.ejs", {title: "Reegalo - Login"}) %>
-    <link rel="stylesheet" href="/stylesheets/app.css">
-    <link rel="stylesheet" href="/stylesheets/login.css">
+    <%- include("../partials/head.ejs", {title: "Reegalo - Login" }) %>
+        <link rel="stylesheet" href="/stylesheets/app.css">
+        <link rel="stylesheet" href="/stylesheets/login.css">
+        <script type="text/javascript" src="../js/login.js"></script>
 </head>
 
 <body>
     <%- include("../partials/header.ejs") %>
 
-    <% if (typeof login_success != 'undefined') { %>
-    <div class="login-success">
-        <%= login_success %>
-    </div>
-    <% } %>
-
-    <form action="login" method="POST">
-        <section class="login">
-            <div class="container-login">
-                <p class="titulo-login">Iniciar sesión en</p>
-                <div class="container-logo-login">
-                    <img src="/images/logo-reegalo-blue.png" alt="" class="logo-login">
-                </div>
-                <% if (typeof errors != 'undefined'){%>
-                <p> ERROR </p>
-                <ul>
-                    <% for (let i=0; i< errors.length; i++){ %>
-                    <li>
-                        <%= errors[i].msg %>
-                    </li>
-                    <%}%>    
-                </ul>
+        <% if (typeof login_success !='undefined' ) { %>
+            <div class="login-success">
+                <%= login_success %>
+            </div>
             <% } %>
 
-                    <div class="form-login">
-                        <div class="container-email-login">
-                            <div class="container-fa-envelop">
-                                <i class="far fa-envelope"></i>
+                <section class="login">
+                    <div class="container">
+                        <div class="header">
+                            <p class="titulo-login">Iniciá sesión en</p>
+                            <div class="container-logo-login">
+                                <img src="/images/logo-reegalo-blue.png" alt="" class="logo-login">
                             </div>
-                            <input type="email" name="email" id="email" placeholder="Coreo electrónico">
                         </div>
-                        <div class="container-password-login">
-                            <div class="container-fa-lock">
-                                <i class="fas fa-lock" style="width: 32px;"></i>
+                        <form action="/usuarios/login" method="POST" class="form" id="form">
+                            <div class="form-control">
+                                <input type="email" name="email" id="email" placeholder="✉️  Correo electrónico" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
                             </div>
-                            <input type="password" name="password" id="password" placeholder="Contraseña">
-                        </div>
-                    </div>
-                    <div class="opciones-password">
-                        <div class="recordar">
-                            <input type="checkbox" id="recordar" name="recordar" value="recordar">
-                            <label for="recordar"> Recordar mi usuario y contraseña</label>
-                        </div>
-                        <div class="recuperar">
+                            <div class="form-control">
+                                <input type="password" name="password" id="password" placeholder="🔑  Contraseña" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                            <div class="recordar">
+                                <input type="checkbox" name="recordar" id="recordar" value="recordar">
+                                <label for="recordar">Recordar mi usuario y contraseña</label>
+                            </div>
+                            <button type="submit">Iniciar sesión</button>
+                        </form>
+                        <div class="container-opciones">
                             <a href="#">¿Olvidaste tu contraseña?</a>
                         </div>
+                        <div class="container-opciones">
+                            <span>¿No tenés cuenta? </span><a href="/usuarios/registro">Registrate acá.</a>
+                        </div>
                     </div>
-                    <div class="contenedor-login">
-                        <button type=“submit” class="boton-login">Ingresar</button>
-                    </div>
-    </form>
-    <div class="divisor">o</div>
-    <div class="boton-google">
-        <div class="logo-google">
-            <img src="/images/logo-google.png" alt="Google" class="logo-google">
-        </div>
-        <p class="texto-google">Iniciar sesión con Google</p>
-        <p class="texto-google-mobile">Google</p>
-    </div>
-    <div class="boton-facebook">
-        <div class="logo-facebook">
-            <img src="/images/logo-facebook.png" alt="Facebook" class="logo-facebook">
-        </div>
-        <p class="texto-facebook">Iniciar sesión con Facebook</p>
-        <p class="texto-facebook-mobile">Facebook</p>
-    </div>
-    <div class="registrar">
-        <span>¿No tenés cuenta? </span><a href="/usuarios/registro">Registrate acá.</a>
-    </div>
-    </div>
-    </section>
-    <%- include("../partials/footer.ejs") %>
+                </section>
+
+                <!-- <% if (typeof errors !='undefined' ){%>
+                    <p> ERROR </p>
+                    <ul>
+                        <% for (let i=0; i< errors.length; i++){ %>
+                            <li>
+                                <%= errors[i].msg %>
+                            </li>
+                            <%}%>
+                    </ul>
+                    <% } %> -->
+                <%- include("../partials/footer.ejs") %>
+
 </body>
 
 </html>
