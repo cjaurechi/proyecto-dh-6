@@ -5,7 +5,7 @@
     <%- include("../partials/head.ejs", {title: "Reegalo - Login" }) %>
         <link rel="stylesheet" href="/stylesheets/app.css">
         <link rel="stylesheet" href="/stylesheets/login.css">
-        <script type="text/javascript" src="../js/login.js"></script>
+        <script type="text/javascript" src="../javascript/login.js"></script>
 </head>
 
 <body>
@@ -25,18 +25,32 @@
                                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-login">
                             </div>
                         </div>
-                        <form action="/usuarios/login" method="POST" class="form" id="form">
+                        <form action="/usuarios/login" method="POST" class="form" id="form" novalidate>
                             <div class="form-control">
-                                <input type="email" name="email" id="email" placeholder="✉️  Correo electrónico" />
+                                <input type="email" name="email" id="email" placeholder="✉️  Correo electrónico" oninvalid="this.setCustomValidity('El email ingresado no es válido')" />
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
-                                <small>Error message</small>
+                                <small>Mensaje de error</small>
+                                <% if (typeof errors != 'undefined') { %>
+                                    <% errors.forEach(function(error) { %>
+                                    <% if (error.param == 'email') { %>
+                                        <small style="color: tomato; position: absolute; bottom: 0; left: 0; visibility: visible;"><%= error.msg %></small>
+                                    <% }%>
+                                    <% }) %>
+                                    <% } %>
                             </div>
                             <div class="form-control">
                                 <input type="password" name="password" id="password" placeholder="🔑  Contraseña" />
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
-                                <small>Error message</small>
+                                <small>Mensaje de error</small>
+                                <% if (typeof errors != 'undefined') { %>
+                                    <% errors.forEach(function(error) { %>
+                                    <% if (error.param == 'password') { %>
+                                        <small style="color: tomato; position: absolute; bottom: 0; left: 0; visibility: visible;"><%= error.msg %></small>
+                                    <% }%>
+                                    <% }) %>
+                                    <% } %>
                             </div>
                             <div class="recordar">
                                 <input type="checkbox" name="recordar" id="recordar" value="recordar">
