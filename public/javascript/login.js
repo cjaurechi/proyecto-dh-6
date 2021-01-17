@@ -2,6 +2,7 @@ window.addEventListener("load", function () {
     const form = document.getElementById('form');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
+    const reveal = document.getElementById('reveal')
 
     // Validación - Blur
 
@@ -28,6 +29,12 @@ window.addEventListener("load", function () {
         }
     });
 
+    //Ver password
+
+    reveal.addEventListener('click', function() {
+        password.type = password.type == 'password' ? 'text' : 'password';
+    })
+
     // Funciones auxiliares (Helpers)
 
     function validarEmail() {
@@ -36,7 +43,8 @@ window.addEventListener("load", function () {
         if (valorEmail === '') {
             setError(email, 'Este campo es obligatorio');
             return false;
-        } else if (!esEmail(valorEmail)) {
+        } else 
+        if (!esEmail(valorEmail)) {
             setError(email, 'El email ingresado no es válido');
             return false;
         } else {
@@ -57,9 +65,9 @@ window.addEventListener("load", function () {
     }
 
     function setError(input, error) {
-        const formControl = input.parentElement;
-        const small = formControl.querySelector('small');
-        formControl.className = 'form-control error';
+        const parentElement = input.parentElement;
+        let small = parentElement.querySelector('small');
+        parentElement.className = 'form-control error';
         small.innerText = error;
     }
 

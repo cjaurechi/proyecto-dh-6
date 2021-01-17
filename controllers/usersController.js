@@ -73,7 +73,7 @@ const controller = {
                     res.redirect("/");
                 })
                 .catch(error => {
-                    res.render('users/login', { errors: [{ param: 'email', msg: 'El usuario ingresado no existe' }] });
+                    res.render('users/login', { errors: [{ param: 'email', msg: 'El email ingresado no existe' }] });
                 })
         } else {
             return res.render('users/login', { errors: errors.errors })
