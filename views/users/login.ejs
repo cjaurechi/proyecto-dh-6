@@ -5,7 +5,7 @@
     <%- include("../partials/head.ejs", {title: "Reegalo - Login" }) %>
         <link rel="stylesheet" href="/stylesheets/app.css">
         <link rel="stylesheet" href="/stylesheets/login.css">
-        <script type="text/javascript" src="../js/login.js"></script>
+        <script type="text/javascript" src="../javascript/login.js"></script>
 </head>
 
 <body>
@@ -25,18 +25,49 @@
                                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-login">
                             </div>
                         </div>
-                        <form action="/usuarios/login" method="POST" class="form" id="form">
-                            <div class="form-control">
-                                <input type="email" name="email" id="email" placeholder="✉️  Correo electrónico" />
+                        <form action="/usuarios/login" method="POST" class="form" id="form" novalidate>
+                            <% if (typeof errors != 'undefined' && errors[0].param=='email') {%> 
+                            <div class="form-control error">
+                            <% } else { %>
+                                <div class="form-control">
+                                <% } %> 
+                                <input type="email" name="email" id="email" placeholder="✉️  Correo electrónico" oninvalid="this.setCustomValidity('El email ingresado no es válido')" />
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
-                                <small>Error message</small>
+                                <% if (typeof errors != 'undefined') { %>
+                                    <% errors.forEach(function(error) { %>
+                                    <% if (error.param == 'email') { %>
+                                        <small><%= error.msg %></small>
+                                    <% } else { %>
+                                        <small></small>
+                                    <% } %>
+                                    <% })%>
+                                    <% } else { %>
+                                        <small></small>
+                                    <% } %> 
                             </div>
-                            <div class="form-control">
+                            <% if (typeof errors != 'undefined' && errors[0].param=='password') {%> 
+                                <div class="form-control error">
+                                <% } else { %>
+                                    <div class="form-control">
+                                    <% } %> 
                                 <input type="password" name="password" id="password" placeholder="🔑  Contraseña" />
+                                <div id="reveal">
+                                    <i class="fas fa-eye"></i>
+                                </div>
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
-                                <small>Error message</small>
+                                <% if (typeof errors != 'undefined') { %>
+                                    <% errors.forEach(function(error) { %>
+                                    <% if (error.param == 'password') { %>
+                                        <small><%= error.msg %></small>
+                                    <% } else { %>
+                                        <small></small>
+                                    <% } %>
+                                    <% })%>
+                                    <% } else { %>
+                                        <small></small>
+                                    <% } %> 
                             </div>
                             <div class="recordar">
                                 <input type="checkbox" name="recordar" id="recordar" value="recordar">

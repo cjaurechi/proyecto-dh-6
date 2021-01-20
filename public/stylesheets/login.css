@@ -93,6 +93,15 @@ p.titulo-login {
 	right: 10px;
 }
 
+.form-control div i {
+	visibility: visible;
+	position: absolute;
+	top: 12px;
+	right: 40px;
+	opacity: 0.2;
+	cursor: pointer;
+}
+
 .form-control.success i.fa-check-circle {
 	color: teal;
 	visibility: visible;

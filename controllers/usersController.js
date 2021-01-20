@@ -67,11 +67,13 @@ const controller = {
                                 email: req.body.email
                             }
                         })
+                    } else {
+                        res.render('users/login', { errors: [{ param: 'password', msg: 'La contraseña ingresada es incorrecta'}] })
                     }
                     res.redirect("/");
                 })
                 .catch(error => {
-                    res.render('users/login', { errors: [{ "msg": 'Credenciales invalidas' }] });
+                    res.render('users/login', { errors: [{ param: 'email', msg: 'El email ingresado no existe' }] });
                 })
         } else {
             return res.render('users/login', { errors: errors.errors })
