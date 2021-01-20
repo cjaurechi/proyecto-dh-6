@@ -24,7 +24,7 @@ const controller = {
                 last_login: null,
                 last_date_password: moment(new Date()).format('YYYY-MM-DD'),
                 language: 'esp', // Default: Español
-                brday: req.body.fecnac,
+                brday: ' ',
                 country: '',
                 residence: '',
                 phone: '',
