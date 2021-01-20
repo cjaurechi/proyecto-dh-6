@@ -23,6 +23,8 @@
             opacity: 1;
             color: red
         }
+
+        
     </style>
 </head>
 
@@ -50,7 +52,9 @@
                 <% }) %>
                 <% } %>
 
-            <form class="form-register" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
+            <form class="form" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
+                             
+               
                 <div class="container-user-register">
                     <div class="container-fa-user">
                         <i class="far fa-user" style="width: 30px;"></i>
@@ -94,7 +98,7 @@
                         <i class="fas fa-camera" style="width: 30px;"></i>
                     </div>
                     <span class="texto-perfil">Imagen de perfil *</span>
-                    <input type="file" name="profile" id="profile" accept=".jpg,.jpeg,.png,.gif"/>
+                    <input type="file" name="profile" id="profile"/>
                 </div>
                 
                 <div class="contenedor-register">

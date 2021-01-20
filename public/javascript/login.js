@@ -29,6 +29,22 @@ window.addEventListener("load", function () {
         }
     });
 
+    function validarEmail() {
+        const valorEmail = email.value.trim(); // Usamos trim para sacar los espacios en blanco
+
+        if (valorEmail === '') {
+            setError(email, 'Este campo es obligatorio');
+            return false;
+        } else 
+        if (!esEmail(valorEmail)) {
+            setError(email, 'El email ingresado no es válido');
+            return false;
+        } else {
+            setSuccess(email);
+            return true;
+        }
+    }
+
     //Ver password
 
     reveal.addEventListener('click', function() {

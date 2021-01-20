@@ -1,3 +1,4 @@
+const db = require('../database/models');
 const { check, validationResult, body } = require("express-validator");
 
 let registerMiddleware = [
@@ -15,7 +16,7 @@ let registerMiddleware = [
     body('profile').custom((value, { req, loc, path }) => {
         console.log (value, req.files)
         if (req.files[0] == undefined) {
-            throw new Error ('Por favor, seleccioná una foto de perfil');
+            throw new Error ('Debe seleccionar una foto de perfil');
         } 
         return true;
     })
