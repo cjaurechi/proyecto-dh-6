@@ -315,6 +315,10 @@ textarea.form-input {
         margin: 3% 0.5% 0% 0.5%;
     }
 
+    .error {
+        font-size: 0.8em;
+    }
+
 }
 
 /* Tablet  */

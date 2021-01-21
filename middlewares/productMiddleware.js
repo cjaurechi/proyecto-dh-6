@@ -3,10 +3,10 @@ const moment = require("moment");
 
 module.exports = [
     check('name').isLength({min: 10, max:50}).withMessage("El nombre del producto debe tener minimo 10 caracteres y maximo 50"),
-    check('supplier').notEmpty().withMessage("El producto debe tener asignado un proveedor"),
+    check('supplier_id').notEmpty().withMessage("El producto debe tener asignado un proveedor"),
     check('price').isDecimal().withMessage("El precio del producto debe ser numerico"),
     check('discount').isDecimal().withMessage("El descuento del producto debe ser numerico"),
-    check('category').notEmpty().withMessage("El producto debe tener asociada una categoria"),
+    check('category_id').notEmpty().withMessage("El producto debe tener asociada una categoria"),
     check('life_date_from').isDate().withMessage("El producto debe tener asignada una fecha de vigencia desde"),
     check('life_date_to').isDate().withMessage("El producto debe tener asignada una fecha de vigencia hasta"),
     check('expiration_days').isInt({gt: 0}).withMessage("Los dias de vencimiento del producto debe mayor o igual a 0"),
@@ -21,5 +21,12 @@ module.exports = [
             throw new Error('La fecha de vigencia desde debe ser mayor o igual a hoy');
         }
         return true;
+    }),
+    check('image').custom((value,{req}) => {
+
+        if (req.files.length <= 0) {
+            throw new Error('Debe ingresar al menos una imagen');
+        }
+        return true; 
     })
 ]

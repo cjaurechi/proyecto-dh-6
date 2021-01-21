@@ -2,7 +2,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const validation = require('../middlewares/product_validator')
+const validation = require('../middlewares/productMiddleware')
 let authMiddleware = require('../middlewares/authMiddleware')
 
 const router = express.Router();
@@ -29,11 +29,9 @@ var upload = multer({
        if (!acceptedExtensions.includes(ext)) {
           req.file = file;
        }
- 
        cb(null, acceptedExtensions.includes(ext));
     }
  });
-
 
 // ********** Require de Controladores **********
 const productsController = require('../controllers/productsController');

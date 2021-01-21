@@ -291,4 +291,8 @@ textarea.form-input {
     .boton-guardar, .boton-eliminar {
         font-size: 0.9em;
     }
+
+    .error {
+        font-size: 0.8em;
+    }
 }

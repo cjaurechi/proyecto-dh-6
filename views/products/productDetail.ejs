@@ -176,12 +176,12 @@
                     </div>
                 </div>
 
-                <% product_comments.find (function(item) { %>
+                <% product_comments.forEach (function(item) { %>
 
                     <article class="contenedor_comentario">
                         <div class="comentario_usuario">
                             <div class="usuario">
-                                <%= item.user_description%>
+                                <%= item.users.first_name%>
                             </div>
                             <div class="estrellas">
                                 <i class="fas fa-star"></i>
