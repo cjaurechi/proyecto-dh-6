@@ -21,8 +21,12 @@ function authMiddleware(req, res, next) {
                     return res.render('error');
                 }
             case 'productos':
-                if ((arrayUrl[2] == "crear" || 
-                    arrayUrl[3] == "editar" ||
+
+                if ((arrayUrl[2] == "crear") & req.session.user.rol != "admin") {
+                    return res.redirect("/usuarios/login")
+                }
+
+                if ((arrayUrl[3] == "editar" ||
                     arrayUrl[3] == "borrar" ||  
                     arrayUrl[2] == "listado") & req.session.user.rol != "admin") {
                     res.locals.error = { stack: "Para acceder a esta pagina el usuario debe ser Administrador" }
@@ -36,8 +40,12 @@ function authMiddleware(req, res, next) {
                 res.locals.error = { stack: "Para acceder a esta pagina debe estar logueado" }
                 return res.render('error')
             case 'productos':
-                if (arrayUrl[2] == "crear" ||
-                    arrayUrl[3] == "detalle" ||
+
+                if (arrayUrl[2] == "crear") {
+                    return res.redirect("/usuarios/login")
+                }
+
+                if (arrayUrl[3] == "detalle" ||
                     arrayUrl[3] == "editar" ||
                     arrayUrl[3] == "borrar" ||  
                     arrayUrl[2] == "listado") {

@@ -85,7 +85,9 @@
             <% if (locals.user !=undefined) { %>
                 <li><a href="/usuarios/<%= locals.user.id %>/perfil">Edicion de Usuario</a></li>
             <% } %>
-            <li><a href="/productos/administrar">Administrar</a></li>
+            <% if (locals.user !=undefined /* && req.session.user.rol == "admin" */) { %>
+                <li><a href="/productos/administrar">Administrar</a></li>
+            <% } %>
         </ul>
     </div>
 
