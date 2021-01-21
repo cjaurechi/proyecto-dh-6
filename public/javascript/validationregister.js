@@ -91,6 +91,17 @@ passwordConfirmationInput.addEventListener('keyup', function(){
     }
 })
 
+// validar la fecha sea anterior a la de hoy
+dateInput.addEventListener('keyup', function(){
+    if (validator.isBefore(dateInput.value)  
+    ){
+        dateInput.classList.remove('error')
+        dateInput.classList.add('success')
+    }else{
+        dateInput.classList.remove('success')
+        dateInput.classList.add('error')
+    }
+})
 
 // dateInput.addEventListener('keyup', function(){
 //     if (validator.isBefore(dateInput[01-01-2020] )  

@@ -1,3 +1,4 @@
+const db = require('../database/models');
 const { check, validationResult, body } = require("express-validator");
 
 let registerMiddleware = [
@@ -13,13 +14,13 @@ let registerMiddleware = [
         }
     }).withMessage('Las contraseñas deben coincidir'),
     body('profile').custom((value, { req, loc, path }) => {
-        if (req.files == undefined) {
-            return false;
-        } else {
-            return true;
-        }
-    }).withMessage('Por favor, seleccioná una foto de perfil')
-    // ¿Agregar validacion para los campos de fecha? (Validar mayoría de edad)
+        console.log (value, req.files)
+        if (req.files[0] == undefined) {
+            throw new Error ('Debe seleccionar una foto de perfil');
+        } 
+        return true;
+    })
+   
 ]
 
 module.exports = registerMiddleware;
