@@ -24,8 +24,8 @@ module.exports = [
     }),
     check('image').custom((value,{req}) => {
 
-        if (req.files.length <= 0) {
-            throw new Error('Debe ingresar al menos una imagen');
+        if (req.files.length <= 0 || req.files.length > 5) {
+            throw new Error('Debe ingresar como minimo una imagen y como maximo 5');
         }
         return true; 
     })

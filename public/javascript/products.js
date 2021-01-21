@@ -181,13 +181,13 @@ window.addEventListener("load",function() {
     function validarImage() {
         const valorImage = image.value.trim()
 
-        if (!validator.isEmpty(valorImage)){
+        if (!validator.isEmpty(valorImage) && image.files.length <= 5){
             document.getElementById("image-error").innerHTML = ""
             image.style.borderColor = "teal"
             product.image = valorImage
             return true
         } else {
-            document.getElementById("image-error").innerHTML = "Debe seleccionar al menos una imagen"
+            document.getElementById("image-error").innerHTML = "Debe seleccionar como minimo una imagen y como maximo 5"
             image.style.borderColor = "tomato"
             product.image = ""
             return false
