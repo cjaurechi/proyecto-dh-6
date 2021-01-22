@@ -2,7 +2,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const validation = require('../../middlewares/product_validator')
+const validation = require('../../middlewares/productMiddleware')
 let authMiddleware = require('../../middlewares/authMiddleware')
 
 const router = express.Router();

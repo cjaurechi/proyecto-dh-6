@@ -42,8 +42,8 @@ window.addEventListener("load", function () {
 
     function validarPassword() {
         const valorPassword = password.value.trim().length;
-        if (valorPassword <= 7) {
-            setError(password, 'La contraseña debe tener al menos 8 caracteres válidos');
+        if (valorPassword <= 5) {
+            setError(password, 'La contraseña debe tener al menos 6 caracteres válidos');
             return false;
         } else {
             setSuccess(password);

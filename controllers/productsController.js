@@ -31,7 +31,7 @@ const controller = {
 	productDetail: (req, res) => {
 
 		let product = db.products.findByPk(req.params.id, {
-			include: [{ association: "categories" }] // Analizar si no podemos incluir la relación con product_comments acá!
+			include: [{ association: "categories" }] 
 		})
 
 		let product_images = db.product_image.findAll({
@@ -39,7 +39,8 @@ const controller = {
 		});
 
 		let product_comments = db.comments.findAll({
-			where: { product_id: req.params.id }
+			where: { product_id: req.params.id },
+			include: [{ association: 'users'}]
 		});
 
 		Promise.all([product, product_images, product_comments])
@@ -49,10 +50,7 @@ const controller = {
 				let suma_calificacion = 0
 
 				for (let i = 0; i < product_comments.length; i++) {
-					let user = users.find(function (item) {
-						return (product_comments[i].user_id == item.id);
-					})
-					product_comments[i].user_description = user.first_name
+
 					cantidad_comentarios += 1
 					suma_calificacion = suma_calificacion + product_comments[i].calification
 				}
@@ -74,29 +72,32 @@ const controller = {
 
 	// Listado de todos los productos
 	productList: async (req, res) => {
-		let category = []
 
-		category = await db.categories.findAll(
+		let category_products = []
+
+		category_products = await db.categories.findAll(
 			{ include: [{ association: 'products', where: { status: 'Habilitado' }, include: ['product_image'] }] })
 
-		res.render("products/productList", { category: category })
+		res.render("products/productList", { category_products: category_products })
 	},
 
 	// Listado de productos por categoría
 	productsPerCategory: async (req, res) => {
-		let category = []
 
-		category = await db.categories.findAll(
+		let category_products = []
+
+		category_products = await db.categories.findAll(
 			{
 				where: { id: req.params.id },
 				include: [{ association: 'products', include: ['product_image'] }]
 			})
 
-		res.render("products/productList", { category: category })
+		res.render("products/productList", { category_products: category_products })
 	},
 
 	// Detalle con busqueda de producto
 	productSearch: (req, res) => {
+		
 		db.products.findAll({
 			where: {
 				name: { [Op.substring]: req.body.keywords }
@@ -106,27 +107,28 @@ const controller = {
 			.then(products => {
 				res.render('products/searchResults', { products: products })
 			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
 
 	},
 
 	// Listado de productos con busqueda para edicion
 	productAdminGet: async (req, res) => {
-		let category = []
 
-		category = await db.categories.findAll(
+		let category_products = []
+
+		category_products = await db.categories.findAll(
 			{ include: [{ association: 'products', include: ['product_image'] }] })
 
-		res.render("products/productAdmin", { category: category })
+		res.render("products/productAdmin", { category_products: category_products })
+
 	},
 
 	// Formulario de creacion
 	create: (req, res) => {
 
 		let producto_actualizado = undefined
-
-/* 		suppliers = suppliers.filter(function (item) {
-			return (item.status == 'Habilitado')
-		}) */
 
 		let categories = db.categories.findAll()
 
@@ -136,12 +138,12 @@ const controller = {
 		Promise.all([categories, suppliers])
 		.then(function ([categories, suppliers]) {
 			res.render("products/productCreateForm", { producto_actualizado: producto_actualizado, categories: categories, suppliers: suppliers, product: {}, errors: {} });
-		})
-		.catch(error => {
-			res.render('error', { error: error });
-		})
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
 
-	},
+		},
 
 	// Alta de producto
 	store: (req, res, next) => {
@@ -153,8 +155,8 @@ const controller = {
 			db.products.create({
 				name: req.body.name,
 				description: req.body.description,
-				category_id: req.body.category,
-				supplier_id: req.body.supplier,
+				category_id: req.body.category_id,
+				supplier_id: req.body.supplier_id,
 				created_at: moment(new Date()).format('YYYY-MM-DD'),
 				expiration_days: req.body.expiration_days,
 				share: req.body.share,
@@ -177,21 +179,39 @@ const controller = {
 					res.redirect('/productos/' + product.id + '/detalle');
 					// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
 				}).catch(error => {
-					return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors })
+					res.render('error', { error: error });
 				})
 		} else {
-			return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors.mapped() })
+			let categories = db.categories.findAll()
+
+			let suppliers = db.suppliers.findAll(
+				{ where: { status: 'Habilitado' }})
+
+			Promise.all([categories, suppliers])
+			.then(function ([categories, suppliers]) {
+				return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors.mapped() })
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+
 		}
+
 	},
 
 	// Formulario de modificacion
 	edit: (req, res) => {
-		console.log(req.params.id)
-		let product = db.products.findByPk(req.params.id)
+
+		let product = db.products.findByPk(req.params.id,{
+			include: [{ association: "product_image" }]
+		})
+		
 		let suppliers = db.suppliers.findAll({ where: { status: "habilitado" } })
 
-		Promise.all([product, suppliers])
-			.then(function ([product, suppliers]) {
+		let categories = db.categories.findAll()
+
+		Promise.all([product, suppliers, categories])
+			.then(function ([product, suppliers, categories]) {
 				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: {} })
 			})
 			.catch(error => {
@@ -203,14 +223,14 @@ const controller = {
 	update: (req, res, next) => {
 
 		let errors = validationResult(req);
-		console.log(errors)
+
 		if (errors.isEmpty()) {
-			let product = db.products.findByPk(req.params.id)
-			db.products.update({
-				name: req.body.name,
+			
+			db.products.update(
+				{name: req.body.name,
 				description: req.body.description,
-				category_id: req.body.category,
-				supplier_id: req.body.supplier,
+				category_id: req.body.category_id,
+				supplier_id: req.body.supplier_id,
 				expiration_days: req.body.expiration_days,
 				share: req.body.share,
 				price: req.body.price,
@@ -218,18 +238,56 @@ const controller = {
 				life_date_from: req.body.life_date_from,
 				life_date_to: req.body.life_date_to,
 				stock: req.body.stock,
-				status: req.body.status,
+				status: req.body.status}, 
+				{where: { id: req.params.id } })
+			
+			.then(product => {
 
-			}, { where: { id: req.params.id } })
-				.then(product => {
-					res.redirect('/productos/' + req.params.id + '/detalle'); // Revisar como podemos renderizar los errores en la UI
-					// res.render("products/productEditForm", { product: product, products_category: products_category, category: category, update_success: '¡Tu producto fue actualizado exitosamente!' })
-				})
-				.catch(error => {
-					return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors })
-				})
+				if (req.files.length > 0) {
+
+					db.product_image.destroy(
+						{ where: { product_id: req.params.id } })
+
+					.then(product_image => {
+						for (let i = 0; i < req.files.length; i++) {
+							console.log(req.files.length,i)
+							db.product_image.create({
+								product_id: req.params.id,
+								image: req.files[i].filename,
+								number: i
+							})
+						}
+					})	
+					.catch(error => {
+						res.render('error', { error: error })
+					})
+
+				}
+
+				res.redirect('/productos/' + req.params.id + '/detalle');
+				// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
+			})
+			.catch(error => {
+				res.render('error', { error: error })
+			})
+
 		} else {
-			return res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors.mapped() })
+
+			let product = {id:req.params.id, ...req.body}
+
+			let categories = db.categories.findAll()
+
+			let suppliers = db.suppliers.findAll(
+				{ where: { status: 'Habilitado' }})
+	
+			Promise.all([product, categories, suppliers])
+			.then(function ([product, categories, suppliers]) {
+				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors.mapped() })
+			})
+			.catch(error => {
+				res.render('error', { error: error });
+			})
+	
 		}
 	},
 
@@ -237,25 +295,24 @@ const controller = {
 
 		// Soft delete: Solamente movemos el status a deshabilitado pero sigue vivo en la BD
 		db.products.update({
-			status: "Deshabilitado",
+			status: "Inhabilitado",
 		}, { where: { id: req.params.id } })
-			.then(() => res.redirect("/productos"))
+			.then(() => 
+				res.redirect("/productos"))
 			.catch(error => {
-				console.log(error)
 				res.render('error', { error: error })
 			})
 
-		// Hard delete: Este borra el producto de la BD
-		// db.products.destroy({
-		// 	where: {
-		// 		id: req.params.id
-		// 	}
-		// })
-		// 	.then(() => res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
-		// 	.catch(error => {
-		// 		console.log(error)
-		// 		res.render('error', { error: error })
-		// 	})
+/* 		Hard delete: Este borra el producto de la BD
+		db.products.destroy({
+			where: {
+		 		id: req.params.id
+		 	}
+		})
+		.then(() => res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
+		.catch(error => {
+			res.render('error', { error: error })
+		}) */
 	}
 };
 
