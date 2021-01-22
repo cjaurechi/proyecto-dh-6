@@ -140,14 +140,32 @@
                 </div>
 
 
-              
-                <div class="container-img-perfil">
-                    <div class="container-fa-camera">
-                        <i class="fas fa-camera" style="width: 30px;"></i>
-                    </div>
-                    <span class="texto-perfil">Imagen de perfil *</span>
-                    <input type="file" name="profile" id="profile"/>
+                 <!-- Confirmacion contrase;a -->
+
+                 <% if (typeof errors != 'undefined' && errors[0].param=='profile') {%> 
+                    <div class="form-control error">
+                    <% } else { %>
+                        <div class="form-control">
+                        <% } %> 
+                    <input type="file" name="profile" id="profile" placeholder=" Imagen de perfil" />
+                    
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <% if (typeof errors != 'undefined') { %>
+                        <% errors.forEach(function(error) { %>
+                        <% if (error.param == 'profile') { %>
+                            <small><%= error.msg %></small>
+                        <% } else { %>
+                            <small></small>
+                        <% } %>
+                        <% })%>
+                        <% } else { %>
+                            <small></small>
+                        <% } %> 
                 </div>
+
+              
+            
                 
                 <div class="contenedor-register">
                     <button type=“submit” class="boton-register">Registrarse</button>

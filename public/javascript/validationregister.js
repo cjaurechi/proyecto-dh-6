@@ -8,6 +8,7 @@ window.addEventListener("load", function () {
     const reveal = document.getElementById('reveal')
     const revealPasswordRepeat = document.querySelector('reveal2')
     const name = document.getElementById('name')
+    const profile = document.getElementById('profile')
 
     // Validación - Blur
 
@@ -25,6 +26,10 @@ window.addEventListener("load", function () {
 
     passwordRepeat.addEventListener('blur', e => {
         validarPasswordRepeat();
+    })
+
+    profile.addEventListener('blur', e => {
+        validarProfile();
     })
 
     //Ver password
@@ -75,7 +80,7 @@ window.addEventListener("load", function () {
     function validarPassword() {
         const valorPassword = password.value.trim().length;
         if (valorPassword <= 7) {
-            setError(password, 'La contraseña debe tener al menos 8 caracteres válidos');
+            setError(password, 'La contraseña debe tener mas de 8 caracteres');
             return false;
         } else {
             setSuccess(password);
@@ -93,6 +98,18 @@ window.addEventListener("load", function () {
             setError(passwordRepeat, 'Las contraseñas deben coincidir');
             return false;
         }}
+
+
+     function validarProfile() {
+        if (profile.value === '') {
+            setError(profile, 'Este campo es obligatorio');
+            return false;
+        } else {
+        
+            setSuccess(profile);
+            return true;
+        }
+            }
        
         
 
