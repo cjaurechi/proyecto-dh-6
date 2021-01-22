@@ -14,36 +14,7 @@ window.addEventListener("load", function () {
         validarPassword();
     })
 
-    // Validación - Submit
 
-    form.addEventListener('submit', e => {
-        let errores = []
-        if (validarEmail() == false){
-            errores.push('El email ingresado no es válido');
-        };
-        if (validarPassword() == false) {
-            errores.push('La contraseña debe tener al menos 8 caracteres válidos');
-        }
-        if (errores.length > 0) {
-            e.preventDefault();
-        }
-    });
-
-    function validarEmail() {
-        const valorEmail = email.value.trim(); // Usamos trim para sacar los espacios en blanco
-
-        if (valorEmail === '') {
-            setError(email, 'Este campo es obligatorio');
-            return false;
-        } else 
-        if (!esEmail(valorEmail)) {
-            setError(email, 'El email ingresado no es válido');
-            return false;
-        } else {
-            setSuccess(email);
-            return true;
-        }
-    }
 
     //Ver password
 
