@@ -27,18 +27,18 @@
                 <img src="/images/logo-reegalo-blue.png" alt="" class="logo-register">
             </div>
 
-            <% if (typeof errors != 'undefined') { %>
-                <% errors.forEach(function(error) { %>
-                <div class="error-messages">
-                    <span>‣ <%= error.msg %></span>
-                </div>
-                <% }) %>
-                <% } %>
+           
 
             <form class="form" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
-                             
-                            
-               
+               <div class="contenedor-error">              
+                <% if (typeof errors != 'undefined') { %>
+                    <% errors.forEach(function(error) { %>
+                    <div class="error-messages">
+                        <span>‣ <%= error.msg %></span>
+                    </div>
+                    <% }) %>
+                    <% } %>           
+                </div>
                <!-- Nombre y apellido -->
 
                <% if (typeof errors != 'undefined' && errors[0].param=='name') {%> 
@@ -46,12 +46,35 @@
                 <% } else { %>
                     <div class="form-control">
                     <% } %> 
-                    <input type="text" name="name" id="name" placeholder="✉️  Nombre y Apellido"  />
+                    <input type="text" name="name" id="name" placeholder="✉️  Nombre"  />
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <% if (typeof errors != 'undefined') { %>
                         <% errors.forEach(function(error) { %>
                         <% if (error.param == 'name') { %>
+                            <small><%= error.msg %></small>
+                        <% } else { %>
+                            <small></small>
+                        <% } %>
+                        <% })%>
+                        <% } else { %>
+                            <small></small>
+                        <% } %> 
+                </div>
+
+                 <!-- Apellido -->
+
+               <% if (typeof errors != 'undefined' && errors[0].param=='last_name') {%> 
+                <div class="form-control error">
+                <% } else { %>
+                    <div class="form-control">
+                    <% } %> 
+                    <input type="text" name="last_name" id="last_name" placeholder="✉️  Apellido"  />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <% if (typeof errors != 'undefined') { %>
+                        <% errors.forEach(function(error) { %>
+                        <% if (error.param == 'last_name') { %>
                             <small><%= error.msg %></small>
                         <% } else { %>
                             <small></small>
@@ -140,14 +163,14 @@
                 </div>
 
 
-                 <!-- Confirmacion contrase;a -->
+                 <!--Perfil  -->
 
                  <% if (typeof errors != 'undefined' && errors[0].param=='profile') {%> 
                     <div class="form-control error">
                     <% } else { %>
                         <div class="form-control">
                         <% } %> 
-                    <input type="file" name="profile" id="profile" placeholder=" Imagen de perfil" />
+                    <input type="file" name="profile" id="profile" placeholder=" Imagen de perfil"  accept=".jpg,.jpeg,.png,.gif"/>
                     
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
@@ -163,11 +186,10 @@
                             <small></small>
                         <% } %> 
                 </div>
-
-              
+            
             
                 
-                <div class="contenedor-register">
+                <div >
                     <button type=“submit” class="boton-register">Registrarse</button>
                 </div>
             </form>

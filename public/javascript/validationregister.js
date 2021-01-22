@@ -6,14 +6,19 @@ window.addEventListener("load", function () {
     const password = document.getElementById('password');
     const passwordRepeat = document.getElementById('passwordRepeat');
     const reveal = document.getElementById('reveal')
-    const revealPasswordRepeat = document.querySelector('reveal2')
+    const revealPasswordRepeat = document.getElementById('reveal2')
     const name = document.getElementById('name')
+    const lastName = document.getElementById('last_name')
     const profile = document.getElementById('profile')
+
 
     // Validación - Blur
 
     name.addEventListener('blur', e => {
         validarName();
+    })
+    lastName.addEventListener('blur', e => {
+        validarLastName();
     })
 
     email.addEventListener('blur', e => {
@@ -54,11 +59,26 @@ window.addEventListener("load", function () {
             setSuccess(name);
             return true;
         } else {
-            setError(name, 'El nombre y apellido ingresado no es válido');
+            setError(name, 'El nombre ingresado no es válido');
             return false;  
         }
 
     }
+
+    function validarLastName() {
+        if (lastName.value === '') {
+             setError(lastName, 'Este campo es obligatorio');
+             return false;
+         } else 
+         if (validator.isAlpha(lastName.value) && validator.isLength(lastName.value, {min:2, max:20})) {
+             setSuccess(lastName);
+             return true;
+         } else {
+             setError(lastName, 'El apellido ingresado no es válido');
+             return false;  
+         }
+ 
+     }
 
 
     function validarEmail() {
