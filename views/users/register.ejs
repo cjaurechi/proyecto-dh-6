@@ -68,12 +68,34 @@
                     </div>
                     <input type="text" name="last_name" id="last_name" placeholder="Apellido *">
                 </div>
-                <div class="container-email-register">
-                    <div class="container-fa-envelop">
-                        <i class="far fa-envelope" style="width: 30px;"></i>
+
+
+
+
+                  <!-- Correo -->
+
+                  <% if (typeof errors != 'undefined' && errors[0].param=='email') {%> 
+                    <div class="form-control error">
+                    <% } else { %>
+                        <div class="form-control">
+                        <% } %> 
+                        <input type="email" name="email" id="email" placeholder="✉️  Correo electrónico" oninvalid="this.setCustomValidity('El email ingresado no es válido')" />
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <% if (typeof errors != 'undefined') { %>
+                            <% errors.forEach(function(error) { %>
+                            <% if (error.param == 'email') { %>
+                                <small><%= error.msg %></small>
+                            <% } else { %>
+                                <small></small>
+                            <% } %>
+                            <% })%>
+                            <% } else { %>
+                                <small></small>
+                            <% } %> 
                     </div>
-                    <input type="email" name="email" id="email" placeholder="Coreo electrónico *">
-                </div>
+
+                  <!-- Contrase;a -->
                 
                 <% if (typeof errors != 'undefined' && errors[0].param=='password') {%> 
                     <div class="form-control error">
@@ -99,15 +121,7 @@
                         <% } %> 
                 </div>
                 
-                <!-- <div class="container-password-register">
-                    <div class="container-fa-key">
-                        <i class="fas fa-key" style="width: 30px;"></i>
-                    </div>
-                    <input type="password" name="password" id="password" placeholder="Contraseña *">
-                    <div class="container-fa-eye">
-                        <i class="fas fa-eye" style="width: 30px;"></i>
-                    </div>
-                </div> -->
+                <!-- Confirmacion contrase;a -->
 
                 <% if (typeof errors != 'undefined' && errors[0].param=='passwordRepeat') {%> 
                     <div class="form-control error">
@@ -134,27 +148,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
-<!-- 
-
-
-                <div class="container-password-repeat">
-                    <div class="container-fa-key2">
-                        <i class="fas fa-key" style="width: 30px;"></i>
-                    </div>
-                    <input type="password" name="passwordrepeat" id="passwordrepeat"
-                        placeholder="Confirmar contraseña *">
-                        <div class="container-fa-eye2">
-                            <i class="fas fa-eye" style="width: 30px;"></i>
-                        </div>
-                </div> -->
               
                 <div class="container-img-perfil">
                     <div class="container-fa-camera">

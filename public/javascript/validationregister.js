@@ -2,7 +2,7 @@
 
 window.addEventListener("load", function () {
     const form = document.getElementById('form');
-    // const email = document.getElementById('email');
+    const email = document.getElementById('email');
     const password = document.getElementById('password');
     const passwordRepeat = document.getElementById('passwordRepeat');
     const reveal = document.getElementById('reveal')
@@ -10,9 +10,9 @@ window.addEventListener("load", function () {
 
     // Validación - Blur
 
-    // email.addEventListener('blur', e => {
-    //     validarEmail();
-    // })
+    email.addEventListener('blur', e => {
+        validarEmail();
+    })
 
     password.addEventListener('blur', e => {
         validarPassword();
@@ -35,21 +35,21 @@ window.addEventListener("load", function () {
 
     // Funciones auxiliares (Helpers)
 
-    // function validarEmail() {
-    //     const valorEmail = email.value.trim(); // Usamos trim para sacar los espacios en blanco
+    function validarEmail() {
+        const valorEmail = email.value.trim(); // Usamos trim para sacar los espacios en blanco
 
-    //     if (valorEmail === '') {
-    //         setError(email, 'Este campo es obligatorio');
-    //         return false;
-    //     } else 
-    //     if (!esEmail(valorEmail)) {
-    //         setError(email, 'El email ingresado no es válido');
-    //         return false;
-    //     } else {
-    //         setSuccess(email);
-    //         return true;
-    //     }
-    // }
+        if (valorEmail === '') {
+            setError(email, 'Este campo es obligatorio');
+            return false;
+        } else 
+        if (!esEmail(valorEmail)) {
+            setError(email, 'El email ingresado no es válido');
+            return false;
+        } else {
+            setSuccess(email);
+            return true;
+        }
+    }
 
     function validarPassword() {
         const valorPassword = password.value.trim().length;
@@ -74,21 +74,7 @@ window.addEventListener("load", function () {
         }}
        
        
-       
-    
-
-    
-
-// validar confirmacion de contra
-passwordConfirmationInput.addEventListener('keyup', function(){
-    
-})
-
-
-
-
-
-
+     
 
     function setError(input, error) {
         const parentElement = input.parentElement;
@@ -102,31 +88,17 @@ passwordConfirmationInput.addEventListener('keyup', function(){
         formControl.className = 'form-control success';
     }
 
-    // function esEmail(email) {
-    //     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-    // }
+    function esEmail(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    }
 
-    let emailInput = document.querySelector('input[name = email]')
+
 let nameInput = document.querySelector('input[name = name]')
 let lastNameInput = document.querySelector('input[name = last_name]')
-let passwordConfirmationInput = document.querySelector('input[name = passwordrepeat]')
-let dateInput = document.querySelector('input[name = fecnac]')
 let imageInput = document.querySelector('input[name = profile]')
-let revealPassword = document.querySelector('.container-fa-eye')
-let revealPasswordConfirmation = document.querySelector('.container-fa-eye2')
 
 
-//Validar email
 
-emailInput.addEventListener('blur', function(){
-    if (validator.isEmail(emailInput.value)){
-        emailInput.classList.remove('error-register')
-        emailInput.classList.add('success-register')
-    }else{
-        emailInput.classList.remove('success-register')
-        emailInput.classList.add('error-register')
-    }
-})
 
 //VAlidar nombre
 
