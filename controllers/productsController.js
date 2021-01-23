@@ -1,29 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+/* const fs = require('fs'); */
+/* const path = require('path'); */
 const moment = require('moment');
 const { Console } = require('console');
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
 const { Op } = require("sequelize");
-
-// const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-// var products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
-// const productsImagesFilePath = path.join(__dirname, '../data/productsImagesDataBase.json');
-// var products_images = JSON.parse(fs.readFileSync(productsImagesFilePath, 'utf-8'));
-
-// const categoriesFilePath = path.join(__dirname, '../data/categoriesDataBase.json');
-// var categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
-
-// const suppliersFilePath = path.join(__dirname, '../data/suppliersDataBase.json');
-// var suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
-
-// const commentsFilePath = path.join(__dirname, '../data/commentsDataBase.json');
-// var comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
-
-// const usersFilePath = path.join(__dirname, '../data/users.json');
-// var users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
 
 const controller = {
 
@@ -176,8 +157,22 @@ const controller = {
 							number: i
 						})
 					}
-					res.redirect('/productos/' + product.id + '/detalle');
-					// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
+
+					let producto_actualizado = undefined
+
+					let categories = db.categories.findAll()
+			
+					let suppliers = db.suppliers.findAll(
+						{ where: { status: 'Habilitado' }})
+			
+					Promise.all([categories, suppliers])
+					.then(function ([categories, suppliers]) {
+						res.render("products/productCreateForm", { producto_actualizado: producto_actualizado, categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' });
+						})
+						.catch(error => {
+							res.render('error', { error: error });
+						})
+/* 					res.redirect('/productos/' + product.id + '/detalle'); */
 				}).catch(error => {
 					res.render('error', { error: error });
 				})
@@ -202,17 +197,19 @@ const controller = {
 	// Formulario de modificacion
 	edit: (req, res) => {
 
-		let product = db.products.findByPk(req.params.id,{
-			include: [{ association: "product_image" }]
-		})
+		let product = db.products.findByPk(req.params.id)
 		
+		let product_images = db.product_image.findAll({
+			where: { product_id: req.params.id }
+		});
+
 		let suppliers = db.suppliers.findAll({ where: { status: "habilitado" } })
 
 		let categories = db.categories.findAll()
 
-		Promise.all([product, suppliers, categories])
-			.then(function ([product, suppliers, categories]) {
-				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: {} })
+		Promise.all([product, suppliers, categories, product_images])
+			.then(function ([product, suppliers, categories, product_images]) {
+				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: {} })
 			})
 			.catch(error => {
 				res.render('error', { error: error });
@@ -242,12 +239,10 @@ const controller = {
 				{where: { id: req.params.id } })
 			
 			.then(product => {
-
 				if (req.files.length > 0) {
 
 					db.product_image.destroy(
 						{ where: { product_id: req.params.id } })
-
 					.then(product_image => {
 						for (let i = 0; i < req.files.length; i++) {
 							console.log(req.files.length,i)
@@ -257,13 +252,15 @@ const controller = {
 								number: i
 							})
 						}
-					})	
+					})
+					.then(product => {
+						res.redirect('/productos/' + req.params.id + '/detalle')
+					})
 					.catch(error => {
 						res.render('error', { error: error })
 					})
 
 				}
-
 				res.redirect('/productos/' + req.params.id + '/detalle');
 				// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
 			})
@@ -275,14 +272,18 @@ const controller = {
 
 			let product = {id:req.params.id, ...req.body}
 
+			let product_images = db.product_image.findAll({
+				where: { product_id: req.params.id }
+			});
+
 			let categories = db.categories.findAll()
 
 			let suppliers = db.suppliers.findAll(
 				{ where: { status: 'Habilitado' }})
 	
-			Promise.all([product, categories, suppliers])
-			.then(function ([product, categories, suppliers]) {
-				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, errors: errors.mapped() })
+			Promise.all([product, categories, suppliers, product_images])
+			.then(function ([product, categories, suppliers,product_images]) {
+				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors.mapped() })
 			})
 			.catch(error => {
 				res.render('error', { error: error });

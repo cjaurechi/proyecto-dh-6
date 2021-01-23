@@ -74,6 +74,7 @@ p.titulo-producto {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+/*     position: relative; Validacion de Charly*/
 }
 
 .error {
@@ -296,3 +297,4 @@ textarea.form-input {
         font-size: 0.8em;
     }
 }
+

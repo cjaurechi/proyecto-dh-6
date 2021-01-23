@@ -21,7 +21,7 @@
                 <a href="/comoregalar">¿Cómo regalar?</a>
                 <% if (locals.user && locals.user.rol=='admin' ) { %>
                     <a href="/productos/administrar">Administrar</a>
-                    <% } %>
+                <% } %>
             </nav>
         </div>
         <div class="container-header-der">
@@ -85,7 +85,7 @@
             <% if (locals.user !=undefined) { %>
                 <li><a href="/usuarios/<%= locals.user.id %>/perfil">Edicion de Usuario</a></li>
             <% } %>
-            <% if (locals.user !=undefined /* && req.session.user.rol == "admin" */) { %>
+            <% if (locals.user && locals.user.rol=='admin') { %>
                 <li><a href="/productos/administrar">Administrar</a></li>
             <% } %>
         </ul>

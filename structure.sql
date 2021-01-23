@@ -281,8 +281,8 @@ insert into categories values ('6','Lugares para Conocer','Lugares para Conocer'
 -- -----------------------------------------------------
 -- Table `reegalo`.`users` -- insert
 -- -----------------------------------------------------
-insert into users values ('1','','','admin@dh.com','$2a$10$DVBpNXgqc7nfxk6wnZCg/.oQ39UFnMWznKqmOIiO93zx9OzxQJ3Ri','admin','profile-admin@dh.com.jpg','2020-12-20','2020-12-20','esp','','2020-12-12','','','n','active');
-insert into users values ('2','','','user@dh.com','$2a$10$j0gnUS5gdzaji1ICXUSZKOs6CAqC23Fl/Z4Pd.oTnqWrJZ9yRXQv6','user','profile-user@dh.com.jpg','2020-12-21','2020-12-21','esp','','2020-12-10','','','n','active');
+insert into users values ('1','Administrador','Admin','admin@dh.com','$2a$10$DVBpNXgqc7nfxk6wnZCg/.oQ39UFnMWznKqmOIiO93zx9OzxQJ3Ri','admin','profile-admin@dh.com.jpg','2020-12-20','2020-12-20','esp','','2020-12-12','','','n','active');
+insert into users values ('2','Usuario General','User','user@dh.com','$2a$10$j0gnUS5gdzaji1ICXUSZKOs6CAqC23Fl/Z4Pd.oTnqWrJZ9yRXQv6','user','profile-user@dh.com.jpg','2020-12-21','2020-12-21','esp','','2020-12-10','','','n','active');
 
 -- -----------------------------------------------------
 -- Table `reegalo`.`suppliers` -- insert

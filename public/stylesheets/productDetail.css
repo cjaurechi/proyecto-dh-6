@@ -132,6 +132,7 @@ img {
 .resumen_producto {
     width: 90%;
     margin: 1%;
+    padding-bottom: 3%;
     display:flex;
     border-radius: 3px;
     border: 1px solid gainsboro;

@@ -41,12 +41,12 @@ function authMiddleware(req, res, next) {
                 return res.render('error')
             case 'productos':
 
-                if (arrayUrl[2] == "crear") {
+                if (arrayUrl[2] == "crear" ||
+                    arrayUrl[3] == "detalle") {
                     return res.redirect("/usuarios/login")
                 }
 
-                if (arrayUrl[3] == "detalle" ||
-                    arrayUrl[3] == "editar" ||
+                if (arrayUrl[3] == "editar" ||
                     arrayUrl[3] == "borrar" ||  
                     arrayUrl[2] == "listado") {
                     res.locals.error = { stack: "Para acceder a esta pagina debe estar logueado" }

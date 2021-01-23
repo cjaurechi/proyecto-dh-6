@@ -15,11 +15,11 @@
 
     <%- include("../partials/header.ejs") %>
 
-                <div id= "store-success" class="store-success"> 
-                    <% if (typeof store_success !='undefined' ) { %>
+                <% if (typeof store_success !='undefined' ) { %>
+                    <div id= "store-success" class="store-success"> 
                         <%= store_success %>
-                    <% } %>
-                </div>
+                    </div>
+                <% } %>
                 <section class="creacion-producto">
 
                     <div class="container-producto">
@@ -38,7 +38,7 @@
                                         class="form-input" />
                                     <p id="name-error" class="error">
                                         <% if (errors.name !=undefined) { %>
-                                                <%= errors.name.msg %>
+                                                <%= errors.name.msg.trim() %>
                                         <% } %>
                                     </p>
                                 </div>

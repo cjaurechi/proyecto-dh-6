@@ -51,8 +51,8 @@
                             </select>
 
                             <p id="supplier-error" class="error">
-                                <% if (errors.supplier !=undefined) { %>
-                                        <%= errors.supplier.msg %>
+                                <% if (errors.supplier_id !=undefined) { %>
+                                        <%= errors.supplier_id.msg %>
                                 <% } %>
                             </p>
                         </div>
@@ -100,8 +100,8 @@
                                         <% }) %>
                                 </select>
                                 <p id="category-error" class="error">
-                                    <% if (errors.category !=undefined) { %>
-                                        <%= errors.category.msg %>
+                                    <% if (errors.category_id !=undefined) { %>
+                                        <%= errors.category_id.msg %>
                                     <% } %>
                                 </p>
                             </div>
@@ -125,7 +125,7 @@
                     </div>
 
                     <div class="imagen-producto-contenedor">
-                        <% product.product_image.forEach (function(item) { %>
+                        <% product_images.forEach (function(item) { %>
                         <img src="/images/products/<%= item.image %>" alt="" class="imagen-producto">
                         <% }) %>
                     </div>
