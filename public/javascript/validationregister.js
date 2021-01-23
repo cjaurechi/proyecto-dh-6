@@ -1,116 +1,158 @@
 // const { validator } = require("sequelize/types/lib/utils/validator-extras")
 
+window.addEventListener("load", function () {
+    const form = document.getElementById('form');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const passwordRepeat = document.getElementById('passwordRepeat');
+    const reveal = document.getElementById('reveal')
+    const revealPasswordRepeat = document.getElementById('reveal2')
+    const name = document.getElementById('name')
+    const lastName = document.getElementById('last_name')
+    const profile = document.getElementById('profile')
 
 
-let emailInput = document.querySelector('input[name = email]')
-let nameInput = document.querySelector('input[name = name]')
-let lastNameInput = document.querySelector('input[name = last_name]')
-let passwordInput = document.querySelector('input[name = password]')
-let passwordConfirmationInput = document.querySelector('input[name = passwordrepeat]')
-let dateInput = document.querySelector('input[name = fecnac]')
-let imageInput = document.querySelector('input[name = profile]')
-let revealPassword = document.querySelector('.container-fa-eye')
-let revealPasswordConfirmation = document.querySelector('.container-fa-eye2')
+    // Validación - Blur
 
+    name.addEventListener('blur', e => {
+        validarName();
+    })
+    lastName.addEventListener('blur', e => {
+        validarLastName();
+    })
 
-//Validar email
+    email.addEventListener('blur', e => {
+        validarEmail();
+    })
 
-emailInput.addEventListener('keyup', function(){
-    if (validator.isEmail(emailInput.value)){
-        emailInput.classList.remove('error')
-        emailInput.classList.add('success')
-    }else{
-        emailInput.classList.remove('success')
-        emailInput.classList.add('error')
+    password.addEventListener('blur', e => {
+        validarPassword();
+    })
+
+    passwordRepeat.addEventListener('blur', e => {
+        validarPasswordRepeat();
+    })
+
+    profile.addEventListener('blur', e => {
+        validarProfile();
+    })
+
+    //Ver password
+
+    reveal.addEventListener('click', function() {
+        password.type = password.type == 'password' ? 'text' : 'password';
+    })
+
+    revealPasswordRepeat.addEventListener('click',function(){
+        passwordRepeat.type = passwordRepeat.type == 'password' ? 'text' : 'password'
+        
+    })
+
+    // Funciones auxiliares (Helpers)
+
+    function validarName() {
+       if (name.value === '') {
+            setError(name, 'Este campo es obligatorio');
+            return false;
+        } else 
+        if (validator.isAlpha(name.value) && validator.isLength(name.value, {min:2, max:20})) {
+            setSuccess(name);
+            return true;
+        } else {
+            setError(name, 'El nombre ingresado no es válido');
+            return false;  
+        }
+
     }
-})
 
-//VAlidar nombre
+    function validarLastName() {
+        if (lastName.value === '') {
+             setError(lastName, 'Este campo es obligatorio');
+             return false;
+         } else 
+         if (validator.isAlpha(lastName.value) && validator.isLength(lastName.value, {min:2, max:20})) {
+             setSuccess(lastName);
+             return true;
+         } else {
+             setError(lastName, 'El apellido ingresado no es válido');
+             return false;  
+         }
+ 
+     }
 
-nameInput.addEventListener('keyup', function(){
-    if (validator.isAlpha(nameInput.value) && validator.isLength(nameInput.value, {min:2, max:20})){
-        nameInput.classList.remove('error')
-        nameInput.classList.add('success')
-    }else{
-        nameInput.classList.remove('success')
-        nameInput.classList.add('error')
+
+    function validarEmail() {
+        const valorEmail = email.value.trim(); // Usamos trim para sacar los espacios en blanco
+
+        if (valorEmail === '') {
+            setError(email, 'Este campo es obligatorio');
+            return false;
+        } else 
+        if (!esEmail(valorEmail)) {
+            setError(email, 'El email ingresado no es válido');
+            return false;
+        } else {
+            setSuccess(email);
+            return true;
+        }
     }
-})
 
-//validar apellido
-
-lastNameInput.addEventListener('keyup', function(){
-    if (validator.isAlpha(lastNameInput.value) && validator.isLength(lastNameInput.value, {min:2, max:20})){
-        lastNameInput.classList.remove('error')
-        lastNameInput.classList.add('success')
-    }else{
-        lastNameInput.classList.remove('success')
-        lastNameInput.classList.add('error')
+    function validarPassword() {
+        const valorPassword = password.value.trim().length;
+        if (valorPassword <= 7) {
+            setError(password, 'La contraseña debe tener mas de 8 caracteres');
+            return false;
+        } else {
+            setSuccess(password);
+            return true;
+        }
     }
-})
+
+    function validarPasswordRepeat() {
+        if (validator.equals(passwordRepeat.value,password.value )  
+        ){
+            setSuccess(passwordRepeat);
+            return true;
+        }else{
+           
+            setError(passwordRepeat, 'Las contraseñas deben coincidir');
+            return false;
+        }}
 
 
-//validar pass
+     function validarProfile() {
+        if (profile.value === '') {
+            setError(profile, 'Este campo es obligatorio');
+            return false;
+        } else {
+        
+            setSuccess(profile);
+            return true;
+        }
+            }
+       
+        
 
-passwordInput.addEventListener('keyup', function(){
-    if (validator.isLength(passwordInput.value, {min:8})  
-    //Password expresion that requires one lower case letter, one upper case letter, one digit, and no spaces.
-    // && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)$/.test(passwordInput.value)
-    ){
-        passwordInput.classList.remove('error')
-        passwordInput.classList.add('success')
-    }else{
-        passwordInput.classList.remove('success')
-        passwordInput.classList.add('error')
-    }
-})
-
-//Ver password
-
-revealPassword.addEventListener('click',function(){
-    passwordInput.type = passwordInput.type == 'password' ? 'text' : 'password'
+        function setError(input, error) {
+            const parentElement = input.parentElement;
+            let small = parentElement.querySelector('small');
+            parentElement.className = 'form-control error';
+            small.innerText = error;
+        }
     
-})
+        function setSuccess(input) {
+            const formControl = input.parentElement;
+            formControl.className = 'form-control success';
+        }
 
-//Ver confirmacion de password
-
-revealPasswordConfirmation.addEventListener('click',function(){
-    passwordConfirmationInput.type = passwordConfirmationInput.type == 'password' ? 'text' : 'password'
-    
-})
-
-// validar confirmacion de contra
-passwordConfirmationInput.addEventListener('keyup', function(){
-    if (validator.equals(passwordConfirmationInput.value,passwordInput.value )  
-    ){
-        passwordConfirmationInput.classList.remove('error')
-        passwordConfirmationInput.classList.add('success')
-    }else{
-        passwordConfirmationInput.classList.remove('success')
-        passwordConfirmationInput.classList.add('error')
+    function esEmail(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
     }
+
 })
 
-// validar la fecha sea anterior a la de hoy
-dateInput.addEventListener('keyup', function(){
-    if (validator.isBefore(dateInput.value)  
-    ){
-        dateInput.classList.remove('error')
-        dateInput.classList.add('success')
-    }else{
-        dateInput.classList.remove('success')
-        dateInput.classList.add('error')
-    }
-})
 
-// dateInput.addEventListener('keyup', function(){
-//     if (validator.isBefore(dateInput[01-01-2020] )  
-//     ){
-//         dateInput.classList.remove('error')
-//         dateInput.classList.add('success')
-//     }else{
-//         dateInput.classList.remove('success')
-//         dateInput.classList.add('error')
-//     }
-// })
+
+
+
 

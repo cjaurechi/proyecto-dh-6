@@ -109,6 +109,11 @@ input[type=file] {
     align-self: flex-start;
     color: tomato;
     margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.contenedor-error{
+    margin: 4% 0;
 }
 
 .contenedor-register {
