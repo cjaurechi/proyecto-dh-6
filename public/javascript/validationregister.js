@@ -64,7 +64,7 @@ window.addEventListener("load", function () {
         if (lastName.value === '') {
             setError(lastName, 'Este campo es obligatorio');
             return false;
-        } else 
+        } else {
         if (validator.isLength(lastName.value, {min:2, max:20})) {
             setSuccess(lastName);
             return true;
@@ -72,7 +72,7 @@ window.addEventListener("load", function () {
             setError(lastName, 'El apellido ingresado no es válido');
             return false;  
         }
-    }
+    }}
 
 
     function validarEmail() {
