@@ -133,11 +133,11 @@ console.log("1",valorSupplier_id)
     function validarPrice() {
         const valorPrice = price.value.trim()
 
-        if (validator.isDecimal(valorPrice) && price.value > 0 ){
+        if (validator.isDecimal(valorPrice) && price.value >= 0 ){
             setSuccess(price, price_error, valorPrice);
             return true
         } else {
-            setError(price, price_error, 'El precio del producto debe ser numerico');
+            setError(price, price_error, 'El precio del producto debe ser numerico mayor o igual a 0');
             return false
         }
     }
@@ -149,11 +149,11 @@ console.log("1",valorSupplier_id)
     function validarDiscount() {
         const valorDiscount = discount.value.trim()
 
-        if (validator.isDecimal(valorDiscount) && valorDiscount > 0 ){
+        if (validator.isDecimal(valorDiscount) && valorDiscount >= 0 && valorDiscount < 100){
             setSuccess(discount, discount_error, valorDiscount);
             return true
         } else {
-            setError(discount, discount_error, 'El descuento del producto debe ser numerico');
+            setError(discount, discount_error, 'El descuento del producto debe ser mayor o igual a 0 y menor que 100');
             return false
         }
     }
@@ -239,11 +239,11 @@ console.log("1",valorSupplier_id)
 
         const valorExpiration_days = expiration_days.value.trim()
 
-        if (validator.isDecimal(valorExpiration_days) && valorExpiration_days > 0){
+        if (validator.isInt(valorExpiration_days) && valorExpiration_days >= 0){
             setSuccess(expiration_days, expiration_days_error, valorExpiration_days);
             return true
         } else {
-            setError(expiration_days, expiration_days, 'Los dias de vencimiento del producto debe mayor o igual a 0');
+            setError(expiration_days, expiration_days_error, 'Los dias de vencimiento del producto debe mayor o igual a 0');
             return false
         }
     }
@@ -271,11 +271,11 @@ console.log("1",valorSupplier_id)
     function validarStock() {
         const valorStock = stock.value.trim()
 
-        if (validator.isDecimal(valorStock) && valorStock > 0 ){
+        if (validator.isInt(valorStock) && valorStock >= 0 ){
             setSuccess(stock, stock_error, valorStock);
             return true
         } else {
-            setError(stock, stock_error, 'El stock del producto debe ser numerico');
+            setError(stock, stock_error, 'El stock del producto debe ser mayor o igual a 0');
             return false
         }
     }

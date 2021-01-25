@@ -5,7 +5,7 @@ module.exports = [
     check('name').isLength({min: 5, max:50}).withMessage("El nombre del producto debe tener minimo 10 caracteres y maximo 50"),
     check('supplier_id').notEmpty().withMessage("El producto debe tener asignado un proveedor"),
     check('price').isDecimal().withMessage("El precio del producto debe ser numerico"),
-    check('discount').isDecimal().withMessage("El descuento del producto debe ser numerico"),
+    check('discount').isDecimal({gt:0, lt:100}).withMessage("El descuento del producto debe ser mayor o igual a 0 y menor que 100"),
     check('category_id').notEmpty().withMessage("El producto debe tener asociada una categoria"),
     check('life_date_from').isDate().withMessage("El producto debe tener asignada una fecha de vigencia desde"),
     check('life_date_to').isDate().withMessage("El producto debe tener asignada una fecha de vigencia hasta"),

@@ -62,8 +62,7 @@
                         <div class="form-linea-compartida-1">
                             <label for="price" class="form-label-compartido">Precio<span class="error">*</span></label>
                             <div class="form-linea-texto_error">
-                                <input type="number" id="price" name="price" placeholder="Ej: 5678"
-                                    value="<%= product.price %>" class="form-input-compartido">
+                                <input type="number" id="price" name="price" placeholder="Ej: 5678" min="0"    value="<%= product.price %>" class="form-input-compartido">
                                 <p id="price-error" class="error">
                                     <% if (errors.price !=undefined) { %>
                                             <%= errors.price.msg %>
@@ -76,7 +75,7 @@
                                     class="error">*</span></label>
                             <div class="form-linea-texto_error">
                                 <input type="number" id="discount" name="discount" placeholder="Ej: 15"
-                                    value="<%= product.discount %>" class="form-input-compartido">
+                                min="0" max="100" value="<%= product.discount %>" class="form-input-compartido">
                                 <p id="discount-error" class="error">
                                     <% if (errors.discount !=undefined) { %>
                                             <%= errors.discount.msg %>
@@ -165,7 +164,7 @@
                                     class="error">*</span></label>
                             <div class="form-linea-texto_error">
                                 <input type="number" id="expiration_days" name="expiration_days"
-                                    value="<%= product.expiration_days %>" placeholder="Ej: 365"
+                                    value="<%= product.expiration_days %>" placeholder="Ej: 365" min="0" 
                                     class="form-input-compartido">
                                 <p id="expiration_days-error" class="error">
                                     <% if (errors.expiration_days !=undefined) { %>
@@ -202,7 +201,7 @@
                             <label for="stock" class="form-label-compartido">Disponible<span
                                     class="error">*</span></label>
                             <div class="form-linea-texto_error">
-                                <input type="number" id="stock" name="stock" placeholder="Ej: 10"
+                                <input type="number" id="stock" name="stock" placeholder="Ej: 10" min="0" 
                                     value="<%= product.stock %>" class="form-input-compartido">
                                 <p id="stock-error" class="error">
                                     <% if (errors.stock !=undefined) { %>
