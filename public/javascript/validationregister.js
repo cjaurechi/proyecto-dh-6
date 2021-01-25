@@ -34,6 +34,32 @@ window.addEventListener("load", function () {
         validarProfile();
     })
 
+    // Validación - Submit
+    form.addEventListener('submit', e => {
+        let errores = []
+        if (validarName() == false) {
+            errores.push('El nombre debe contener al menos 2 caracteres');
+        };
+        if (validarLastName() == false) {
+            errores.push('El apellido debe contener al menos 2 caracteres');
+        }
+        if (validarEmail() == false){
+            errores.push('El email ingresado no es válido');
+        };
+        if (validarPassword() == false) {
+            errores.push('La contraseña debe tener al menos 8 caracteres válidos');
+        }
+        if (validarPasswordRepeat() == false) {
+            errores.push('La contraseña debe coincidir');
+        };
+        if (validarProfile() == false) {
+            errores.push('Seleccione una imagen');
+        }
+        if (errores.length > 0) {
+            e.preventDefault();
+        }
+    });
+
     //Ver password
 
     reveal.addEventListener('click', function() {
@@ -142,31 +168,3 @@ window.addEventListener("load", function () {
     }
 
 })
-
-
-       // Validación - Submit
-
-       form.addEventListener('submit', e => {
-        let errores = []
-        if (validarName() == false) {
-            errores.push('El nombre debe contener al menos 2 caracteres');
-        };
-        if (validarLastName() == false) {
-            errores.push('El apellido debe contener al menos 2 caracteres');
-        }
-        if (validarEmail() == false){
-            errores.push('El email ingresado no es válido');
-        };
-        if (validarPassword() == false) {
-            errores.push('La contraseña debe tener al menos 8 caracteres válidos');
-        }
-        if (validarPasswordRepeat() == false) {
-            errores.push('La contraseña debe coincidir');
-        };
-        if (validarProfile() == false) {
-            errores.push('Seleccione una imagen');
-        }
-        if (errores.length > 0) {
-            e.preventDefault();
-        }
-    });
