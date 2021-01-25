@@ -3,31 +3,6 @@ const path = require('path');
 const { DH_CHECK_P_NOT_PRIME } = require('constants');
 const db = require('../database/models');
 
-// Informaciopn solo para generar archivos desde los JSON para importar en la base de datos
-
-// const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-// const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
-// const categoriesFilePath = path.join(__dirname, '../data/categoriesDataBase.json');
-// const categories = JSON.parse(fs.readFileSync(categoriesFilePath, 'utf-8'));
-
-// const productsImagesFilePath = path.join(__dirname, '../data/productsImagesDataBase.json');
-// const productsImages = JSON.parse(fs.readFileSync(productsImagesFilePath, 'utf-8'));
-
-// const commentsFilePath = path.join(__dirname, '../data/commentsDataBase.json');
-// const comments = JSON.parse(fs.readFileSync(commentsFilePath, 'utf-8'));
-
-// const suppliersFilePath = path.join(__dirname, '../data/suppliersDataBase.json');
-// const suppliers = JSON.parse(fs.readFileSync(suppliersFilePath, 'utf-8'));
-
-// const usersFilePath = path.join(__dirname, '../data/users.json');
-// const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
-// const preguntasFrecuentesFilePath = path.join(__dirname, '../data/preguntasFrecuentes.json');
-// let preguntasFrecuentes = JSON.parse(fs.readFileSync(preguntasFrecuentesFilePath, 'utf-8'));
-
-// Path para generacion de archivos sql para importar a MySql
-
 const categoriesSQLFilePath = path.join(__dirname, '../data/categories.sql');
 const productsSQLFilePath = path.join(__dirname, '../data/products.sql');
 const product_imageSQLFilePath = path.join(__dirname, '../data/product_image.sql');
