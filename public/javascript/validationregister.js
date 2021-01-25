@@ -34,8 +34,19 @@ window.addEventListener("load", function () {
         validarProfile();
     })
 
-    // Validación - Submit
-    form.addEventListener('submit', e => {
+    //Ver password
+
+    reveal.addEventListener('click', function() {
+        password.type = password.type == 'password' ? 'text' : 'password';
+    })
+
+    revealPasswordRepeat.addEventListener('click',function(){
+        passwordRepeat.type = passwordRepeat.type == 'password' ? 'text' : 'password'
+    })
+
+      // Validación - Submit
+
+      form.addEventListener('submit', e => {
         let errores = []
         if (validarName() == false) {
             errores.push('El nombre debe contener al menos 2 caracteres');
@@ -58,16 +69,6 @@ window.addEventListener("load", function () {
         if (errores.length > 0) {
             e.preventDefault();
         }
-    });
-
-    //Ver password
-
-    reveal.addEventListener('click', function() {
-        password.type = password.type == 'password' ? 'text' : 'password';
-    })
-
-    revealPasswordRepeat.addEventListener('click',function(){
-        passwordRepeat.type = passwordRepeat.type == 'password' ? 'text' : 'password'
     })
 
     // Funciones auxiliares (Helpers)
@@ -91,13 +92,13 @@ window.addEventListener("load", function () {
             setError(lastName, 'Este campo es obligatorio');
             return false;
         } else {
-        if (validator.isLength(lastName.value, {min:2, max:20})) {
-            setSuccess(lastName);
-            return true;
-        } else {
-            setError(lastName, 'El apellido ingresado no es válido');
-            return false;  
-        }
+            if (validator.isLength(lastName.value, {min:2, max:20})) {
+                setSuccess(lastName);
+                return true;
+            } else {
+                setError(lastName, 'El apellido ingresado no es válido');
+                return false;  
+            }
     }}
 
 
@@ -129,15 +130,21 @@ window.addEventListener("load", function () {
     }
 
     function validarPasswordRepeat() {
-        if (validator.equals(passwordRepeat.value,password.value )  
-        ){
-            setSuccess(passwordRepeat);
-            return true;
-        }else{       
-            setError(passwordRepeat, 'Las contraseñas deben coincidir');
+       
+    if (passwordRepeat.value === '') {
+            setError(passwordRepeat, 'Este campo es obligatorio');
             return false;
-        }
-    }
+        }else{
+       
+            if (validator.equals(passwordRepeat.value,password.value )  
+            ){
+                setSuccess(passwordRepeat);
+                return true;
+            }else{       
+                setError(passwordRepeat, 'Las contraseñas deben coincidir');
+                return false;
+            }
+    }}
 
 
     function validarProfile() {
@@ -168,3 +175,5 @@ window.addEventListener("load", function () {
     }
 
 })
+
+
