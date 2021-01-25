@@ -50,14 +50,14 @@ window.addEventListener("load", function () {
         if (name.value === '') {
             setError(name, 'Este campo es obligatorio');
             return false;
-        } else 
-        if (validator.isAlpha(name.value) && validator.isLength(name.value, {min:2, max:20})) {
-            setSuccess(name);
-            return true;
         } else {
-            setError(name, 'El nombre ingresado no es válido');
-            return false;  
-        }
+            if (validator.isAlpha(name.value) && validator.isLength(name.value, {min:2, max:20})) {
+                setSuccess(name);
+                return true;
+            } else {
+                setError(name, 'El nombre ingresado no es válido');
+                return false;  
+            }}
     }
 
     function validarLastName() {
@@ -144,7 +144,29 @@ window.addEventListener("load", function () {
 })
 
 
+       // Validación - Submit
 
-
-
-
+       form.addEventListener('submit', e => {
+        let errores = []
+        if (validarName() == false) {
+            errores.push('El nombre debe contener al menos 2 caracteres');
+        };
+        if (validarLastName() == false) {
+            errores.push('El apellido debe contener al menos 2 caracteres');
+        }
+        if (validarEmail() == false){
+            errores.push('El email ingresado no es válido');
+        };
+        if (validarPassword() == false) {
+            errores.push('La contraseña debe tener al menos 8 caracteres válidos');
+        }
+        if (validarPasswordRepeat() == false) {
+            errores.push('La contraseña debe coincidir');
+        };
+        if (validarProfile() == false) {
+            errores.push('Seleccione una imagen');
+        }
+        if (errores.length > 0) {
+            e.preventDefault();
+        }
+    });

@@ -30,15 +30,7 @@
            
 
             <form class="form" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
-               <div class="contenedor-error">              
-                <% if (typeof errors != 'undefined') { %>
-                    <% errors.forEach(function(error) { %>
-                    <div class="error-messages">
-                        <span>‣ <%= error.msg %></span>
-                    </div>
-                    <% }) %>
-                    <% } %>           
-                </div>
+              
                <!-- Nombre y apellido -->
 
                <% if (typeof errors != 'undefined' && errors[0].param=='name') {%> 
