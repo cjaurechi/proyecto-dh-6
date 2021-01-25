@@ -14,7 +14,20 @@ window.addEventListener("load", function () {
         validarPassword();
     })
 
+    // Validación - Submit
 
+    form.addEventListener('submit', e => {
+        let errores = []
+        if (validarEmail() == false){
+            errores.push('El email ingresado no es válido');
+        };
+        if (validarPassword() == false) {
+            errores.push('La contraseña debe tener al menos 8 caracteres válidos');
+        }
+        if (errores.length > 0) {
+            e.preventDefault();
+        }
+    });
 
     //Ver password
 
