@@ -16,28 +16,42 @@ const controller = {
              
         if (errors.isEmpty()) {
 
-                      
-            db.users.create({
-                first_name: req.body.name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-                password: bcryptjs.hashSync(req.body.password, 10),
-                rol: 'user',
-                image: req.files[0].filename,
-                last_login: null,
-                last_date_password: moment(new Date()).format('YYYY-MM-DD'),
-                language: 'esp', // Default: Español
-                brday: ' ',
-                country: '',
-                residence: '',
-                phone: '',
-                dark_mode: 'n',
-                status: 'active',
+            db.users.findOne({
+                where: {
+                    email: req.body.email
+                }
             })
-                .then(function () {
-                    res.render('users/login', { login_success: '¡Te registraste exitosamente! Ya podés iniciar sesión en Reegalo' });
+                .then(usuario => {
+
+                    if (usuario.email == 'undefined'){
+
+                        db.users.create({
+                                    first_name: req.body.name,
+                                    last_name: req.body.last_name,
+                                    email: req.body.email,
+                                    password: bcryptjs.hashSync(req.body.password, 10),
+                                    rol: 'user',
+                                    image: req.files[0].filename,
+                                    last_login: null,
+                                    last_date_password: moment(new Date()).format('YYYY-MM-DD'),
+                                    language: 'esp', // Default: Español
+                                    brday: ' ',
+                                    country: '',
+                                    residence: '',
+                                    phone: '',
+                                    dark_mode: 'n',
+                                    status: 'active',
+                                })
+                                    .then(function () {
+                                        res.render('users/login', { login_success: '¡Te registraste exitosamente! Ya podés iniciar sesión en Reegalo' });
+                                    })
+                    }else{
+                        res.render('users/register', { errors: [{ param: 'email', msg: 'El email ingresado ya existe' }] });
+                    }
+                
                 })
-        } else {
+                      
+        }else{
             return res.render('users/register', { errors: errors.errors })
         }
     },
