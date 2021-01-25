@@ -61,9 +61,13 @@
 .product-box {
     background-color: var(--blanco);
     border-radius: 5px;
-    overflow: hidden;
-    transition: 300ms;
+
+/* sacar la animacion del hover sobre la imagen y dejar fija la descipcion */ 
+/*  overflow: hidden;
+    transition: 300ms; */
+
     margin: 20px 0;
+    height: 100%;
   }
   
   .product-box a {
@@ -109,9 +113,12 @@
     width: 100%;
     color: var(--negro);
     margin: 0;
-    height: 0;
+
+/* sacar la animacion del hover sobre la imagen y dejar fija la descipcion */ 
+/*  height: 0;
     transition: 300ms;
-    overflow: hidden;
+    overflow: hidden; */
+
   }
   
   .product-box_data i {
@@ -129,7 +136,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 200ms;
+
+/* sacar la animacion del hover sobre la imagen y dejar fija la descipcion */      
+/*  transition: 200ms; */
+    
   }
   
   .product-box:hover {
@@ -143,10 +153,11 @@
     padding-bottom: 10px;
   }
 
-  .product-box:hover .product-description {
+/* sacar la animacion del hover sobre la imagen y dejar fija la descipcion */  
+/*   .product-box:hover .product-description {
     height: 100%;
     margin-top: 15px;
-  }
+  } */
   
 /* Media Queries  */
 

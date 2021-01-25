@@ -86,7 +86,7 @@ const controller = {
 			include: [{ association: 'categories' }, { association: 'product_image' }]
 		})
 			.then(products => {
-				res.render('products/searchResults', { products: products })
+				res.render('products/productSearch', { products: products })
 			})
 			.catch(error => {
 				res.render('error', { error: error });
