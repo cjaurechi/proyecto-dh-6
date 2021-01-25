@@ -29,16 +29,8 @@
 
            
 
-            <form class="form" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
-               <div class="contenedor-error">              
-                <% if (typeof errors != 'undefined') { %>
-                    <% errors.forEach(function(error) { %>
-                    <div class="error-messages">
-                        <span>‣ <%= error.msg %></span>
-                    </div>
-                    <% }) %>
-                    <% } %>           
-                </div>
+            <form id="form" class="form" method="POST" action="/usuarios/registro" enctype="multipart/form-data">
+              
                <!-- Nombre y apellido -->
 
                <% if (typeof errors != 'undefined' && errors[0].param=='name') {%> 
@@ -46,7 +38,7 @@
                 <% } else { %>
                     <div class="form-control">
                     <% } %> 
-                    <input type="text" name="name" id="name" placeholder="✉️  Nombre"  />
+                    <input type="text" name="name" id="name" placeholder="🧑  Nombre"  />
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <% if (typeof errors != 'undefined') { %>
@@ -69,7 +61,7 @@
                 <% } else { %>
                     <div class="form-control">
                     <% } %> 
-                    <input type="text" name="last_name" id="last_name" placeholder="✉️  Apellido"  />
+                    <input type="text" name="last_name" id="last_name" placeholder="🧑  Apellido"  />
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <% if (typeof errors != 'undefined') { %>
@@ -143,7 +135,7 @@
                     <% } else { %>
                         <div class="form-control">
                         <% } %> 
-                    <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="🔑  Contraseña" />
+                    <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="🔑  Repetir contraseña" />
                     <div id="reveal2">
                         <i class="fas fa-eye"></i>
                     </div>
@@ -169,9 +161,9 @@
                     <div class="form-control error">
                     <% } else { %>
                         <div class="form-control">
-                        <% } %> 
-                    <input type="file" name="profile" id="profile" placeholder=" Imagen de perfil"  accept=".jpg,.jpeg,.png,.gif"/>
-                    
+                        <% } %>
+                    <input type="file" name="profile" id="profile" placeholder="📷  Imagen de perfil"  accept=".jpg,.jpeg,.png,.gif"/>
+                    <div class="profile-icon">📷</div>
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <% if (typeof errors != 'undefined') { %>
@@ -186,9 +178,9 @@
                             <small></small>
                         <% } %> 
                 </div>
-            
-            
+         
                 
+
                 <div >
                     <button type=“submit” class="boton-register">Registrarse</button>
                 </div>

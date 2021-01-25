@@ -1,5 +1,3 @@
-// const { validator } = require("sequelize/types/lib/utils/validator-extras")
-
 window.addEventListener("load", function () {
     const form = document.getElementById('form');
     const email = document.getElementById('email');
@@ -10,7 +8,6 @@ window.addEventListener("load", function () {
     const name = document.getElementById('name')
     const lastName = document.getElementById('last_name')
     const profile = document.getElementById('profile')
-
 
     // Validación - Blur
 
@@ -45,40 +42,64 @@ window.addEventListener("load", function () {
 
     revealPasswordRepeat.addEventListener('click',function(){
         passwordRepeat.type = passwordRepeat.type == 'password' ? 'text' : 'password'
-        
+    })
+
+      // Validación - Submit
+
+      form.addEventListener('submit', e => {
+        let errores = []
+        if (validarName() == false) {
+            errores.push('El nombre debe contener al menos 2 caracteres');
+        };
+        if (validarLastName() == false) {
+            errores.push('El apellido debe contener al menos 2 caracteres');
+        }
+        if (validarEmail() == false){
+            errores.push('El email ingresado no es válido');
+        };
+        if (validarPassword() == false) {
+            errores.push('La contraseña debe tener al menos 8 caracteres válidos');
+        }
+        if (validarPasswordRepeat() == false) {
+            errores.push('La contraseña debe coincidir');
+        };
+        if (validarProfile() == false) {
+            errores.push('Seleccione una imagen');
+        }
+        if (errores.length > 0) {
+            e.preventDefault();
+        }
     })
 
     // Funciones auxiliares (Helpers)
 
     function validarName() {
-       if (name.value === '') {
+        if (name.value === '') {
             setError(name, 'Este campo es obligatorio');
             return false;
-        } else 
-        if (validator.isAlpha(name.value) && validator.isLength(name.value, {min:2, max:20})) {
-            setSuccess(name);
-            return true;
         } else {
-            setError(name, 'El nombre ingresado no es válido');
-            return false;  
-        }
-
+            if (validator.isAlpha(name.value) && validator.isLength(name.value, {min:2, max:20})) {
+                setSuccess(name);
+                return true;
+            } else {
+                setError(name, 'El nombre ingresado no es válido');
+                return false;  
+            }}
     }
 
     function validarLastName() {
         if (lastName.value === '') {
-             setError(lastName, 'Este campo es obligatorio');
-             return false;
-         } else 
-         if (validator.isAlpha(lastName.value) && validator.isLength(lastName.value, {min:2, max:20})) {
-             setSuccess(lastName);
-             return true;
-         } else {
-             setError(lastName, 'El apellido ingresado no es válido');
-             return false;  
-         }
- 
-     }
+            setError(lastName, 'Este campo es obligatorio');
+            return false;
+        } else {
+            if (validator.isLength(lastName.value, {min:2, max:20})) {
+                setSuccess(lastName);
+                return true;
+            } else {
+                setError(lastName, 'El apellido ingresado no es válido');
+                return false;  
+            }
+    }}
 
 
     function validarEmail() {
@@ -109,18 +130,24 @@ window.addEventListener("load", function () {
     }
 
     function validarPasswordRepeat() {
-        if (validator.equals(passwordRepeat.value,password.value )  
-        ){
-            setSuccess(passwordRepeat);
-            return true;
-        }else{
-           
-            setError(passwordRepeat, 'Las contraseñas deben coincidir');
+       
+    if (passwordRepeat.value === '') {
+            setError(passwordRepeat, 'Este campo es obligatorio');
             return false;
-        }}
+        }else{
+       
+            if (validator.equals(passwordRepeat.value,password.value )  
+            ){
+                setSuccess(passwordRepeat);
+                return true;
+            }else{       
+                setError(passwordRepeat, 'Las contraseñas deben coincidir');
+                return false;
+            }
+    }}
 
 
-     function validarProfile() {
+    function validarProfile() {
         if (profile.value === '') {
             setError(profile, 'Este campo es obligatorio');
             return false;
@@ -129,30 +156,24 @@ window.addEventListener("load", function () {
             setSuccess(profile);
             return true;
         }
-            }
-       
-        
+    }
 
-        function setError(input, error) {
-            const parentElement = input.parentElement;
-            let small = parentElement.querySelector('small');
-            parentElement.className = 'form-control error';
-            small.innerText = error;
-        }
+    function setError(input, error) {
+        const parentElement = input.parentElement;
+        let small = parentElement.querySelector('small');
+        parentElement.className = 'form-control error';
+        small.innerText = error;
+    }
     
-        function setSuccess(input) {
-            const formControl = input.parentElement;
-            formControl.className = 'form-control success';
-        }
+    function setSuccess(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'form-control success';
+    }
 
     function esEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
     }
 
 })
-
-
-
-
 
 
