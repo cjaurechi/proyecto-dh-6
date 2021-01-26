@@ -18,37 +18,46 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         rol: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: 'user'
         },
         image: {
             type: DataTypes.STRING
         },
         last_login: {
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            defaultValue: null
         },
         last_date_password: {
             type: DataTypes.DATE
         },
         language: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: 'esp'
         },
         country: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: null
         },
         brday: {
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            defaultValue: null
         },        
         residence: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: null
         },
         phone: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: null
         },
         dark_mode: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: 'n'
         },
         status: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: 'active'
         }
     }
 
