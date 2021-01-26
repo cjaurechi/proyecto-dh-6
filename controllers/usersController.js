@@ -26,7 +26,7 @@ const controller = {
                         last_name: req.body.last_name,
                         email: req.body.email,
                         password: bcryptjs.hashSync(req.body.password, 10),
-                        image: req.files[0].filename,
+                        image: req.files[0].originalname,
                         last_date_password: moment(new Date()).format('YYYY-MM-DD')
                     }).then(resultado => {
                         res.render('users/login', { login_success: '¡Te registraste exitosamente! Ya podés iniciar sesión en Reegalo' });
