@@ -23,7 +23,7 @@ const controller = {
             })
                 .then(usuario => {
 
-                    if (usuario.email == 'undefined'){
+                    if (usuario.email == null){
 
                         db.users.create({
                                     first_name: req.body.name,
@@ -46,13 +46,14 @@ const controller = {
                                         res.render('users/login', { login_success: '¡Te registraste exitosamente! Ya podés iniciar sesión en Reegalo' });
                                     })
                     }else{
-                        res.render('users/register', { errors: [{ param: 'email', msg: 'El email ingresado ya existe' }] });
+                        res.render('users/register', { errors: [{ param: 'email', msg: 'El email ingresado no existe' }] });
                     }
                 
                 })
                       
-        }else{
-            return res.render('users/register', { errors: errors.errors })
+        //    
+        // } else {
+        //     return res.render('users/register', { errors: errors.errors })
         }
     },
 

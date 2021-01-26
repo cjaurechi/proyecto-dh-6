@@ -14,8 +14,8 @@ let registerMiddleware = [
         }
     }).withMessage('Las contraseñas deben coincidir'),
     body('profile').custom((value, { req, loc, path }) => {
-        console.log (value, req.files)
-        if (req.files[0] == undefined) {
+        
+        if (req.files[0].originalname == undefined) {
             throw new Error ('Debe seleccionar una foto de perfil');
         } 
         return true;
