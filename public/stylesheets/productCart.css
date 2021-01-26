@@ -191,6 +191,8 @@ span.indicador {
     margin: 1%;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
+    
 }
 
 .seguir-compra:hover {
