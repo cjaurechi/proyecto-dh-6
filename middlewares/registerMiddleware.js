@@ -13,12 +13,19 @@ let registerMiddleware = [
             return true;
         }
     }).withMessage('Las contraseñas deben coincidir'),
+
     body('profile').custom((value, { req, loc, path }) => {
+              
         if (req.files[0] == undefined) {
             throw new Error ('Debe seleccionar una foto de perfil');
-        } 
-        return true;
-    })
+        } else{
+            if (!(/\.(jpg|jpeg|png|gif)$/i).test(uploadFile.originalname)) {
+                throw new Error('El archivo a adjuntar no es una imagen')
+            } else{
+            return true;}
+       
+    }
+})
 ]
 
 module.exports = registerMiddleware;

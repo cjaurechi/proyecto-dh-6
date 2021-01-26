@@ -30,9 +30,9 @@ window.addEventListener("load", function () {
         validarPasswordRepeat();
     })
 
-    profile.addEventListener('blur', e => {
-        validarProfile();
-    })
+    // profile.addEventListener('blur', e => {
+    //     validarProfile();
+    // })
 
     //Ver password
 
@@ -63,9 +63,9 @@ window.addEventListener("load", function () {
         if (validarPasswordRepeat() == false) {
             errores.push('La contraseña debe coincidir');
         };
-        if (validarProfile() == false) {
-            errores.push('Seleccione una imagen');
-        }
+        // if (validarProfile() == false) {
+        //     errores.push('Seleccione una imagen');
+        // }
         if (errores.length > 0) {
             e.preventDefault();
         }
@@ -145,16 +145,16 @@ window.addEventListener("load", function () {
     }}
 
 
-    function validarProfile() {
-        if (profile.value === '') {
-            setError(profile, 'Este campo es obligatorio');
-            return false;
-        } else {
+    // function validarProfile() {
+    //     if (profile.value === '') {
+    //         setError(profile, 'Este campo es obligatorio');
+    //         return false;
+    //     } else {
         
-            setSuccess(profile);
-            return true;
-        }
-    }
+    //         setSuccess(profile);
+    //         return true;
+    //     }
+    // }
 
     function setError(input, error) {
         const parentElement = input.parentElement;
