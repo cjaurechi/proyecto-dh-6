@@ -81,7 +81,7 @@ const controller = {
 		
 		db.products.findAll({
 			where: {
-				name: { [Op.substring]: req.body.keywords }
+				name: { [Op.substring]: req.query.keywords }
 			},
 			include: [{ association: 'categories' }, { association: 'product_image' }]
 		})

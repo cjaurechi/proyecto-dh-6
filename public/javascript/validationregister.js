@@ -46,7 +46,7 @@ window.addEventListener("load", function () {
 
       // Validación - Submit
 
-      form.addEventListener('submit', e => {
+    form.addEventListener('submit', e => {
         let errores = []
         if (validarName() == false) {
             errores.push('El nombre debe contener al menos 2 caracteres');
@@ -58,7 +58,7 @@ window.addEventListener("load", function () {
             errores.push('El email ingresado no es válido');
         };
         if (validarPassword() == false) {
-            errores.push('La contraseña debe tener al menos 8 caracteres válidos');
+            errores.push('La contraseña debe tener al menos 6 caracteres válidos');
         }
         if (validarPasswordRepeat() == false) {
             errores.push('La contraseña debe coincidir');
@@ -120,8 +120,8 @@ window.addEventListener("load", function () {
 
     function validarPassword() {
         const valorPassword = password.value.trim().length;
-        if (valorPassword <= 7) {
-            setError(password, 'La contraseña debe tener mas de 8 caracteres');
+        if (valorPassword <= 5) {
+            setError(password, 'La contraseña debe tener al menos 6 caracteres válidos');
             return false;
         } else {
             setSuccess(password);
@@ -130,12 +130,10 @@ window.addEventListener("load", function () {
     }
 
     function validarPasswordRepeat() {
-       
     if (passwordRepeat.value === '') {
             setError(passwordRepeat, 'Este campo es obligatorio');
             return false;
         }else{
-       
             if (validator.equals(passwordRepeat.value,password.value )  
             ){
                 setSuccess(passwordRepeat);
