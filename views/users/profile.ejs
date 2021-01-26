@@ -46,21 +46,23 @@
                                 <label for="first_name">Email: </label>
                                 <input type="email" name="email" id="email" value="<%= user.email %>">
                             </div>
-                            <% if(user.rol=='admin' ) { %>
+                            
+                            
                             <div class="container-field">
                                 <label for="first_name">Rol: </label>
                                 <select name="rol" id="rol">
-                                   
+                                    <% if(user.rol=='admin' ) { %>
                                         <option value="admin" selected>Administrador</option>
                                         <option value="user">Usuario</option>
-                        
+                                        <% } else { %>
+                                            <option value="user">Usuario</option>
                                             <% } %>
                                 </select>
                             </div>
                             <div class="container-field">
                                 <label for="first_name">Idioma: </label>
                                 <select name="language" id="language">
-                                    <% if(user.language=='esp' ) { %>
+                                    <% if(user.language=='esp') { %>
                                         <option value="esp" selected>Español</option>
                                         <option value="eng">Inglés</option>
                                         <% } else { %>
@@ -88,7 +90,7 @@
                             <div class="container-field">
                                 <label for="first_name">Tema: </label>
                                 <select name="dark_mode" id="dark_mode">
-                                    <% if(user.dark_mode=='n' ) { %>
+                                    <% if(user.dark_mode=='n') { %>
                                         <option value="n" selected>Claro</option>
                                         <option value="y">Oscuro</option>
                                         <% } else { %>
