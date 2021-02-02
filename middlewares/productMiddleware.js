@@ -1,5 +1,6 @@
 const { check, body} = require('express-validator');
 const moment = require("moment");
+const path = require("path");
 
 module.exports = [
     check('name').isLength({min: 5, max:50}).withMessage("El nombre del producto debe tener minimo 10 caracteres y maximo 50"),
@@ -30,10 +31,28 @@ module.exports = [
         return true;
     }),
     check('image').custom((value,{req}) => {
-
         if ((req.files.length <= 0 || req.files.length > 5) && !req.originalUrl.includes("editar")) {
             throw new Error('Debe ingresar como minimo una imagen y como maximo 5');
         }
         return true; 
-    })
+    }),
+    body("image")
+      .custom((value, { req }) => {
+        if (req.files != undefined) {
+          const acceptedExtensions = [".jpg", ".jpeg", ".png", ".gif"];
+
+          for (let i = 0; i < req.files.length; i++) {
+            const ext = path.extname(req.files[i].originalname);
+
+            if (!acceptedExtensions.includes(ext)) {
+                throw new Error (
+                    "La imagen debe tener uno de los siguientes formatos: JPG, JPEG, PNG, GIF"
+                )
+            }
+          }
+        }
+
+        return true;
+      })
+
 ]

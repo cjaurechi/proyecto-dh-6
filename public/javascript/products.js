@@ -181,6 +181,8 @@ console.log("1",valorSupplier_id)
     function validarImage() {
         let valorImage = image.value.trim()
 
+        console.log(image.files)
+
         if (
             (!validator.isEmpty(valorImage) && window.location.pathname.includes("crear") && image.files.length <= 5 ) || 
             ((validator.isEmpty(valorImage) || image.files.length <= 5) && window.location.pathname.includes("editar"))) {
@@ -365,13 +367,41 @@ console.log("1",valorSupplier_id)
             product.stock === "" ||
             product.status === "" ||
             product.description === "") {
-            console.log(product)
             document.getElementById("store-success").innerHTML = "Debe Completar los campos indicados con error"
         } else {
             console.log(product)
+
+            let input = document.querySelector('input[type="file"]') // es del ejemplo
+
+            let data = new FormData()
+
+            data.append('files', image.files)
+
+            data.append('file', input.files[0]) // es del ejemplo
+
+            for (const file of input.files) { // es para archivos multiples
+                data.append('files',file,file.name) // es para archivos multiples
+            } // es para archivos multiples
+
+            data.append('product.name', product.name)
+            data.append('product.supplier', product.supplier)
+            data.append('product.price', product.price)
+            data.append('product.discount', product.discount)
+            data.append('product.category', product.category)
+            data.append('product.life_date_to', product.life_date_to)
+            data.append('product.life_date_from', product.life_date_from)
+            data.append('product.expiration_days', product.expiration_days)
+            data.append('product.share', product.share)
+            data.append('product.stock', product.stock)
+            data.append('product.status', product.status)
+            data.append('product.description', product.description)
+            data.append('product.name', product.name)
+            data.append('product.name', product.name)
+
+
             fetch ('http://localhost:3001/api/productos/crear', {
             method : 'POST',
-            body : JSON.stringify(product),
+            body : data,
             headers : {'Content-Type' : 'application/json'}
             })
             .then(res => res.json())

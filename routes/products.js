@@ -16,6 +16,8 @@ var storage = multer.diskStorage({
     }
 })
 
+/* var upload = multer({ storage: storage }) */
+
 var upload = multer({
     storage,
 
