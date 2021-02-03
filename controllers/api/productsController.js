@@ -8,7 +8,7 @@ const { Op, json } = require("sequelize");
 
 const controller = {
 
-	// Listado de todos los productos
+	// Listado de todos los productos *
 	productList: async (req, res) => {
 		let category = []
 
@@ -55,8 +55,8 @@ const controller = {
 							image: req.files[i].filename,
 							number: i
 						})
-                    }
-                    res.status(201).json({})
+					}
+					res.status(201).json({})
 /* 					res.redirect('/productos/' + product.id + '/detalle'); */
 					// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
 				}).catch(error => {
