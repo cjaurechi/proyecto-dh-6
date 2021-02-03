@@ -15,14 +15,22 @@
 
     <%- include("../partials/header.ejs") %>
 
-                <% if (typeof store_success !='undefined' ) { %>
-                    <div id= "store-success" class="store-success"> 
+                <div id= "store-success">
+                    <% if (typeof store_success !='undefined' ) { %>
                         <%= store_success %>
+                    <% } %>
+                </div>
+
+
+<!--            <%# if (typeof store_success !='undefined' ) { %>
+                    <div id= "store-success" class="store-success"> 
+                        <%#= store_success %>
                     </div>
-                <% } else {%>
+                <%# } else {%>
                     <div id= "store-success" class="store-success"> 
                     </div>
-                <% } %>
+                <%# } %> --> 
+                
                 <section class="creacion-producto">
 
                     <div class="container-producto">

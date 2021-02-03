@@ -88,6 +88,11 @@ window.addEventListener("load",function() {
         setError(description, description_error, description_error.innerHTML.trim());
     }
 
+
+    if (document.getElementById('store-success').innerHTML.trim() != "" && document.getElementById('store-success') !='undefined') {
+        document.getElementById("store-success").classList.add("store-success")
+    }
+    
     name.addEventListener("blur",function() {
         validarName()
     })
@@ -325,7 +330,7 @@ window.addEventListener("load",function() {
 
 /*      codigo para actualizar sin API */
 
-        if (product.name === "" ||
+/*         if (product.name === "" ||
             product.supplier_id === "" ||
             product.price === "" ||
             product.discount === "" ||
@@ -339,12 +344,12 @@ window.addEventListener("load",function() {
             product.status === "" ||
             product.description === "") {
             event.preventDefault()
-        } 
+        }  */
 
 
 /*      codigo para actualizar via API */
         
-/*         event.preventDefault()
+        event.preventDefault()
 
         if (product.name === "" ||
             product.supplier === "" ||
@@ -359,14 +364,12 @@ window.addEventListener("load",function() {
             product.status === "" ||
             product.description === "") {
             console.log("1",product)
+
+            document.getElementById("store-success").classList.add("store-success")
             document.getElementById("store-success").innerHTML = "Debe Completar los campos indicados con error"
         } else {
 
-            console.log("2",product)
-
             let input = document.querySelector('input[type="file"]') // es del ejemplo
-
-            console.log("3",input)
 
             let data = new FormData()
 
@@ -375,10 +378,10 @@ window.addEventListener("load",function() {
             } 
 
             data.append('name', product.name)
-            data.append('supplier', product.supplier)
+            data.append('supplier_id', product.supplier_id)
             data.append('price', product.price)
             data.append('discount', product.discount)
-            data.append('category', product.category)
+            data.append('category_id', product.category_id)
             data.append('life_date_to', product.life_date_to)
             data.append('life_date_from', product.life_date_from)
             data.append('expiration_days', product.expiration_days)
@@ -387,20 +390,20 @@ window.addEventListener("load",function() {
             data.append('status', product.status)
             data.append('description', product.description)
 
-            console.log("4",data)
-
             fetch ('http://localhost:3001/api/productos/crear', {
             method : 'POST', 
-            body : JSON.stringify(product), // body : data,
-            headers : {'Content-Type' : 'application/json'}
+/*          body : JSON.stringify(product), */
+            body : data,
+/*          headers : {'Content-Type' : 'application/json'} */
+/*          headers : {'Content-Type': 'multipart/form-data'} */
             })
             .then(res => res.json())
             .then(data => {
                 form.name.value = ""
-                form.supplier.value = ""
+                form.supplier_id.value = ""
                 form.price.value = ""
                 form.discount.value = ""
-                form.category.value = ""
+                form.category_id.value = ""
                 form.life_date_to.value = ""
                 form.life_date_from.value = ""
                 form.expiration_days.value = ""
@@ -408,9 +411,13 @@ window.addEventListener("load",function() {
                 form.stock.value = ""
                 form.status.value = ""
                 form.description.value = ""
+
+                document.getElementById("store-success").classList.add("store-success")
+                document.getElementById("store-success").innerHTML = "¡Tu producto fue dado de alta exitosamente!"
+
             })
             .catch(error => {console.log(error)})
-        } */
+        }
 
     })
 

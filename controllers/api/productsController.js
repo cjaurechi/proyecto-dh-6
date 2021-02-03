@@ -1,5 +1,3 @@
-/* const fs = require('fs'); */
-/* const path = require('path'); */
 const moment = require('moment');
 const { Console } = require('console');
 const { validationResult } = require('express-validator');
@@ -37,8 +35,8 @@ const controller = {
 			db.products.create({
 				name: req.body.name,
 				description: req.body.description,
-				category_id: req.body.category,
-				supplier_id: req.body.supplier,
+				category_id: req.body.category_id,
+				supplier_id: req.body.supplier_id,
 				created_at: moment(new Date()).format('YYYY-MM-DD'),
 				expiration_days: req.body.expiration_days,
 				share: req.body.share,
@@ -50,22 +48,22 @@ const controller = {
 				status: req.body.status,
 				user_id: req.session.user.id
 			})
-				.then(product => {
-					for (let i = 0; i < req.files.length; i++) {
-						db.product_image.create({
-							product_id: product.id,
-							image: req.files[i].filename,
-							number: i
-						})
-					}
-					res.status(201).json({})
-/* 					res.redirect('/productos/' + product.id + '/detalle'); */
-					// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
-				})
-				.catch(error => {
-/* 					return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors }) */
-                    res.json(error)
-				})
+			.then(product => {
+				for (let i = 0; i < req.files.length; i++) {
+					db.product_image.create({
+						product_id: product.id,
+						image: req.files[i].filename,
+						number: i
+					})
+				}
+				res.status(201).json({})
+			})
+			.catch(error => {
+                res.json(error)
+			})
+			
+		} else {
+			res.status(303).json({})
 		}
 	}
 
