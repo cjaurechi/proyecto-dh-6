@@ -29,7 +29,9 @@ const controller = {
     
     // Alta de producto
 	store: (req, res, next) => {
+
 		let errors = validationResult(req);
+
 		if (errors.isEmpty()) {
 
 			db.products.create({
@@ -59,7 +61,8 @@ const controller = {
                     res.status(201).json({})
 /* 					res.redirect('/productos/' + product.id + '/detalle'); */
 					// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
-				}).catch(error => {
+				})
+				.catch(error => {
 /* 					return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors }) */
                     res.json(error)
 				})

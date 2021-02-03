@@ -38,12 +38,12 @@ const cartRouter = require('./routes/cart')
 
 const apiProductsRouter = require('./routes/api/products');
 
+app.use('/api/productos', apiProductsRouter);
+
 app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
 app.use('/productos', productsRouter);
 app.use('/carrito', cartRouter);
-
-app.use('/api/productos', apiProductsRouter);
 
 // ********** NO TOCAR A PARTIR DE ACÁ **********
 // ********** Para errores 404 **********

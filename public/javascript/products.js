@@ -1,7 +1,5 @@
 window.addEventListener("load",function() {
 
-    console.log(window.location.pathname.includes("editar"))
-
     let form = document.getElementById("formulario-producto")
     
 //  Campos Inputs 
@@ -114,13 +112,10 @@ window.addEventListener("load",function() {
 
     function validarSupplier_id() {
         const valorSupplier_id = supplier_id.value.trim()
-console.log("1",valorSupplier_id)
         if (valorSupplier_id.value === "" || validator.isEmpty(valorSupplier_id)){
-            console.log("2")
             setError(supplier_id, supplier_error, 'El producto debe tener asignado un proveedor');
             return false
         } else {
-            console.log("3")
             setSuccess(supplier_id, supplier_error, valorSupplier_id);
             return true
         }
@@ -180,8 +175,6 @@ console.log("1",valorSupplier_id)
 
     function validarImage() {
         let valorImage = image.value.trim()
-
-        console.log(image.files)
 
         if (
             (!validator.isEmpty(valorImage) && window.location.pathname.includes("crear") && image.files.length <= 5 ) || 
@@ -307,11 +300,9 @@ console.log("1",valorSupplier_id)
 
         if (valorDescription != "" && validator.isLength(valorDescription,{min:20,max:300})){
             setSuccess(description, description_error, valorDescription);
-            console.log("11",product)
             return true
         } else {
             setError(description, description_error, 'La descripcion del producto debe tener minimo 20 caracteres y maximo 300');
-            console.log("12",product)
             return false
         }
     }
@@ -332,9 +323,9 @@ console.log("1",valorSupplier_id)
         validarStatus() 
         validarDescription() 
 
-        console.log("10",product)
+/*      codigo para actualizar sin API */
 
-/*         if (product.name === "" ||
+        if (product.name === "" ||
             product.supplier_id === "" ||
             product.price === "" ||
             product.discount === "" ||
@@ -348,12 +339,12 @@ console.log("1",valorSupplier_id)
             product.status === "" ||
             product.description === "") {
             event.preventDefault()
-        }  */
-/*      
+        } 
 
-        codigo para actualizar via API
+
+/*      codigo para actualizar via API */
         
-        event.preventDefault()
+/*         event.preventDefault()
 
         if (product.name === "" ||
             product.supplier === "" ||
@@ -367,41 +358,40 @@ console.log("1",valorSupplier_id)
             product.stock === "" ||
             product.status === "" ||
             product.description === "") {
+            console.log("1",product)
             document.getElementById("store-success").innerHTML = "Debe Completar los campos indicados con error"
         } else {
-            console.log(product)
+
+            console.log("2",product)
 
             let input = document.querySelector('input[type="file"]') // es del ejemplo
 
+            console.log("3",input)
+
             let data = new FormData()
 
-            data.append('files', image.files)
+            for (const file of input.files) { 
+                data.append('files',file,file.name) 
+            } 
 
-            data.append('file', input.files[0]) // es del ejemplo
+            data.append('name', product.name)
+            data.append('supplier', product.supplier)
+            data.append('price', product.price)
+            data.append('discount', product.discount)
+            data.append('category', product.category)
+            data.append('life_date_to', product.life_date_to)
+            data.append('life_date_from', product.life_date_from)
+            data.append('expiration_days', product.expiration_days)
+            data.append('share', product.share)
+            data.append('stock', product.stock)
+            data.append('status', product.status)
+            data.append('description', product.description)
 
-            for (const file of input.files) { // es para archivos multiples
-                data.append('files',file,file.name) // es para archivos multiples
-            } // es para archivos multiples
-
-            data.append('product.name', product.name)
-            data.append('product.supplier', product.supplier)
-            data.append('product.price', product.price)
-            data.append('product.discount', product.discount)
-            data.append('product.category', product.category)
-            data.append('product.life_date_to', product.life_date_to)
-            data.append('product.life_date_from', product.life_date_from)
-            data.append('product.expiration_days', product.expiration_days)
-            data.append('product.share', product.share)
-            data.append('product.stock', product.stock)
-            data.append('product.status', product.status)
-            data.append('product.description', product.description)
-            data.append('product.name', product.name)
-            data.append('product.name', product.name)
-
+            console.log("4",data)
 
             fetch ('http://localhost:3001/api/productos/crear', {
-            method : 'POST',
-            body : data,
+            method : 'POST', 
+            body : JSON.stringify(product), // body : data,
             headers : {'Content-Type' : 'application/json'}
             })
             .then(res => res.json())
@@ -418,14 +408,13 @@ console.log("1",valorSupplier_id)
                 form.stock.value = ""
                 form.status.value = ""
                 form.description.value = ""
-
             })
+            .catch(error => {console.log(error)})
         } */
 
     })
 
     function setError(input, input_error, error) {
-        console.log("4")
         input.style.borderColor = "tomato"
         input_error.innerHTML = error
         switch(input.id) {
@@ -459,7 +448,6 @@ console.log("1",valorSupplier_id)
     }
 
     function setSuccess(input,input_error,valor) {
-        console.log("5",valor)
         input.style.borderColor = "teal"
         input_error.innerHTML = ""
         switch(input.id) {
