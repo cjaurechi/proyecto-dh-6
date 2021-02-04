@@ -36,7 +36,7 @@ const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart')
 const apiProductsRouter = require('./routes/api/products');
-const apiUsuariosRouter = require('./routes/api/users');
+const apiUsuariosRouter = require('./routes/api/usuarios');
 
 
 app.use('/api/productos', apiProductsRouter);
