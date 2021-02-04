@@ -15,15 +15,15 @@ module.exports = {
 		})
 		
 			.then(function(users){
-				let newUsers = []
-				users.forEach((user) => {
-					newUsers.push({
+				let newUsers = users.map((user) => {
+					return {
 						id: user.id,
 						first_name: user.first_name,
 						email: user.email,
 						detail: '/api/users/' + user.id
-					})
+					}
 				})
+
 				let respuesta = {
 					meta:{
 						count: users.length,
@@ -41,6 +41,7 @@ module.exports = {
 		.then(function(user){
 
 			let newUsers = {
+
 				id: user.id,
 				first_name: user.first_name,
 				last_name: user.last_name,
