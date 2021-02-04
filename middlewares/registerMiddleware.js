@@ -13,6 +13,7 @@ let registerMiddleware = [
             return true;
         }
     }).withMessage('Las contraseñas deben coincidir'),
+   
 
 
 ]
