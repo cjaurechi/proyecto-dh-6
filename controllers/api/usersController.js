@@ -20,6 +20,17 @@ module.exports = {
     },
     detalle (req, res){
 
+		db.users.findByPk(req.params.id)
+            
+		
+		.then(function(user){
+			let respuesta = {
+				imagenusuario: user.image,
+				data: user}
+		 res.send(respuesta)})
+		.catch(e => console.log(e));
+
+
 		
     }
     
