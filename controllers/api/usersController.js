@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const createError = require('http-errors');
 const db = require('../../database/models');
 const { forEach } = require('../../middlewares/productMiddleware');
+const { login } = require('../usersController');
 
 module.exports = {
 	listado (req, res,next){
@@ -40,6 +41,7 @@ module.exports = {
             
 		.then(function(user){
 
+			// Vamos a sacar la info de la password, el last login, el last date password, la fecha de nacimiento y el telefono
 			let newUsers = {
 
 				id: user.id,
@@ -47,13 +49,9 @@ module.exports = {
 				last_name: user.last_name,
 				email: user.email,
 				image: "http://localhost:3000/images/users/" + user.image,
-				last_login: user.last_login,
-				last_date_password: user.last_date_password,
 				language: user.language,
 				country: user.country,
-				brday: user.brday,
 				residence: user.residence,
-				phone: user.phone,
 				dark_mode: user.dark_mode,
 				status: user.status	
 			}
