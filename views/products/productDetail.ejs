@@ -5,6 +5,8 @@
     <%- include("../partials/head.ejs", {title: "Reegalo - Detalle del Producto" }) %>
         <link rel="stylesheet" href="/stylesheets/app.css">
         <link rel="stylesheet" href="/stylesheets/productDetail.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.1.17/validator.min.js"></script>
+        <script src="/javascript/productdetail.js"></script>
 </head>
 
 <body>
@@ -134,19 +136,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cantidad">
-
-                        <div class="cantidad_centrada">
-                            <img class="imagen_cantidad" src="/images/restar.svg" alt="Icono menos">
-                            <div class="cantidad_numero"> x 1</div>
-                            <img class="imagen_cantidad" src="/images/sumar.svg" alt="Icono mas">
+                    
+<!--                     <form action="/users/addToCart" method="POST"> -->
+                        <div class="cantidad">
+                            <div class="cantidad_centrada">
+                                <img id="imagen_cantidad_menos" class="imagen_cantidad_menos" src="/images/restar.svg" alt="Icono menos">
+                                <input type="number"  id= "quantity"name="quantity" value=1 readonly class="cantidad_numero">
+<!--                            <div class="cantidad_numero"> x 1</div> -->
+                                <img id="imagen_cantidad_mas" class="imagen_cantidad_mas" src="/images/sumar.svg" alt="Icono mas">
+                            </div>
                         </div>
-                    </div>
-                    <div class="compra">
-                        <div class="compra_centrada">
-                            <button class="compra_boton" type="submit">Regalar</button>
+                        <input type="hidden" name="product_id" value="<%= product.id %>">
+                        <div class="compra">
+                            <div class="compra_centrada">
+                                <button class="compra_boton" type="submit">Regalar</button>
+                            </div>
                         </div>
-                    </div>
+<!--                     </form> -->
                 </div>
 
             </div>

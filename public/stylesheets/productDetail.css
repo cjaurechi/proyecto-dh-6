@@ -279,7 +279,7 @@ img {
 .cantidad {
   width: 100%;
   height:50px;
-  padding: 3% 6%;
+  padding: 3% 30%;
   font-size: 1.4em;
   color: var(--azulresumen);
   display:flex;
@@ -292,17 +292,20 @@ img {
   height: 1.8em;
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .cantidad_numero {
-  font-size: 1.2em;
+  font-size: 1em;
   color: var(--negro);
+  border-style:none;
+  width:25%;
+  text-align: center;
 }
   
-.imagen_cantidad {
-  width:35px;
+.imagen_cantidad_menos, .imagen_cantidad_mas {
+  width:25%;
   height:35px;
   padding: 0% 5%;
 }
