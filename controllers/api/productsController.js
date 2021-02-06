@@ -8,7 +8,7 @@ const controller = {
 
 	/* Devuelve total de productos, total de productos por categoría y array con detalles por producto */
 	getProducts: async (req, res) => {
-		db.categories.findAndCountAll({
+		db.categories.findAndCountAll({ // Evaluar si vale la pena hacer la consulta en db.products en lugar de db.categories
 			include: [{ association: 'products', where: { status: 'Habilitado'}, include: [{ association: 'product_image' }] }]
 		}).then(response => {
 

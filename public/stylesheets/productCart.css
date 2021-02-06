@@ -1,204 +1,89 @@
-/****************** Indicador ************************/
+/****************** Carrito ************************/
 
-
-section.indicador {
-    background-color: var(--gris);
-    margin-top: 1%;
-}
-
-div.indicador {
-    display: flex;
-    align-items: center;
-    font-size: 1.5em;
-    padding: 1% 1.5%;
-}
-
-div.indicador a{
-    text-decoration: none;
-    color: black;
-}
-
-span.indicador {
-    font-family: Montserrat-SemiBold;
-    margin-left: 1%;
-}
-
-/****************** Detalle del Carrito ************************/
-
-/****************** Producto ************************/
-
-.detalle-carrito {
-    display: flex;
-    flex-direction: row;
-}
-
-.articulos-carrito {
-    width: 77%;
-    margin: 1%
-}
-
-.producto-carrito {
-    display: flex;
-    border: 0.5px solid rgba(0,0,0,.1);
-    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
-    margin-bottom: 2%;
-    padding: 2%;
-    max-height: 45%;
-}
-
-.container-imagen-producto {
-    max-width: 200px;
-    flex: 1;
-}
-
-.imagen-producto {
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-}
-
-.container-detalle-producto {
-    flex: 3;
-    display: flex;
+.background {
+	display: flex;
     flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 80vh;
+    margin: 0;
+    background-color: rgb(220, 220, 220, 0.3);
 }
 
-.detalle-producto {
-    flex: 1;
-    margin: 1% 3%;
-}
-
-.titulo-producto {
-    font-family: Montserrat-SemiBold;
-    font-size: 1.5em;
-    margin-bottom: 1.5%;
-}
-
-.descripcion-producto {
-    font-family: Montserrat-Light;
-    font-size: 1em;
-}
-
-.precio-cantidad {
-    margin-left: 3%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.precio {
-    font-family: Montserrat-SemiBold;
-    font-size: 1.5em;
-}
-
-.fa-minus-square,
-.fa-plus-square {
-    color: var(--azulreegalo);
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-.fa-minus-square:hover,
-.fa-plus-square:hover {
-    color: var(--azulregalostrong);
-}
-
-.cantidad {
-    font-size: 1.5em;
-}
-
-/****************** Resumen de Compra ************************/
-
-.container-resumen-compra {
-    margin: 1%;
-    width: 33%;
-}
-
-.resumen-compra {
+.container {
+	width: 1100px;
+    max-width: 100%;
     background-color: white;
     border: 0.5px solid rgba(0,0,0,.1);
     box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
-    /* border-radius: 8px; */
-    padding: 4%;
+    display: flex;
+    flex-direction: row;
 }
 
-.titulo-resumen-compra {
+.cart-content {
+    border-right: 0.5px solid rgba(0,0,0,.1);
+    flex-grow: 2;
+}
+
+.cart-product {
+    padding: 10px;
+    width: 100%;
+}
+
+.cart-product th {
     font-family: Montserrat-SemiBold;
-    font-size: 1.5em;
+}
+
+.cart-product th,
+.cart-product td {
     text-align: center;
-    padding: 1%;
+    padding: 12px 15px;
 }
 
-.resumen-producto {
+.product-details {
     display: flex;
     flex-direction: row;
-    margin: 4% auto;
-    justify-content: space-between;
-}
-
-.cantidad-producto {
-    font-family: Montserrat-SemiBold;
-}
-
-.divisor {
-    border-top: 1px solid gainsboro;
-}
-
-.total-producto {
-    color: var(--azulreegalo);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 4% auto;
-}
-
-.total-titulo,
-.total-precio {
-    font-family: Montserrat-Bold;
-    font-size: 1.5em;
-}
-
-.botones-resumen {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
-.finalizar-compra {
-    background-color: var(--azulreegalo);
-    color: white;
+.container-imagen {
+    max-width: 120px;
+    box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
+}
+
+.description {
+    margin: 0px 20px;
+}
+
+.order-summary {
+    flex-grow: 1;
+    padding: 10px;
+    align-items: center;
+}
+
+.summary {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.summary th,
+.summary td {
     text-align: center;
-    font-family: Montserrat-Regular;
-    box-shadow: 1px 1px 1px lightgrey;
-    width: auto;
-    padding: 2%;
-    margin: 1%;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12px 15px;
+    font-family: Montserrat-SemiBold;
 }
 
-.finalizar-compra:hover {
-    background-color: var(--azulregalostrong);
+td div.total {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.seguir-compra {
-    color: var(--azulreegalo);
-    text-align: center;
-    font-family: Montserrat-Regular;
-    width: auto;
-    padding: 2%;
-    margin: 1%;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    
+.container-categoria {
+    background-color: rgb(220, 220, 220, 0.3);
 }
-
-.seguir-compra:hover {
-    color: var(--azulregalostrong);
-}
-
 /****************** Recomendados ************************/
 
 .recomendados-titulo {

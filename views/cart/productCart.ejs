@@ -10,78 +10,88 @@
 
 <body>
     <%- include("../partials/header.ejs") %>
-    <section class="indicador">
-        <div class="indicador">
-            <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i></a>
-            <span class="indicador">‏‏‎ ‎‏‏‎Tu carrito</span>
-        </div>
-    </section>
-    <div class="detalle-carrito">
-        <div class="articulos-carrito">
-            <article class="producto-carrito">
-                <div class="container-imagen-producto">
-                    <img src="/images/img-producto-1.png" alt="Producto 1" class="imagen-producto">
-                </div>
-                <div class="container-detalle-producto">
-                    <div class="detalle-producto">
-                        <p class="titulo-producto">Ensalada de Instagram</p>
-                        <p class="descripcion-producto">Una ensalada de Instagram. No tiene condimentos.</p>
-                    </div>
-                    <div class="precio-cantidad">
-                        <div class="precio">$1998.98</div>
-                        <div class="container-cantidad">
-                            <i class="fas fa-minus-square"></i>
-                            <span class="cantidad">x2</span>
-                            <i class="fas fa-plus-square"></i>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="producto-carrito">
-                <div class="container-imagen-producto">
-                    <img src="/images/img-producto-2.jpg" alt="Producto 2" class="imagen-producto">
-                </div>
-                <div class="container-detalle-producto">
-                    <div class="detalle-producto">
-                        <p class="titulo-producto">Cool Dog</p>
-                        <p class="descripcion-producto">Resultado de googlear "coolest dog ever". Dicen que tiene puesto
-                            lentes de sol desde el día que nació y es el único perro del planeta con la capacidad de
-                            salir bien en absolutamente todas las fotos que le tomen.</p>
-                    </div>
-                    <div class="precio-cantidad">
-                        <div class="precio">$999.99</div>
-                        <div class="container-cantidad">
-                            <i class="fas fa-minus-square"></i>
-                            <span class="cantidad">x1</span>
-                            <i class="fas fa-plus-square"></i>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
-        <div class="container-resumen-compra">
-            <div class="resumen-compra">
-                <p class="titulo-resumen-compra">Resumen de compra</p>
-                <div class="resumen-producto">
-                    <p class="nombre-producto">Ensalada de Instagram <span class="cantidad-producto">x2</span></p>
-                    <p class="precio-producto">$1998.89</p>
-                </div>
-                <hr class="divisor">
-                <div class="resumen-producto">
-                    <p class="nombre-producto">Cool Dog</span></p>
-                    <p class="precio-producto">$999.99</p>
-                </div>
-                <hr class="divisor">
-                <div class="total-producto">
-                    <p class="total-titulo">Total</p>
-                    <p class="total-precio">$2998.97</p>
-                </div>
-                <div class="botones-resumen">
-                    <div class="finalizar-compra">Finalizar compra</div>
-                    <a href='/productos' class="seguir-compra">Seguir comprando</a>
-                </div>
+
+    <div class="background">
+        <div class="container">
+            <div class="cart-content">
+                    <table class="cart-product">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th>Detalle de producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <div class="product-details">
+                                        <div class="container-imagen">
+                                            <img src="/images/img-producto-1.png">
+                                        </div>
+                                        <div class="description">Ensalada de Instagram</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>2</span>
+                                </td>
+                                <td>
+                                    <span>$1998.98</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-details">
+                                        <div class="container-imagen">
+                                            <img src="/images/img-producto-1.png">
+                                        </div>
+                                        <div class="description">Ensalada de Instagram</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>2</span>
+                                </td>
+                                <td>
+                                    <span>$1998.98</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-details">
+                                        <div class="container-imagen">
+                                            <img src="/images/img-producto-1.png">
+                                        </div>
+                                        <div class="description">Ensalada de Instagram</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>2</span>
+                                </td>
+                                <td>
+                                    <span>$1998.98</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="order-summary">
+                <table class="summary">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th>Total de la compra</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>
+                                <div class="total">$9999.99</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 
     </div>
     <div class="container-categoria">
