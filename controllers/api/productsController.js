@@ -51,7 +51,24 @@ const controller = {
 		})
     },
 
-	
+	/* Devuelve todos los detalles de un producto */
+	getProductDetails: async (req, res) => {
+		db.products.findOne({
+			where: { id: req.params.id},
+			include: [ { association: 'product_image', as: 'imagenes' }]
+		}).then(response => {
+			let productDetails = JSON.parse(JSON.stringify(response));
+			productDetails.image = "http://localhost:3000/images/products/" + response.product_image[0].image;
+			res.json(productDetails)
+		}).catch(err => {
+			res.json({
+				message: 'Hubo un error en tu consulta',
+				error: err
+			});
+		})
+    },
+
+
     
     // Alta de producto
 	store: (req, res, next) => {

@@ -37,6 +37,9 @@ const productsAPIController = require('../../controllers/api/productsController'
 /*** Devuelve listado de productos ***/
 router.get('/',productsAPIController.getProducts);
 
+/*** Devuelve detalle de un producto ***/
+router.get('/:id',productsAPIController.getProductDetails);
+
 /*** CREAR UN PRODUCTO ***/
 router.post('/crear', authMiddleware, upload.any(), validation, productsAPIController.store);
 
