@@ -39,7 +39,7 @@ const apiProductsRouter = require('./routes/api/products');
 const apiUsuariosRouter = require('./routes/api/usuarios');
 
 
-app.use('/api/productos', apiProductsRouter);
+app.use('/api/products', apiProductsRouter);
 app.use('/api/users', apiUsuariosRouter);
 
 app.use('/', indexRouter);

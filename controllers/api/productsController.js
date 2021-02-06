@@ -6,24 +6,52 @@ const { Op, json } = require("sequelize");
 
 const controller = {
 
-	// Listado de todos los productos *
-	productList: async (req, res) => {
-		let category = []
+	/* Devuelve total de productos, total de productos por categoría y array con detalles por producto */
+	getProducts: async (req, res) => {
+		db.categories.findAndCountAll({
+			include: [{ association: 'products', where: { status: 'Habilitado'}, include: [{ association: 'product_image' }] }]
+		}).then(response => {
 
-		category = await db.categories.findAll(
-			{ include: [{ association: 'products', where: { status: 'Habilitado' }, include: ['product_image'] }] })
+			let count = 0
+			let countByCategory = {}
+			let products = []
+			
+			response.rows.forEach(function(category) {
+				countByCategory[category.name] = category.products.length;
+				count = count + category.products.length;
+				products = products.concat(category.products.map(function(product) {
+					return {
+						id: product.id,
+						name: product.name,
+						description: product.description,
+						images: product.product_image.map(function(image) {
+							return {
+								image: image.image,
+								number: image.number
+							}
+						}),
+						category: product.category_id,
+						detail: '/api/products/' + product.id
+					}
+				}))
+			})
 
-            let respuesta = {
-                meta : {
-                    status: 200,
-                    total: category.length
-                },
-                category: category
-            }    
+			let productList = {
+				count: count,
+				countByCategory: countByCategory,
+				products: products
+			}
 
-            res.json (respuesta)
-/* 		res.render("products/productList", { category: category }) */
+			res.json(productList)
+		}).catch(err => {
+			res.json({
+				message: 'Hubo un error en tu consulta',
+				error: err
+			});
+		})
     },
+
+	
     
     // Alta de producto
 	store: (req, res, next) => {

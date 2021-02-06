@@ -20,31 +20,24 @@ var storage = multer.diskStorage({
 
 var upload = multer({
     storage,
- 
     // Validate image
     fileFilter: (req, file, cb) => {
- 
-       const acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
- 
-       const ext = path.extname(file.originalname);
-       
-       if (!acceptedExtensions.includes(ext)) {
-          req.file = file;
-       }
- 
-       cb(null, acceptedExtensions.includes(ext));
+        const acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+        const ext = path.extname(file.originalname);
+        if (!acceptedExtensions.includes(ext)) {
+            req.file = file;
+        }
+        cb(null, acceptedExtensions.includes(ext));
     }
- });
-
+});
 
 // ********** Require de Controladores **********
 const productsAPIController = require('../../controllers/api/productsController');
 
-/*** LISTADO DE PRODUCTOS (USUARIO Y ADMIN) ***/
-router.get('/',productsAPIController.productList);
+/*** Devuelve listado de productos ***/
+router.get('/',productsAPIController.getProducts);
 
 /*** CREAR UN PRODUCTO ***/
-/* router.get('/crear', authMiddleware, productsController.create); */
 router.post('/crear', authMiddleware, upload.any(), validation, productsAPIController.store);
 
 module.exports = router;
