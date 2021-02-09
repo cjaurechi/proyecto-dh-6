@@ -5,7 +5,7 @@ const { forEach } = require('../../middlewares/productMiddleware');
 const { login } = require('../usersController');
 
 module.exports = {
-	listado (req, res,next){
+	getUsers (req, res,next){
 
 		db.users.findAll({
 			attributes:[
@@ -31,11 +31,12 @@ module.exports = {
 						url: "/api/users"
 						},
 					data: newUsers}
-			 res.send(respuesta)})
+			res.send(respuesta)})
 			.catch(e => console.log(e));
 
     },
-    detalle (req, res){
+
+    getUserDetails (req, res){
 
 		db.users.findByPk(req.params.id)
             
@@ -58,7 +59,7 @@ module.exports = {
 			
 			let respuesta = {
 				data: newUsers}
-		 res.send(respuesta)})
+		res.send(respuesta)})
 		.catch(e => console.log(e));
 
 
