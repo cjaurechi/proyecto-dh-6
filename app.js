@@ -9,12 +9,15 @@ const methodOverride = require('method-override');
 const checkIp = require("./middlewares/check-ip")
 const localsMiddleware = require('./middlewares/localsMiddleware')
 const session = require('express-session')
+const http = require('http');
+const cors = require('cors')
 
 
 // ********** Express **********
 const app = express();
 
 // ********** Middlewares **********
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,7 +42,7 @@ const apiProductsRouter = require('./routes/api/products');
 const apiUsuariosRouter = require('./routes/api/usuarios');
 
 
-app.use('/api/products', apiProductsRouter);
+app.use('/api/productos', apiProductsRouter);
 app.use('/api/users', apiUsuariosRouter);
 
 app.use('/', indexRouter);

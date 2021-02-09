@@ -8,6 +8,7 @@ const controller = {
 
 	/* Devuelve total de productos, total de productos por categoría y array con detalles por producto */
 	getProducts: async (req, res) => {
+		console.log("paso 1")
 		db.categories.findAndCountAll({ // Evaluar si vale la pena hacer la consulta en db.products en lugar de db.categories
 			include: [{ association: 'products', where: { status: 'Habilitado'}, include: [{ association: 'product_image' }] }]
 		}).then(response => {
@@ -15,7 +16,7 @@ const controller = {
 			let count = 0
 			let countByCategory = {}
 			let products = []
-			
+			console.log("paso 2")
 			response.rows.forEach(function(category) {
 				countByCategory[category.name] = category.products.length;
 				count = count + category.products.length;
@@ -41,7 +42,7 @@ const controller = {
 				countByCategory: countByCategory,
 				products: products
 			}
-
+console.log(productList)
 			res.json(productList)
 		}).catch(err => {
 			res.json({
