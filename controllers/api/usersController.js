@@ -49,7 +49,7 @@ module.exports = {
 				first_name: user.first_name,
 				last_name: user.last_name,
 				email: user.email,
-				image: "http://localhost:3000/images/users/" + user.image,
+				image: "http://localhost:3001/images/users/" + user.image,
 				language: user.language,
 				country: user.country,
 				residence: user.residence,

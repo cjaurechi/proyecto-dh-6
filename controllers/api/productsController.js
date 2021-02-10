@@ -27,7 +27,7 @@ const controller = {
 						description: product.description,
 						images: product.product_image.map(function(image) {
 							return {
-								image: image.image,
+								image: "http://localhost:3001/images/products/" + image.image,
 								number: image.number
 							}
 						}),
@@ -59,7 +59,7 @@ console.log(productList)
 			include: [ { association: 'product_image', as: 'imagenes' }]
 		}).then(response => {
 			let productDetails = JSON.parse(JSON.stringify(response));
-			productDetails.image = "http://localhost:3000/images/products/" + response.product_image[0].image;
+			productDetails.image = "http://localhost:3001/images/products/" + response.product_image[0].image;
 			res.json(productDetails)
 		}).catch(err => {
 			res.json({
