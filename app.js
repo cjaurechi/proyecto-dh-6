@@ -40,9 +40,12 @@ const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart')
 const apiProductsRouter = require('./routes/api/products');
 const apiUsersRouter = require('./routes/api/users');
+const apiCategoriesRouter = require('./routes/api/categories');
+
 
 app.use('/api/productos', apiProductsRouter);
 app.use('/api/usuarios', apiUsersRouter);
+app.use('/api/categorias', apiCategoriesRouter);
 
 app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
