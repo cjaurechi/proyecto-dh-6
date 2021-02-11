@@ -46,11 +46,25 @@ const controller = {
 			res.json(productList)
 		}).catch(err => {
 			res.json({
-				message: 'Hubo un error en tu consulta',
+				message: 'Hubo un error al traer la lista de productos',
 				error: err
 			});
 		})
     },
+
+	/* Devuelve todos los detalles de un producto */
+	getLatestProduct: (req, res) => {
+		db.products.findOne({
+            order: [['created_at', 'DESC']]
+		}).then(response => {
+			res.json(response)
+		}).catch(err => {
+			res.json({
+				message: 'Hubo un error al consultar el último producto',
+				error: err
+			})
+		})
+	},
 
 	/* Devuelve todos los detalles de un producto */
 	getProductDetails: async (req, res) => {
@@ -63,13 +77,11 @@ const controller = {
 			res.json(productDetails)
 		}).catch(err => {
 			res.json({
-				message: 'Hubo un error en tu consulta',
+				message: 'Hubo un error al traer los detalles de un producto particular',
 				error: err
 			});
 		})
     },
-
-
     
     // Alta de producto
 	store: (req, res, next) => {

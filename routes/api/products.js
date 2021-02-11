@@ -37,6 +37,9 @@ const productsAPIController = require('../../controllers/api/productsController'
 /*** Devuelve listado de productos ***/
 router.get('/',productsAPIController.getProducts);
 
+/*** Devuelve el último producto creado ***/
+router.get('/ultimo',productsAPIController.getLatestProduct);
+
 /*** Devuelve detalle de un producto ***/
 router.get('/:id',productsAPIController.getProductDetails);
 
