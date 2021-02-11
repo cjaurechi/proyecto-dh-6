@@ -7,16 +7,29 @@ const { forEach } = require('../../middlewares/productMiddleware');
 module.exports = {
 	getCategories (req, res,next){
 
-		db.categories.findAll()
+		console.log("paso x categorias")
+		db.categories.findAll({
+			include: [{ association: 'products', where: { status: 'Habilitado'} }]
+		})
 		
 			.then(function(categories){
 				
+				let newCategories = categories.map((category) => {
+					return {
+						id: category.id,
+						name: category.name,
+						description: category.description,
+						count : category.products.length,
+						detail: '/api/categorias/' + category.id
+					}
+				})
+
                 let respuesta = {
 					meta:{
 						count: categories.length,
 						url: "/api/categories"
 						},
-					data: categories}
+					data: newCategories}
 			res.send(respuesta)})
 			.catch(e => console.log(e));
 
