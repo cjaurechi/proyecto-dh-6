@@ -52,7 +52,7 @@ const controller = {
 		})
     },
 
-	/* Devuelve todos los detalles de un producto */
+	/* Devuelve los detalles de un producto */
 	getLatestProduct: (req, res) => {
 		db.products.findOne({
             order: [['created_at', 'DESC']]
