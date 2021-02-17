@@ -1,7 +1,4 @@
 window.addEventListener("load",function() {
-    
-    console.log("paso por aca!")
-//  Campos Inputs 
     const cantidad_menos = document.getElementById('imagen_cantidad_menos');
     const cantidad_mas = document.getElementById('imagen_cantidad_mas');
     const cantidad = document.getElementById('quantity');
@@ -21,5 +18,4 @@ window.addEventListener("load",function() {
             cantidad.value = valorMas
         }
     })
-
 })

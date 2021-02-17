@@ -1,10 +1,16 @@
 /* const fs = require('fs'); */
 /* const path = require('path'); */
 const moment = require('moment');
-const { Console } = require('console');
-const { validationResult } = require('express-validator');
+const {
+	Console
+} = require('console');
+const {
+	validationResult
+} = require('express-validator');
 const db = require('../database/models');
-const { Op } = require("sequelize");
+const {
+	Op
+} = require("sequelize");
 
 const controller = {
 
@@ -12,16 +18,24 @@ const controller = {
 	productDetail: (req, res) => {
 
 		let product = db.products.findByPk(req.params.id, {
-			include: [{ association: "categories" }] 
+			include: [{
+				association: "categories"
+			}]
 		})
 
 		let product_images = db.product_image.findAll({
-			where: { product_id: req.params.id }
+			where: {
+				product_id: req.params.id
+			}
 		});
 
 		let product_comments = db.comments.findAll({
-			where: { product_id: req.params.id },
-			include: [{ association: 'users'}]
+			where: {
+				product_id: req.params.id
+			},
+			include: [{
+				association: 'users'
+			}]
 		});
 
 		Promise.all([product, product_images, product_comments])
@@ -42,11 +56,19 @@ const controller = {
 					promedio_calificacion = ""
 				}
 
-				res.render("products/productDetail", { product: product, product_images: product_images, product_comments: product_comments, cantidad_comentarios: cantidad_comentarios, promedio_calificacion: promedio_calificacion });
+				res.render("products/productDetail", {
+					product: product,
+					product_images: product_images,
+					product_comments: product_comments,
+					cantidad_comentarios: cantidad_comentarios,
+					promedio_calificacion: promedio_calificacion
+				});
 
 			})
 			.catch(error => {
-				res.render('error', { error: error });
+				res.render('error', {
+					error: error
+				});
 			})
 
 	},
@@ -56,10 +78,19 @@ const controller = {
 
 		let category_products = []
 
-		category_products = await db.categories.findAll(
-			{ include: [{ association: 'products', where: { status: 'Habilitado' }, include: ['product_image'] }] })
+		category_products = await db.categories.findAll({
+			include: [{
+				association: 'products',
+				where: {
+					status: 'Habilitado'
+				},
+				include: ['product_image']
+			}]
+		})
 
-		res.render("products/productList", { category_products: category_products })
+		res.render("products/productList", {
+			category_products: category_products
+		})
 	},
 
 	// Listado de productos por categoría
@@ -67,29 +98,45 @@ const controller = {
 
 		let category_products = []
 
-		category_products = await db.categories.findAll(
-			{
-				where: { id: req.params.id },
-				include: [{ association: 'products', include: ['product_image'] }]
-			})
+		category_products = await db.categories.findAll({
+			where: {
+				id: req.params.id
+			},
+			include: [{
+				association: 'products',
+				include: ['product_image']
+			}]
+		})
 
-		res.render("products/productList", { category_products: category_products })
+		res.render("products/productList", {
+			category_products: category_products
+		})
 	},
 
 	// Detalle con busqueda de producto
 	productSearch: (req, res) => {
-		
+
 		db.products.findAll({
-			where: {
-				name: { [Op.substring]: req.query.keywords }
-			},
-			include: [{ association: 'categories' }, { association: 'product_image' }]
-		})
+				where: {
+					name: {
+						[Op.substring]: req.query.keywords
+					}
+				},
+				include: [{
+					association: 'categories'
+				}, {
+					association: 'product_image'
+				}]
+			})
 			.then(products => {
-				res.render('products/productSearch', { products: products })
+				res.render('products/productSearch', {
+					products: products
+				})
 			})
 			.catch(error => {
-				res.render('error', { error: error });
+				res.render('error', {
+					error: error
+				});
 			})
 
 	},
@@ -99,10 +146,16 @@ const controller = {
 
 		let category_products = []
 
-		category_products = await db.categories.findAll(
-			{ include: [{ association: 'products', include: ['product_image'] }] })
+		category_products = await db.categories.findAll({
+			include: [{
+				association: 'products',
+				include: ['product_image']
+			}]
+		})
 
-		res.render("products/productAdmin", { category_products: category_products })
+		res.render("products/productAdmin", {
+			category_products: category_products
+		})
 
 	},
 
@@ -113,18 +166,29 @@ const controller = {
 
 		let categories = db.categories.findAll()
 
-		let suppliers = db.suppliers.findAll(
-			{ where: { status: 'Habilitado' }})
+		let suppliers = db.suppliers.findAll({
+			where: {
+				status: 'Habilitado'
+			}
+		})
 
 		Promise.all([categories, suppliers])
-		.then(function ([categories, suppliers]) {
-			res.render("products/productCreateForm", { producto_actualizado: producto_actualizado, categories: categories, suppliers: suppliers, product: {}, errors: {} });
+			.then(function ([categories, suppliers]) {
+				res.render("products/productCreateForm", {
+					producto_actualizado: producto_actualizado,
+					categories: categories,
+					suppliers: suppliers,
+					product: {},
+					errors: {}
+				});
 			})
 			.catch(error => {
-				res.render('error', { error: error });
+				res.render('error', {
+					error: error
+				});
 			})
 
-		},
+	},
 
 	// Alta de producto
 	store: (req, res, next) => {
@@ -134,21 +198,21 @@ const controller = {
 		if (errors.isEmpty()) {
 
 			db.products.create({
-				name: req.body.name,
-				description: req.body.description,
-				category_id: req.body.category_id,
-				supplier_id: req.body.supplier_id,
-				created_at: moment(new Date()).format('YYYY-MM-DD'),
-				expiration_days: req.body.expiration_days,
-				share: req.body.share,
-				price: req.body.price,
-				discount: req.body.discount,
-				life_date_from: req.body.life_date_from,
-				life_date_to: req.body.life_date_to,
-				stock: req.body.stock,
-				status: req.body.status,
-				user_id: req.session.user.id
-			})
+					name: req.body.name,
+					description: req.body.description,
+					category_id: req.body.category_id,
+					supplier_id: req.body.supplier_id,
+					created_at: moment(new Date()).format('YYYY-MM-DD'),
+					expiration_days: req.body.expiration_days,
+					share: req.body.share,
+					price: req.body.price,
+					discount: req.body.discount,
+					life_date_from: req.body.life_date_from,
+					life_date_to: req.body.life_date_to,
+					stock: req.body.stock,
+					status: req.body.status,
+					user_id: req.session.user.id
+				})
 				.then(product => {
 					for (let i = 0; i < req.files.length; i++) {
 						db.product_image.create({
@@ -161,34 +225,57 @@ const controller = {
 					let producto_actualizado = undefined
 
 					let categories = db.categories.findAll()
-			
-					let suppliers = db.suppliers.findAll(
-						{ where: { status: 'Habilitado' }})
-			
+
+					let suppliers = db.suppliers.findAll({
+						where: {
+							status: 'Habilitado'
+						}
+					})
+
 					Promise.all([categories, suppliers])
-					.then(function ([categories, suppliers]) {
-						res.render("products/productCreateForm", { producto_actualizado: producto_actualizado, categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' });
+						.then(function ([categories, suppliers]) {
+							res.render("products/productCreateForm", {
+								producto_actualizado: producto_actualizado,
+								categories: categories,
+								suppliers: suppliers,
+								product: {},
+								errors: {},
+								store_success: '¡Tu producto fue dado de alta exitosamente!'
+							});
 						})
 						.catch(error => {
-							res.render('error', { error: error });
+							res.render('error', {
+								error: error
+							});
 						})
-/* 					res.redirect('/productos/' + product.id + '/detalle'); */
 				}).catch(error => {
-					res.render('error', { error: error });
+					res.render('error', {
+						error: error
+					});
 				})
 		} else {
 			let categories = db.categories.findAll()
 
-			let suppliers = db.suppliers.findAll(
-				{ where: { status: 'Habilitado' }})
+			let suppliers = db.suppliers.findAll({
+				where: {
+					status: 'Habilitado'
+				}
+			})
 
 			Promise.all([categories, suppliers])
-			.then(function ([categories, suppliers]) {
-				return res.render('products/productCreateForm', { categories: categories, suppliers: suppliers, product: req.body, errors: errors.mapped() })
-			})
-			.catch(error => {
-				res.render('error', { error: error });
-			})
+				.then(function ([categories, suppliers]) {
+					return res.render('products/productCreateForm', {
+						categories: categories,
+						suppliers: suppliers,
+						product: req.body,
+						errors: errors.mapped()
+					})
+				})
+				.catch(error => {
+					res.render('error', {
+						error: error
+					});
+				})
 
 		}
 
@@ -198,21 +285,35 @@ const controller = {
 	edit: (req, res) => {
 
 		let product = db.products.findByPk(req.params.id)
-		
+
 		let product_images = db.product_image.findAll({
-			where: { product_id: req.params.id }
+			where: {
+				product_id: req.params.id
+			}
 		});
 
-		let suppliers = db.suppliers.findAll({ where: { status: "habilitado" } })
+		let suppliers = db.suppliers.findAll({
+			where: {
+				status: "habilitado"
+			}
+		})
 
 		let categories = db.categories.findAll()
 
 		Promise.all([product, suppliers, categories, product_images])
 			.then(function ([product, suppliers, categories, product_images]) {
-				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: {} })
+				res.render("products/productEditForm", {
+					product: product,
+					categories: categories,
+					suppliers: suppliers,
+					product_images: product_images,
+					errors: {}
+				})
 			})
 			.catch(error => {
-				res.render('error', { error: error });
+				res.render('error', {
+					error: error
+				});
 			})
 	},
 
@@ -222,73 +323,99 @@ const controller = {
 		let errors = validationResult(req);
 
 		if (errors.isEmpty()) {
-			
-			db.products.update(
-				{name: req.body.name,
-				description: req.body.description,
-				category_id: req.body.category_id,
-				supplier_id: req.body.supplier_id,
-				expiration_days: req.body.expiration_days,
-				share: req.body.share,
-				price: req.body.price,
-				discount: req.body.discount,
-				life_date_from: req.body.life_date_from,
-				life_date_to: req.body.life_date_to,
-				stock: req.body.stock,
-				status: req.body.status}, 
-				{where: { id: req.params.id } })
-			
-			.then(product => {
-				if (req.files.length > 0) {
 
-					db.product_image.destroy(
-						{ where: { product_id: req.params.id } })
-					.then(product_image => {
-						for (let i = 0; i < req.files.length; i++) {
-							console.log(req.files.length,i)
-							db.product_image.create({
-								product_id: req.params.id,
-								image: req.files[i].filename,
-								number: i
+			db.products.update({
+					name: req.body.name,
+					description: req.body.description,
+					category_id: req.body.category_id,
+					supplier_id: req.body.supplier_id,
+					expiration_days: req.body.expiration_days,
+					share: req.body.share,
+					price: req.body.price,
+					discount: req.body.discount,
+					life_date_from: req.body.life_date_from,
+					life_date_to: req.body.life_date_to,
+					stock: req.body.stock,
+					status: req.body.status
+				}, {
+					where: {
+						id: req.params.id
+					}
+				})
+
+				.then(product => {
+					if (req.files.length > 0) {
+
+						db.product_image.destroy({
+								where: {
+									product_id: req.params.id
+								}
 							})
-						}
-					})
-					.then(product => {
-						res.redirect('/productos/' + req.params.id + '/detalle')
-					})
-					.catch(error => {
-						res.render('error', { error: error })
-					})
+							.then(product_image => {
+								for (let i = 0; i < req.files.length; i++) {
+									console.log(req.files.length, i)
+									db.product_image.create({
+										product_id: req.params.id,
+										image: req.files[i].filename,
+										number: i
+									})
+								}
+							})
+							.then(product => {
+								res.redirect('/productos/' + req.params.id + '/detalle')
+							})
+							.catch(error => {
+								res.render('error', {
+									error: error
+								})
+							})
 
-				}
-				res.redirect('/productos/' + req.params.id + '/detalle');
-				// res.render("products/productCreateForm", { categories: categories, suppliers: suppliers, product: {}, errors: {}, store_success: '¡Tu producto fue dado de alta exitosamente!' })
-			})
-			.catch(error => {
-				res.render('error', { error: error })
-			})
+					}
+					res.redirect('/productos/' + req.params.id + '/detalle');
+				})
+				.catch(error => {
+					res.render('error', {
+						error: error
+					})
+				})
 
 		} else {
 
-			let product = {id:req.params.id, ...req.body}
+			let product = {
+				id: req.params.id,
+				...req.body
+			}
 
 			let product_images = db.product_image.findAll({
-				where: { product_id: req.params.id }
+				where: {
+					product_id: req.params.id
+				}
 			});
 
 			let categories = db.categories.findAll()
 
-			let suppliers = db.suppliers.findAll(
-				{ where: { status: 'Habilitado' }})
-	
+			let suppliers = db.suppliers.findAll({
+				where: {
+					status: 'Habilitado'
+				}
+			})
+
 			Promise.all([product, categories, suppliers, product_images])
-			.then(function ([product, categories, suppliers,product_images]) {
-				res.render("products/productEditForm", { product: product, categories: categories, suppliers: suppliers, product_images: product_images, errors: errors.mapped() })
-			})
-			.catch(error => {
-				res.render('error', { error: error });
-			})
-	
+				.then(function ([product, categories, suppliers, product_images]) {
+					res.render("products/productEditForm", {
+						product: product,
+						categories: categories,
+						suppliers: suppliers,
+						product_images: product_images,
+						errors: errors.mapped()
+					})
+				})
+				.catch(error => {
+					res.render('error', {
+						error: error
+					});
+				})
+
 		}
 	},
 
@@ -296,24 +423,74 @@ const controller = {
 
 		// Soft delete: Solamente movemos el status a deshabilitado pero sigue vivo en la BD
 		db.products.update({
-			status: "Inhabilitado",
-		}, { where: { id: req.params.id } })
-			.then(() => 
+				status: "Inhabilitado",
+			}, {
+				where: {
+					id: req.params.id
+				}
+			})
+			.then(() =>
 				res.redirect("/productos"))
 			.catch(error => {
-				res.render('error', { error: error })
+				res.render('error', {
+					error: error
+				})
 			})
 
-/* 		Hard delete: Este borra el producto de la BD
+		/* Hard delete: Este borra el producto de la BD
 		db.products.destroy({
 			where: {
-		 		id: req.params.id
-		 	}
+				id: req.params.id
+			}
 		})
 		.then(() => res.render("products/productListForm", { products_category: products_category, category: category, update_success: '¡Tu producto fue borrado exitosamente!' }))
 		.catch(error => {
 			res.render('error', { error: error })
 		}) */
+	},
+
+	addToCart: (req, res) => {
+		const errors = validationResult(req);
+
+		if (errors.isEmpty()) {
+			// Busco el producto que voy a agregar como Item
+			db.products.findByPk(req.body.product_id)
+				.then((product) => {
+					console.log('Esto es product VVVVVVVVV');
+					console.log(product);
+					console.log('>>>>>>>>>>>>>>>>>>>>>>');
+
+					// Saco el valor del producto, teniendo en cuenta el descuento.
+					let price =
+						Number(product.discount) > 0 ?
+						product.price - (product.price * product.discount) / 100 :
+						product.price;
+
+					if(req.session.cart_id)
+					// Creo el Item de compra
+					return db.items.create({
+						sale_price: price,
+						quantity: req.body.quantity,
+						subtotal: price * req.body.quantity,
+						state: 1,
+						user_id: req.session.user.id,
+						seller_id: product.supplier_id,
+						product_id: product.id,
+					});
+				})
+				.then((item) => res.redirect('/carrito'))
+				.catch((err) => console.log(err.message));
+		} else {
+			db.products.findByPk(req.body.product_id, {
+					include: ['users'],
+				})
+				.then(product => {
+					return res.render('/productos/' + req.body.product_id + '/detalle', {
+						product,
+						errors: errors.mapped()
+					})
+				})
+		}
 	}
 };
 

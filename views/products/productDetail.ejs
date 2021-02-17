@@ -137,22 +137,21 @@
                         </div>
                     </div>
                     
-<!--                     <form action="/users/addToCart" method="POST"> -->
+                    <form action="/productos/agregar" method="POST">
                         <div class="cantidad">
                             <div class="cantidad_centrada">
                                 <img id="imagen_cantidad_menos" class="imagen_cantidad_menos" src="/images/restar.svg" alt="Icono menos">
-                                <input type="number"  id= "quantity"name="quantity" value=1 readonly class="cantidad_numero">
-<!--                            <div class="cantidad_numero"> x 1</div> -->
+                                <input type="number" id= "quantity" name="quantity" value=1 readonly class="cantidad_numero">
                                 <img id="imagen_cantidad_mas" class="imagen_cantidad_mas" src="/images/sumar.svg" alt="Icono mas">
                             </div>
                         </div>
                         <input type="hidden" name="product_id" value="<%= product.id %>">
                         <div class="compra">
                             <div class="compra_centrada">
-                                <button class="compra_boton" type="submit">Regalar</button>
+                                <button class="compra_boton" type="submit">Agregar al carrito</button>
                             </div>
                         </div>
-<!--                     </form> -->
+                    </form>
                 </div>
 
             </div>

@@ -64,4 +64,7 @@ router.put('/:id/editar', authMiddleware, upload.any(), validation, productsCont
 /*** BORRADO DE PRODUCTOS ***/
 router.delete('/:id/borrar', authMiddleware, productsController.delete);
 
+/*** AGREGAR PRODUCTO AL CARRITO ***/
+router.post('/agregar', authMiddleware, productsController.addToCart);
+
 module.exports = router;
