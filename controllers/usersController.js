@@ -75,12 +75,12 @@ const controller = {
             db.users.findOne({
                     where: {
                         email: req.body.email
-                    }
+                    },
+                    attributes: ['id', 'email', 'rol', 'password']
                 })
                 .then(usuario => {
                     if (bcryptjs.compareSync(req.body.password, usuario.password)) {
-                        req.session.user = usuario;
-                        console.log("Esto es lo que hay en req.session.user: " + req.session.user);
+                        req.session.user = usuario; // Deberiamos borrar la password de acá
                         res.locals.user = usuario;
                         if (req.body.recordar) {
                             res.cookie('recordar', usuario.email, {
