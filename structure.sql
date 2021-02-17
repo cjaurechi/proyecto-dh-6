@@ -264,6 +264,60 @@ CREATE TABLE IF NOT EXISTS `reegalo`.`questions_answers` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `reegalo`.`carts`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `reegalo`.`carts` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `order_number` INT NOT NULL,
+  `total` DECIMAL NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `created_at` TIMESTAMP NOT NULL,
+  `updated_at` TIMESTAMP NULL,
+  `deleted_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `users_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `users0`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `reegalo`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `reegalo`.`items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `reegalo`.`items` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `sale_price` DECIMAL(10,0) NOT NULL,
+  `quantity` INT NOT NULL,
+  `subtotal` INT NOT NULL,
+  `state` TINYINT(2) NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `seller_id` INT UNSIGNED NOT NULL,
+  `product_id` INT NOT NULL,
+  `cart_id` INT UNSIGNED NOT NULL,
+  `created_at` TIMESTAMP NOT NULL,
+  `updated_at` TIMESTAMP NULL,
+  `deleted_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `users_idx` (`user_id` ASC) VISIBLE,
+  INDEX `carts_idx` (`cart_id` ASC) VISIBLE,
+  CONSTRAINT `users`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `reegalo`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `carts`
+    FOREIGN KEY (`cart_id`)
+    REFERENCES `reegalo`.`carts` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
