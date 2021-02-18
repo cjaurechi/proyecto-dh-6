@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         brday: {
             type: DataTypes.DATE,
             defaultValue: null
-        },        
+        },
         residence: {
             type: DataTypes.STRING,
             defaultValue: null
@@ -65,10 +65,10 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'users',
         timestamps: false
     }
-    
+
     let users = sequelize.define('users', cols, config);
 
-    users.associate = function(models) {
+    users.associate = function (models) {
         users.hasMany(models.comments, {
             as: 'comments',
             foreignKey: 'user_id'
@@ -77,6 +77,10 @@ module.exports = (sequelize, DataTypes) => {
             as: 'purchases',
             foreignKey: 'user_id'
         });
+        users.hasMany(models.carts, {
+            as: 'carts',
+            foreignKey: 'user_id'
+        })
     }
 
     return users;

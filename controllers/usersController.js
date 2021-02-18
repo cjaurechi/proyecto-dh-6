@@ -1,6 +1,10 @@
 const bcryptjs = require('bcryptjs');
 const moment = require('moment');
-const { check, validationResult, body } = require("express-validator");
+const {
+    check,
+    validationResult,
+    body
+} = require("express-validator");
 const db = require('../database/models');
 
 const controller = {
@@ -15,34 +19,47 @@ const controller = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             db.users.findOne({
-                where: {
-                    email: req.body.email
-                }
-            })
-            .then(resultado => {
-                if (resultado == null) {
-                    db.users.create({
-                        first_name: req.body.name,
-                        last_name: req.body.last_name,
-                        email: req.body.email,
-                        password: bcryptjs.hashSync(req.body.password, 10),
-                        image: req.files[0].originalname,
-                        last_date_password: moment(new Date()).format('YYYY-MM-DD')
-                    }).then(resultado => {
-                        res.render('users/login', { login_success: '¡Te registraste exitosamente! Ya podés iniciar sesión en Reegalo' });
-                    }).catch(errors => {
-                        res.render('users/register', { errors: errors.errors })
+                    where: {
+                        email: req.body.email
+                    }
+                })
+                .then(resultado => {
+                    if (resultado == null) {
+                        db.users.create({
+                            first_name: req.body.name,
+                            last_name: req.body.last_name,
+                            email: req.body.email,
+                            password: bcryptjs.hashSync(req.body.password, 10),
+                            image: req.files[0].originalname,
+                            last_date_password: moment(new Date()).format('YYYY-MM-DD')
+                        }).then(resultado => {
+                            res.render('users/login', {
+                                login_success: '¡Te registraste exitosamente! Ya podés iniciar sesión en Reegalo'
+                            });
+                        }).catch(errors => {
+                            res.render('users/register', {
+                                errors: errors.errors
+                            })
+                        })
+
+                    } else {
+                        res.render('users/register', {
+                            errors: [{
+                                param: 'email',
+                                msg: 'El email ingresado ya existe'
+                            }]
+                        });
+                    }
+                })
+                .catch(errors => {
+                    res.render('users/register', {
+                        errors: errors.errors
                     })
-                    
-                } else {
-                    res.render('users/register', { errors: [{ param: 'email', msg: 'El email ingresado ya existe' }] });
-                }
+                })
+        } else {
+            return res.render('users/register', {
+                errors: errors.errors
             })
-            .catch(errors => {
-                res.render('users/register', { errors: errors.errors })
-            })
-        }else{
-            return res.render('users/register', { errors: errors.errors })
         }
     },
 
@@ -56,16 +73,19 @@ const controller = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             db.users.findOne({
-                where: {
-                    email: req.body.email
-                }
-            })
+                    where: {
+                        email: req.body.email
+                    },
+                    attributes: ['id', 'email', 'rol', 'password']
+                })
                 .then(usuario => {
                     if (bcryptjs.compareSync(req.body.password, usuario.password)) {
-                        req.session.user = usuario;
-                        res.locals.user = usuario;
+                        req.session.user = usuario; // Deberiamos borrar la password de acá
+                        res.locals.user = req.session.user;
                         if (req.body.recordar) {
-                            res.cookie('recordar', usuario.email, { maxAge: 240 * 1000 })
+                            res.cookie('recordar', req.session.user.email, {
+                                maxAge: 240 * 1000
+                            })
                         }
                         db.users.update({
                             last_login: moment(new Date()).format('YYYY-MM-DD')
@@ -75,15 +95,27 @@ const controller = {
                             }
                         })
                     } else {
-                        res.render('users/login', { errors: [{ param: 'password', msg: 'La contraseña ingresada es incorrecta'}] })
+                        res.render('users/login', {
+                            errors: [{
+                                param: 'password',
+                                msg: 'La contraseña ingresada es incorrecta'
+                            }]
+                        })
                     }
                     res.redirect("/");
                 })
                 .catch(error => {
-                    res.render('users/login', { errors: [{ param: 'email', msg: 'El email ingresado no existe' }] });
+                    res.render('users/login', {
+                        errors: [{
+                            param: 'email',
+                            msg: 'El email ingresado no existe'
+                        }]
+                    });
                 })
         } else {
-            return res.render('users/login', { errors: errors.errors })
+            return res.render('users/login', {
+                errors: errors.errors
+            })
         }
     },
 
@@ -91,8 +123,12 @@ const controller = {
 
     logout: (req, res) => {
         req.session.destroy();
-        res.cookie('recordar', null, { maxAge: 0 })
-        return res.render('users/logout', { user: undefined })
+        res.cookie('recordar', null, {
+            maxAge: 0
+        })
+        return res.render('users/logout', {
+            user: undefined
+        })
     },
 
     // Perfil de usuario
@@ -100,10 +136,14 @@ const controller = {
     getProfile: (req, res) => {
         db.users.findByPk(req.params.id)
             .then(user => {
-                res.render('users/profile', { user: user });
+                res.render('users/profile', {
+                    user: user
+                });
             })
             .catch(error => {
-                res.render('users/profile', { errors: error });
+                res.render('users/profile', {
+                    errors: error
+                });
             })
     },
 
@@ -111,18 +151,17 @@ const controller = {
 
     updateProfile: (req, res) => {
         db.users.update({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            rol: req.body.rol,
-            language: req.body.language,
-            brday: req.body.brday,
-            country: req.body.country,
-            residence: req.body.residence,
-            phone: req.body.phone,
-            dark_mode: req.body.dark_mode
-        },
-            {
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+                rol: req.body.rol,
+                language: req.body.language,
+                brday: req.body.brday,
+                country: req.body.country,
+                residence: req.body.residence,
+                phone: req.body.phone,
+                dark_mode: req.body.dark_mode
+            }, {
                 where: {
                     id: req.params.id
                 }
@@ -130,14 +169,21 @@ const controller = {
             .then(user => {
                 db.users.findByPk(req.params.id)
                     .then(user => {
-                        res.render('users/profile', { user: user, edit_success: true })
+                        res.render('users/profile', {
+                            user: user,
+                            edit_success: true
+                        })
                     })
                     .catch(error => {
-                        res.render('users/profile', { errors: error });
+                        res.render('users/profile', {
+                            errors: error
+                        });
                     })
             })
             .catch(error => {
-                res.render('users/profile', { errors: error });
+                res.render('users/profile', {
+                    errors: error
+                });
             })
     },
 
@@ -145,23 +191,30 @@ const controller = {
 
     updateAvatar: (req, res) => {
         db.users.update({
-            image: req.files[0].filename
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
+                image: req.files[0].filename
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            })
             .then(user => {
                 db.users.findByPk(req.params.id)
                     .then(user => {
-                        res.render('users/profile', { user: user, edit_success: true })
+                        res.render('users/profile', {
+                            user: user,
+                            edit_success: true
+                        })
                     })
                     .catch(error => {
-                        res.render('users/profile', { errors: error });
+                        res.render('users/profile', {
+                            errors: error
+                        });
                     })
             })
             .catch(error => {
-                res.render('users/profile', { errors: error });
+                res.render('users/profile', {
+                    errors: error
+                });
             })
     }
 

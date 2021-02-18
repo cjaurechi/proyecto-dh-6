@@ -104,13 +104,16 @@ window.addEventListener("load", function () {
 
     function validarEmail() {
         const valorEmail = email.value.trim(); // Usamos trim para sacar los espacios en blanco
-
         if (valorEmail === '') {
             setError(email, 'Este campo es obligatorio');
             return false;
         } else 
         if (!esEmail(valorEmail)) {
             setError(email, 'El email ingresado no es válido');
+            return false;
+        } else 
+        if (validarEmailAPI(valorEmail)) {
+            setError(email, 'El email utilizado ya se encuentra en uso');
             return false;
         } else {
             setSuccess(email);
@@ -144,17 +147,18 @@ window.addEventListener("load", function () {
             }
     }}
 
-
-    // function validarProfile() {
-    //     if (profile.value === '') {
-    //         setError(profile, 'Este campo es obligatorio');
-    //         return false;
-    //     } else {
-        
-    //         setSuccess(profile);
-    //         return true;
-    //     }
-    // }
+    function validarEmailAPI(email) {
+        fetch('http://localhost:3001/api/usuarios/check?email=' + email)
+        .then(response => response.json())
+        .then(json => {
+            if(json.status == '404') {
+                return false;
+            } else {
+                return true;
+            }
+        })
+		.catch(error => console.log(error))
+    }
 
     function setError(input, error) {
         const parentElement = input.parentElement;

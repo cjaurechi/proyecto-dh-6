@@ -55,9 +55,12 @@ const controller = {
 	/* Devuelve los detalles de un producto */
 	getLatestProduct: (req, res) => {
 		db.products.findOne({
-            order: [['created_at', 'DESC']]
+            order: [['created_at', 'DESC']],
+			include: [{association: 'product_image'}]
 		}).then(response => {
-			res.json(response)
+			let productDetails = JSON.parse(JSON.stringify(response));
+			productDetails.image = "http://localhost:3001/images/products/" + response.product_image[0].image;
+			res.json(productDetails)
 		}).catch(err => {
 			res.json({
 				message: 'Hubo un error al consultar el último producto',

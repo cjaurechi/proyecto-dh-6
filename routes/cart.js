@@ -9,6 +9,12 @@ const router = express.Router();
 const cartController = require('../controllers/cartController');
 
 /*** CARRITO DE COMPRA ***/
-router.get('/', authMiddleware, cartController.productCart);
+router.get('/', authMiddleware, cartController.getCart);
+
+/*** AGREGAR PRODUCTO AL CARRITO ***/
+router.post('/agregar', authMiddleware, cartController.addToCart);
+
+/*** BORRAR PRODUCTO DEL CARRITO ***/
+router.post('/borrar', authMiddleware, cartController.removeFromCart);
 
 module.exports = router;

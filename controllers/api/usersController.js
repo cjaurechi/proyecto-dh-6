@@ -64,6 +64,24 @@ module.exports = {
 
 
 		
-    }
+    },
+
+	validateEmail (req, res) {
+		db.users.findOne({
+			where: {
+				email: req.query.email
+			}
+		}).then(response => {
+
+			if(response) {
+				res.json({status: '200'})
+			} else {
+				res.json({status: '404'})
+			}
+
+		}).catch(err => {
+			res.json(err);
+		})
+	}
     
 };
