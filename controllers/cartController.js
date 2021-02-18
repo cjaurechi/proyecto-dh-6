@@ -1,4 +1,8 @@
+const {
+    validationResult
+} = require('express-validator');
 const db = require('../database/models');
+const moment = require('moment');
 
 const controller = {
 
@@ -20,16 +24,8 @@ const controller = {
                 }
             })
             .then(items => {
-
-                let sale_prices = items.map(function (item) {
-                    return parseInt(item.sale_price);
-                })
-
-                const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
                 res.render('cart/productCart', {
-                    items: items,
-                    total_price: sale_prices.reduce(reducer)
+                    items: items
                 });
             })
             .catch(err => {
@@ -37,35 +33,54 @@ const controller = {
             })
     },
 
-    // Carrito de compra
-    productCart: (req, res) => {
+    addToCart: (req, res) => {
+        const errors = validationResult(req);
 
-        products = db.products.findAll({
-            where: {
-                status: "Habilitado"
-            },
-            include: [{
-                association: "product_image"
-            }]
-        })
+        if (errors.isEmpty()) {
+            // Busco el producto que voy a agregar como Item
+            db.products.findByPk(req.body.product_id)
+                .then((product) => {
+                    // Saco el valor del producto, teniendo en cuenta el descuento.
+                    let price =
+                        Number(product.discount) > 0 ?
+                        product.price - (product.price * product.discount) / 100 :
+                        product.price;
 
-        categories = db.categories.findAll()
+                    // Creo el Item de compra
+                    return db.items.create({
+                        sale_price: price,
+                        quantity: req.body.quantity,
+                        subtotal: price * req.body.quantity,
+                        state: 1,
+                        user_id: req.session.user.id,
+                        seller_id: product.supplier_id,
+                        product_id: product.id,
+                        created_at: moment(new Date()).format('YYYY-MM-DD')
+                    });
+                })
+                .then((item) => res.redirect('/carrito'))
+                .catch((err) => console.log(err.message));
+        } else {
+            db.products.findByPk(req.body.product_id)
+                .then(product => {
+                    return res.render('/productos/' + req.body.product_id + '/detalle', {
+                        product,
+                        errors: errors.mapped()
+                    })
+                })
+        }
+    },
 
-        Promise.all([products, categories])
-            .then(function ([products, categories]) {
-                res.render('cart/productCart', {
-                    categories: categories,
-                    products: products
-                });
+    removeFromCart: (req, res) => {
+        db.items.destroy({
+                where: {
+                    id: req.body.item_id,
+                },
+                force: true,
             })
-            .catch(error => {
-                res.render('error', {
-                    error: error
-                });
-            })
-
+            .then((response) => res.redirect('/carrito'))
+            .catch((e) => console.log(e));
     }
-
 };
 
 module.exports = controller;

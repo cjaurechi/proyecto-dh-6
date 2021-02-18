@@ -447,44 +447,6 @@ const controller = {
 		.catch(error => {
 			res.render('error', { error: error })
 		}) */
-	},
-
-	addToCart: (req, res) => {
-		const errors = validationResult(req);
-
-		if (errors.isEmpty()) {
-			// Busco el producto que voy a agregar como Item
-			db.products.findByPk(req.body.product_id)
-				.then((product) => {
-					// Saco el valor del producto, teniendo en cuenta el descuento.
-					let price =
-						Number(product.discount) > 0 ?
-						product.price - (product.price * product.discount) / 100 :
-						product.price;
-
-					// Creo el Item de compra
-					return db.items.create({
-						sale_price: price,
-						quantity: req.body.quantity,
-						subtotal: price * req.body.quantity,
-						state: 1,
-						user_id: req.session.user.id,
-						seller_id: product.supplier_id,
-						product_id: product.id,
-						created_at: moment(new Date()).format('YYYY-MM-DD')
-					});
-				})
-				.then((item) => res.redirect('/carrito'))
-				.catch((err) => console.log(err.message));
-		} else {
-			db.products.findByPk(req.body.product_id)
-				.then(product => {
-					return res.render('/productos/' + req.body.product_id + '/detalle', {
-						product,
-						errors: errors.mapped()
-					})
-				})
-		}
 	}
 };
 

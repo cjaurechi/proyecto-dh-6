@@ -13,6 +13,7 @@
 
     <div class="background">
         <div class="container">
+            <% if(items.length != 0){ %>
             <div class="cart-content">
                 <table class="cart-product">
                     <tbody>
@@ -42,9 +43,10 @@
                                 <span>$<%= item.sale_price %></span>
                             </td>
                             <td>
-                                <button>
-                                    Eliminar
-                                </button>
+                                <form action="/carrito/borrar" method="POST">
+                                    <input type="hidden" name="item_id" id="item_id" value="<%= item.id %>">
+                                    <button type="submit" class="boton-eliminar">Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                         <% }); %>
@@ -61,12 +63,21 @@
                         </thead>
                         <tr>
                             <td>
-                                <div class="total">$<%= total_price %></div>
+                                <div class="total">$<%= items.reduce((total, item) => total + item.subtotal, 0)%></div>
+                                <form action="" method="POST">
+                                    <button type="submit" class="boton-guardar">Comprar</button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <% } else { %>
+            <div class="empty-container">
+                <h2 class="empty-message">Todavia no agregaste productos al carrito</h2>
+                
+            </div>
+            <% } %>
         </div>
     </div>
 
