@@ -64,13 +64,14 @@
                                                         <form action="/productos/<%= item.id%>/editar" method="get"
                                                             class="form-producto">
                                                             <button type="submit" class="boton-guardar">Editar</button>
-
                                                         </form>
-                                                        <form action="/productos/<%= item.id %>/borrar?_method=DELETE"
-                                                            method="POST" class="form-producto">
-                                                            <button type="submit"
-                                                                class="boton-eliminar">Eliminar</button>
-                                                        </form>
+                                                        <% if (item.status=="Habilitado") { %>
+                                                            <form action="/productos/<%= item.id %>/borrar?_method=DELETE"
+                                                                method="POST" class="form-producto">
+                                                                <button type="submit"
+                                                                    class="boton-eliminar">Eliminar</button>
+                                                            </form>
+                                                        <% } %>
                                                     </section>
 
                                                 </a>
