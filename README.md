@@ -45,7 +45,11 @@ Utilizamos Figma para la creación del Wireframe. Pueden acceder al archivo desd
 
 
 ## Tablero de trabajo
+<<<<<<< HEAD
 Utilizaremos el tablero virtual de Trello para organizar el trabajo de los sprints. Se puede acceder al archivo desde el siguiente [enlace](https://trello.com/b/TfWIapkO/proyecto-dh-6)
+=======
+Utilizaremos el tablero de Trello para organizar el trabajo de los sprints. Se puede acceder al archivo desde el siguiente [enlace](https://trello.com/b/TfWIapkO/proyecto-dh-6)
+>>>>>>> f75ffdf19e3d0b854c5a2f3dd0c4b8e030f76a26
 
 ## Archivos adicionales
 Los archivos correspondientes al diseño del sitio, reuniones semanales (weekly) y retros de sprints anteriores pueden ser encontrados en el siguiente [Drive](https://bit.ly/3lbawmi).
