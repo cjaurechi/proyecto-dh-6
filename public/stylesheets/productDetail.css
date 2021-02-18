@@ -88,7 +88,7 @@ img {
 } 
 
 .imagen_producto_medio {
-  width:30%;
+  width:65%;
   text-align: center;
   background-color: var(--blanco);
 }
