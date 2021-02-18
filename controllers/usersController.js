@@ -30,7 +30,7 @@ const controller = {
                             last_name: req.body.last_name,
                             email: req.body.email,
                             password: bcryptjs.hashSync(req.body.password, 10),
-                            image: req.files[0].originalname,
+                            image: 'profile-' + req.body.email + '.jpg',
                             last_date_password: moment(new Date()).format('YYYY-MM-DD')
                         }).then(resultado => {
                             res.render('users/login', {
