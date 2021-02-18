@@ -456,17 +456,12 @@ const controller = {
 			// Busco el producto que voy a agregar como Item
 			db.products.findByPk(req.body.product_id)
 				.then((product) => {
-					console.log('Esto es product VVVVVVVVV');
-					console.log(product);
-					console.log('>>>>>>>>>>>>>>>>>>>>>>');
-
 					// Saco el valor del producto, teniendo en cuenta el descuento.
 					let price =
 						Number(product.discount) > 0 ?
 						product.price - (product.price * product.discount) / 100 :
 						product.price;
 
-					if(req.session.cart_id)
 					// Creo el Item de compra
 					return db.items.create({
 						sale_price: price,
@@ -476,14 +471,13 @@ const controller = {
 						user_id: req.session.user.id,
 						seller_id: product.supplier_id,
 						product_id: product.id,
+						created_at: moment(new Date()).format('YYYY-MM-DD')
 					});
 				})
 				.then((item) => res.redirect('/carrito'))
 				.catch((err) => console.log(err.message));
 		} else {
-			db.products.findByPk(req.body.product_id, {
-					include: ['users'],
-				})
+			db.products.findByPk(req.body.product_id)
 				.then(product => {
 					return res.render('/productos/' + req.body.product_id + '/detalle', {
 						product,

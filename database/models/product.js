@@ -56,24 +56,27 @@ module.exports = (sequelize, DataTypes) => {
 
     let products = sequelize.define('products', cols, config);
 
-    products.associate = function(models) {
+    products.associate = function (models) {
         products.hasMany(models.comments, {
             as: 'comments',
             foreignKey: 'product_id'
         });
-        
+
         products.belongsTo(models.suppliers, {
             as: 'suppliers',
             foreignKey: 'supplier_id'
         });
+
         products.hasMany(models.product_image, {
             as: 'product_image',
             foreignKey: 'product_id'
         });
+
         products.belongsTo(models.categories, {
             as: 'categories',
             foreignKey: 'category_id'
         });
+
         products.belongsToMany(models.purchases, {
             as: 'purchases',
             through: 'purchase_product',
@@ -81,10 +84,18 @@ module.exports = (sequelize, DataTypes) => {
             otherKey: 'purchase_id',
             timestamps: false
         });
+
         products.belongsTo(models.users, {
             as: 'users',
             foreignKey: 'user_id'
-        })
+        });
+
+        products.hasMany(models.items, {
+            as: 'items',
+            foreignKey: 'product_id'
+        });
+
+
     }
 
     return products;

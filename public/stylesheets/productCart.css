@@ -32,6 +32,7 @@
 
 .cart-product th {
     font-family: Montserrat-SemiBold;
+    border-bottom: 0.1px solid rgb(219, 219, 219, 0.3);
 }
 
 .cart-product th,
@@ -47,7 +48,8 @@
 }
 
 .container-imagen {
-    max-width: 120px;
+    width: 120px;
+    height: 120px;
     box-shadow: 4px 4px 10px 0 rgba(0,0,0,.05);
 }
 
@@ -66,11 +68,15 @@
     margin-right:auto;
 }
 
+.summary th {
+    font-family: Montserrat-SemiBold;
+    border-bottom: 0.1px solid rgb(219, 219, 219, 0.3);
+}
+
 .summary th,
 .summary td {
     text-align: center;
     padding: 12px 15px;
-    font-family: Montserrat-SemiBold;
 }
 
 td div.total {
@@ -78,7 +84,9 @@ td div.total {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    color: var(--azulreegalo);
+    font-family: Montserrat-Bold;
+    font-size: xx-large;
 }
 
 .container-categoria {

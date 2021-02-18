@@ -81,9 +81,9 @@ const controller = {
                 .then(usuario => {
                     if (bcryptjs.compareSync(req.body.password, usuario.password)) {
                         req.session.user = usuario; // Deberiamos borrar la password de acá
-                        res.locals.user = usuario;
+                        res.locals.user = req.session.user;
                         if (req.body.recordar) {
-                            res.cookie('recordar', usuario.email, {
+                            res.cookie('recordar', req.session.user.email, {
                                 maxAge: 240 * 1000
                             })
                         }

@@ -9,6 +9,6 @@ const router = express.Router();
 const cartController = require('../controllers/cartController');
 
 /*** CARRITO DE COMPRA ***/
-router.get('/', authMiddleware, cartController.productCart);
+router.get('/', authMiddleware, cartController.getCart);
 
 module.exports = router;

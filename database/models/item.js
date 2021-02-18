@@ -27,16 +27,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     cart_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      defaultValue: null
     },
     created_at: {
       type: DataTypes.DATE
     },
     updated_at: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: null
     },
     deleted_at: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: null
     }
   };
 
@@ -56,7 +59,12 @@ module.exports = (sequelize, DataTypes) => {
     items.belongsTo(models.carts, {
       as: 'carts',
       foreignKey: 'cart_id'
-    })
+    });
+
+    items.belongsTo(models.products, {
+      as: 'products',
+      foreignKey: 'product_id'
+    });
   }
 
   return items;
