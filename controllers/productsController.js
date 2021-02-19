@@ -421,6 +421,7 @@ const controller = {
 
 	delete: (req, res) => {
 
+			
 		// Soft delete: Solamente movemos el status a deshabilitado pero sigue vivo en la BD
 		db.products.update({
 				status: "Inhabilitado",
@@ -429,8 +430,22 @@ const controller = {
 					id: req.params.id
 				}
 			})
-			.then(() =>
-				res.redirect("/productos"))
+			
+			.then((respuesta) =>{
+				
+				db.categories.findAll({
+					include: [{
+						association: 'products',
+						include: ['product_image']
+					}]
+						}).then((category_products) =>
+							res.render("products/productAdmin", { category_products: category_products, update_success: '¡Tu producto fue deshabilitado exitosamente!' }))
+							
+						.catch(error => {
+						res.render('error', {
+							error: error
+						})})
+					
 			.catch(error => {
 				res.render('error', {
 					error: error
@@ -447,7 +462,7 @@ const controller = {
 		.catch(error => {
 			res.render('error', { error: error })
 		}) */
-	}
+	})}
 };
 
 module.exports = controller;
