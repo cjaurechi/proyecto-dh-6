@@ -163,7 +163,7 @@ const controller = {
                 return db.items.assignItems(req.session.user.id, cart.id);
             })
             // redirect
-            .then(() => res.render('users/history'))
+            .then(() => res.redirect('/usuarios/historial'))
             .catch((e) => console.log(e.message));
     }
 };

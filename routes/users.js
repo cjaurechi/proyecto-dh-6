@@ -44,7 +44,10 @@ router.get('/login', authMiddleware, usersController.login);
 router.post('/login', loginMiddleware, rememberMiddleware, usersController.processLogin)
 
 /*** LOGOUT ***/
-router.get('/logout', authMiddleware,usersController.logout);
+router.get('/logout', authMiddleware, usersController.logout);
+
+/*** HISTORIAL ***/
+router.get('/historial', authMiddleware, usersController.history)
 
 /*** PERFIL ***/
 router.get('/:id/perfil', authMiddleware, usersController.getProfile);
