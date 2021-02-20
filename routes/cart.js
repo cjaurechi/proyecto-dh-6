@@ -17,4 +17,7 @@ router.post('/agregar', authMiddleware, cartController.addToCart);
 /*** BORRAR PRODUCTO DEL CARRITO ***/
 router.post('/borrar', authMiddleware, cartController.removeFromCart);
 
+/*** COMPRAR PRODUCTOS ***/
+router.post('/comprar', authMiddleware, cartController.shop);
+
 module.exports = router;
