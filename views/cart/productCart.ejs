@@ -64,7 +64,8 @@
                         <tr>
                             <td>
                                 <div class="total">$<%= items.reduce((total, item) => total + item.subtotal, 0)%></div>
-                                <form action="" method="POST">
+                                <form action="/carrito/comprar" method="POST">
+                                    <input type="hidden" name="user_id" value="<%= locals.user.id %>">
                                     <button type="submit" class="boton-guardar">Comprar</button>
                                 </form>
                             </td>
@@ -75,7 +76,6 @@
             <% } else { %>
             <div class="empty-container">
                 <h2 class="empty-message">Todavia no agregaste productos al carrito</h2>
-                
             </div>
             <% } %>
         </div>

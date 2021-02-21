@@ -50,6 +50,18 @@ module.exports = (sequelize, DataTypes) => {
 
   let items = sequelize.define('items', cols, config);
 
+  items.closeItems = function (user_id) {
+    return sequelize.query(
+      `UPDATE items SET state = 0 WHERE user_id = ${user_id} AND state = 1`
+    );
+  };
+
+  items.assignItems = function (user_id, cart_id) {
+    return sequelize.query(
+      `UPDATE items SET cart_id = ${cart_id} WHERE user_id = ${user_id} AND cart_id IS NULL`
+    );
+  };
+
   items.associate = function (models) {
     items.belongsTo(models.users, {
       as: 'user',

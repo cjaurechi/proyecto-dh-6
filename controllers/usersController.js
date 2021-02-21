@@ -216,7 +216,29 @@ const controller = {
                     errors: error
                 });
             })
-    }
+    },
+
+    history: (req, res) => {
+        db.carts.findAll({
+                where: {
+                    user_id: req.session.user.id,
+                },
+                order: [
+                    ['created_at', 'DESC']
+                ],
+                include: [{
+                    association: 'items',
+                    include: ['products']
+                }]
+            })
+            .then((carts) => {
+                console.log(carts.items);
+                res.render('users/history', {
+                    carts
+                });
+            })
+            .catch((e) => console.log(e));
+    },
 
 }
 

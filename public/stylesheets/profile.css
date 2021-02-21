@@ -32,6 +32,24 @@
     display: none;
 }
 
+.container-historial {
+    margin-top: 40px;
+}
+
+.container-historial a {
+    color:black;
+    text-decoration: none;
+    transition: color 0.3s ease 0s;
+}
+
+.container-historial i {
+    cursor: pointer;
+}
+
+.container-historial a:hover {
+    color: var(--azulregalostrong);
+}
+
 .right-panel {
     width: 100%;
     padding-bottom: 2%;

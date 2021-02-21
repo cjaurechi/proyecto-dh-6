@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = (sequelize, DataTypes) => {
   let cols = {
     id: {
@@ -15,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     created_at: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: moment(new Date()).format('YYYY-MM-DD')
     },
     updated_at: {
       type: DataTypes.DATE
