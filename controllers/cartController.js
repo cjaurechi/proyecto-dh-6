@@ -45,7 +45,7 @@ const controller = {
                 }
             }).then(response => {
                 if (response != undefined) {
-                    let order_quantity = parseInt(response.quantity);
+                    let order_quantity = response.quantity;
                     db.items.destroy({
                         where: {
                             user_id: req.session.user.id,
@@ -63,8 +63,8 @@ const controller = {
                                 // Creo el Item de compra
                                 return db.items.create({
                                     sale_price: price,
-                                    quantity: req.body.quantity + order_quantity,
-                                    subtotal: price * (req.body.quantity + order_quantity),
+                                    quantity: parseInt(req.body.quantity) + parseInt(order_quantity),
+                                    subtotal: price * (parseInt(req.body.quantity) + parseInt(order_quantity)),
                                     state: 1,
                                     user_id: req.session.user.id,
                                     seller_id: product.supplier_id,
