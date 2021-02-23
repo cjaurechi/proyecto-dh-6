@@ -462,6 +462,10 @@ footer div nav a {
     padding: 0.5%;
 }
 
+.fa-sad-tear{
+    margin-right: 10px;
+}
+
 
 @media (max-width: 1080px) {
 

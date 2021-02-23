@@ -20,6 +20,8 @@
                     <h2 class="detalle_producto">Resultados de tu búsqueda</h2>
                 </section>
                 <div class="container-productos">
+                    <% if (products.length >0){%>
+                        
                     <% for (let i=0; i < products.length ; i++) { %>
                         <div class="container-producto">
                             <section class="product-box">
@@ -46,6 +48,10 @@
                                 </a>
                             </section>
                         </div>
+                        <% }}else{ %>
+                      
+                            <i class="far fa-sad-tear"></i>
+                            <p>No se encontro el producto</p>
                         <% } %>
                 </div>
             </div>
