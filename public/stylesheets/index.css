@@ -301,10 +301,11 @@ div.categoria-regalo {
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 10px 20px;
+  
 }
 
 .container-producto {
-  width: 350px;
+  width: 270px;
   display: flex;
   flex-direction: row;
   justify-content: center;
