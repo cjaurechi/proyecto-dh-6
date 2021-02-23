@@ -359,6 +359,14 @@ const controller = {
 										image: req.files[i].filename,
 										number: i
 									})
+									.then(product_image => {
+										res.redirect('/productos/' + req.params.id + '/detalle')
+									})
+									.catch(error => {
+										res.render('error', {
+											error: error
+										})
+									})
 								}
 							})
 							.then(product => {
