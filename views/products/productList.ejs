@@ -39,9 +39,11 @@
                                                         </p>
                                                         <h3>$ <%= item.price %>
                                                         </h3>
-                                                        <span>
-                                                            <%= item.discount %> % OFF
-                                                        </span>
+                                                        <% if(item.discount > 0) { %>
+                                                            <span>
+                                                                <%= item.discount %> % OFF
+                                                            </span>
+                                                            <% } %>
                                                         <p class="product-description">
                                                             <%= item.description %>
                                                         </p>
