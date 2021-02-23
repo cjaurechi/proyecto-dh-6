@@ -395,6 +395,7 @@ footer div nav a {
 .contenedor-cadapregunta{
     margin: 3% auto;
     border: 1px solid gray;
+    border-radius: 10px;
     
 }
 
@@ -404,6 +405,7 @@ footer div nav a {
 }
 .pregunta{
     font-family: Montserrat-Bold;
+   
 }
 
 
