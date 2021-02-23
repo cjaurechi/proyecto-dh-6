@@ -64,7 +64,7 @@ const controller = {
                                 return db.items.create({
                                     sale_price: price,
                                     quantity: parseInt(req.body.quantity) + parseInt(order_quantity),
-                                    subtotal: price * (req.body.quantity + order_quantity),
+                                    subtotal: price * (parseInt(req.body.quantity) + parseInt(order_quantity)),
                                     state: 1,
                                     user_id: req.session.user.id,
                                     seller_id: product.supplier_id,
