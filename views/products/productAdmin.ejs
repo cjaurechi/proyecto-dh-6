@@ -54,9 +54,12 @@
                                                             <section class="product-price">
                                                                 <h3>$ <%= item.price %>
                                                                 </h3>
+                                                                <% if(item.discount > 0) { %>
                                                                 <span>
                                                                     <%= item.discount %> % OFF
                                                                 </span>
+                                                                <% } %>
+
                                                             </section>
                                                         </article>
                                                     </section>
