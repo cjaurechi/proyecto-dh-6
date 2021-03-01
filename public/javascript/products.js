@@ -363,8 +363,6 @@ window.addEventListener("load",function() {
             product.stock === "" ||
             product.status === "" ||
             product.description === "") {
-            console.log("1",product)
-
             document.getElementById("store-success").classList.add("store-success")
             document.getElementById("store-success").innerHTML = "Debe Completar los campos indicados con error"
         } else {

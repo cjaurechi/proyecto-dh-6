@@ -232,7 +232,6 @@ const controller = {
                 }]
             })
             .then((carts) => {
-                console.log(carts.items);
                 res.render('users/history', {
                     carts
                 });

@@ -353,7 +353,6 @@ const controller = {
 							})
 							.then(product_image => {
 								for (let i = 0; i < req.files.length; i++) {
-									console.log(req.files.length, i)
 									db.product_image.create({
 										product_id: req.params.id,
 										image: req.files[i].filename,
